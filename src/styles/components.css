@@ -10,6 +10,8 @@
  */
 
 /* Button Component */
+
+@import "tailwindcss";
 .rclib-button {
   /* Reset and base styles */
   position: relative;
@@ -146,4 +148,9 @@
   .rclib-button--ghost:hover:not(:disabled):not(.rclib-button--disabled) {
     background-color: rgba(255, 255, 255, 0.1);
   }
+}
+
+
+.abhay1 {
+  background-color: black;
 }

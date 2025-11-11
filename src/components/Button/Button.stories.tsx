@@ -1,86 +1,170 @@
+// Button.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-
 import { Button } from './Button';
 
-const meta = {
+// Sample icons (you can replace with your icon library)
+const StarIcon = () => <span>⭐</span>;
+const HeartIcon = () => <span>❤️</span>;
+const DownloadIcon = () => <span>⬇️</span>;
+const PlusIcon = () => <span>➕</span>;
+
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: `
-The Button component supports multiple styling approaches:
-- **Default styling**: Use built-in variants and props
-- **Tailwind CSS**: Add custom Tailwind classes via className
-- **Custom CSS**: Use semantic classes or the unstyled prop
-- **CSS-in-JS**: Works with styled-components, emotion, etc.
-        `
-      }
-    }
   },
   tags: ['autodocs'],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['primary', 'secondary', 'danger'],
-      description: 'Visual style variant of the button'
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'],
     },
     size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
-      description: 'Size of the button'
+      control: 'select',
+      options: ['xs', 'small', 'medium', 'large', 'xl'],
+    },
+    rounded: {
+      control: 'select',
+      options: ['none', 'sm', 'md', 'lg', 'full'],
+    },
+    outline: {
+      control: 'boolean',
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Whether the button should take full width of its container'
     },
-    isLoading: {
+    loading: {
       control: 'boolean',
-      description: 'Shows loading spinner and disables the button'
     },
     disabled: {
       control: 'boolean',
-      description: 'Disables the button'
     },
-    unstyled: {
-      control: 'boolean',
-      description: 'Removes all default styling for complete customization'
+    iconPosition: {
+      control: 'select',
+      options: ['left', 'right'],
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS classes',
     },
   },
-  args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Button>;
 
-// Default Examples
+// ============================================
+// BASIC VARIANTS
+// ============================================
+
 export const Primary: Story = {
   args: {
-    children: 'Primary Button',
+    label: 'Primary Button',
     variant: 'primary',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary Button',
+    label: 'Secondary Button',
     variant: 'secondary',
+  },
+};
+
+export const Success: Story = {
+  args: {
+    label: 'Success Button',
+    variant: 'success',
   },
 };
 
 export const Danger: Story = {
   args: {
-    children: 'Danger Button',
+    label: 'Danger Button',
     variant: 'danger',
   },
 };
 
-// Sizes
+export const Warning: Story = {
+  args: {
+    label: 'Warning Button',
+    variant: 'warning',
+  },
+};
+
+export const Info: Story = {
+  args: {
+    label: 'Info Button',
+    variant: 'info',
+  },
+};
+
+export const Light: Story = {
+  args: {
+    label: 'Light Button',
+    variant: 'light',
+  },
+};
+
+export const Dark: Story = {
+  args: {
+    label: 'Dark Button',
+    variant: 'dark',
+  },
+};
+
+// ============================================
+// OUTLINE VARIANTS
+// ============================================
+
+export const OutlinePrimary: Story = {
+  args: {
+    label: 'Outline Primary',
+    variant: 'primary',
+    outline: true,
+  },
+};
+
+export const OutlineSecondary: Story = {
+  args: {
+    label: 'Outline Secondary',
+    variant: 'secondary',
+    outline: true,
+  },
+};
+
+export const OutlineSuccess: Story = {
+  args: {
+    label: 'Outline Success',
+    variant: 'success',
+    outline: true,
+  },
+};
+
+export const OutlineDanger: Story = {
+  args: {
+    label: 'Outline Danger',
+    variant: 'danger',
+    outline: true,
+  },
+};
+
+// ============================================
+// SIZES
+// ============================================
+
+export const ExtraSmall: Story = {
+  args: {
+    label: 'Extra Small',
+    variant: 'primary',
+    size: 'xs',
+  },
+};
+
 export const Small: Story = {
   args: {
-    children: 'Small Button',
+    label: 'Small Button',
     variant: 'primary',
     size: 'small',
   },
@@ -88,7 +172,7 @@ export const Small: Story = {
 
 export const Medium: Story = {
   args: {
-    children: 'Medium Button',
+    label: 'Medium Button',
     variant: 'primary',
     size: 'medium',
   },
@@ -96,24 +180,79 @@ export const Medium: Story = {
 
 export const Large: Story = {
   args: {
-    children: 'Large Button',
+    label: 'Large Button',
     variant: 'primary',
     size: 'large',
   },
 };
 
-// States
+export const ExtraLarge: Story = {
+  args: {
+    label: 'Extra Large',
+    variant: 'primary',
+    size: 'xl',
+  },
+};
+
+// ============================================
+// ROUNDED CORNERS
+// ============================================
+
+export const RoundedNone: Story = {
+  args: {
+    label: 'No Rounded',
+    variant: 'primary',
+    rounded: 'none',
+  },
+};
+
+export const RoundedSmall: Story = {
+  args: {
+    label: 'Small Rounded',
+    variant: 'primary',
+    rounded: 'sm',
+  },
+};
+
+export const RoundedMedium: Story = {
+  args: {
+    label: 'Medium Rounded',
+    variant: 'primary',
+    rounded: 'md',
+  },
+};
+
+export const RoundedLarge: Story = {
+  args: {
+    label: 'Large Rounded',
+    variant: 'primary',
+    rounded: 'lg',
+  },
+};
+
+export const RoundedFull: Story = {
+  args: {
+    label: 'Pill Button',
+    variant: 'primary',
+    rounded: 'full',
+  },
+};
+
+// ============================================
+// STATES
+// ============================================
+
 export const Loading: Story = {
   args: {
-    children: 'Loading Button',
+    label: 'Loading...',
     variant: 'primary',
-    isLoading: true,
+    loading: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    children: 'Disabled Button',
+    label: 'Disabled Button',
     variant: 'primary',
     disabled: true,
   },
@@ -121,7 +260,7 @@ export const Disabled: Story = {
 
 export const FullWidth: Story = {
   args: {
-    children: 'Full Width Button',
+    label: 'Full Width Button',
     variant: 'primary',
     fullWidth: true,
   },
@@ -130,103 +269,109 @@ export const FullWidth: Story = {
   },
 };
 
-// Custom Styling Examples
-export const TailwindStyling: Story = {
+// ============================================
+// WITH ICONS
+// ============================================
+
+export const WithIconLeft: Story = {
   args: {
-    children: 'Custom Tailwind Button',
-    className: "bg-red-500",
-    variant: "primary"
+    label: 'Favorite',
+    variant: 'primary',
+    icon: <StarIcon />,
+    iconPosition: 'left',
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Example of using Tailwind CSS classes for custom styling. The className prop allows you to override or extend default styles.'
-      }
-    }
-  }
 };
 
-export const CustomCSS: Story = {
+export const WithIconRight: Story = {
   args: {
-    children: 'Custom CSS Button',
-    className: "custom-gradient-button bg-red-500",
+    label: 'Download',
+    variant: 'success',
+    icon: <DownloadIcon />,
+    iconPosition: 'right',
   },
-  decorators: [
-    (Story) => (
-      <div>
-        <style>{`
-          .custom-gradient-button {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-          }
-          .custom-gradient-button:hover {
-            background: linear-gradient(45deg, #ff5252, #26c6da);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          }
-        `}</style>
-        <Story />
-      </div>
-    ),
-  ],
-  parameters: {
-    docs: {
-      description: {
-        story: 'Example of using custom CSS classes. You can define your own styles and apply them via className.'
-      }
-    }
-  }
 };
 
-export const UnstyledCustom: Story = {
+export const IconOnlyStyle: Story = {
   args: {
-    children: 'Completely Custom Button',
-    className: 'brand-button',
-    unstyled: true,
+    label: '',
+    variant: 'primary',
+    icon: <HeartIcon />,
+    size: 'large',
+    rounded: 'full',
+    className: 'icon-only-btn',
   },
-  decorators: [
-    (Story) => (
-      <div>
-        <style>{`
-          .brand-button {
-            background-color: #2563eb;
-            color: white;
-            border: 2px solid transparent;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-          }
-          .brand-button:hover {
-            background-color: #1d4ed8;
-            border-color: #3b82f6;
-          }
-          .brand-button:disabled {
-            background-color: #9ca3af;
-            cursor: not-allowed;
-          }
-        `}</style>
-        <Story />
-      </div>
-    ),
-  ],
+};
+
+// ============================================
+// CUSTOM CLASSNAMES EXAMPLES
+// ============================================
+
+export const WithCustomClass: Story = {
+  args: {
+    label: 'Custom Styled',
+    variant: 'primary',
+    className: 'custom-shadow-glow',
+  },
+};
+
+export const WithTailwindClasses: Story = {
+  args: {
+    label: 'Tailwind Styled',
+    variant: 'primary',
+    className: 'shadow-2xl hover:scale-105',
+  },
+};
+
+export const WithMultipleClasses: Story = {
+  args: {
+    label: 'Multiple Classes',
+    variant: 'success',
+    className: 'custom-animation pulse-effect gradient-bg',
+  },
+};
+
+// ============================================
+// COMBINATION EXAMPLES
+// ============================================
+
+export const LargeOutlineRounded: Story = {
+  args: {
+    label: 'Sign Up Now',
+    variant: 'primary',
+    outline: true,
+    size: 'large',
+    rounded: 'full',
+  },
+};
+
+export const DangerWithIcon: Story = {
+  args: {
+    label: 'Delete',
+    variant: 'danger',
+    icon: <span>🗑️</span>,
+    iconPosition: 'left',
+    size: 'medium',
+  },
+};
+
+export const LoadingOutline: Story = {
+  args: {
+    label: 'Processing',
+    variant: 'info',
+    outline: true,
+    loading: true,
+  },
+};
+
+export const FullWidthSuccess: Story = {
+  args: {
+    label: 'Complete Purchase',
+    variant: 'success',
+    size: 'large',
+    fullWidth: true,
+    icon: <PlusIcon />,
+  },
   parameters: {
-    docs: {
-      description: {
-        story: 'Example of completely custom styling using the `unstyled` prop. This removes all default styles, giving you complete control.'
-      }
-    }
-  }
+    layout: 'padded',
+  },
 };

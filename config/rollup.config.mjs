@@ -2,12 +2,32 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
+import { exec } from 'child_process';
 import fs from 'fs';
-import path from 'path';
 
 const packageJson = JSON.parse(
     fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')
 );
+
+// Plugin to build Tailwind CSS
+const tailwindBuildPlugin = () => {
+  return {
+    name: 'tailwind-build',
+    buildStart() {
+      return new Promise((resolve, reject) => {
+        exec('npx @tailwindcss/cli -i ./src/styles/components.css -o ./dist/styles/components.css', (error, stdout, stderr) => {
+          if (error) {
+            console.error('Tailwind build error:', error);
+            reject(error);
+          } else {
+            console.log('Tailwind CSS built successfully');
+            resolve();
+          }
+        });
+      });
+    }
+  };
+};
 
 export default [
     // Main bundle
@@ -26,6 +46,7 @@ export default [
             },
         ],
         plugins: [
+            tailwindBuildPlugin(),
             resolve({
                 browser: true,
                 preferBuiltins: false
@@ -48,20 +69,5 @@ export default [
             }),
         ],
         external: ['react', 'react-dom'],
-    },
-    // Separate bundle for semantic component styles that users can import
-    {
-        input: 'src/styles/components.css',
-        output: {
-            file: 'dist/styles/components.css',
-        },
-        plugins: [
-            postcss({
-                extract: true,
-                minimize: true,
-                sourceMap: true,
-                modules: false, // These are semantic classes, not modules
-            }),
-        ],
-    },
+    }
 ];

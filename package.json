@@ -18,13 +18,15 @@
     "docs"
   ],
   "scripts": {
-    "build": "npx rollup -c config/rollup.config.mjs",
-    "dev": "npx rollup -c config/rollup.config.mjs -w",
+    "build": "npm run build:css && npx rollup -c config/rollup.config.mjs",
+    "build:css": "npx @tailwindcss/cli -i ./src/styles/components.css -o ./dist/styles/components.css",
+    "dev": "npm run build:css && npx rollup -c config/rollup.config.mjs -w",
+    "dev:css": "npx @tailwindcss/cli -i ./src/styles/components.css -o ./dist/styles/components.css --watch",
     "clean": "npx rimraf dist",
     "test": "jest --config config/jest.config.cjs",
     "test:watch": "jest --config config/jest.config.cjs --watch",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "npm run build:css && storybook dev -p 6006",
+    "build-storybook": "npm run build:css && storybook build"
   },
   "repository": {
     "type": "git",
@@ -75,5 +77,8 @@
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.17"
   }
 }

@@ -1,0 +1,149 @@
+/**
+ * RCLib Component Styles
+ * 
+ * Import this file to style components using semantic class names
+ * 
+ * Usage:
+ * import 'rclib/dist/styles/components.css';
+ * 
+ * Or customize by copying these styles to your own CSS file
+ */
+
+/* Button Component */
+.rclib-button {
+  /* Reset and base styles */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  user-select: none;
+  text-decoration: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1;
+}
+
+.rclib-button:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.rclib-button--disabled,
+.rclib-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Button Sizes */
+.rclib-button--small {
+  padding: 6px 12px;
+  font-size: 14px;
+  min-height: 32px;
+}
+
+.rclib-button--medium {
+  padding: 10px 18px;
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.rclib-button--large {
+  padding: 14px 24px;
+  font-size: 18px;
+  min-height: 48px;
+}
+
+/* Button Variants */
+.rclib-button--primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.rclib-button--primary:hover:not(:disabled):not(.rclib-button--disabled) {
+  background-color: #0069d9;
+}
+
+.rclib-button--secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.rclib-button--secondary:hover:not(:disabled):not(.rclib-button--disabled) {
+  background-color: #5a6268;
+}
+
+.rclib-button--danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.rclib-button--danger:hover:not(:disabled):not(.rclib-button--disabled) {
+  background-color: #c82333;
+}
+
+/* Button Modifiers */
+.rclib-button--full-width {
+  width: 100%;
+}
+
+.rclib-button--loading {
+  cursor: wait;
+}
+
+/* Button Sub-components */
+.rclib-button__spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: rclib-spin 1s linear infinite;
+}
+
+.rclib-button__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes rclib-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility Classes for Easy Customization */
+.rclib-button--outline {
+  background-color: transparent;
+  border: 2px solid currentColor;
+}
+
+.rclib-button--ghost {
+  background-color: transparent;
+  color: inherit;
+}
+
+.rclib-button--ghost:hover:not(:disabled):not(.rclib-button--disabled) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .rclib-button--ghost:hover:not(:disabled):not(.rclib-button--disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}

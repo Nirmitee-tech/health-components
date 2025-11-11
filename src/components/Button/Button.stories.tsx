@@ -317,8 +317,8 @@ export const WithCustomClass: Story = {
 export const WithTailwindClasses: Story = {
   args: {
     label: 'Tailwind Styled',
-    variant: 'primary',
-    className: 'shadow-2xl hover:scale-105',
+    className: 'shadow-2xl hover:scale-105'
+    
   },
 };
 

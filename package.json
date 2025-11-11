@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iUtkarshtiwari/RepositoryP.git"
+    "url": "git+https://github.com/Nirmitee-tech/health-components.git"
   },
   "keywords": [
     "react",
@@ -40,9 +40,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iUtkarshtiwari/RepositoryP/issues"
+    "url": "https://github.com/Nirmitee-tech/health-components/issues"
   },
-  "homepage": "https://github.com/iUtkarshtiwari/RepositoryP#readme",
+  "homepage": "https://github.com/Nirmitee-tech/health-components#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",

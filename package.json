@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "health-components",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "This is a react component library for health related applications.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

@@ -1,0 +1,146 @@
+name: Release Workflow
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: "Type of release"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+  id-token: write
+  actions: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  ci:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [18, 20, 22]   # Test your library on multiple Node.js versions
+      fail-fast: false        # Continue other matrix jobs even if one fails
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build package
+        run: npm run build
+
+      - name: Validate build artifacts
+        run: |
+          test -f dist/cjs/index.js || exit 1
+          test -f dist/esm/index.js || exit 1
+          test -f dist/styles/components.css || exit 1
+          echo "✓ All build artifacts present"
+
+      - name: Upload build artifacts
+        if: matrix.node == 20   # Only upload once from the primary Node version
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  cd:
+    name: Continuous Deployment
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Bump version
+        id: version_bump
+        run: |
+          RELEASE_TYPE=${{ github.event.inputs.release_type || 'patch' }}
+          echo "Release type: $RELEASE_TYPE"
+
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+
+          npm version $RELEASE_TYPE -m "chore(release): bump %s" --no-commit-hooks
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "New version: $NEW_VERSION"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Rebuild after version bump
+        run: npm run build
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit version bump and create tag
+        run: |
+          VERSION=${{ steps.version_bump.outputs.new_version }}
+          git add package.json package-lock.json
+          git commit -m "chore(release): v${VERSION}"
+          git tag -a "v${VERSION}" -m "Release v${VERSION}"
+          git push origin main --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version_bump.outputs.new_version }}
+          name: "Release v${{ steps.version_bump.outputs.new_version }}"
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Post-release notifications
+        if: steps.version_bump.outputs.new_version
+        run: |
+          echo "✅ Successfully released v${{ steps.version_bump.outputs.new_version }}"
+          echo "📦 NPM: https://www.npmjs.com/package/health-components"
+          echo "🚀 GitHub Release: ${{ github.server_url }}/${{ github.repository }}/releases/tag/v${{ steps.version_bump.outputs.new_version }}"

@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  // ✅ Tailwind variants
+  // Tailwind variants
   const variantClasses = {
     primary: outline
       ? 'border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white'
@@ -56,7 +56,7 @@ export const Button: React.FC<ButtonProps> = ({
       : 'bg-gray-800 text-white hover:bg-gray-900',
   }[variant];
 
-  // ✅ Sizes
+  // Sizes
   const sizeClasses = {
     xs: 'px-2 py-1 text-xs',
     small: 'px-3 py-1.5 text-sm',
@@ -65,7 +65,7 @@ export const Button: React.FC<ButtonProps> = ({
     xl: 'px-6 py-3 text-xl',
   }[size];
 
-  // ✅ Rounded options
+  // Rounded options
   const roundedClasses = {
     none: 'rounded-none',
     sm: 'rounded-sm',
@@ -74,7 +74,7 @@ export const Button: React.FC<ButtonProps> = ({
     full: 'rounded-full',
   }[rounded];
 
-  // ✅ Common base styles
+  // Common base styles
   const baseClasses =
     'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed';
 

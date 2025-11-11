@@ -3,10 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
 // Sample icons (you can replace with your icon library)
-const StarIcon = () => <span>⭐</span>;
-const HeartIcon = () => <span>❤️</span>;
-const DownloadIcon = () => <span>⬇️</span>;
-const PlusIcon = () => <span>➕</span>;
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -273,34 +269,34 @@ export const FullWidth: Story = {
 // WITH ICONS
 // ============================================
 
-export const WithIconLeft: Story = {
-  args: {
-    label: 'Favorite',
-    variant: 'primary',
-    icon: <StarIcon />,
-    iconPosition: 'left',
-  },
-};
+// export const WithIconLeft: Story = {
+//   args: {
+//     label: 'Favorite',
+//     variant: 'primary',
+//     icon: <StarIcon />,
+//     iconPosition: 'left',
+//   },
+// };
 
-export const WithIconRight: Story = {
-  args: {
-    label: 'Download',
-    variant: 'success',
-    icon: <DownloadIcon />,
-    iconPosition: 'right',
-  },
-};
+// export const WithIconRight: Story = {
+//   args: {
+//     label: 'Download',
+//     variant: 'success',
+//     icon: <DownloadIcon />,
+//     iconPosition: 'right',
+//   },
+// };
 
-export const IconOnlyStyle: Story = {
-  args: {
-    label: '',
-    variant: 'primary',
-    icon: <HeartIcon />,
-    size: 'large',
-    rounded: 'full',
-    className: 'icon-only-btn',
-  },
-};
+// export const IconOnlyStyle: Story = {
+//   args: {
+//     label: '',
+//     variant: 'primary',
+//     icon: <HeartIcon />,
+//     size: 'large',
+//     rounded: 'full',
+//     className: 'icon-only-btn',
+//   },
+// };
 
 // ============================================
 // CUSTOM CLASSNAMES EXAMPLES
@@ -363,15 +359,15 @@ export const LoadingOutline: Story = {
   },
 };
 
-export const FullWidthSuccess: Story = {
-  args: {
-    label: 'Complete Purchase',
-    variant: 'success',
-    size: 'large',
-    fullWidth: true,
-    icon: <PlusIcon />,
-  },
-  parameters: {
-    layout: 'padded',
-  },
-};
+// export const FullWidthSuccess: Story = {
+//   args: {
+//     label: 'Complete Purchase',
+//     variant: 'success',
+//     size: 'large',
+//     fullWidth: true,
+//     icon: <PlusIcon />,
+//   },
+//   parameters: {
+//     layout: 'padded',
+//   },
+// };

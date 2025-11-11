@@ -5,18 +5,18 @@ A modern, accessible React component library built with TypeScript and styled wi
 [![npm version](https://badge.fury.io/js/health-components.svg)](https://badge.fury.io/js/health-components)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## ✨ Features
+## Features
 
-- **⚛️ React 19+**: Built with the latest React features
-- **📝 TypeScript**: Full type safety and excellent developer experience
-- **🎨 Tailwind CSS**: Utility-first styling with easy customization
+- **React 19+**: Built with the latest React features
+- **TypeScript**: Full type safety and excellent developer experience
+- **Tailwind CSS**: Utility-first styling with easy customization
 <!-- - **♿ Accessible**: WCAG compliant components -->
-- **📱 Responsive**: Mobile-first design approach
-- **🧪 Tested**: Comprehensive test coverage with Jest
-- **🌳 Tree-shakable**: Import only what you need
-- **⚡ Performance**: Optimized for production
+- **Responsive**: Mobile-first design approach
+- **Tested**: Comprehensive test coverage with Jest
+- **Tree-shakable**: Import only what you need
+- **Performance**: Optimized for production
 
-## 🚀 Installation
+## Installation
 
 ```bash
 npm install health-components
@@ -30,7 +30,7 @@ yarn add health-components
 pnpm add health-components
 ```
 
-## 📦 Usage
+## Usage
 
 ### Basic Usage
 
@@ -128,7 +128,7 @@ function CustomButtons() {
 }
 ```
 
-## 🧩 Components
+## Components
 
 ### Button
 
@@ -185,7 +185,7 @@ A versatile button component with multiple variants, sizes, and customization op
 />
 ```
 
-## 🎨 Styling
+## Styling
 
 Health Components uses Tailwind CSS for styling. You have several options for customization:
 
@@ -217,7 +217,7 @@ import 'health-components/styles/components.css';
 }
 ```
 
-## 🧪 Development
+## Development
 
 ### Prerequisites
 
@@ -254,11 +254,11 @@ npm test
 | `npm run test:watch` | Run tests in watch mode |
 | `npm run clean` | Clean build artifacts |
 
-## 📚 Documentation
+## Documentation
 
 For detailed documentation and interactive examples, visit our documentation site.
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
@@ -273,7 +273,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 7. Push to the branch: `git push origin feature/new-component`
 8. Submit a pull request
 
-## 💡 Use Cases
+## Use Cases
 
 This component library is perfect for:
 
@@ -284,36 +284,36 @@ This component library is perfect for:
 - **Enterprise applications** requiring accessibility compliance
 - **Rapid prototyping** and development
 
-## 📋 Browser Support
+## Browser Support
 
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
 
-## 📄 License
+## License
 
 MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🔗 Links
+## Links
 
 - [NPM Package](https://www.npmjs.com/package/health-components)
 <!-- - [GitHub Repository](https://github.com/iUtkarshtiwari/RepositoryP) -->
 <!-- - [Documentation](https://your-docs-url.com) -->
 
-<!-- ## 🆘 Support
+<!-- ## Support
 
 - Create an [issue](https://github.com/iUtkarshtiwari/RepositoryP/issues) for bug reports or feature requests
 - Check existing [discussions](https://github.com/iUtkarshtiwari/RepositoryP/discussions) for questions -->
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built with [React](https://reactjs.org/)
 - Styled with [Tailwind CSS](https://tailwindcss.com/)
 - Tested with [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/)
 
----
+<!-- --- -->
 
-<p align="center">
-  Made with ❤️ for the developer community
-</p>
+<!-- <p align="center">
+  Made with for the developer community
+</p> -->

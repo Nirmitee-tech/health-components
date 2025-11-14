@@ -72,12 +72,14 @@ function ButtonShowcase() {
       <Button label="Large" variant="primary" size="large" />
       
       {/* With Icons */}
-      <Button 
-        label="Download" 
+          <Button 
         variant="primary" 
-        icon={<span>⬇️</span>} 
-        iconPosition="left" 
-      />
+        size="large"
+        icon={<span>DOWNLOAD</span>} 
+        onClick={() => alert('Downloaded!')}
+    >
+        Download File
+    </Button>
       
       {/* Loading State */}
       <Button 

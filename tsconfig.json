@@ -1,52 +1,42 @@
 {
   "compilerOptions": {
-    // File Layout
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "declarationDir": "./dist/types",
-    
-    // Environment Settings
-    "allowJs": true,
-    "moduleResolution": "bundler",
-    "module": "esnext",
+    // Environment
     "target": "esnext",
+    "module": "esnext", 
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "es6"],
     
-    // Module Resolution
+    // Files
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     
-    // Type Checking
-    "types": ["react", "jest", "@testing-library/jest-dom"],
-    
-    // Other Outputs
+    // Output
+    "rootDir": "./src",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
+    "declarationDir": "./dist/types",
     
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    // Type Checking
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     
-    // Build Options
-    "verbatimModuleSyntax": true,
+    // Build
     "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true
+    
+    "types": ["node", "react", "jest", "@testing-library/jest-dom"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["dist", "node_modules", "coverage", "storybook-static"]
 }

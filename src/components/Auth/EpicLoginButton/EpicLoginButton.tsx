@@ -1,82 +1,28 @@
 import React, { useState } from "react";
+import { useEpicAuth } from "./useEpicAuth";
 import type { EpicLoginButtonProps } from "./types";
-import { generatePKCEData } from "./utils/crypto";
-import { getAuthorizationEndpoint } from "./services/epicAuth";
-import { storeAuthData } from "./utils/storage";
-import { buildAuthorizationUrl } from "./utils/urlBuilder";
-import { validateEpicLoginProps } from "./utils/validation";
-import { handleAuthError, createValidationError } from "./errors/epicErrors";
+import { useAuth, FHIRError } from "@nirmiteeio/fhir-sdk";
 import { EPIC_CONFIG } from "./constant";
 
 export const EpicLoginButton: React.FC<EpicLoginButtonProps> = ({
-  clientId,
-  redirectUri,
-  wellKnown = EPIC_CONFIG.WELL_KNOWN_URL,
-  authorizationEndpoint,
-  fhirBase = EPIC_CONFIG.FHIR_BASE,
-  scope = EPIC_CONFIG.DEFAULT_SCOPE,
   buttonLabel = EPIC_CONFIG.BUTTON_LABEL,
   className = "",
   style,
   disabled = false,
   onStart,
-  onSuccess,
   onError,
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
+const { login, isLoading } = useEpicAuth();
   const handleEpicLogin = async () => {
     if (disabled || isLoading) return;
 
-    const validation = validateEpicLoginProps({
-      clientId,
-      redirectUri,
-      wellKnown,
-      authorizationEndpoint,
-      fhirBase,
-      scope,
-      buttonLabel,
-      className,
-      style,
-      disabled,
-      onStart,
-      onSuccess,
-      onError,
-    } as EpicLoginButtonProps);
-
-    if (!validation.isValid) {
-      const error = createValidationError(`Configuration errors: ${validation.errors.join(", ")}`);
-      handleAuthError(error, "EpicLoginButton Validation", onError);
-      return;
-    }
+    onStart?.();
 
     try {
-      setIsLoading(true);
-      onStart?.();
-
-      const authEndpoint = await getAuthorizationEndpoint(
-        authorizationEndpoint, 
-        wellKnown
-      );
-
-      const pkceData = await generatePKCEData();
-
-      storeAuthData(pkceData.codeVerifier, pkceData.state);
-
-      const authUrl = buildAuthorizationUrl({
-        authEndpoint,
-        clientId,
-        redirectUri,
-        scope,
-        state: pkceData.state,
-        codeChallenge: pkceData.codeChallenge,
-        fhirBase,
-      });
-
-      window.location.href = authUrl;
-    } catch (error) {
-      handleAuthError(error, "EpicLoginButton", onError);
-      setIsLoading(false);
+      await login(); 
+    } catch (err) {
+      console.error("EpicLoginButton Setup Error:", err);
+      onError?.(err as FHIRError);
     }
   };
 

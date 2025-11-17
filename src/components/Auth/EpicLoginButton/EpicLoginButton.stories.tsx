@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { EpicLoginButton } from "./EpicLoginButton";
-import { EPIC_SANDBOX_CONFIG } from "./constant";
+import { EpicAuthProvider } from "./EpicAuthProvider";
 
 const meta: Meta<typeof EpicLoginButton> = {
-  title: "Components/EpicLoginButton",
+  title: "Components/Auth/EpicLoginButton",
   component: EpicLoginButton,
   parameters: {
     layout: "centered",
@@ -13,38 +13,56 @@ const meta: Meta<typeof EpicLoginButton> = {
         component: `
 ## Epic Login Button
 
-A SMART on FHIR compliant login button. This component handles **Step 1** of the OAuth 2.0 PKCE flow: it redirects the user to Epic.
+A simple UI component that initiates the Epic login flow.
+This component **MUST** be used inside an \`<EpicAuthProvider />\` wrapper.
 
 ### Usage
 \`\`\`tsx
-import { EpicLoginButton } from 'my-library';
+import { EpicAuthProvider, EpicLoginButton } from 'my-health-components';
 
-<EpicLoginButton
-  clientId="your-epic-client-id"
-  redirectUri="https://yourapp.com/callback"
-  wellKnown="https://fhir.epic.com/.../.well-known/smart_configuration"
-  fhirBase="https://fhir.epic.com/..."
-  onError={(error) => console.error('Error:', error)}
-  onStart={() => console.log('Login started...')}
-/>
+function App() {
+  return (
+    <EpicAuthProvider
+      clientId="your-epic-client-id"
+      redirectUri="http://localhost:3000"
+      onSuccess={(data) => console.log('Login Success!', data)}
+      onError={(err) => alert(err.message)}
+    >
+      <MyPage />
+    </EpicAuthProvider>
+  )
+}
+
+function MyPage() {
+  const { isAuthenticated, logout } = useEpicAuth();
+
+  if (isAuthenticated) {
+    return <button onClick={logout}>Logout</button>
+  }
+  
+  return <EpicLoginButton />
+}
 \`\`\`
-
-To complete the login, use the \`useEpicCallback\` hook on your \`/callback\` page.
         `,
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <EpicAuthProvider
+        clientId="YOUR_EPIC_CLIENT_ID"
+        redirectUri={window.location.origin}
+        onSuccess={action('onSuccess')}
+        onError={action('onError')}
+      >
+        <Story />
+      </EpicAuthProvider>
+    ),
+  ],
+  // ---
   argTypes: {
-    clientId: {
-      description: "Epic client ID registered with Epic",
-      control: { type: "text" },
-    },
-    redirectUri: {
-      description: "Redirect URI for OAuth callback",
-      control: { type: "text" },
-    },
-    wellKnown: {
-      description: "Well-known SMART configuration endpoint URL",
+    buttonLabel: {
+      description: "Custom button label",
       control: { type: "text" },
     },
     disabled: {
@@ -63,23 +81,8 @@ To complete the login, use the \`useEpicCallback\` hook on your \`/callback\` pa
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const EPIC_SAMPLE_CONFIG = {
-  clientId: "your-epic-client-id",
-  redirectUri: process.env.STORYBOOK_EPIC_REDIRECT_URI || "http://localhost:3000",
-  ...EPIC_SANDBOX_CONFIG,
-};
-
 export const Default: Story = {
   args: {
-    ...EPIC_SAMPLE_CONFIG,
-    onStart: action('authentication-started'),
-    onError: action('authentication-error'),
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Default Epic login button with sample app configuration. Click to test authentication flow.',
-      },
-    },
+    buttonLabel: "Sign in with Epic",
   },
 };

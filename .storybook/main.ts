@@ -33,6 +33,18 @@ const config: StorybookConfig = {
         localsConvention: 'camelCase'
       };
     }
+
+    config.define = {
+      ...config.define,
+      global: 'globalThis',
+      'process.env': '{}',
+      process: JSON.stringify({
+        env: {},
+        version: '',
+        platform: 'browser',
+        nextTick: 'setTimeout'
+      }),
+    };
     return config;
   }
 };

@@ -32,6 +32,9 @@ The consumer provides these. Everything else comes from the tokens.
 | `agreed / signed` | boolean | false |
 | `agreeLabel / signerLabel` | string |  |
 | `compact` | boolean | false |
+| `agreedValue / onAgreedChange` | boolean / (agreed) => void | uncontrolled |
+| `onSignedChange` | (signed) => void | none |
+| `onSignConsent / onDecline` | ({signer, guardian?}) => void / () => void | none |
 
 ## Usage
 

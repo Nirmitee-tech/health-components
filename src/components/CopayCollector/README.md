@@ -33,7 +33,10 @@ The consumer provides these. Everything else comes from the tokens.
 | `prior` | number | 0 |
 | `priorNote / plan / cardLast4` | string | none |
 | `due` | number | copay |
-| `method` | string | 'card' |
+| `defaultMethod` | 'card' \| 'tap' \| 'cash' \| 'text' | 'card' |
+| `method` / `onMethodChange` | controlled method | none |
+| `amount` / `onAmountChange` | controlled amount text | none |
+| `onCollect` / `onSkip` | callbacks | none |
 
 ## Usage
 

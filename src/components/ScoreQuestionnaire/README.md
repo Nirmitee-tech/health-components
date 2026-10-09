@@ -29,6 +29,7 @@ The consumer provides these. Everything else comes from the tokens.
 | `questions` | string[] | required |
 | `answers` | number[] (0 to 3) | [] |
 | `title` | string |  |
+| `value / onChange` | answers / (answers) => void: controlled answers | uncontrolled |
 
 ## Usage
 

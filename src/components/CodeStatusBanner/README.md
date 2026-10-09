@@ -27,6 +27,8 @@ The consumer provides these. Everything else comes from the tokens.
 |---|---|---|
 | `status` | string | required |
 | `directive / polst / proxy` | string | none |
+| `onViewDocuments` | () => void | none |
+| `documentsHref` | string: makes View Documents a link | none |
 
 ## Usage
 

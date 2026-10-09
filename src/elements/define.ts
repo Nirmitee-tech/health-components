@@ -27,13 +27,14 @@ export interface ElementSpec {
  * Keeps one element's failure from taking down the page: logs it with the tag name and renders nothing
  * until the next prop change (the element remounts the boundary with a new key).
  */
-class ElementBoundary extends Component<{ tag: string; children: ReactNode }, { failed: boolean }> {
+class ElementBoundary extends Component<{ tag: string; onError: () => void; children: ReactNode }, { failed: boolean }> {
   override state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
   }
   override componentDidCatch(error: unknown) {
     console.error(`<${this.props.tag}> failed to render. Check its properties.`, error);
+    this.props.onError();
   }
   override render() {
     return this.state.failed ? null : this.props.children;
@@ -105,6 +106,7 @@ export function createElementClass(spec: ElementSpec, options: DefineOptions = {
     private _observer: MutationObserver | null = null;
     private _scheduled = false;
     private _version = 0;
+    private _failed = false;
 
     constructor() {
       super();
@@ -205,12 +207,19 @@ export function createElementClass(spec: ElementSpec, options: DefineOptions = {
         } else if (this._props[name] !== undefined) props[name] = this._props[name];
         else if (spec.defaults && name in spec.defaults) props[name] = spec.defaults[name];
       }
-      this._version += 1;
-      const el = createElement(
-        ElementBoundary,
-        { tag: spec.tag, key: this._version },
-        createElement(spec.component as ComponentType<Record<string, unknown>>, props)
-      );
+      // After a failure, the next update remounts the boundary so the element can recover.
+      if (this._failed) {
+        this._failed = false;
+        this._version += 1;
+      }
+      const el = createElement(ElementBoundary, {
+        tag: spec.tag,
+        key: this._version,
+        onError: () => {
+          this._failed = true;
+        },
+        children: createElement(spec.component as ComponentType<Record<string, unknown>>, props),
+      });
       if (sync) flushSync(() => this._root!.render(el));
       else this._root.render(el);
     }

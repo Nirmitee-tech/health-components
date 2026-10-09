@@ -36,6 +36,9 @@ The consumer provides these. Everything else comes from the tokens.
 | `readOnly` | boolean | false |
 | `rows` | number | 3 |
 | `children` | node | none |
+| `value / onChange` | string / (text) => void: controlled text | uncontrolled |
+| `onAcceptAI` | (draft) => void | none |
+| `onInsertMacro` | (macro) => void | none |
 
 ## Usage
 

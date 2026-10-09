@@ -82,7 +82,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
             ref={(el) => {
               btns.current[t.id] = el;
             }}
-            id={`${base}-${t.id}`}
+            id={`${base}-${String(t.id).replace(/[^A-Za-z0-9_-]/g, "_")}`}
             type="button"
             role="tab"
             aria-selected={on}

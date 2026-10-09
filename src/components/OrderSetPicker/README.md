@@ -27,6 +27,8 @@ The consumer provides these. Everything else comes from the tokens.
 |---|---|---|
 | `sets` | Array<{name, items: Array<{name, type, detail?, default?}>}> | required |
 | `subtitle` | string | none |
+| `current / defaultCurrent / onCurrentChange` | number: index of the shown set | 0 |
+| `onSign` | (items, set) => void | none |
 
 ## Usage
 

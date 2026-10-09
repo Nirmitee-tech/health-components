@@ -1,0 +1,3 @@
+/* DrugInteractionAlert: the override row under the alert body (source: inline styles). */
+.co-dia .co-dia-row { display: flex; align-items: flex-end; margin-top: var(--co-space-1); }
+.co-dia .co-dia-reason { display: block; flex: 1 1 240px; }

@@ -63,3 +63,16 @@ describe('custom elements', () => {
     expect(onClick).toHaveBeenCalled();
   });
 });
+
+describe('element state', () => {
+  it('keeps component state across prop updates (no remount)', async () => {
+    document.body.innerHTML = '<co-text-field label="Member ID"></co-text-field>';
+    await tick();
+    const host = document.querySelector('co-text-field') as HTMLElement & { helper?: string };
+    const input = host.shadowRoot!.querySelector('input')!;
+    input.focus();
+    host.helper = 'Printed on the card';
+    await tick();
+    expect(host.shadowRoot!.querySelector('input')).toBe(input);
+  });
+});

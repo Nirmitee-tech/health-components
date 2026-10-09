@@ -29,6 +29,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `lines` | Array<{code, label, mods?, units?, dx?}> | [] |
 | `telehealth` | boolean | false |
 | `label` | string | "Procedure (CPT / HCPCS)" |
+| `value / onChange` | CPTLine[] / (lines) => void: controlled lines | uncontrolled |
+| `placeholder` | string | "Code or words, such as 99214" |
 
 ## Usage
 

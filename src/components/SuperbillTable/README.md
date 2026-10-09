@@ -26,13 +26,14 @@ The consumer provides these. Everything else comes from the tokens.
 | Prop | Type | Default |
 |---|---|---|
 | `groups` | Array<{name, codes: Array<{code, label, fee}>}> | required |
-| `selected` | string[] | [] |
+| `defaultSelected` | string[]: initial ticked codes | [] |
+| `selected` / `onSelectedChange` | string[]: controlled ticked codes | none |
 | `subtitle` | string | none |
 
 ## Usage
 
 ```jsx
-<SuperbillTable groups={feeSheet} selected={["99214"]} />
+<SuperbillTable groups={feeSheet} defaultSelected={["99214"]} onSend={sendToBilling} />
 ```
 
 ## Accessibility

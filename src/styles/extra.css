@@ -3,12 +3,16 @@
 @import './extra/CPTPicker.css';
 @import './extra/Calendar.css';
 @import './extra/CalendarCell.css';
+@import './extra/ClaimForm.css';
 @import './extra/CopayCollector.css';
 @import './extra/DatePicker.css';
+@import './extra/DrugInteractionAlert.css';
 @import './extra/ICD10Picker.css';
 @import './extra/ImmunizationSchedule.css';
 @import './extra/PatientTabs.css';
 @import './extra/PermissionMatrix.css';
 @import './extra/ProviderDayColumns.css';
+@import './extra/SigBuilder.css';
 @import './extra/TelehealthCallFrame.css';
 @import './extra/Toast.css';
+@import './extra/VisitNoteEditor.css';

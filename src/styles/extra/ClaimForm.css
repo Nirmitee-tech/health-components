@@ -1,0 +1,7 @@
+/* ClaimForm: per-column input widths and the inline help line (were inline styles in the source). */
+.co-cf-dos { width: 104px; }
+.co-cf-cpt, .co-cf-charge { width: 84px; }
+.co-cf-mods { width: 80px; }
+.co-cf-dx { width: 70px; }
+.co-cf-units { width: 56px; }
+.co-help.co-cf-help { margin: 0; }

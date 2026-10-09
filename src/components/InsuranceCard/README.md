@@ -27,7 +27,8 @@ The consumer provides these. Everything else comes from the tokens.
 |---|---|---|
 | `payer / plan / member / memberId / group / copay / rx` | string | front |
 | `payerId / claimsAddress / phone / precert` | string | back |
-| `side` | 'front' \| 'back' | 'front' |
+| `defaultSide` | 'front' \| 'back' | 'front' |
+| `side` / `onSideChange` | controlled side | none |
 | `scanned` | string | none |
 
 ## Usage
@@ -38,7 +39,7 @@ The consumer provides these. Everything else comes from the tokens.
 
 ## Accessibility
 
-- role img with payer and side.
+- role group labelled with payer and side, so the typed fields stay readable by screen readers.
 
 ## Do and don't
 

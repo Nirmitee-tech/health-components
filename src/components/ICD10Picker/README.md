@@ -29,8 +29,10 @@ The consumer provides these. Everything else comes from the tokens.
 | `options` | Array<{code, label}> | required |
 | `favorites` | Array<{code, short}> | none |
 | `label` | string | "Diagnosis (ICD-10-CM)" |
-| `onSelect` | (code) => void | none |
+| `onSelect` | ({code, label}) => void | none |
 | `defaultQuery / defaultOpen` | string / boolean |  |
+| `value / defaultValue` | string: selected code (highlights its favourite chip) | none |
+| `placeholder / error / required` | string / string / boolean | as Combobox |
 
 ## Usage
 

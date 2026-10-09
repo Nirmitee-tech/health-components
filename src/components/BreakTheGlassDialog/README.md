@@ -28,8 +28,11 @@ The consumer provides these. Everything else comes from the tokens.
 | `patient / dob / careTeam` | string | required |
 | `reason` | string | default text |
 | `note` | string | none |
-| `onConfirm / onClose` | () => void | none |
+| `onConfirm / onClose` | ({reason, note}) => void / () => void | none |
 | `inline` | boolean | false |
+| `open` | boolean | true |
+| `accessReason / onAccessReasonChange` | string / (reason) => void | none selected |
+| `loading` | boolean | false |
 
 ## Usage
 

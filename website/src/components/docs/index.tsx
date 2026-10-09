@@ -63,11 +63,11 @@ export function ComponentHeader(props: {
 
 /* ---------- live examples ---------- */
 type StoryObject = { render?: (args: Record<string, unknown>, ctx: unknown) => ReactNode; args?: Record<string, unknown> };
-type StoriesModule = Record<string, unknown> & {
+export type StoriesModule = Record<string, unknown> & {
   default: { component?: ComponentType<Record<string, unknown>>; args?: Record<string, unknown>; render?: StoryObject['render'] };
 };
 
-function renderStory(mod: StoriesModule, name: string): ReactNode {
+export function renderStory(mod: StoriesModule, name: string): ReactNode {
   const meta = mod.default;
   const story = mod[name] as StoryObject | undefined;
   if (!story) return <p>Missing story {name}</p>;

@@ -80,6 +80,7 @@ const config: Config = {
         { type: 'docSidebar', sidebarId: 'guides', position: 'left', label: 'Get started' },
         { type: 'docSidebar', sidebarId: 'foundations', position: 'left', label: 'Foundations' },
         { type: 'docSidebar', sidebarId: 'components', position: 'left', label: 'Components' },
+        { to: '/demo/', label: 'Live demo', position: 'left' },
         { href: storybookHref, label: 'Storybook', position: 'right' },
         { href: 'https://www.npmjs.com/package/health-components', label: 'npm', position: 'right' },
         { href: 'https://github.com/Nirmitee-tech/health-components', label: 'GitHub', position: 'right' },

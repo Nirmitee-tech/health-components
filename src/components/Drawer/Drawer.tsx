@@ -89,7 +89,15 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
             ? sections.map((s, i) => (
                 <div key={i} className="co-devsec">
                   <h3>{s.title}</h3>
-                  {s.code ? <pre className="co-code-b">{s.code}</pre> : <div>{s.body}</div>}
+                  {s.code ? (
+                    // Focusable so keyboard users can scroll long snippets (axe scrollable-region-focusable).
+                    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                    <pre className="co-code-b" tabIndex={0} aria-label={`${s.title || 'Code'}, scrollable`}>
+                      {s.code}
+                    </pre>
+                  ) : (
+                    <div>{s.body}</div>
+                  )}
                 </div>
               ))
             : children}

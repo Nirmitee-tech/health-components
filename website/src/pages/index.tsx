@@ -70,6 +70,9 @@ export default function Home() {
             <Link className="button button--secondary button--lg" to="/docs/">
               Get started
             </Link>
+            <Link className="button button--outline button--lg" style={{ color: '#fff', borderColor: '#fff' }} to="/demo/">
+              Live demo
+            </Link>
             <Link className="button button--outline button--lg" style={{ color: '#fff', borderColor: '#fff' }} to="/docs/components/">
               Browse components
             </Link>

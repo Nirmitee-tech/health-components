@@ -179,7 +179,7 @@
 .co-sw:disabled { opacity: .45; cursor: not-allowed; }
 
 /* SegmentedControl (.seg) */
-.co-seg { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; background: var(--co-border); border-radius: var(--co-radius-md); padding: 3px; gap: 3px; }
+.co-seg { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; background: var(--co-surface-muted); box-shadow: inset 0 0 0 1px var(--co-border); border-radius: var(--co-radius-md); padding: 3px; gap: 3px; } /* was background: var(--co-border); after the 10/09/2026 border fix that grey failed 4.5:1 under ink-2 labels, so the line moved to an inset ring */
 .co-seg button { border: 0; background: none; border-radius: var(--co-radius-sm); min-height: 34px; padding: 0 14px; font: 500 13px var(--co-font-sans); color: var(--co-ink-2); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
 .co-seg button.is-on { background: var(--co-surface); color: var(--co-primary-strong); box-shadow: var(--co-shadow-seg); }
 .co-seg-sm button { min-height: 26px; font-size: 12px; padding: 0 10px; }
@@ -189,7 +189,7 @@
 .co-chipb.is-on { background: var(--co-primary); color: var(--co-primary-ink); border-color: var(--co-primary); }
 .co-chipb:disabled { opacity: .45; cursor: not-allowed; }
 .co-chipn { background: var(--co-surface-muted); color: var(--co-ink-2); border-radius: var(--co-radius-pill); padding: 0 6px; font-size: 11px; line-height: 16px; }
-.co-chipb.is-on .co-chipn { background: rgba(255,255,255,.25); color: var(--co-primary-ink); }
+.co-chipb.is-on .co-chipn { background: var(--co-surface); color: var(--co-primary-strong); } /* was primary-ink on a white wash: 3.4 to 4.0:1 in axe; a dark wash then failed in Dark, where primary-ink is dark */
 .co-chip-rm { padding-right: 4px; cursor: default; }
 .co-chip-rm button { border: 0; background: none; color: inherit; cursor: pointer; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; }
 
@@ -277,6 +277,7 @@ dl.co-kv dt { color: var(--co-muted); } dl.co-kv dd { margin: 0; color: var(--co
 .co-dt { display: flex; flex-direction: column; gap: 10px; }
 .co-dt-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .co-bulk { background: var(--co-primary-soft); color: var(--co-primary-strong); border-radius: var(--co-radius-sm); padding: 6px 10px; width: 100%; }
+.co-bulk .co-btn-lnk { color: var(--co-primary-strong); } /* link on primary-soft was 4.33:1 */
 .co-tbx { overflow-x: auto; border: 1px solid var(--co-border); border-radius: var(--co-radius-sm); background: var(--co-surface); }
 .co-table { border-collapse: collapse; width: 100%; font-size: 13px; }
 .co-table th { background: var(--co-surface-muted); text-align: left; font-weight: 500; padding: 0; white-space: nowrap; color: var(--co-ink); }
@@ -437,6 +438,7 @@ dl.co-kv dt { color: var(--co-muted); } dl.co-kv dd { margin: 0; color: var(--co
 .co-top-r { margin-left: auto; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .co-sbox { display: flex; align-items: center; gap: 8px; height: 36px; border: 1px solid var(--co-border); border-radius: var(--co-radius-md); padding: 0 10px; background: var(--co-canvas-soft); color: var(--co-muted); width: min(380px, 100%); }
 .co-sbox input { border: 0; background: transparent; outline: 0; font: 14px var(--co-font-sans); color: var(--co-ink); flex: 1; min-width: 0; }
+.co-sbox input:focus-visible, .co-pal input:focus-visible { box-shadow: inset 0 -2px 0 var(--co-focus-ring); } /* the input had outline 0 and no other focus mark */
 .co-sbox input::placeholder { color: var(--co-muted); }
 .co-sbox:focus-within { outline: 2px solid var(--co-focus-ring); outline-offset: 1px; }
 .co-cbar { flex: 1 1 360px; max-width: 640px; display: flex; align-items: center; gap: 10px; height: 40px; border: 1px solid var(--co-border); border-radius: var(--co-radius-lg); padding: 0 12px; background: var(--co-canvas-soft); color: var(--co-muted); cursor: pointer; font: 14px var(--co-font-sans); text-align: left; }
@@ -470,7 +472,7 @@ dl.co-kv dt { color: var(--co-muted); } dl.co-kv dd { margin: 0; color: var(--co
 .co-bub-ai { background: var(--co-ai-soft); border-color: var(--co-ai-line); }
 .co-bub-sys { background: var(--co-surface-muted); border: 0; font-size: 12px; color: var(--co-ink-2); max-width: 100%; text-align: center; }
 .co-bub-a { font-size: 12px; font-weight: 500; color: var(--co-ink-2); margin-bottom: 2px; display: flex; gap: 6px; align-items: center; }
-.co-bt { font-size: 11px; opacity: .8; margin-top: 4px; }
+.co-bt { font-size: 11px; margin-top: 4px; } /* was opacity .8: 4.13:1 on the outgoing bubble */
 
 /* PatientBanner */
 .co-pb { background: var(--co-surface); border-radius: var(--co-radius-md); box-shadow: var(--co-shadow-card); padding: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; border: 1px solid transparent; }
@@ -519,7 +521,7 @@ dl.co-kv dt { color: var(--co-muted); } dl.co-kv dd { margin: 0; color: var(--co
 .co-cal-c { border: 1px solid var(--co-border); background: var(--co-surface); padding: 4px; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .co-cal-month { min-height: 118px; width: 150px; }
 .co-cal-week { min-height: 260px; width: 170px; padding: 6px; gap: 4px; }
-.co-cal-c.is-dim { background: var(--co-canvas-soft); opacity: .55; }
+.co-cal-c.is-dim { background: var(--co-canvas-soft); } .co-cal-c.is-dim .co-cal-n { color: var(--co-muted); } /* was opacity .55, which took day numbers under 3:1 */
 .co-cal-c.is-today { box-shadow: inset 0 0 0 2px var(--co-primary); }
 .co-cal-dh { font-size: 12px; font-weight: 500; color: var(--co-ink-2); padding: 2px; display: flex; justify-content: space-between; align-items: center; }
 .co-cal-n.is-today { background: var(--co-primary); color: var(--co-primary-ink); border-radius: var(--co-radius-pill); padding: 0 6px; }
@@ -603,7 +605,7 @@ dl.co-kv dt { color: var(--co-muted); } dl.co-kv dd { margin: 0; color: var(--co
 .co-li { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--co-border); flex-wrap: wrap; }
 .co-list > .co-li:first-child { border-top: 0; }
 .co-li-b { display: flex; flex-direction: column; gap: 2px; flex: 1 1 200px; min-width: 0; }
-.co-med.is-dim { opacity: .6; }
+.co-med.is-dim .co-li-b, .co-med.is-dim .co-li-b b { color: var(--co-muted); } /* was opacity .6 on the whole row, under 4.5:1 */
 .co-vitals { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
 .co-vital { border: 1px solid var(--co-border); border-radius: var(--co-radius-md); padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; background: var(--co-surface); }
 .co-vital.is-flag { border-color: var(--co-danger-line); }
@@ -641,7 +643,7 @@ dl.co-kv dt { color: var(--co-muted); } dl.co-kv dd { margin: 0; color: var(--co
 .co-tele { display: flex; flex-direction: column; gap: 10px; max-width: 760px; }
 .co-vid { background: var(--co-toast-bg); border-radius: var(--co-radius-md); min-height: 320px; display: grid; place-items: center; position: relative; }
 .co-pip { position: absolute; right: 12px; bottom: 12px; width: 140px; height: 90px; background: var(--co-ink-2); border-radius: var(--co-radius-sm); display: grid; place-items: center; font-size: 12px; color: var(--co-toast-ink); }
-.co-timer { position: absolute; left: 12px; top: 12px; background: rgba(0,0,0,.5); color: #FFFFFF; font: 500 12px var(--co-font-mono); padding: 3px 8px; border-radius: var(--co-radius-sm); }
+.co-timer { position: absolute; left: 12px; top: 12px; background: rgba(0,0,0,.75); color: #FFFFFF; font: 500 12px var(--co-font-mono); padding: 3px 8px; border-radius: var(--co-radius-sm); }
 .co-netwarn { position: absolute; left: 12px; bottom: 12px; background: var(--co-warning-soft); color: var(--co-warning-strong); font-size: 12px; padding: 4px 8px; border-radius: var(--co-radius-sm); }
 .co-inbox { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border: 1px solid var(--co-border); border-radius: var(--co-radius-sm); background: var(--co-surface); flex-wrap: wrap; }
 .co-inbox.is-unread { box-shadow: inset 3px 0 0 var(--co-primary); }
@@ -667,3 +669,8 @@ dl.co-kv dt { color: var(--co-muted); } dl.co-kv dd { margin: 0; color: var(--co
 @media (max-width: 640px) { .co-set { grid-template-columns: 1fr; } }
 .co-stc-sw { display: flex; height: 28px; border-radius: var(--co-radius-sm); overflow: hidden; border: 1px solid var(--co-border); }
 .co-stc-sw i { flex: 1; }
+
+/* tint-rule:start */
+/* Muted caption text inside a tinted box uses ink-2: muted is under 4.5:1 on the soft tints and surface-alt (axe, 10/09/2026). Generated by build/tint_rule.py. */
+:is(.co-af-warning, .co-aibox, .co-alert-ai, .co-alert-btg, .co-alert-denied, .co-alert-error, .co-alert-info, .co-alert-lock, .co-alert-success, .co-alert-warning, .co-ap, .co-ap-s-Arrived, .co-ap-s-Cancelled, .co-ap-s-Checked, .co-ap-s-Completed, .co-ap-s-Confirmed, .co-ap-s-In, .co-ap-s-No, .co-ap-s-Scheduled, .co-bn.is-on .co-bn-ic, .co-btn-sec.is-on, .co-bub-ai, .co-bulk, .co-cal-c.is-dim, .co-cal-tm, .co-cbar, .co-code, .co-code-s, .co-codestatus.is-dnr, .co-codestatus.is-full, .co-dz, .co-dz.is-done, .co-dz.is-drag, .co-empty-error .co-empty-ic, .co-empty-ic, .co-inbox-ic, .co-inbox.is-crit, .co-mi.is-on, .co-netwarn, .co-ni.is-on, .co-pcard.is-on, .co-pr.is-on, .co-ptab.is-on, .co-ptab.is-on .co-tabn, .co-qb-ic, .co-rpill, .co-rr-c, .co-rr-n, .co-sb-row.is-on, .co-sbox, .co-slot.is-held, .co-snav.is-on, .co-tab.is-on .co-tabn, .co-table tr.is-crit td, .co-table tr.is-sel td, .co-tabn.is-alert, .co-tag-ai, .co-tag-danger, .co-tag-info, .co-tag-success, .co-tag-warning, .co-tr-x td, .co-vital.is-crit, .cp-cds-critical, .cp-cds-warning, .cp-qrow.is-on, .cp-sg td.is-bad, .cp-sg td.is-warn, .cp-split, .ip-bed.st-dirty, .ip-code.is-rrt .ip-code-h, .ip-dec button.on-continue, .ip-dec button.on-modify, .ip-dec button.on-new, .ip-dec button.on-stop, .ip-room, .ip-tile, .ip-tile.is-due, .ip-tile.is-soon, .ip-warn, .nu-fl-h, .nu-fl-l, .nu-ico, .nu-opt[aria-checked=true], .nu-opt[aria-pressed=true], .nu-panel, .nu-scan.is-bad, .nu-scan.is-ok, .nu-st-Due, .nu-st-Given, .nu-st-Late, .nu-st-Running, .nu-t td.is-abn, .nu-t td.is-crit, .nu-t thead th, .nu-t thead th.nu-rh, .nu-total, [style*="-soft)"], [style*="--surface-alt)"], [style*="--primary-tint)"], [style*="--warning-box)"]) :is(.co-mi-s, .co-help, .co-muted, .co-kl, .co-cv-u, .co-cv-meta, .co-ml, .nu-muted, .nu-pt, .ip-tile-l, .ip-v-r, .ip-v-u, .ip-bed-st, .ip-room-n span, .cp-rr) { color: var(--co-ink-2); }
+/* tint-rule:end */

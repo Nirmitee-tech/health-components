@@ -333,3 +333,54 @@
 .home-preview {
   padding: 1rem 0 3rem;
 }
+
+/* Live demo */
+.demo-page {
+  padding: 2rem 1.5rem 4rem;
+  max-width: 1500px;
+}
+.demo-wrap {
+  border: 1px solid var(--docs-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.demo-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  background: var(--docs-soft);
+  border-bottom: 1px solid var(--docs-border);
+}
+.demo-tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.demo-tabs button {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: none;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+}
+.demo-tabs button.is-on {
+  background: var(--ifm-background-color);
+  border-color: var(--docs-border);
+  font-weight: 600;
+}
+.demo-note {
+  font-size: 13px;
+  margin: 0;
+  padding: 8px 12px;
+  color: var(--ifm-color-emphasis-700);
+  border-bottom: 1px solid var(--docs-border);
+}
+.demo-canvas {
+  min-height: 600px;
+}

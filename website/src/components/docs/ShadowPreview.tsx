@@ -7,7 +7,9 @@ function getSheet(): CSSStyleSheet | null {
   if (sheet) return sheet;
   try {
     sheet = new CSSStyleSheet();
-    sheet.replaceSync(careosCss + '\n:host{display:block}.docs-shadow-root{padding:20px;display:flex;flex-direction:column;gap:12px}');
+    sheet.replaceSync(careosCss + '\n:host{display:block}.docs-shadow-root{padding:20px;display:flex;flex-direction:column;gap:12px}' +
+        '.demo-chart{display:grid;grid-template-columns:240px 1fr;gap:12px;align-items:start}.demo-col{display:flex;flex-direction:column;gap:12px;min-width:0}' +
+        '.demo-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}@media (max-width:900px){.demo-chart{grid-template-columns:1fr}}');
     return sheet;
   } catch {
     return null;

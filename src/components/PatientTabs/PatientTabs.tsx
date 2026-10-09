@@ -93,6 +93,7 @@ export const PatientTabs = forwardRef<HTMLDivElement, PatientTabsProps>(function
                 role="tab"
                 aria-selected={on}
                 aria-keyshortcuts={t.pinned ? undefined : 'Delete'}
+                aria-description={t.pinned ? undefined : 'Press Delete to close'}
                 tabIndex={t.id === focusId ? 0 : -1}
                 className="co-pt-l"
                 onClick={() => {

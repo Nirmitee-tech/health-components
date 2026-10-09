@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { useState, type ReactNode } from 'react';
 import { renderStory, ShadowPreview, ThemeSelect, usePreviewTheme, type StoriesModule } from '@site/src/components/docs';
-import { DemoNavigation, ChartNavigation } from '../components/docs/DemoNavigation';
+import { DemoNavigation, ChartNavigation } from '@lib/internal/docs/DemoNavigation';
 import * as PatientBanner from '@lib/components/PatientBanner/PatientBanner.stories';
 import * as CodeStatusBanner from '@lib/components/CodeStatusBanner/CodeStatusBanner.stories';
 import * as VitalsPanel from '@lib/components/VitalsPanel/VitalsPanel.stories';

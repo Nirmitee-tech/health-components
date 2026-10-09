@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { expect, it, vi } from 'vitest';
-import { DemoNavigation, ChartNavigation, type DemoScreen } from '../website/src/components/docs/DemoNavigation';
+import { DemoNavigation, ChartNavigation, type DemoScreen } from '../src/internal/docs/DemoNavigation';
 it('navigates the actual workspace and indicates the selected screen', async () => {
   function Workspace() {
     const [current, setCurrent] = useState<DemoScreen>('Patient chart');

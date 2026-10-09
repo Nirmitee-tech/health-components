@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { catalogueGroups, type CatalogueEntry } from '../website/src/components/docs/catalogue-utils';
-import { ComponentCatalogue } from '../website/src/components/docs/ComponentCatalogue';
+import { catalogueGroups, type CatalogueEntry } from '../src/internal/docs/catalogue-utils';
+import { ComponentCatalogue } from '../src/internal/docs/ComponentCatalogue';
 const entries: CatalogueEntry[] = [
   {name:'PatientBanner',layer:'Complex',group:'Clinical',groupSlug:'complex-clinical',summary:'Patient identity and safety alerts',tag:'co-patient-banner'},
   {name:'Button',layer:'Basic',group:'Actions',groupSlug:'basic-actions',summary:'Trigger an action',tag:'co-button'},

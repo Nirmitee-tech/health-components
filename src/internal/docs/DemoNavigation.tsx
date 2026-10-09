@@ -1,6 +1,6 @@
 import { useState, useRef, type ReactNode } from 'react';
-import { TopBar } from '../../../../src/components/TopBar/TopBar';
-import { SectionNav } from '../../../../src/components/SectionNav/SectionNav';
+import { TopBar } from '../../components/TopBar/TopBar';
+import { SectionNav } from '../../components/SectionNav/SectionNav';
 
 export const demoScreens = ['Patient chart', 'Schedule', 'Billing', 'Clinical inbox'] as const;
 export type DemoScreen = typeof demoScreens[number];

@@ -1,4 +1,4 @@
-import { ComponentCatalogue } from './ComponentCatalogue';
+import { ComponentCatalogue } from '@lib/internal/docs/ComponentCatalogue';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';

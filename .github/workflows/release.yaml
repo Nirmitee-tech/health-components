@@ -31,6 +31,8 @@ jobs:
           node-version: 22
           cache: npm
           registry-url: https://registry.npmjs.org
+      # npm 11.5+ supports trusted publishing (OIDC from this workflow, no token). NPM_TOKEN still works as a fallback.
+      - run: npm install -g npm@11
       - run: npm ci
       - name: Bump version (manual release)
         if: inputs.release_type != 'none'

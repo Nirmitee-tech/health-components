@@ -36,6 +36,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `onStep` | (index) => void | none |
 | `onFinish / onCancel / onSaveDraft` | () => void | none |
 
+In this React port, `current` is controlled (update it from `onStep`, which fires on Next and Back); `defaultCurrent` makes it uncontrolled.
+
 ## Usage
 
 ```jsx

@@ -15,17 +15,43 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.json",
-            "styles": ["node_modules/health-components/dist/fonts.css", "src/styles.css"]
+            "styles": [
+              "node_modules/health-components/dist/fonts.css",
+              "src/styles.css"
+            ],
+            "allowedCommonJsDependencies": [
+              "react",
+              "react-dom",
+              "react-dom/client",
+              "react/jsx-runtime",
+              "scheduler"
+            ]
           },
           "configurations": {
-            "production": { "outputHashing": "all", "budgets": [{ "type": "initial", "maximumWarning": "1.5mb", "maximumError": "3mb" }] },
-            "development": { "optimization": false, "sourceMap": true }
+            "production": {
+              "outputHashing": "all",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "3mb"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true
+            }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "configurations": { "development": { "buildTarget": "careos-angular-example:build:development" } },
+          "configurations": {
+            "development": {
+              "buildTarget": "careos-angular-example:build:development"
+            }
+          },
           "defaultConfiguration": "development"
         }
       }

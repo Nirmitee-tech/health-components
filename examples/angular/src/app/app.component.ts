@@ -35,8 +35,7 @@ export class AppComponent {
     this.record(`Claim action: ${item.label}`);
   }
   onProvider(event: Event) {
-    const e = event as CustomEvent<unknown>;
-    const value = e.detail instanceof Event ? (e.detail.target as HTMLSelectElement).value : String(e.detail);
-    this.record(`Provider: ${value}`);
+    // Change events carry the control's value in `detail`.
+    this.record(`Provider: ${(event as CustomEvent<string>).detail}`);
   }
 }

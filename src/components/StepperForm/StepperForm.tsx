@@ -1,9 +1,9 @@
-import { useRef, type HTMLAttributes, type ReactNode } from 'react';
-import { useControllableState } from '../../internal/hooks';
-import { Alert } from '../Alert/Alert';
-import { Button } from '../Button/Button';
-import { Card } from '../Card/Card';
-import { Stepper } from '../Stepper/Stepper';
+import { useRef, type HTMLAttributes, type ReactNode } from "react";
+import { useControllableState } from "../../internal/hooks";
+import { Alert } from "../Alert/Alert";
+import { Button } from "../Button/Button";
+import { Card } from "../Card/Card";
+import { Stepper } from "../Stepper/Stepper";
 
 /** One step of the form. */
 export interface StepperFormStep {
@@ -15,7 +15,10 @@ export interface StepperFormStep {
   error?: boolean;
 }
 
-export interface StepperFormProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
+export interface StepperFormProps extends Omit<
+  HTMLAttributes<HTMLElement>,
+  "title"
+> {
   /** Card title and accessible name of the step bar ("Add Patient"); required */
   title: string;
   /** Array<{label, content: node, error?}>; required */
@@ -46,7 +49,7 @@ export function StepperForm({
   steps,
   current,
   defaultCurrent = 0,
-  finishLabel = 'Save',
+  finishLabel = "Save",
   errorSummary,
   saving = false,
   onStep,
@@ -56,7 +59,11 @@ export function StepperForm({
   className,
   ...rest
 }: StepperFormProps) {
-  const [rawCur, setCur] = useControllableState(current, defaultCurrent, onStep);
+  const [rawCur, setCur] = useControllableState(
+    current,
+    defaultCurrent,
+    onStep,
+  );
   const bodyRef = useRef<HTMLDivElement>(null);
   const count = steps.length;
   const cur = Math.max(0, Math.min(rawCur, Math.max(count - 1, 0)));
@@ -71,20 +78,32 @@ export function StepperForm({
   return (
     <Card
       title={title}
-      subtitle={count ? `Step ${cur + 1} of ${count} . ${step?.label ?? ''}` : undefined}
+      subtitle={
+        count ? `Step ${cur + 1} of ${count} . ${step?.label ?? ""}` : undefined
+      }
       className={className}
       {...rest}
     >
-      <Stepper steps={steps.map((x) => ({ label: x.label, error: x.error }))} current={cur} label={title} />
+      <Stepper
+        steps={steps.map((x) => ({ label: x.label, error: x.error }))}
+        current={cur}
+        label={title}
+      />
       {errorSummary ? (
         <Alert tone="error" title="Fix these before you continue">
           {errorSummary}
         </Alert>
       ) : null}
-      <div className="co-stepbody" ref={bodyRef} tabIndex={-1} role="group" aria-label={step?.label}>
+      <div
+        className="co-stepbody"
+        ref={bodyRef}
+        tabIndex={-1}
+        role="group"
+        aria-label={step?.label}
+      >
         {step?.content}
       </div>
-      <div className="co-card-f" style={{ justifyContent: 'space-between' }}>
+      <div className="co-card-f" style={{ justifyContent: "space-between" }}>
         <Button variant="tertiary" onClick={onCancel}>
           Cancel
         </Button>
@@ -94,13 +113,19 @@ export function StepperForm({
               Back
             </Button>
           ) : null}
-          {onSaveDraft ? <Button onClick={onSaveDraft}>Save Draft</Button> : null}
+          {onSaveDraft ? (
+            <Button onClick={onSaveDraft}>Save Draft</Button>
+          ) : null}
           {last || !next ? (
             <Button variant="primary" onClick={onFinish} loading={saving}>
               {finishLabel}
             </Button>
           ) : (
-            <Button variant="primary" iconRight="chevron-right" onClick={() => go(cur + 1)}>
+            <Button
+              variant="primary"
+              iconRight="chevron-right"
+              onClick={() => go(cur + 1)}
+            >
               {`Next: ${next.label}`}
             </Button>
           )}

@@ -31,11 +31,16 @@ bootstrapApplication(AppComponent);
 
 Register only what you use with `defineCareOSElements({ only: ['co-button', 'co-patient-banner'] })`.
 
-Add the fonts (optional) in `angular.json` under `styles`:
+In `angular.json`, add the fonts (optional) and allow React's CommonJS modules so the build stays warning-free:
 
 ```json
-"styles": ["node_modules/health-components/dist/fonts.css", "src/styles.css"]
+"options": {
+  "styles": ["node_modules/health-components/dist/fonts.css", "src/styles.css"],
+  "allowedCommonJsDependencies": ["react", "react-dom", "react-dom/client", "react/jsx-runtime", "scheduler"]
+}
 ```
+
+A complete, working app is in [`examples/angular`](https://github.com/Nirmitee-tech/health-components/tree/main/examples/angular).
 
 ## 3. Allow custom elements in your components
 
@@ -89,8 +94,9 @@ For NgModule apps, add `schemas: [CUSTOM_ELEMENTS_SCHEMA]` to the module instead
 | Other content props, for example `footer` | named slot | `<div slot="footer">...</div>` |
 | Render functions, for example a column `render` | property only | `[columns]="columns"` with functions inside |
 
-Native events from inside a component (`click`, `input`, `keydown`) reach the host element as usual, so `(click)`
-works on `<co-button>`.
+Native events that cross shadow DOM (`click`, `input`, `keydown`, `focusin`) reach the host element as usual, so
+`(click)` works on `<co-button>`. A native `change` does not cross shadow DOM, so form controls send `co-change`
+instead, with the control's value (or `checked` for a checkbox) in `event.detail`.
 
 Each component page lists its tag, attributes, properties, events and slots under **Angular, Vue and HTML**.
 

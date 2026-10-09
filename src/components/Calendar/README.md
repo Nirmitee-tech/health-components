@@ -37,10 +37,14 @@ The consumer provides these. Everything else comes from the tokens.
 | `monthBlocks` | Record<day, reason> | {} |
 | `colorBy` | boolean: show the Color by select | false |
 
+In this React port, the week and month grids are computed from `date` ("YYYY-MM-DD", default `today`) instead of a fixed October layout, and Previous, Today, Next and "+N more" work. `view`, `date` and `colorMode` are controlled props (with `onViewChange`, `onDateChange`, `onColorModeChange`); `defaultView` (default 'week'), `defaultDate` and `defaultColorMode` make them uncontrolled. An appointment may give an exact `date` instead of `day`.
+
 ## Usage
 
 ```jsx
-<Calendar view="week" colorBy appointments={appts.map(a => ({ ...a, day: a.date.getDate(), slot: a.timeLabel }))} />
+<Calendar defaultView="week" defaultDate="2026-10-09" colorBy
+  appointments={appts.map(a => ({ ...a, day: a.date.getDate(), slot: a.timeLabel }))}
+  onBook={(date, time) => openBooking(date, time)} onAppointmentClick={openAppointment} />
 ```
 
 ## Accessibility

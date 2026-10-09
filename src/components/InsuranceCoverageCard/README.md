@@ -35,6 +35,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `readOnly` | boolean | false |
 | `onReorder` | (coverages) => void | none |
 
+In this React port, `coverages` is controlled (update it from `onReorder`); `defaultCoverages` makes it uncontrolled. `onAdd`, `onApplySuggested`, `onKeepOrder`, `onCheckEligibility(coverage)` and `onCoverageAction(action, coverage)` run the buttons and menu items. The row is exported as `CoverageRow`.
+
 ## Usage
 
 ```jsx

@@ -36,6 +36,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `deductible` | [met, total] | none |
 | `checkedAt` | string | none |
 
+In this React port, `onRerun`, `onFixCoverage` and `onSelfPay` run the buttons.
+
 ## Usage
 
 ```jsx

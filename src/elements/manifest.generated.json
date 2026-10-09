@@ -42,17 +42,28 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "The AI-drafted content. Required."
+        "description": "The AI-drafted content. Required. "
       },
       {
         "name": "actions",
         "prop": "actions",
-        "description": "Accept, Edit, Discard buttons; default none"
+        "description": "Accept, Edit, Discard buttons; default none Plain text also works as the `actions` attribute."
       }
     ]
   },
@@ -92,25 +103,278 @@
         "name": "co-dismiss",
         "prop": "onDismiss",
         "description": "Shows a Dismiss (x) button that calls this; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "title",
         "prop": "title",
-        "description": "Bold first line; default none"
+        "description": "Bold first line; default none Plain text also works as the `title` attribute."
       },
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Body text; default none"
+        "description": "Body text; default none "
       },
       {
         "name": "actions",
         "prop": "actions",
-        "description": "Buttons under the body; default none"
+        "description": "Buttons under the body; default none Plain text also works as the `actions` attribute."
       }
     ]
+  },
+  {
+    "component": "AllergyAlert",
+    "tag": "co-allergy-alert",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "'interaction' | 'duplicate' | 'allergy': sets the title prefix; default 'interaction'"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "The drugs involved (\"Sertraline + Tramadol\"); required"
+      },
+      {
+        "name": "body",
+        "property": "body",
+        "kind": "string",
+        "description": "What the risk is; required"
+      },
+      {
+        "name": "severity",
+        "property": "severity",
+        "kind": "string",
+        "description": "'contraindicated' | 'severe' | 'moderate'; contraindicated and severe are red, moderate amber; default 'moderate'"
+      },
+      {
+        "name": "source",
+        "property": "source",
+        "kind": "string",
+        "description": "Knowledge base (\"First Databank\"); default none"
+      },
+      {
+        "name": "overridable",
+        "property": "overridable",
+        "kind": "boolean",
+        "description": "false: no override, the prescriber must choose another drug; default true"
+      },
+      {
+        "name": "reasons",
+        "property": "reasons",
+        "kind": "json",
+        "description": "Override reasons; default drugAlertOverrideReasons"
+      },
+      {
+        "name": "reason",
+        "property": "reason",
+        "kind": "string",
+        "description": "Chosen override reason (controlled); default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-reason",
+        "property": "defaultReason",
+        "kind": "string",
+        "description": "Initial override reason (uncontrolled); default \"\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-reason-change",
+        "prop": "onReasonChange",
+        "description": "Called when the override reason changes; default none"
+      },
+      {
+        "name": "co-override",
+        "prop": "onOverride",
+        "description": "Override and Continue clicked, with the reason; default none"
+      },
+      {
+        "name": "co-change-order",
+        "prop": "onChangeOrder",
+        "description": "Change Order clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "AllergyBadge",
+    "tag": "co-allergy-badge",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "substance",
+        "property": "substance",
+        "kind": "string",
+        "description": "Allergen (\"Penicillin\"); required"
+      },
+      {
+        "name": "severity",
+        "property": "severity",
+        "kind": "string",
+        "description": "'severe' | 'moderate' | 'mild'; default 'moderate'"
+      },
+      {
+        "name": "reaction",
+        "property": "reaction",
+        "kind": "string",
+        "description": "Reaction (\"Anaphylaxis\"), shown in the tooltip and read by screen readers; default none"
+      },
+      {
+        "name": "show-severity",
+        "property": "showSeverity",
+        "kind": "boolean",
+        "description": "Shows the severity in the label (\"Allergy: Penicillin (Severe)\"); default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "AllergyList",
+    "tag": "co-allergy-list",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Allergies. `[]` shows No Known Allergies (NKA); `undefined` means not reviewed and shows a warning.\nArray<{substance, type?, reaction?, severity, onset?, status?}> | [] | undefined; default undefined"
+      },
+      {
+        "name": "reviewed",
+        "property": "reviewed",
+        "kind": "string",
+        "description": "Review date and person (\"10/09/2026 by Lisa Chen RN\"); default none (Not reviewed this visit)"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Mark Reviewed, Add Allergy and the row menus; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-mark-reviewed",
+        "prop": "onMarkReviewed",
+        "description": "Mark Reviewed clicked; default none"
+      },
+      {
+        "name": "co-add",
+        "prop": "onAdd",
+        "description": "Add Allergy clicked; default none"
+      },
+      {
+        "name": "co-item-action",
+        "prop": "onItemAction",
+        "description": "A row menu item was chosen; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "AppointmentChip",
@@ -209,7 +473,63 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "AuditLogRow",
+    "tag": "co-audit-log-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "event",
+        "property": "event",
+        "kind": "json",
+        "description": "{time, action, user, role, what, patient?, ip?, reason?, change?}; required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -267,7 +587,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -325,12 +656,23 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Label text, a status word in Title Case."
+        "description": "Label text, a status word in Title Case. "
       }
     ]
   },
@@ -407,7 +749,75 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "BodyMap",
+    "tag": "co-body-map",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "marks",
+        "property": "marks",
+        "kind": "json",
+        "description": "Array<{x, y, site, desc, concern?}> in a 200 by 260 frame; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default \"Body map\""
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title (patient and date); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -458,6 +868,16 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when a tab is clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -504,6 +924,124 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when a level is clicked (client-side routing); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "BreakTheGlassDialog",
+    "tag": "co-break-the-glass-dialog",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name. Required"
+      },
+      {
+        "name": "dob",
+        "property": "dob",
+        "kind": "string",
+        "description": "Date of birth. Required"
+      },
+      {
+        "name": "care-team",
+        "property": "careTeam",
+        "kind": "string",
+        "description": "Care team members who can open the chart without a reason. Required"
+      },
+      {
+        "name": "reason",
+        "property": "reason",
+        "kind": "string",
+        "description": "Why the chart is restricted (Alert body); default \"This chart contains behavioral health records. Only the care team can open it without a reason.\""
+      },
+      {
+        "name": "note",
+        "property": "note",
+        "kind": "string",
+        "description": "Initial explanation in the \"Other\" box; default none"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Whether the dialog is shown; default true"
+      },
+      {
+        "name": "access-reason",
+        "property": "accessReason",
+        "kind": "string",
+        "description": "Chosen access reason (controlled); default undefined (uncontrolled, nothing pre-selected)"
+      },
+      {
+        "name": "loading",
+        "property": "loading",
+        "kind": "boolean",
+        "description": "Shows a spinner on the confirm button while access is logged; default false"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Render in place for docs: no portal, focus trap, scroll lock or Escape; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-confirm",
+        "prop": "onConfirm",
+        "description": "Called by \"Open Chart and Log Access\" with the reason and explanation; default none"
+      },
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called by Cancel, the x button and Escape; default none"
+      },
+      {
+        "name": "co-access-reason-change",
+        "prop": "onAccessReasonChange",
+        "description": "Called with the chosen access reason; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -617,12 +1155,23 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Label text: a verb in Title Case that says what happens (\"Submit Claim\")."
+        "description": "Label text: a verb in Title Case that says what happens (\"Submit Claim\"). "
       }
     ]
   },
@@ -669,14 +1218,174 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Buttons; required"
+        "description": "Buttons; required "
       }
     ]
+  },
+  {
+    "component": "Calendar",
+    "tag": "co-calendar",
+    "aliases": [
+      "ScheduleCalendar"
+    ],
+    "attributes": [
+      {
+        "name": "view",
+        "property": "view",
+        "kind": "string",
+        "description": "'day' | 'week' | 'month' (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-view",
+        "property": "defaultView",
+        "kind": "string",
+        "description": "Initial view (uncontrolled); default 'week'"
+      },
+      {
+        "name": "date",
+        "property": "date",
+        "kind": "string",
+        "description": "Shown date \"YYYY-MM-DD\" (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-date",
+        "property": "defaultDate",
+        "kind": "string",
+        "description": "Initial shown date \"YYYY-MM-DD\" (uncontrolled); default `today`"
+      },
+      {
+        "name": "today",
+        "property": "today",
+        "kind": "string",
+        "description": "Today's date \"YYYY-MM-DD\" (ringed, and where Today goes); default `defaultDate`, else the device's date (read once)"
+      },
+      {
+        "name": "appointments",
+        "property": "appointments",
+        "kind": "json",
+        "description": "Array<AppointmentChip props & {day: number, slot?: string}>; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Heading text; default the shown date (\"Friday, October 9, 2026\")"
+      },
+      {
+        "name": "times",
+        "property": "times",
+        "kind": "json",
+        "description": "Day view rows; default 8:00 AM to 12:00 PM"
+      },
+      {
+        "name": "blocks",
+        "property": "blocks",
+        "kind": "json",
+        "description": "Record<time, reason>: blocked rows in the day view; default {}"
+      },
+      {
+        "name": "month-blocks",
+        "property": "monthBlocks",
+        "kind": "json",
+        "description": "Record<day of month, reason>: blocked days in the month view; default {}"
+      },
+      {
+        "name": "color-by",
+        "property": "colorBy",
+        "kind": "boolean",
+        "description": "Shows the Color by select; default false"
+      },
+      {
+        "name": "color-mode",
+        "property": "colorMode",
+        "kind": "string",
+        "description": "Chip colouring: 'status' | 'type' (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-color-mode",
+        "property": "defaultColorMode",
+        "kind": "string",
+        "description": "Initial chip colouring (uncontrolled); default 'status'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-view-change",
+        "prop": "onViewChange",
+        "description": "Called when the view switch changes; default none"
+      },
+      {
+        "name": "co-date-change",
+        "prop": "onDateChange",
+        "description": "Called with the new date on Previous, Today, Next and \"+N more\"; default none"
+      },
+      {
+        "name": "co-color-mode-change",
+        "prop": "onColorModeChange",
+        "description": "Called when the Color by select changes; default none"
+      },
+      {
+        "name": "co-navigate",
+        "prop": "onNavigate",
+        "description": "Called on Previous, Today and Next, after the date moves; default none"
+      },
+      {
+        "name": "co-book",
+        "prop": "onBook",
+        "description": "Called when the free slot of a day row is chosen; default none"
+      },
+      {
+        "name": "co-appointment-click",
+        "prop": "onAppointmentClick",
+        "description": "Called when an appointment chip is chosen; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "CalendarCell",
@@ -767,6 +1476,16 @@
         "name": "co-more",
         "prop": "onMore",
         "description": "Called when \"+N more\" is chosen in a month or week cell; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -814,32 +1533,320 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "title",
         "prop": "title",
-        "description": "Heading, rendered as an h2; default none"
+        "description": "Heading, rendered as an h2; default none Plain text also works as the `title` attribute."
       },
       {
         "name": "subtitle",
         "prop": "subtitle",
-        "description": "Line under the title; default none"
+        "description": "Line under the title; default none Plain text also works as the `subtitle` attribute."
       },
       {
         "name": "actions",
         "prop": "actions",
-        "description": "Header actions (one primary at most); default none"
+        "description": "Header actions (one primary at most); default none Plain text also works as the `actions` attribute."
       },
       {
         "name": "footer",
         "prop": "footer",
-        "description": "Footer content; default none"
+        "description": "Footer content; default none Plain text also works as the `footer` attribute."
       },
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Card body."
+        "description": "Card body. "
+      }
+    ]
+  },
+  {
+    "component": "CareGapRow",
+    "tag": "co-care-gap-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "gap",
+        "property": "gap",
+        "kind": "json",
+        "description": "{measure, patient?, detail?, due?, status: open|closed|excluded, action?}; required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-action",
+        "prop": "onAction",
+        "description": "Called with the chosen action of an open gap: the main action, Record Outside Result or Mark Excluded; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "CCMTimer",
+    "tag": "co-ccm-timer",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name; required"
+      },
+      {
+        "name": "month",
+        "property": "month",
+        "kind": "string",
+        "description": "Month being counted (\"October 2026\"); required"
+      },
+      {
+        "name": "minutes",
+        "property": "minutes",
+        "kind": "number",
+        "description": "Minutes already logged this month; default 0"
+      },
+      {
+        "name": "clock",
+        "property": "clock",
+        "kind": "string",
+        "description": "Starting value of the session clock, \"mm:ss\" or \"h:mm:ss\"; default \"00:00\""
+      },
+      {
+        "name": "running",
+        "property": "running",
+        "kind": "boolean",
+        "description": "Controlled running state; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-running",
+        "property": "defaultRunning",
+        "kind": "boolean",
+        "description": "Initial running state (uncontrolled); default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "flat",
+        "property": "flat",
+        "kind": "boolean",
+        "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "as",
+        "property": "as",
+        "kind": "json",
+        "description": "Root tag name; default 'section'"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-running-change",
+        "prop": "onRunningChange",
+        "description": "Called when Start or Pause is pressed"
+      },
+      {
+        "name": "co-log-activity",
+        "prop": "onLogActivity",
+        "description": "Called by Log Activity with the session clock in seconds; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Footer content; default none Plain text also works as the `footer` attribute."
+      }
+    ]
+  },
+  {
+    "component": "ChartCard",
+    "tag": "co-chart-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title, what the chart shows (\"Denials by payer\"). Required"
+      },
+      {
+        "name": "periods",
+        "property": "periods",
+        "kind": "json",
+        "description": "Period choices shown as a small SegmentedControl (\"7d\", \"30d\", \"90d\"); default none"
+      },
+      {
+        "name": "period",
+        "property": "period",
+        "kind": "string",
+        "description": "Selected period (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-period",
+        "property": "defaultPeriod",
+        "kind": "string",
+        "description": "Initially selected period (uncontrolled); default the first period"
+      },
+      {
+        "name": "loading",
+        "property": "loading",
+        "kind": "boolean",
+        "description": "Shows a skeleton instead of the chart; default false"
+      },
+      {
+        "name": "empty",
+        "property": "empty",
+        "kind": "string",
+        "description": "Empty message; shows an EmptyState instead of the chart; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
+      },
+      {
+        "name": "flat",
+        "property": "flat",
+        "kind": "boolean",
+        "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "as",
+        "property": "as",
+        "kind": "json",
+        "description": "Root tag name; default 'section'"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-period",
+        "prop": "onPeriod",
+        "description": "(p) => void: called with the new period; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Line under the title; default none Plain text also works as the `subtitle` attribute."
+      },
+      {
+        "name": "source",
+        "prop": "source",
+        "description": "Muted line naming the data source and time; default none Plain text also works as the `source` attribute."
+      },
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Header actions, shown after the period switch; default none Plain text also works as the `actions` attribute."
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "The chart. "
+      },
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Footer content; default none Plain text also works as the `footer` attribute."
       }
     ]
   },
@@ -904,12 +1911,126 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Message text"
+        "description": "Message text "
+      }
+    ]
+  },
+  {
+    "component": "ChatThread",
+    "tag": "co-chat-thread",
+    "aliases": [
+      "SecureChatThread"
+    ],
+    "attributes": [
+      {
+        "name": "messages",
+        "property": "messages",
+        "kind": "json",
+        "description": "Array<ChatMessage props & {text}> (controlled; pair with onMessagesChange); default uncontrolled"
+      },
+      {
+        "name": "default-messages",
+        "property": "defaultMessages",
+        "kind": "json",
+        "description": "Initial messages (uncontrolled); the thread appends what the user sends; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Header name (patient or colleague), with an avatar; default none (no header)"
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": "Composer placeholder; default \"Write a message\""
+      },
+      {
+        "name": "ai",
+        "property": "ai",
+        "kind": "boolean",
+        "description": "Shows the \"Suggest a reply with AI\" button; default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Replaces the composer with a lock banner; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-messages-change",
+        "prop": "onMessagesChange",
+        "description": "Called with the new list after a send; default none"
+      },
+      {
+        "name": "co-send",
+        "prop": "onSend",
+        "description": "(text) => void: called with the trimmed text when the user sends; default none"
+      },
+      {
+        "name": "co-suggest",
+        "prop": "onSuggest",
+        "description": "Called by the AI button; never sends on its own; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Header second line (MRN, reply time); default none Plain text also works as the `subtitle` attribute."
+      },
+      {
+        "name": "lock-text",
+        "prop": "lockText",
+        "description": "Lock banner text; default \"Read-only preview. Sending is blocked for staff.\" Plain text also works as the `lock-text` attribute."
       }
     ]
   },
@@ -961,6 +2082,12 @@
         "description": ""
       },
       {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
         "name": "name",
         "property": "name",
         "kind": "string",
@@ -976,6 +2103,12 @@
         "name": "max",
         "property": "max",
         "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
         "description": ""
       },
       {
@@ -1009,18 +2142,6 @@
         "description": ""
       },
       {
-        "name": "placeholder",
-        "property": "placeholder",
-        "kind": "string",
-        "description": ""
-      },
-      {
-        "name": "read-only",
-        "property": "readOnly",
-        "kind": "boolean",
-        "description": ""
-      },
-      {
         "name": "required",
         "property": "required",
         "kind": "boolean",
@@ -1034,19 +2155,214 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "label",
         "prop": "label",
-        "description": "Visible label; the whole row is clickable. Required"
+        "description": "Visible label; the whole row is clickable. Required Plain text also works as the `label` attribute."
       },
       {
         "name": "description",
         "prop": "description",
-        "description": "Help text under the label; default none"
+        "description": "Help text under the label; default none Plain text also works as the `description` attribute."
       }
     ]
+  },
+  {
+    "component": "CheckInStepper",
+    "tag": "co-check-in-stepper",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name, shown in the title. Required"
+      },
+      {
+        "name": "appt",
+        "property": "appt",
+        "kind": "string",
+        "description": "Appointment line under the title. Required"
+      },
+      {
+        "name": "steps",
+        "property": "steps",
+        "kind": "json",
+        "description": "Step labels; default Arrived, Demographics, Insurance, Forms, Copay, Ready"
+      },
+      {
+        "name": "current",
+        "property": "current",
+        "kind": "number",
+        "description": "Current step, 0-based; default 0"
+      },
+      {
+        "name": "issues",
+        "property": "issues",
+        "kind": "json",
+        "description": "Indexes of steps with issues (they show the error state and block Complete Check-In); default []"
+      },
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Checklist lines; default []"
+      },
+      {
+        "name": "done",
+        "property": "done",
+        "kind": "boolean",
+        "description": "Check-in complete: the tag reads Checked In instead of Arrived; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-item-action",
+        "prop": "onItemAction",
+        "description": "Called with the item and its index when its action button is pressed; default none"
+      },
+      {
+        "name": "co-complete",
+        "prop": "onComplete",
+        "description": "Called when Complete Check-In is pressed (enabled only with no issues); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "ClaimForm",
+    "tag": "co-claim-form",
+    "aliases": [
+      "ClaimLineEditor"
+    ],
+    "attributes": [
+      {
+        "name": "lines",
+        "property": "lines",
+        "kind": "json",
+        "description": "Service lines (controlled): Array<{dos, cpt, mods?, dx?, units, charge, errors?: Record<field, string>}>; default uncontrolled"
+      },
+      {
+        "name": "default-lines",
+        "property": "defaultLines",
+        "kind": "json",
+        "description": "Initial service lines (uncontrolled); default []"
+      },
+      {
+        "name": "payer-order",
+        "property": "payerOrder",
+        "kind": "string",
+        "description": "'Primary' | 'Secondary' | 'Tertiary' (SBR01); default 'Primary'"
+      },
+      {
+        "name": "frequency",
+        "property": "frequency",
+        "kind": "string",
+        "description": "Claim frequency (CLM05-3), such as \"7 Corrected\"; default '1 Original'"
+      },
+      {
+        "name": "errors-count",
+        "property": "errorsCount",
+        "kind": "number",
+        "description": "Claim check error count; 0 shows \"Claim check passed\"; default 0"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Lock banner, read-only inputs, no buttons; default false"
+      },
+      {
+        "name": "lock-text",
+        "property": "lockText",
+        "kind": "string",
+        "description": "Lock banner text when readOnly; default \"Your role can view this claim but not edit it.\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with all lines after an edit, add or remove; default none"
+      },
+      {
+        "name": "co-save-draft",
+        "prop": "onSaveDraft",
+        "description": "Save Draft; default none"
+      },
+      {
+        "name": "co-submit",
+        "prop": "onSubmit",
+        "description": "Submit Claim and its menu items; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "ClaimStatusTag",
@@ -1097,7 +2413,92 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "CodeStatusBanner",
+    "tag": "co-code-status-banner",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "Code status (\"Full Code\", \"DNR / DNI\", \"Comfort care\"). DNR, DNI or Comfort turn the banner red. Required"
+      },
+      {
+        "name": "directive",
+        "property": "directive",
+        "kind": "string",
+        "description": "Advance directive on file (\"Living will on file\"); default none (\"No advance directive on file\")"
+      },
+      {
+        "name": "polst",
+        "property": "polst",
+        "kind": "string",
+        "description": "Date the POLST was signed; default none"
+      },
+      {
+        "name": "proxy",
+        "property": "proxy",
+        "kind": "string",
+        "description": "Health care proxy name and relationship; default none"
+      },
+      {
+        "name": "documents-href",
+        "property": "documentsHref",
+        "kind": "string",
+        "description": "Makes View Documents a link to the signed documents; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-view-documents",
+        "prop": "onViewDocuments",
+        "description": "Called by the View Documents button; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -1202,6 +2603,12 @@
         "description": ""
       },
       {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
         "name": "type",
         "property": "type",
         "kind": "json",
@@ -1262,12 +2669,6 @@
         "description": ""
       },
       {
-        "name": "read-only",
-        "property": "readOnly",
-        "kind": "boolean",
-        "description": ""
-      },
-      {
         "name": "step",
         "property": "step",
         "kind": "json",
@@ -1290,13 +2691,18 @@
         "name": "co-select",
         "prop": "onSelect",
         "description": "Called with the chosen option; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "footer",
         "prop": "footer",
-        "description": "Node under the list (\"Search all 4,212 patients\"); default none"
+        "description": "Node under the list (\"Search all 4,212 patients\"); default none Plain text also works as the `footer` attribute."
       }
     ]
   },
@@ -1388,6 +2794,409 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called on Escape and a scrim press; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "ConsentSigner",
+    "tag": "co-consent-signer",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Consent title (\"Consent for Telehealth Services\"); also names the document region. Required"
+      },
+      {
+        "name": "version",
+        "property": "version",
+        "kind": "string",
+        "description": "Version and effective date (\"Version 3 . effective 01/01/2026\"). Required"
+      },
+      {
+        "name": "body",
+        "property": "body",
+        "kind": "string",
+        "description": "Consent text; blank lines separate paragraphs. Required"
+      },
+      {
+        "name": "signer",
+        "property": "signer",
+        "kind": "string",
+        "description": "Name of the person signing. Required"
+      },
+      {
+        "name": "guardian",
+        "property": "guardian",
+        "kind": "string",
+        "description": "Relationship to the patient; shows the guardian field when set; default none"
+      },
+      {
+        "name": "agreed",
+        "property": "agreed",
+        "kind": "boolean",
+        "description": "Agree box ticked initially (uncontrolled); default false"
+      },
+      {
+        "name": "agreed-value",
+        "property": "agreedValue",
+        "kind": "boolean",
+        "description": "Agree box state (controlled); default undefined (uncontrolled)"
+      },
+      {
+        "name": "signed",
+        "property": "signed",
+        "kind": "boolean",
+        "description": "Signature present initially (uncontrolled); default false"
+      },
+      {
+        "name": "agree-label",
+        "property": "agreeLabel",
+        "kind": "string",
+        "description": "Agree box label; default \"I have read and agree to this consent.\""
+      },
+      {
+        "name": "signer-label",
+        "property": "signerLabel",
+        "kind": "string",
+        "description": "Signature pad label; default \"Patient Signature\""
+      },
+      {
+        "name": "compact",
+        "property": "compact",
+        "kind": "boolean",
+        "description": "Shorter signature pad; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-agreed-change",
+        "prop": "onAgreedChange",
+        "description": "Called when the agree box changes; default none"
+      },
+      {
+        "name": "co-signed-change",
+        "prop": "onSignedChange",
+        "description": "Called when the signature is added or cleared; default none"
+      },
+      {
+        "name": "co-sign-consent",
+        "prop": "onSignConsent",
+        "description": "Called by Sign Consent (enabled once agreed and signed); default none"
+      },
+      {
+        "name": "co-decline",
+        "prop": "onDecline",
+        "description": "Called by Decline; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "CopayCollector",
+    "tag": "co-copay-collector",
+    "aliases": [
+      "PatientBalance"
+    ],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient (and plan) line under the title. Required"
+      },
+      {
+        "name": "copay",
+        "property": "copay",
+        "kind": "number",
+        "description": "Copay due today in dollars. Required"
+      },
+      {
+        "name": "prior",
+        "property": "prior",
+        "kind": "number",
+        "description": "Prior balance in dollars; default 0"
+      },
+      {
+        "name": "prior-note",
+        "property": "priorNote",
+        "kind": "string",
+        "description": "What the prior balance is for, e.g. \"09/12 visit, after insurance\"; default none"
+      },
+      {
+        "name": "plan",
+        "property": "plan",
+        "kind": "string",
+        "description": "Payment plan note; shows an info Alert; default none"
+      },
+      {
+        "name": "card-last4",
+        "property": "cardLast4",
+        "kind": "string",
+        "description": "Card on file, e.g. \"Visa 4242\"; default none"
+      },
+      {
+        "name": "due",
+        "property": "due",
+        "kind": "number",
+        "description": "Initial amount in the Amount field; default copay"
+      },
+      {
+        "name": "amount",
+        "property": "amount",
+        "kind": "string",
+        "description": "Controlled amount (field text); default undefined (uncontrolled, starts at `due`)"
+      },
+      {
+        "name": "method",
+        "property": "method",
+        "kind": "string",
+        "description": "Controlled payment method; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-method",
+        "property": "defaultMethod",
+        "kind": "string",
+        "description": "Initial payment method when uncontrolled; default 'card'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-amount-change",
+        "prop": "onAmountChange",
+        "description": "Called when the amount text changes"
+      },
+      {
+        "name": "co-method-change",
+        "prop": "onMethodChange",
+        "description": "Called when the method changes"
+      },
+      {
+        "name": "co-collect",
+        "prop": "onCollect",
+        "description": "Called when Collect is pressed; default none"
+      },
+      {
+        "name": "co-skip",
+        "prop": "onSkip",
+        "description": "Called when Skip is pressed (the screen then asks for a reason); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "CoverageRow",
+    "tag": "co-coverage-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "coverage",
+        "property": "coverage",
+        "kind": "json",
+        "description": "The coverage"
+      },
+      {
+        "name": "index",
+        "property": "index",
+        "kind": "number",
+        "description": "Position in billing order, 0-based"
+      },
+      {
+        "name": "last",
+        "property": "last",
+        "kind": "boolean",
+        "description": "Last in the order (disables Move down); default false"
+      },
+      {
+        "name": "editable",
+        "property": "editable",
+        "kind": "boolean",
+        "description": "Shows the reorder arrows; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-move",
+        "prop": "onMove",
+        "description": "Moves the coverage up (-1) or down (1); default none"
+      },
+      {
+        "name": "co-check-eligibility",
+        "prop": "onCheckEligibility",
+        "description": "Check Eligibility; default none"
+      },
+      {
+        "name": "co-action",
+        "prop": "onAction",
+        "description": "An item of the More menu; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "CPTPicker",
+    "tag": "co-cpt-picker",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "options",
+        "property": "options",
+        "kind": "json",
+        "description": "Array<{code, label, meta?}>: the codes to search. Required"
+      },
+      {
+        "name": "lines",
+        "property": "lines",
+        "kind": "json",
+        "description": "Array<{code, label, mods?, units?, dx?}>: initial lines (uncontrolled); default []"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": "Controlled lines; default undefined (uncontrolled)"
+      },
+      {
+        "name": "telehealth",
+        "property": "telehealth",
+        "kind": "boolean",
+        "description": "Shows the modifier 95 reminder for telehealth visits; default false"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Field label; default \"Procedure (CPT / HCPCS)\""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": "Placeholder of the search input; default \"Code or words, such as 99214\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with all lines after a line is added, edited or removed; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -1549,33 +3358,38 @@
         "name": "co-sort-change",
         "prop": "onSortChange",
         "description": "Called with the new sort; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "bulk-actions",
         "prop": "bulkActions",
-        "description": "(selectedIds) => node: actions shown in the bulk bar while rows are selected; default none"
+        "description": "(selectedIds) => node: actions shown in the bulk bar while rows are selected; default none Plain text also works as the `bulk-actions` attribute."
       },
       {
         "name": "render-expanded",
         "prop": "renderExpanded",
-        "description": "(row) => node: makes rows expandable; default none"
+        "description": "(row) => node: makes rows expandable; default none Plain text also works as the `render-expanded` attribute."
       },
       {
         "name": "empty-text",
         "prop": "emptyText",
-        "description": "Text when there are no rows; default \"No records match your search or filters.\""
+        "description": "Text when there are no rows; default \"No records match your search or filters.\" Plain text also works as the `empty-text` attribute."
       },
       {
         "name": "empty-state",
         "prop": "emptyState",
-        "description": "Node when there are no rows (an EmptyState); wins over emptyText; default none"
+        "description": "Node when there are no rows (an EmptyState); wins over emptyText; default none Plain text also works as the `empty-state` attribute."
       },
       {
         "name": "toolbar",
         "prop": "toolbar",
-        "description": "Toolbar above the table (search, filters); replaced by the bulk bar while rows are selected; default none"
+        "description": "Toolbar above the table (search, filters); replaced by the bulk bar while rows are selected; default none Plain text also works as the `toolbar` attribute."
       }
     ]
   },
@@ -1711,6 +3525,12 @@
         "description": ""
       },
       {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
         "name": "accept",
         "property": "accept",
         "kind": "string",
@@ -1747,12 +3567,6 @@
         "description": ""
       },
       {
-        "name": "placeholder",
-        "property": "placeholder",
-        "kind": "string",
-        "description": ""
-      },
-      {
         "name": "step",
         "property": "step",
         "kind": "json",
@@ -1770,6 +3584,11 @@
         "name": "co-open-change",
         "prop": "onOpenChange",
         "description": "Called when the calendar opens or closes"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -1811,7 +3630,122 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "DevDrawer",
+    "tag": "co-dev-drawer",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "screen",
+        "property": "screen",
+        "kind": "string",
+        "description": "Screen name; the title reads \"For developers: <screen>\". Required"
+      },
+      {
+        "name": "purpose",
+        "property": "purpose",
+        "kind": "string",
+        "description": "Purpose and roles: what the screen does and who uses it. Required"
+      },
+      {
+        "name": "roles",
+        "property": "roles",
+        "kind": "string",
+        "description": "Roles and access; default none"
+      },
+      {
+        "name": "api",
+        "property": "api",
+        "kind": "string",
+        "description": "API calls and payloads, shown in mono; default none"
+      },
+      {
+        "name": "fields",
+        "property": "fields",
+        "kind": "string",
+        "description": "Fields and which are required; default none"
+      },
+      {
+        "name": "states",
+        "property": "states",
+        "kind": "string",
+        "description": "States the screen can be in; default none"
+      },
+      {
+        "name": "entry",
+        "property": "entry",
+        "kind": "string",
+        "description": "Entry points: where the screen is opened from; default none"
+      },
+      {
+        "name": "width",
+        "property": "width",
+        "kind": "number",
+        "description": "Panel width in px; default 560"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Whether the drawer is shown; default true"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Render in place for docs: no portal, focus trap, scroll lock or Escape; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called by the x button, Escape and a scrim press; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -1869,7 +3803,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -1944,20 +3889,445 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called by the x button, Escape and a scrim press; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Body; default none"
+        "description": "Body; default none "
       },
       {
         "name": "footer",
         "prop": "footer",
-        "description": "Footer actions; default none"
+        "description": "Footer actions; default none Plain text also works as the `footer` attribute."
       }
     ]
+  },
+  {
+    "component": "DrugInteractionAlert",
+    "tag": "co-drug-interaction-alert",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "'interaction' | 'duplicate' | 'allergy': sets the title prefix; default 'interaction'"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "The drugs involved (\"Sertraline + Tramadol\"); required"
+      },
+      {
+        "name": "body",
+        "property": "body",
+        "kind": "string",
+        "description": "What the risk is; required"
+      },
+      {
+        "name": "severity",
+        "property": "severity",
+        "kind": "string",
+        "description": "'contraindicated' | 'severe' | 'moderate'; contraindicated and severe are red, moderate amber; default 'moderate'"
+      },
+      {
+        "name": "source",
+        "property": "source",
+        "kind": "string",
+        "description": "Knowledge base (\"First Databank\"); default none"
+      },
+      {
+        "name": "overridable",
+        "property": "overridable",
+        "kind": "boolean",
+        "description": "false: no override, the prescriber must choose another drug; default true"
+      },
+      {
+        "name": "reasons",
+        "property": "reasons",
+        "kind": "json",
+        "description": "Override reasons; default drugAlertOverrideReasons"
+      },
+      {
+        "name": "reason",
+        "property": "reason",
+        "kind": "string",
+        "description": "Chosen override reason (controlled); default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-reason",
+        "property": "defaultReason",
+        "kind": "string",
+        "description": "Initial override reason (uncontrolled); default \"\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-reason-change",
+        "prop": "onReasonChange",
+        "description": "Called when the override reason changes; default none"
+      },
+      {
+        "name": "co-override",
+        "prop": "onOverride",
+        "description": "Override and Continue clicked, with the reason; default none"
+      },
+      {
+        "name": "co-change-order",
+        "prop": "onChangeOrder",
+        "description": "Change Order clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "DrugSearch",
+    "tag": "co-drug-search",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "options",
+        "property": "options",
+        "kind": "json",
+        "description": "Array<{label, form?, rxnorm?, coverage?, schedule?}>; required"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Field label; default \"Medication\""
+      },
+      {
+        "name": "payer",
+        "property": "payer",
+        "kind": "string",
+        "description": "Payer whose formulary is shown, in the footer; default \"the patient's plan\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message (as TextField); default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Controlled open state of the list; default undefined (uncontrolled)"
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": "Example text in the empty input; default none"
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk plus aria-required; default false"
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "query",
+        "property": "query",
+        "kind": "string",
+        "description": "Controlled query text; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-query",
+        "property": "defaultQuery",
+        "kind": "string",
+        "description": "Initial query (uncontrolled); default \"\""
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Open on first render (uncontrolled); default false"
+      },
+      {
+        "name": "limit",
+        "property": "limit",
+        "kind": "number",
+        "description": "Maximum results shown; default 8"
+      },
+      {
+        "name": "empty-text",
+        "property": "emptyText",
+        "kind": "string",
+        "description": "Text when nothing matches; default \"No matches. Check the spelling or search by MRN.\""
+      },
+      {
+        "name": "helper",
+        "property": "helper",
+        "kind": "string",
+        "description": "Muted hint under the field; default none"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-select",
+        "prop": "onSelect",
+        "description": "Called with the chosen drug; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      },
+      {
+        "name": "co-query-change",
+        "prop": "onQueryChange",
+        "description": "Called when the query text changes"
+      },
+      {
+        "name": "co-open-change",
+        "prop": "onOpenChange",
+        "description": "Called when the list opens or closes"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "EligibilityResult",
+    "tag": "co-eligibility-result",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "state",
+        "property": "state",
+        "kind": "string",
+        "description": "'active' | 'inactive' | 'error' | 'waiting'; default 'active'"
+      },
+      {
+        "name": "payer",
+        "property": "payer",
+        "kind": "string",
+        "description": "Payer name; required"
+      },
+      {
+        "name": "headline",
+        "property": "headline",
+        "kind": "string",
+        "description": "Result headline (\"Active: Aetna PPO\", \"Invalid member ID\"); default by state"
+      },
+      {
+        "name": "aaa",
+        "property": "aaa",
+        "kind": "string",
+        "description": "AAA reject code, shown before the headline in the error state; default none"
+      },
+      {
+        "name": "meaning",
+        "property": "meaning",
+        "kind": "string",
+        "description": "\"What it means\" in plain words; default none"
+      },
+      {
+        "name": "todo",
+        "property": "todo",
+        "kind": "string",
+        "description": "\"What to do\" next; default none"
+      },
+      {
+        "name": "benefits",
+        "property": "benefits",
+        "kind": "json",
+        "description": "Benefits as Array<[label, value]> (active only); default []"
+      },
+      {
+        "name": "deductible",
+        "property": "deductible",
+        "kind": "json",
+        "description": "Deductible [met, total] in dollars (active only); default none"
+      },
+      {
+        "name": "checked-at",
+        "property": "checkedAt",
+        "kind": "string",
+        "description": "When the check ran (\"10/09/2026 9:12 AM, 612 ms\"); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-rerun",
+        "prop": "onRerun",
+        "description": "Re-run; default none"
+      },
+      {
+        "name": "co-fix-coverage",
+        "prop": "onFixCoverage",
+        "description": "Fix Coverage Details (inactive and error); default none"
+      },
+      {
+        "name": "co-self-pay",
+        "prop": "onSelfPay",
+        "description": "Self-pay Good Faith Estimate (inactive and error); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "EmptyState",
@@ -2002,24 +4372,325 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "title",
         "prop": "title",
-        "description": "Heading (h2). Required"
+        "description": "Heading (h2). Required Plain text also works as the `title` attribute."
       },
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Body text: what to do next; default none"
+        "description": "Body text: what to do next; default none "
       },
       {
         "name": "actions",
         "prop": "actions",
-        "description": "Buttons under the body; default none"
+        "description": "Buttons under the body; default none Plain text also works as the `actions` attribute."
       }
     ]
+  },
+  {
+    "component": "EPCSApproval",
+    "tag": "co-epcs-approval",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "drug",
+        "property": "drug",
+        "kind": "string",
+        "description": "Drug, strength and form; required"
+      },
+      {
+        "name": "schedule",
+        "property": "schedule",
+        "kind": "string",
+        "description": "DEA schedule (\"C-II\"); required"
+      },
+      {
+        "name": "sig",
+        "property": "sig",
+        "kind": "string",
+        "description": "Directions; required"
+      },
+      {
+        "name": "qty",
+        "property": "qty",
+        "kind": "json",
+        "description": "Quantity; required"
+      },
+      {
+        "name": "prescriber",
+        "property": "prescriber",
+        "kind": "string",
+        "description": "Prescriber name; required"
+      },
+      {
+        "name": "dea",
+        "property": "dea",
+        "kind": "string",
+        "description": "Prescriber DEA number; required"
+      },
+      {
+        "name": "pdmp",
+        "property": "pdmp",
+        "kind": "string",
+        "description": "PDMP check result; default \"Checked today 10:02 AM, no concerns\""
+      },
+      {
+        "name": "pharmacy",
+        "property": "pharmacy",
+        "kind": "string",
+        "description": "Pharmacy, in the done message; default \"the pharmacy\""
+      },
+      {
+        "name": "audit",
+        "property": "audit",
+        "kind": "string",
+        "description": "Audit record number, in the done message; default \"000123\""
+      },
+      {
+        "name": "state",
+        "property": "state",
+        "kind": "string",
+        "description": "'pin' (waiting for factors) | 'done' (signed and sent) | 'locked' (too many failures); default 'pin'"
+      },
+      {
+        "name": "pin",
+        "property": "pin",
+        "kind": "string",
+        "description": "Signing PIN (controlled); default undefined (uncontrolled, starts empty: never prefill factors)"
+      },
+      {
+        "name": "code",
+        "property": "code",
+        "kind": "string",
+        "description": "One-time token code (controlled); default undefined (uncontrolled, starts empty)"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error under the PIN dots (\"Wrong PIN. 2 tries left.\"); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-pin-change",
+        "prop": "onPinChange",
+        "description": "Called as PIN digits are entered or deleted; default none"
+      },
+      {
+        "name": "co-code-change",
+        "prop": "onCodeChange",
+        "description": "Called as the token code changes; default none"
+      },
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Sign and Send clicked with both factors complete; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "ERAPostingRow",
+    "tag": "co-era-posting-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "row",
+        "property": "row",
+        "kind": "json",
+        "description": "The ERA service line. Required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-post",
+        "prop": "onPost",
+        "description": "Called with the row when Post is pressed (only enabled when balanced); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "FaxDocumentViewer",
+    "tag": "co-fax-document-viewer",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "from",
+        "property": "from",
+        "kind": "string",
+        "description": "Sender line shown at the top of the page (\"From: Lakeview Heart (312) 555-0188\"); required"
+      },
+      {
+        "name": "pages",
+        "property": "pages",
+        "kind": "number",
+        "description": "Number of pages; required"
+      },
+      {
+        "name": "patients",
+        "property": "patients",
+        "kind": "json",
+        "description": "Combobox options for the patient search; default []"
+      },
+      {
+        "name": "patient-query",
+        "property": "patientQuery",
+        "kind": "string",
+        "description": "Initial patient search text; default none"
+      },
+      {
+        "name": "ai",
+        "property": "ai",
+        "kind": "json",
+        "description": "{text, confidence}; default none"
+      },
+      {
+        "name": "page",
+        "property": "page",
+        "kind": "number",
+        "description": "Controlled current page (1-based); default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-page",
+        "property": "defaultPage",
+        "kind": "number",
+        "description": "Initial page (uncontrolled); default 1"
+      },
+      {
+        "name": "document-types",
+        "property": "documentTypes",
+        "kind": "json",
+        "description": "Document type options; default ['Lab result', 'Referral', 'Prior auth response', 'Medical records', 'Other']"
+      },
+      {
+        "name": "routes",
+        "property": "routes",
+        "kind": "json",
+        "description": "Route-to options; default ['James Bell MD', 'Clinical Inbox', 'Billing']"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-page-change",
+        "prop": "onPageChange",
+        "description": "Called when the page changes"
+      },
+      {
+        "name": "co-file",
+        "prop": "onFile",
+        "description": "Called by File to Chart with the form values; default none"
+      },
+      {
+        "name": "co-junk",
+        "prop": "onJunk",
+        "description": "Called by Mark as Junk; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "Field",
@@ -2057,27 +4728,27 @@
       {
         "name": "label",
         "prop": "label",
-        "description": "Visible label; default none"
+        "description": "Visible label; default none Plain text also works as the `label` attribute."
       },
       {
         "name": "error",
         "prop": "error",
-        "description": "Error message under the control, role alert; replaces the helper; default none"
+        "description": "Error message under the control, role alert; replaces the helper; default none Plain text also works as the `error` attribute."
       },
       {
         "name": "helper",
         "prop": "helper",
-        "description": "Muted hint under the control; default none"
+        "description": "Muted hint under the control; default none Plain text also works as the `helper` attribute."
       },
       {
         "name": "lock",
         "prop": "lock",
-        "description": "Read-only lock line with a lock icon (\"Your role can view but not edit\"); default none"
+        "description": "Read-only lock line with a lock icon (\"Your role can view but not edit\"); default none Plain text also works as the `lock` attribute."
       },
       {
         "name": "(default)",
         "prop": "children",
-        "description": "The control, or a function that receives id and aria attributes to spread on it"
+        "description": "The control, or a function that receives id and aria attributes to spread on it "
       }
     ]
   },
@@ -2177,6 +4848,12 @@
         "description": ""
       },
       {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
         "name": "disabled",
         "property": "disabled",
         "kind": "boolean",
@@ -2192,6 +4869,12 @@
         "name": "max",
         "property": "max",
         "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
         "description": ""
       },
       {
@@ -2216,18 +4899,6 @@
         "name": "min",
         "property": "min",
         "kind": "json",
-        "description": ""
-      },
-      {
-        "name": "placeholder",
-        "property": "placeholder",
-        "kind": "string",
-        "description": ""
-      },
-      {
-        "name": "read-only",
-        "property": "readOnly",
-        "kind": "boolean",
         "description": ""
       },
       {
@@ -2259,6 +4930,11 @@
         "name": "co-remove",
         "prop": "onRemove",
         "description": "Called when a file row's Remove button is pressed; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -2346,15 +5022,205 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the new state; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Label. Required"
+        "description": "Label. Required "
       }
     ]
+  },
+  {
+    "component": "GrowthChart",
+    "tag": "co-growth-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "points",
+        "property": "points",
+        "kind": "json",
+        "description": "Array<[ageMonths, value]>: the child's measurements; required"
+      },
+      {
+        "name": "percentiles",
+        "property": "percentiles",
+        "kind": "json",
+        "description": "Record<percentile label, value per age in `ages`> ({'3': [...], '50': [...], '97': [...]}); required"
+      },
+      {
+        "name": "ages",
+        "property": "ages",
+        "kind": "json",
+        "description": "number[]: ages (months) of the x axis and of each percentile value; default [0,6,12,18,24,36]"
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "number",
+        "description": "Bottom of the y axis; default 2"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Top of the y axis; default 18"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Caption and accessible name; default \"Weight-for-age (kg), WHO 0 to 36 months\""
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "Unit read with each measurement in the accessible summary; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "note",
+        "prop": "note",
+        "description": "Note under the chart (\"Last: 11.6 kg at 24 months, about the 50th percentile.\"); default none Plain text also works as the `note` attribute."
+      }
+    ]
+  },
+  {
+    "component": "ICD10Picker",
+    "tag": "co-i-c-d10-picker",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "options",
+        "property": "options",
+        "kind": "json",
+        "description": "Array<{code, label, meta?}>: the codes to search. Required"
+      },
+      {
+        "name": "favorites",
+        "property": "favorites",
+        "kind": "json",
+        "description": "Array<{code, short}>: favourite codes shown as chips; default none"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Field label; default \"Diagnosis (ICD-10-CM)\""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Selected code (controlled); default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initially selected code (uncontrolled); default none"
+      },
+      {
+        "name": "default-query",
+        "property": "defaultQuery",
+        "kind": "string",
+        "description": "Initial search text; default \"\""
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Open the results on first render; default false"
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": "Placeholder of the search input; default \"Code or words, such as E11.9 or diabetes\""
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message under the search; default none"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Marks the field required; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-select",
+        "prop": "onSelect",
+        "description": "Called with the chosen code (from the list or a favourite chip); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "Icon",
@@ -2405,7 +5271,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -2487,7 +5364,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -2544,9 +5432,265 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when an item is clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
+  },
+  {
+    "component": "ImmunizationSchedule",
+    "tag": "co-immunization-schedule",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "columns",
+        "property": "columns",
+        "kind": "json",
+        "description": "string[]: dose ages (\"Birth\", \"2 mo\"...); required"
+      },
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "Array<{vaccine, doses: Array<{status?, date?}>}>; required"
+      },
+      {
+        "name": "synced",
+        "property": "synced",
+        "kind": "string",
+        "description": "Registry sync time, in the default subtitle; default \"today\""
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Record Dose; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-record-dose",
+        "prop": "onRecordDose",
+        "description": "Record Dose clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Replaces the subtitle; default \"CDC schedule . IIS synced {synced}\" Plain text also works as the `subtitle` attribute."
+      }
+    ]
+  },
+  {
+    "component": "InboxItem",
+    "tag": "co-inbox-item",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "item",
+        "property": "item",
+        "kind": "json",
+        "description": "{kind, patient, title, from, received, priority?, unread?, actions?: string[]}; required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-action",
+        "prop": "onAction",
+        "description": "Called with the action label when an action button is pressed; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "InboxList",
+    "tag": "co-inbox-list",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Array<{id, type, patient, item, received, priority, status}>. Required"
+      },
+      {
+        "name": "categories",
+        "property": "categories",
+        "kind": "json",
+        "description": "Array<{id, count, alert?}>: one pill tab each after \"All\"; default []"
+      },
+      {
+        "name": "critical",
+        "property": "critical",
+        "kind": "json",
+        "description": "{title, body}: critical-value alert pinned on top; default none"
+      },
+      {
+        "name": "can-sign",
+        "property": "canSign",
+        "kind": "boolean",
+        "description": "Whether the role can sign; false disables Sign Selected; default true"
+      },
+      {
+        "name": "page-size",
+        "property": "pageSize",
+        "kind": "number",
+        "description": "Rows per page; default 5"
+      },
+      {
+        "name": "category",
+        "property": "category",
+        "kind": "string",
+        "description": "Selected type tab (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-category",
+        "property": "defaultCategory",
+        "kind": "string",
+        "description": "Initially selected type tab; default 'All'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-category-change",
+        "prop": "onCategoryChange",
+        "description": "Called with the new type tab; default none"
+      },
+      {
+        "name": "co-acknowledge",
+        "prop": "onAcknowledge",
+        "description": "\"Acknowledge and Call Patient\" on the critical alert; default none"
+      },
+      {
+        "name": "co-open-chart",
+        "prop": "onOpenChart",
+        "description": "\"Open Chart\" on the critical alert; default none"
+      },
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "\"Sign Selected\" bulk action, with the selected ids; default none"
+      },
+      {
+        "name": "co-mark-reviewed",
+        "prop": "onMarkReviewed",
+        "description": "\"Mark Reviewed\" bulk action; default none"
+      },
+      {
+        "name": "co-assign",
+        "prop": "onAssign",
+        "description": "\"Assign to...\" bulk action; default none"
+      },
+      {
+        "name": "co-row-action",
+        "prop": "onRowAction",
+        "description": "Row menu choice: 'open' | 'route' | 'pend'; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "lock-text",
+        "prop": "lockText",
+        "description": "Lock banner explaining what the role cannot do; default none Plain text also works as the `lock-text` attribute."
+      }
+    ]
   },
   {
     "component": "InsuranceCard",
@@ -2667,6 +5811,117 @@
         "name": "co-scan",
         "prop": "onScan",
         "description": "Called when Scan Card is pressed; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "InsuranceCoverageCard",
+    "tag": "co-insurance-coverage-card",
+    "aliases": [
+      "CoverageStack"
+    ],
+    "attributes": [
+      {
+        "name": "coverages",
+        "property": "coverages",
+        "kind": "json",
+        "description": "Coverages in billing order (controlled): Array<{payer, plan, memberId, group?, subscriber?, status?, checked?}>; default uncontrolled"
+      },
+      {
+        "name": "default-coverages",
+        "property": "defaultCoverages",
+        "kind": "json",
+        "description": "Initial coverages in billing order (uncontrolled); default []"
+      },
+      {
+        "name": "suggested",
+        "property": "suggested",
+        "kind": "string",
+        "description": "Suggested order text; shows the order warning; default none"
+      },
+      {
+        "name": "self-pay",
+        "property": "selfPay",
+        "kind": "boolean",
+        "description": "Self-pay warning (no active coverage); default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "No arrows and no Add Coverage; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-reorder",
+        "prop": "onReorder",
+        "description": "Called with the new order after a move; default none"
+      },
+      {
+        "name": "co-add",
+        "prop": "onAdd",
+        "description": "Add Coverage; default none"
+      },
+      {
+        "name": "co-apply-suggested",
+        "prop": "onApplySuggested",
+        "description": "Apply Suggested Order in the order warning; default none"
+      },
+      {
+        "name": "co-keep-order",
+        "prop": "onKeepOrder",
+        "description": "Keep Current Order in the order warning; default none"
+      },
+      {
+        "name": "co-check-eligibility",
+        "prop": "onCheckEligibility",
+        "description": "Check Eligibility on a coverage; default none"
+      },
+      {
+        "name": "co-coverage-action",
+        "prop": "onCoverageAction",
+        "description": "An item of a coverage's More menu; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -2730,6 +5985,327 @@
         "name": "co-item-select",
         "prop": "onItemSelect",
         "description": "Called with the chosen item and its index, after the item's own onSelect (one handler for every item); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "KioskStep",
+    "tag": "co-kiosk-step",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "number",
+        "description": "Current step, 1-based. Required"
+      },
+      {
+        "name": "total",
+        "property": "total",
+        "kind": "number",
+        "description": "Number of steps. Required"
+      },
+      {
+        "name": "step-name",
+        "property": "stepName",
+        "kind": "string",
+        "description": "Short step name in the header (\"Find appointment\"). Required"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Big heading (h1) of the step. Required"
+      },
+      {
+        "name": "practice",
+        "property": "practice",
+        "kind": "string",
+        "description": "Practice name in the header; default \"Valley Family Clinic\""
+      },
+      {
+        "name": "next-label",
+        "property": "nextLabel",
+        "kind": "string",
+        "description": "Label of the main button; default \"Continue\""
+      },
+      {
+        "name": "next-disabled",
+        "property": "nextDisabled",
+        "kind": "boolean",
+        "description": "Disables the main button until required fields are filled; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-back",
+        "prop": "onBack",
+        "description": "Back button (shown from step 2); default none"
+      },
+      {
+        "name": "co-next",
+        "prop": "onNext",
+        "description": "Main button; default none"
+      },
+      {
+        "name": "co-help",
+        "prop": "onHelp",
+        "description": "\"I need help\" in the header; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Instruction under the heading; default none Plain text also works as the `subtitle` attribute."
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Fields of the step. "
+      }
+    ]
+  },
+  {
+    "component": "KPIGrid",
+    "tag": "co-kpi-grid",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "StatCard props[]. Required"
+      },
+      {
+        "name": "filter",
+        "property": "filter",
+        "kind": "boolean",
+        "description": "Cards become a single-select filter (toggle buttons); default false"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "string",
+        "description": "Label of the selected card, or null for none (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-selected",
+        "property": "defaultSelected",
+        "kind": "string",
+        "description": "Initially selected label (uncontrolled); default none"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name of the filter group; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-select",
+        "prop": "onSelect",
+        "description": "(label | null) => void: selecting the selected card again clears it; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "LabResultTable",
+    "tag": "co-lab-result-table",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "Array<{test, loinc?, value, flag?, range, units, trend?, collected}>; required"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title and table caption; default \"Lab Results\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Shows Sign and Notify Patient and Route to Nurse; called on Sign; default none"
+      },
+      {
+        "name": "co-route",
+        "prop": "onRoute",
+        "description": "Route to Nurse clicked (shown with onSign); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Line under the title (lab, collection time, ordering provider); default none Plain text also works as the `subtitle` attribute."
+      },
+      {
+        "name": "critical",
+        "prop": "critical",
+        "description": "Critical value message, shown in a red alert above the table; default none Plain text also works as the `critical` attribute."
+      },
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Card header actions; default none Plain text also works as the `actions` attribute."
+      }
+    ]
+  },
+  {
+    "component": "LevelTag",
+    "tag": "co-level-tag",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "level",
+        "property": "level",
+        "kind": "string",
+        "description": "'none' | 'view' | 'edit' | 'approve'; default 'none'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "shape",
+        "property": "shape",
+        "kind": "string",
+        "description": "'square' | 'pill'; default 'square'"
+      },
+      {
+        "name": "dot",
+        "property": "dot",
+        "kind": "boolean",
+        "description": "Shows a small dot in the current colour before the label (ignored when `icon` is set); default false"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -2801,7 +6377,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -2858,20 +6445,312 @@
         "name": "co-click",
         "prop": "onClick",
         "description": "Makes the row a button with a chevron; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "leading",
         "prop": "leading",
-        "description": "Before the text (Avatar, Icon); default none"
+        "description": "Before the text (Avatar, Icon); default none Plain text also works as the `leading` attribute."
       },
       {
         "name": "trailing",
         "prop": "trailing",
-        "description": "After the text (StatusTag, time); must not be interactive when the row is; default none"
+        "description": "After the text (StatusTag, time); must not be interactive when the row is; default none Plain text also works as the `trailing` attribute."
       }
     ]
+  },
+  {
+    "component": "LockedField",
+    "tag": "co-locked-field",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label; required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Value shown, selectable and copyable; required"
+      },
+      {
+        "name": "message",
+        "property": "message",
+        "kind": "string",
+        "description": "Lock line under the field (name the missing permission); default \"Your role can view but not edit\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' 30px | 'md' 36px | 'lg' 48px (kiosk); default 'md'"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "icon-left",
+        "property": "iconLeft",
+        "kind": "string",
+        "description": "Icon inside the input on the left; default none"
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "helper",
+        "property": "helper",
+        "kind": "string",
+        "description": "Muted hint under the field; default the mask hint"
+      },
+      {
+        "name": "suffix",
+        "property": "suffix",
+        "kind": "string",
+        "description": "Unit text inside the input on the right, such as \"units\"; default none"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "MedicationList",
+    "tag": "co-medication-list",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "MedicationRow med[]; required"
+      },
+      {
+        "name": "reconciled",
+        "property": "reconciled",
+        "kind": "string",
+        "description": "Reconciliation date and person (\"10/09/2026 by James Bell MD\"); default none (Not reconciled this visit)"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Reconcile, Prescribe and the row menus; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-reconcile",
+        "prop": "onReconcile",
+        "description": "Reconcile clicked; default none"
+      },
+      {
+        "name": "co-prescribe",
+        "prop": "onPrescribe",
+        "description": "Prescribe clicked; default none"
+      },
+      {
+        "name": "co-item-action",
+        "prop": "onItemAction",
+        "description": "A row menu action was chosen; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "MedicationRow",
+    "tag": "co-medication-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "med",
+        "property": "med",
+        "kind": "json",
+        "description": "{name, sig, qty, refills?, prescriber?, pharmacy?, last?, schedule?, prn?, status?, source?}; required"
+      },
+      {
+        "name": "actions",
+        "property": "actions",
+        "kind": "boolean",
+        "description": "Shows the Renew / Change Dose / Mark Not Taking / Discontinue menu; default true"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-action",
+        "prop": "onAction",
+        "description": "A menu action was chosen; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "Menu",
@@ -2938,6 +6817,16 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called after an item is chosen, and on Escape or Tab inside the menu; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -2984,23 +6873,33 @@
         "name": "co-back",
         "prop": "onBack",
         "description": "Called when the back link is clicked (client-side routing); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "title",
         "prop": "title",
-        "description": "Screen title. Required."
+        "description": "Screen title. Required. Plain text also works as the `title` attribute."
       },
       {
         "name": "subtitle",
         "prop": "subtitle",
-        "description": "Patient or date line; default none"
+        "description": "Patient or date line; default none Plain text also works as the `subtitle` attribute."
       },
       {
         "name": "action",
         "prop": "action",
-        "description": "One small action on the right; default none"
+        "description": "One small action on the right; default none Plain text also works as the `action` attribute."
       }
     ]
   },
@@ -3093,42 +6992,64 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called by Cancel, the x button, Escape and (when `closeOnScrim`) a scrim press; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "title",
         "prop": "title",
-        "description": "Dialog title; names the dialog. Required."
+        "description": "Dialog title; names the dialog. Required. Plain text also works as the `title` attribute."
       },
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Dialog body"
+        "description": "Dialog body "
       },
       {
         "name": "footer",
         "prop": "footer",
-        "description": "Replaces the default Cancel + primary footer; `null` removes the footer; default the two buttons"
+        "description": "Replaces the default Cancel + primary footer; `null` removes the footer; default the two buttons Plain text also works as the `footer` attribute."
       }
     ]
   },
   {
-    "component": "Overlay",
-    "tag": "co-overlay",
+    "component": "OrderSetPicker",
+    "tag": "co-order-set-picker",
     "aliases": [],
     "attributes": [
       {
-        "name": "inline",
-        "property": "inline",
-        "kind": "boolean",
-        "description": "Render in place (no portal, no scrim behaviour) for documentation; default false"
+        "name": "sets",
+        "property": "sets",
+        "kind": "json",
+        "description": "Array<{name, items: Array<{name, type, detail?, default?}>}>. Required"
       },
       {
-        "name": "side",
-        "property": "side",
+        "name": "subtitle",
+        "property": "subtitle",
         "kind": "string",
-        "description": "Where the panel sits: 'center' | 'right' | 'bottom'; default 'center'"
+        "description": "Line under the title (patient and service); default none"
+      },
+      {
+        "name": "current",
+        "property": "current",
+        "kind": "number",
+        "description": "Index of the shown set (controlled); default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-current",
+        "property": "defaultCurrent",
+        "kind": "number",
+        "description": "Index of the set shown first (uncontrolled); default 0"
       },
       {
         "name": "default-checked",
@@ -3152,18 +7073,22 @@
     "properties": [],
     "events": [
       {
-        "name": "co-scrim-press",
-        "prop": "onScrimPress",
-        "description": "Called when the scrim (outside the panel) is pressed; default none"
-      }
-    ],
-    "slots": [
+        "name": "co-current-change",
+        "prop": "onCurrentChange",
+        "description": "Called with the index of the newly shown set; default none"
+      },
       {
-        "name": "(default)",
-        "prop": "children",
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Called by Sign Orders with the ticked items of the shown set; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
         "description": ""
       }
-    ]
+    ],
+    "slots": []
   },
   {
     "component": "Pagination",
@@ -3242,6 +7167,16 @@
         "name": "co-page-size",
         "prop": "onPageSize",
         "description": "Called with the new rows per page (the page also resets to 1); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -3361,12 +7296,23 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "actions",
         "prop": "actions",
-        "description": "Buttons on the right; default none"
+        "description": "Buttons on the right; default none Plain text also works as the `actions` attribute."
       }
     ]
   },
@@ -3434,22 +7380,128 @@
         "name": "co-add",
         "prop": "onAdd",
         "description": "Add (+) button handler; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
   },
   {
-    "component": "PATimeline",
-    "tag": "co-pa-timeline",
-    "aliases": [
-      "Timeline"
-    ],
+    "component": "PermissionDenied",
+    "tag": "co-permission-denied",
+    "aliases": [],
     "attributes": [
       {
-        "name": "items",
-        "property": "items",
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
         "kind": "json",
-        "description": "Steps in order. Required"
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "role",
+        "property": "role",
+        "kind": "string",
+        "description": "The viewer's role (\"Biller\", \"Front Desk\"). Required"
+      },
+      {
+        "name": "home",
+        "property": "home",
+        "kind": "string",
+        "description": "Href of the staff home: \"Back to staff app\" (preview) and \"Go to my home screen\" (denied); default none"
+      },
+      {
+        "name": "permission",
+        "property": "permission",
+        "kind": "string",
+        "description": "Permission the role lacks; required for lock and denied; default \"Manage claims\""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      },
+      {
+        "name": "co-home",
+        "prop": "onHome",
+        "description": "\"Go to my home screen\" (denied) or \"Back to staff app\" (preview) clicked; default none"
+      },
+      {
+        "name": "co-compare-roles",
+        "prop": "onCompareRoles",
+        "description": "\"Compare roles\" clicked (denied); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PermissionMatrix",
+    "tag": "co-permission-matrix",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "roles",
+        "property": "roles",
+        "kind": "json",
+        "description": "Role names, one column each (1 to 3 recommended); required"
+      },
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "Rows (controlled): Array<{module, action, levels: Record<role, none|view|edit|approve>}>; default uncontrolled"
+      },
+      {
+        "name": "default-rows",
+        "property": "defaultRows",
+        "kind": "json",
+        "description": "Initial rows (uncontrolled); default []"
+      },
+      {
+        "name": "editable",
+        "property": "editable",
+        "kind": "boolean",
+        "description": "A select per cell instead of level tags; default false"
+      },
+      {
+        "name": "only-differences",
+        "property": "onlyDifferences",
+        "kind": "boolean",
+        "description": "Hides rows where every role has the same level (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-only-differences",
+        "property": "defaultOnlyDifferences",
+        "kind": "boolean",
+        "description": "Initial \"Only show differences\" state (uncontrolled); default false"
+      },
+      {
+        "name": "caption",
+        "property": "caption",
+        "kind": "string",
+        "description": "Table caption for screen readers; default \"Permissions by role\""
       },
       {
         "name": "default-checked",
@@ -3471,8 +7523,195 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-rows-change",
+        "prop": "onRowsChange",
+        "description": "Called with all rows after a level is edited; default none"
+      },
+      {
+        "name": "co-only-differences-change",
+        "prop": "onOnlyDifferencesChange",
+        "description": "Called when \"Only show differences\" is switched; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the edited row (as it was before the edit), the role and the new level; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
+  },
+  {
+    "component": "PermissionState",
+    "tag": "co-permission-state",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "'lock' | 'denied' | 'preview' | 'hidden'; default 'lock'"
+      },
+      {
+        "name": "role",
+        "property": "role",
+        "kind": "string",
+        "description": "The viewer's role (\"Biller\", \"Front Desk\"). Required"
+      },
+      {
+        "name": "permission",
+        "property": "permission",
+        "kind": "string",
+        "description": "Permission the role lacks; required for lock and denied; default \"Manage claims\""
+      },
+      {
+        "name": "home",
+        "property": "home",
+        "kind": "string",
+        "description": "Href of the staff home: \"Back to staff app\" (preview) and \"Go to my home screen\" (denied); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-home",
+        "prop": "onHome",
+        "description": "\"Go to my home screen\" (denied) or \"Back to staff app\" (preview) clicked; default none"
+      },
+      {
+        "name": "co-compare-roles",
+        "prop": "onCompareRoles",
+        "description": "\"Compare roles\" clicked (denied); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PhoneScaffold",
+    "tag": "co-phone-scaffold",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "back",
+        "property": "back",
+        "kind": "string",
+        "description": "Back link href; default none"
+      },
+      {
+        "name": "tabs",
+        "property": "tabs",
+        "kind": "json",
+        "description": "BottomTabBar items; default none (no tab bar)"
+      },
+      {
+        "name": "active",
+        "property": "active",
+        "kind": "string",
+        "description": "Label of the current tab; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-back",
+        "prop": "onBack",
+        "description": "Called when the back link is clicked (client-side routing); default none"
+      },
+      {
+        "name": "co-navigate",
+        "prop": "onNavigate",
+        "description": "Called when a tab is clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "title",
+        "prop": "title",
+        "description": "Screen title. Required Plain text also works as the `title` attribute."
+      },
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Patient or date line; default none Plain text also works as the `subtitle` attribute."
+      },
+      {
+        "name": "action",
+        "prop": "action",
+        "description": "One small header action on the right; default none Plain text also works as the `action` attribute."
+      },
+      {
+        "name": "lock-text",
+        "prop": "lockText",
+        "description": "Read-only lock banner at the top of the body; default none Plain text also works as the `lock-text` attribute."
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Body. "
+      }
+    ]
   },
   {
     "component": "PickCard",
@@ -3535,12 +7774,23 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Extra content under the meta line; default none"
+        "description": "Extra content under the meta line; default none "
       }
     ]
   },
@@ -3632,6 +7882,11 @@
         "name": "co-biometric",
         "prop": "onBiometric",
         "description": "Called when the biometric key is pressed; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -3702,14 +7957,206 @@
       {
         "name": "trigger",
         "prop": "trigger",
-        "description": "Trigger button text (\"Filters (2)\"); required"
+        "description": "Trigger button text (\"Filters (2)\"); required Plain text also works as the `trigger` attribute."
       },
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Panel content: a small form or filter set"
+        "description": "Panel content: a small form or filter set "
       }
     ]
+  },
+  {
+    "component": "PriorAuthTimeline",
+    "tag": "co-prior-auth-timeline",
+    "aliases": [
+      "PriorAuthCard"
+    ],
+    "attributes": [
+      {
+        "name": "auth-id",
+        "property": "authId",
+        "kind": "string",
+        "description": "Authorization number (\"PA-2026-11873\"); default \"Prior authorization\""
+      },
+      {
+        "name": "service",
+        "property": "service",
+        "kind": "string",
+        "description": "Service and code (\"Physical therapy 97110\"); default none"
+      },
+      {
+        "name": "payer",
+        "property": "payer",
+        "kind": "string",
+        "description": "Payer name; default none"
+      },
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name; default none"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "PA status word (see StatusTag kind 'pa'): 'Approved', 'Pended', 'Denied'...; required"
+      },
+      {
+        "name": "used",
+        "property": "used",
+        "kind": "number",
+        "description": "Units used; default none"
+      },
+      {
+        "name": "approved",
+        "property": "approved",
+        "kind": "number",
+        "description": "Units approved; shows the UnitsMeter when set; default none"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "Unit word; default \"units\""
+      },
+      {
+        "name": "expires",
+        "property": "expires",
+        "kind": "string",
+        "description": "Validity dates (\"10/01/2026 to 12/31/2026\"); default none"
+      },
+      {
+        "name": "events",
+        "property": "events",
+        "kind": "json",
+        "description": "Status history as Timeline items; default []"
+      },
+      {
+        "name": "alert",
+        "property": "alert",
+        "kind": "json",
+        "description": "{title, body, action?, onAction?}; default none"
+      },
+      {
+        "name": "alert-tone",
+        "property": "alertTone",
+        "kind": "string",
+        "description": "'warning' | 'error' | 'info'; default 'warning'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "ProblemList",
+    "tag": "co-problem-list",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Array<{code, label, onset?, by?, chronic?, hcc?, status?}>; required"
+      },
+      {
+        "name": "icd-options",
+        "property": "icdOptions",
+        "kind": "json",
+        "description": "Array<{code,label}> for the Add problem picker; default []"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides the Add problem picker; default false"
+      },
+      {
+        "name": "filter",
+        "property": "filter",
+        "kind": "string",
+        "description": "Status filter (controlled): 'active' | 'resolved' | 'all'; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-filter",
+        "property": "defaultFilter",
+        "kind": "string",
+        "description": "Initial status filter (uncontrolled); default 'active'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-filter-change",
+        "prop": "onFilterChange",
+        "description": "Called when the filter changes; default none"
+      },
+      {
+        "name": "co-add",
+        "prop": "onAdd",
+        "description": "Called with the code picked in Add problem; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "ProgressBar",
@@ -3796,12 +8243,164 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "helper",
         "prop": "helper",
-        "description": "Helper text under the bar; default none"
+        "description": "Helper text under the bar; default none Plain text also works as the `helper` attribute."
+      }
+    ]
+  },
+  {
+    "component": "ProviderDayColumns",
+    "tag": "co-provider-day-columns",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "times",
+        "property": "times",
+        "kind": "json",
+        "description": "Row times, e.g. ['8:00 AM', '8:20 AM']. Required"
+      },
+      {
+        "name": "providers",
+        "property": "providers",
+        "kind": "json",
+        "description": "One column per provider. Required"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name of the view; default 'Schedule by provider'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-book",
+        "prop": "onBook",
+        "description": "Called when a free slot is chosen; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "QualityMeasureCard",
+    "tag": "co-quality-measure-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "measure",
+        "property": "measure",
+        "kind": "json",
+        "description": "{name, id, period, numerator, denominator, exclusions?, target, inverse?, source?}; required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
+      },
+      {
+        "name": "flat",
+        "property": "flat",
+        "kind": "boolean",
+        "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "as",
+        "property": "as",
+        "kind": "json",
+        "description": "Root tag name; default 'section'"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-view-gaps",
+        "prop": "onViewGaps",
+        "description": "Called by the \"View N patients with gaps\" link; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Header actions (one primary at most); default none Plain text also works as the `actions` attribute."
+      },
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Footer content; default none Plain text also works as the `footer` attribute."
       }
     ]
   },
@@ -3836,7 +8435,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -3869,6 +8479,12 @@
         "description": ""
       },
       {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
         "name": "name",
         "property": "name",
         "kind": "string",
@@ -3884,6 +8500,12 @@
         "name": "max",
         "property": "max",
         "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
         "description": ""
       },
       {
@@ -3923,18 +8545,6 @@
         "description": ""
       },
       {
-        "name": "placeholder",
-        "property": "placeholder",
-        "kind": "string",
-        "description": ""
-      },
-      {
-        "name": "read-only",
-        "property": "readOnly",
-        "kind": "boolean",
-        "description": ""
-      },
-      {
         "name": "required",
         "property": "required",
         "kind": "boolean",
@@ -3948,17 +8558,28 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "label",
         "prop": "label",
-        "description": "Visible label; the whole row is clickable. Required"
+        "description": "Visible label; the whole row is clickable. Required Plain text also works as the `label` attribute."
       },
       {
         "name": "description",
         "prop": "description",
-        "description": "Help text under the label; default none"
+        "description": "Help text under the label; default none Plain text also works as the `description` attribute."
       }
     ]
   },
@@ -4028,18 +8649,97 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the newly selected value; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "label",
         "prop": "label",
-        "description": "Legend text. Required"
+        "description": "Legend text. Required Plain text also works as the `label` attribute."
       },
       {
         "name": "error",
         "prop": "error",
-        "description": "Error message under the options; default none"
+        "description": "Error message under the options; default none Plain text also works as the `error` attribute."
+      }
+    ]
+  },
+  {
+    "component": "ReferralCard",
+    "tag": "co-referral-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "referral",
+        "property": "referral",
+        "kind": "json",
+        "description": "{specialty, patient, to, status, reason, urgency, auth?, from, timeline?}; required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
+      },
+      {
+        "name": "flat",
+        "property": "flat",
+        "kind": "boolean",
+        "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "as",
+        "property": "as",
+        "kind": "json",
+        "description": "Root tag name; default 'section'"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Buttons under the card body; default none Plain text also works as the `actions` attribute."
+      },
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Footer content; default none Plain text also works as the `footer` attribute."
       }
     ]
   },
@@ -4141,6 +8841,203 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the chosen role label; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "RPMReadingChart",
+    "tag": "co-rpm-reading-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "readings",
+        "property": "readings",
+        "kind": "json",
+        "description": "Array<[label, value]>; required"
+      },
+      {
+        "name": "metric",
+        "property": "metric",
+        "kind": "string",
+        "description": "Chart caption and start of its accessible summary (\"Systolic (mmHg), last 7 readings\"); default none"
+      },
+      {
+        "name": "device",
+        "property": "device",
+        "kind": "string",
+        "description": "Device and context line under the title; default none"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default \"Remote monitoring\""
+      },
+      {
+        "name": "high",
+        "property": "high",
+        "kind": "number",
+        "description": "Alert line: readings at or above it are red; default none"
+      },
+      {
+        "name": "low",
+        "property": "low",
+        "kind": "number",
+        "description": "Readings at or below it are amber; default none"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Top of the chart scale; default auto"
+      },
+      {
+        "name": "days",
+        "property": "days",
+        "kind": "number",
+        "description": "Reading days this month (16 needed for 99454); required"
+      },
+      {
+        "name": "minutes",
+        "property": "minutes",
+        "kind": "number",
+        "description": "Interactive minutes this month (20 needed for 99457); default 0"
+      },
+      {
+        "name": "alert",
+        "property": "alert",
+        "kind": "string",
+        "description": "Out-of-range note shown as a warning Alert; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
+      },
+      {
+        "name": "flat",
+        "property": "flat",
+        "kind": "boolean",
+        "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "as",
+        "property": "as",
+        "kind": "json",
+        "description": "Root tag name; default 'section'"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Footer content; default none Plain text also works as the `footer` attribute."
+      }
+    ]
+  },
+  {
+    "component": "ScoreQuestionnaire",
+    "tag": "co-score-questionnaire",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "instrument",
+        "property": "instrument",
+        "kind": "string",
+        "description": "'GAD-7' | 'PHQ-9'. Required"
+      },
+      {
+        "name": "questions",
+        "property": "questions",
+        "kind": "json",
+        "description": "The items, in order (string[]). Required"
+      },
+      {
+        "name": "answers",
+        "property": "answers",
+        "kind": "json",
+        "description": "Initial answers, 0 to 3 per item, null for unanswered (uncontrolled); default []"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": "Controlled answers; default undefined (uncontrolled)"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Title after the instrument name (\"Generalized anxiety\"); default \"\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with all answers after one changes; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -4193,6 +9090,11 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the clicked section label. Items without `href` do not navigate; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -4251,6 +9153,11 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the newly selected value; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -4370,7 +9277,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -4410,12 +9328,23 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "The control, right column. Give it its own accessible label."
+        "description": "The control, right column. Give it its own accessible label. "
       }
     ]
   },
@@ -4490,6 +9419,73 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when an item is clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "SigBuilder",
+    "tag": "co-sig-builder",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": "{dose, route, freq, duration?, prn?, qty, refills, schedule?}. Controlled when `onChange` is set; without\n`onChange` it seeds the fields, as the design system README uses it; default {}"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": "Initial sig (uncontrolled); default {}"
+      },
+      {
+        "name": "routes",
+        "property": "routes",
+        "kind": "json",
+        "description": "Route choices; default by mouth, under the tongue, topically, inhaled, by injection"
+      },
+      {
+        "name": "frequencies",
+        "property": "frequencies",
+        "kind": "json",
+        "description": "Frequency choices, spelled out; default once daily ... at bedtime"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the whole sig on every edit; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -4606,6 +9602,16 @@
         "name": "co-clear",
         "prop": "onClear",
         "description": "Called when the signature is cleared; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -4665,82 +9671,16 @@
       }
     ],
     "properties": [],
-    "events": [],
-    "slots": []
-  },
-  {
-    "component": "SlotPicker",
-    "tag": "co-slot-picker",
-    "aliases": [
-      "TimeSlotPicker"
-    ],
-    "attributes": [
-      {
-        "name": "slots",
-        "property": "slots",
-        "kind": "json",
-        "description": "Array<{time, state: available|booked|held|blocked}>"
-      },
-      {
-        "name": "days",
-        "property": "days",
-        "kind": "json",
-        "description": "Array<{id, weekday, date, disabled?}>; default none (no day strip)"
-      },
-      {
-        "name": "value",
-        "property": "value",
-        "kind": "string",
-        "description": "Selected time (controlled); default undefined"
-      },
-      {
-        "name": "default-value",
-        "property": "defaultValue",
-        "kind": "string",
-        "description": "Initially selected time (uncontrolled); default none"
-      },
-      {
-        "name": "day",
-        "property": "day",
-        "kind": "string",
-        "description": "Selected day id (controlled); default undefined"
-      },
-      {
-        "name": "default-day",
-        "property": "defaultDay",
-        "kind": "string",
-        "description": "Initially selected day id (uncontrolled); default the first day"
-      },
-      {
-        "name": "label",
-        "property": "label",
-        "kind": "string",
-        "description": "Group label shown above the grid, e.g. provider and visit length; default \"Available times\" (not shown)"
-      },
-      {
-        "name": "default-checked",
-        "property": "defaultChecked",
-        "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "auto-focus",
-        "property": "autoFocus",
-        "kind": "boolean",
-        "description": ""
-      }
-    ],
-    "properties": [],
     "events": [
       {
         "name": "co-change",
         "prop": "onChange",
-        "description": "(time) => void, called when a slot is chosen; default none"
+        "description": ""
       },
       {
-        "name": "co-day-change",
-        "prop": "onDayChange",
-        "description": "(dayId) => void, called when a day is chosen; default none"
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -4833,13 +9773,18 @@
         "name": "co-insert-macro",
         "prop": "onInsertMacro",
         "description": "Called with the smart phrase inserted into the text; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Custom content that replaces the textarea, such as a ScoreQuestionnaire; default none"
+        "description": "Custom content that replaces the textarea, such as a ScoreQuestionnaire; default none "
       }
     ]
   },
@@ -4904,7 +9849,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -4950,7 +9906,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -5111,18 +10078,28 @@
         "name": "co-click",
         "prop": "onClick",
         "description": "Makes the card a toggle button (aria-pressed); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "value",
         "prop": "value",
-        "description": "The number. Required"
+        "description": "The number. Required Plain text also works as the `value` attribute."
       },
       {
         "name": "sub",
         "prop": "sub",
-        "description": "Context line: what the number counts and over what period; default none"
+        "description": "Context line: what the number counts and over what period; default none Plain text also works as the `sub` attribute."
       }
     ]
   },
@@ -5193,7 +10170,18 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
   },
   {
@@ -5251,8 +10239,120 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
     "slots": []
+  },
+  {
+    "component": "StepperForm",
+    "tag": "co-stepper-form",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title and accessible name of the step bar (\"Add Patient\"); required"
+      },
+      {
+        "name": "steps",
+        "property": "steps",
+        "kind": "json",
+        "description": "Array<{label, content: node, error?}>; required"
+      },
+      {
+        "name": "current",
+        "property": "current",
+        "kind": "number",
+        "description": "Current step, 0-based (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-current",
+        "property": "defaultCurrent",
+        "kind": "number",
+        "description": "Initial step, 0-based (uncontrolled); default 0"
+      },
+      {
+        "name": "finish-label",
+        "property": "finishLabel",
+        "kind": "string",
+        "description": "Label of the finish button on the last step; default \"Save\""
+      },
+      {
+        "name": "saving",
+        "property": "saving",
+        "kind": "boolean",
+        "description": "Finish button shows a spinner; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-step",
+        "prop": "onStep",
+        "description": "Called with the new step index on Next and Back; default none"
+      },
+      {
+        "name": "co-finish",
+        "prop": "onFinish",
+        "description": "Finish button on the last step; default none"
+      },
+      {
+        "name": "co-cancel",
+        "prop": "onCancel",
+        "description": "Cancel button; default none"
+      },
+      {
+        "name": "co-save-draft",
+        "prop": "onSaveDraft",
+        "description": "Shows a Save Draft button that calls this; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "error-summary",
+        "prop": "errorSummary",
+        "description": "Error summary shown in an Alert above the fields; default none Plain text also works as the `error-summary` attribute."
+      }
+    ]
   },
   {
     "component": "StyleChooser",
@@ -5313,6 +10413,11 @@
         "name": "co-apply",
         "prop": "onApply",
         "description": "Called with the style id when \"Apply to practice\" is chosen; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -5387,15 +10492,103 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called on Escape; default `onOkay`"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Body: what happens next; default none"
+        "description": "Body: what happens next; default none "
       }
     ]
+  },
+  {
+    "component": "SuperbillTable",
+    "tag": "co-superbill-table",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "groups",
+        "property": "groups",
+        "kind": "json",
+        "description": "Fee sheet sections. Required"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "json",
+        "description": "Controlled selected codes; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-selected",
+        "property": "defaultSelected",
+        "kind": "json",
+        "description": "Initially selected codes when uncontrolled; default []"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title (patient, date, specialty); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-selected-change",
+        "prop": "onSelectedChange",
+        "description": "Called with the new list of selected codes"
+      },
+      {
+        "name": "co-print",
+        "prop": "onPrint",
+        "description": "Called when Print is pressed; default none"
+      },
+      {
+        "name": "co-send",
+        "prop": "onSend",
+        "description": "Called with the selected codes when Send to Billing is pressed; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   },
   {
     "component": "Switch",
@@ -5463,18 +10656,23 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the new state; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "label",
         "prop": "label",
-        "description": "Visible label. Required"
+        "description": "Visible label. Required Plain text also works as the `label` attribute."
       },
       {
         "name": "description",
         "prop": "description",
-        "description": "Help text under the label; default none"
+        "description": "Help text under the label; default none Plain text also works as the `description` attribute."
       }
     ]
   },
@@ -5532,6 +10730,191 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the new tab id; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "TaskCard",
+    "tag": "co-task-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "task",
+        "property": "task",
+        "kind": "json",
+        "description": "{title, patient?, due?, overdue?, done?, tag?, owner}; required"
+      },
+      {
+        "name": "done",
+        "property": "done",
+        "kind": "boolean",
+        "description": "Controlled done state; default undefined (uncontrolled, starts at `task.done`)"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-done-change",
+        "prop": "onDoneChange",
+        "description": "Called when the done check changes"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "TelehealthCallFrame",
+    "tag": "co-telehealth-call-frame",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "remote",
+        "property": "remote",
+        "kind": "string",
+        "description": "Remote participant, e.g. \"Nora Scott\". Required"
+      },
+      {
+        "name": "state",
+        "property": "state",
+        "kind": "string",
+        "description": "'waiting' (waiting room, Admit Patient) | 'live' (End Visit) | 'poor' (weak connection); default 'live'"
+      },
+      {
+        "name": "elapsed",
+        "property": "elapsed",
+        "kind": "string",
+        "description": "Elapsed call time; default \"00:00\""
+      },
+      {
+        "name": "consent",
+        "property": "consent",
+        "kind": "boolean",
+        "description": "Shows the consent, location and billing note; default false"
+      },
+      {
+        "name": "location",
+        "property": "location",
+        "kind": "string",
+        "description": "Patient location for the visit; default none"
+      },
+      {
+        "name": "pos",
+        "property": "pos",
+        "kind": "string",
+        "description": "Place of service code for the billing note; default \"10\""
+      },
+      {
+        "name": "muted",
+        "property": "muted",
+        "kind": "boolean",
+        "description": "Controlled microphone muted state; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-muted",
+        "property": "defaultMuted",
+        "kind": "boolean",
+        "description": "Initial muted state when uncontrolled; default false"
+      },
+      {
+        "name": "camera-off",
+        "property": "cameraOff",
+        "kind": "boolean",
+        "description": "Controlled camera off state; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-camera-off",
+        "property": "defaultCameraOff",
+        "kind": "boolean",
+        "description": "Initial camera off state when uncontrolled; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-muted-change",
+        "prop": "onMutedChange",
+        "description": "Called when Mute is toggled"
+      },
+      {
+        "name": "co-camera-off-change",
+        "prop": "onCameraOffChange",
+        "description": "Called when the camera button is toggled"
+      },
+      {
+        "name": "co-chat",
+        "prop": "onChat",
+        "description": "Called when Chat is pressed; default none"
+      },
+      {
+        "name": "co-admit",
+        "prop": "onAdmit",
+        "description": "Called when Admit Patient is pressed (waiting state); default none"
+      },
+      {
+        "name": "co-end",
+        "prop": "onEnd",
+        "description": "Called when End Visit is pressed (live and poor states); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -5632,14 +11015,14 @@
         "description": ""
       },
       {
-        "name": "auto-complete",
-        "property": "autoComplete",
+        "name": "placeholder",
+        "property": "placeholder",
         "kind": "string",
         "description": ""
       },
       {
-        "name": "placeholder",
-        "property": "placeholder",
+        "name": "auto-complete",
+        "property": "autoComplete",
         "kind": "string",
         "description": ""
       }
@@ -5650,6 +11033,11 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the value and the change event; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -5774,6 +11162,12 @@
         "description": ""
       },
       {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
         "name": "accept",
         "property": "accept",
         "kind": "string",
@@ -5810,12 +11204,6 @@
         "description": ""
       },
       {
-        "name": "placeholder",
-        "property": "placeholder",
-        "kind": "string",
-        "description": ""
-      },
-      {
         "name": "step",
         "property": "step",
         "kind": "json",
@@ -5828,6 +11216,140 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the (masked) value and the change event; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "Timeline",
+    "tag": "co-timeline",
+    "aliases": [
+      "PATimeline"
+    ],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Steps in order. Required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "TimeSlotPicker",
+    "tag": "co-time-slot-picker",
+    "aliases": [
+      "SlotPicker"
+    ],
+    "attributes": [
+      {
+        "name": "slots",
+        "property": "slots",
+        "kind": "json",
+        "description": "Array<{time, state: available|booked|held|blocked}>"
+      },
+      {
+        "name": "days",
+        "property": "days",
+        "kind": "json",
+        "description": "Array<{id, weekday, date, disabled?}>; default none (no day strip)"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Selected time (controlled); default undefined"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initially selected time (uncontrolled); default none"
+      },
+      {
+        "name": "day",
+        "property": "day",
+        "kind": "string",
+        "description": "Selected day id (controlled); default undefined"
+      },
+      {
+        "name": "default-day",
+        "property": "defaultDay",
+        "kind": "string",
+        "description": "Initially selected day id (uncontrolled); default the first day"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Group label shown above the grid, e.g. provider and visit length; default \"Available times\" (not shown)"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "(time) => void, called when a slot is chosen; default none"
+      },
+      {
+        "name": "co-day-change",
+        "prop": "onDayChange",
+        "description": "(dayId) => void, called when a day is chosen; default none"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -5891,47 +11413,23 @@
         "name": "co-dismiss",
         "prop": "onDismiss",
         "description": "Shows a Dismiss (x) button that calls this; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "(default)",
         "prop": "children",
-        "description": "Message content when `message` is not set"
-      }
-    ]
-  },
-  {
-    "component": "ToastProvider",
-    "tag": "co-toast-provider",
-    "aliases": [],
-    "attributes": [
-      {
-        "name": "max",
-        "property": "max",
-        "kind": "number",
-        "description": "Toasts visible at once; the rest wait in the queue; default 3"
-      },
-      {
-        "name": "duration",
-        "property": "duration",
-        "kind": "number",
-        "description": "Default duration in ms for neutral and success toasts; default 2800"
-      },
-      {
-        "name": "class-name",
-        "property": "className",
-        "kind": "string",
-        "description": "Class on the fixed stack at the bottom of the screen; default none"
-      }
-    ],
-    "properties": [],
-    "events": [],
-    "slots": [
-      {
-        "name": "(default)",
-        "prop": "children",
-        "description": "Your app"
+        "description": "Message content when `message` is not set "
       }
     ]
   },
@@ -5977,7 +11475,7 @@
       {
         "name": "(default)",
         "prop": "children",
-        "description": "One focusable element (Button, IconButton, link); required"
+        "description": "One focusable element (Button, IconButton, link); required "
       }
     ]
   },
@@ -6065,7 +11563,12 @@
         "description": ""
       }
     ],
-    "properties": [],
+    "properties": [
+      {
+        "name": "linkHref",
+        "description": "Classic only: URL of each module link, for real navigation; default none (links call onNavigate)"
+      }
+    ],
     "events": [
       {
         "name": "co-role-change",
@@ -6106,14 +11609,444 @@
         "name": "co-account",
         "prop": "onAccount",
         "description": "Account button handler; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": [
       {
         "name": "tabs",
         "prop": "tabs",
-        "description": "Rail only: the PatientTabs; default none"
+        "description": "Rail only: the PatientTabs; default none Plain text also works as the `tabs` attribute."
       }
     ]
+  },
+  {
+    "component": "UnitsMeter",
+    "tag": "co-units-meter",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "used",
+        "property": "used",
+        "kind": "number",
+        "description": "Units used so far; required"
+      },
+      {
+        "name": "approved",
+        "property": "approved",
+        "kind": "number",
+        "description": "Units approved; required"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "Unit word (\"visits\"); default \"units\""
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label and accessible name; default \"Units used\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "helper",
+        "prop": "helper",
+        "description": "Helper text under the bar (\"Valid 10/01/2026 to 12/31/2026\"); default none Plain text also works as the `helper` attribute."
+      }
+    ]
+  },
+  {
+    "component": "VisitNoteEditor",
+    "tag": "co-visit-note-editor",
+    "aliases": [
+      "VisitNote"
+    ],
+    "attributes": [
+      {
+        "name": "sections",
+        "property": "sections",
+        "kind": "json",
+        "description": "Array<{id, title, text?, ai?, required?, error?, rows?}>; required"
+      },
+      {
+        "name": "diagnoses",
+        "property": "diagnoses",
+        "kind": "json",
+        "description": "Diagnoses on the note (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-diagnoses",
+        "property": "defaultDiagnoses",
+        "kind": "json",
+        "description": "Initial diagnoses (uncontrolled); default []"
+      },
+      {
+        "name": "procedures",
+        "property": "procedures",
+        "kind": "json",
+        "description": "Procedures on the note (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-procedures",
+        "property": "defaultProcedures",
+        "kind": "json",
+        "description": "Initial procedures (uncontrolled); default []"
+      },
+      {
+        "name": "icd-options",
+        "property": "icdOptions",
+        "kind": "json",
+        "description": "ICD-10 search options: Array<{code, label}>; default []"
+      },
+      {
+        "name": "cpt-options",
+        "property": "cptOptions",
+        "kind": "json",
+        "description": "CPT search options: Array<{code, label}>; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Heading; default \"Visit Note\""
+      },
+      {
+        "name": "meta",
+        "property": "meta",
+        "kind": "string",
+        "description": "Date, place and template line (\"10/09/2026 10:30 AM . Main Street Clinic . Primary Care SOAP\"); default none"
+      },
+      {
+        "name": "signed",
+        "property": "signed",
+        "kind": "boolean",
+        "description": "Signed and locked (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-signed",
+        "property": "defaultSigned",
+        "kind": "boolean",
+        "description": "Initially signed (uncontrolled); default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Lock banner for roles without Edit clinical chart; default false"
+      },
+      {
+        "name": "lock-text",
+        "property": "lockText",
+        "kind": "string",
+        "description": "Lock banner text when readOnly; default \"Your role can view this note but not edit it.\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-diagnoses-change",
+        "prop": "onDiagnosesChange",
+        "description": "Called when a diagnosis is added or removed; default none"
+      },
+      {
+        "name": "co-procedures-change",
+        "prop": "onProceduresChange",
+        "description": "Called when a procedure is added or removed; default none"
+      },
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Sign Note; default none"
+      },
+      {
+        "name": "co-ai-draft",
+        "prop": "onAiDraft",
+        "description": "Shows Draft with AI Scribe, which calls this; default none"
+      },
+      {
+        "name": "co-save-draft",
+        "prop": "onSaveDraft",
+        "description": "Save Draft; default none"
+      },
+      {
+        "name": "co-section-change",
+        "prop": "onSectionChange",
+        "description": "Called with the section id and its new text as the user types or accepts an AI draft; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "VitalSign",
+    "tag": "co-vital-sign",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Vital name (\"Blood pressure\"); required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": "Reading (\"152/94\"); required"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "Unit (\"mmHg\"); default none"
+      },
+      {
+        "name": "flag",
+        "property": "flag",
+        "kind": "string",
+        "description": "'H' | 'L' | 'HH' | 'LL'; critical flags shade the tile; default none"
+      },
+      {
+        "name": "trend",
+        "property": "trend",
+        "kind": "json",
+        "description": "number[]: earlier readings, oldest first, drawn as a sparkline; default none"
+      },
+      {
+        "name": "taken",
+        "property": "taken",
+        "kind": "string",
+        "description": "Time taken or a note (\"10:12 AM\", \"52nd percentile\"); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "VitalsPanel",
+    "tag": "co-vitals-panel",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "VitalSign props[]; required"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Enter Vitals; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-enter-vitals",
+        "prop": "onEnterVitals",
+        "description": "Enter Vitals clicked; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Line under the title (\"entered by Lisa Chen RN, 10:12 AM\"); default none Plain text also works as the `subtitle` attribute."
+      }
+    ]
+  },
+  {
+    "component": "WaitlistRow",
+    "tag": "co-waitlist-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "item",
+        "property": "item",
+        "kind": "json",
+        "description": "The waitlist entry. Required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-offer",
+        "prop": "onOffer",
+        "description": "Called when Offer Slot is pressed (enabled only with a match); default none"
+      },
+      {
+        "name": "co-text",
+        "prop": "onText",
+        "description": "Row menu: Text Patient; default none"
+      },
+      {
+        "name": "co-edit",
+        "prop": "onEdit",
+        "description": "Row menu: Edit Preferences; default none"
+      },
+      {
+        "name": "co-remove",
+        "prop": "onRemove",
+        "description": "Row menu: Remove from Waitlist; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
   }
 ]

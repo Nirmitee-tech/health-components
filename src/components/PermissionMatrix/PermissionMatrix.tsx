@@ -1,19 +1,32 @@
-import type { HTMLAttributes } from 'react';
-import { cx } from '../../internal/cx';
-import { useControllableState } from '../../internal/hooks';
-import { Badge, type BadgeProps, type BadgeTone } from '../Badge/Badge';
-import type { IconName } from '../Icon/Icon';
-import { Switch } from '../Switch/Switch';
+import type { HTMLAttributes } from "react";
+import { cx } from "../../internal/cx";
+import { useControllableState } from "../../internal/hooks";
+import { Badge, type BadgeProps, type BadgeTone } from "../Badge/Badge";
+import type { IconName } from "../Icon/Icon";
+import { Switch } from "../Switch/Switch";
 
 /** RBAC levels from the screens: None hidden, View locked, Edit create and change, Approve sign off. */
-export type PermissionLevel = 'none' | 'view' | 'edit' | 'approve';
+export type PermissionLevel = "none" | "view" | "edit" | "approve";
 
 /** Label, tone, icon and meaning of each level, in order. */
-export const permissionLevels: Record<PermissionLevel, { label: string; tone: BadgeTone; icon: IconName; meaning: string }> = {
-  none: { label: 'None', tone: 'neutral', icon: 'x', meaning: 'hidden' },
-  view: { label: 'View', tone: 'info', icon: 'eye', meaning: 'locked' },
-  edit: { label: 'Edit', tone: 'success', icon: 'check', meaning: 'create and change' },
-  approve: { label: 'Approve', tone: 'ai', icon: 'shield', meaning: 'sign off' },
+export const permissionLevels: Record<
+  PermissionLevel,
+  { label: string; tone: BadgeTone; icon: IconName; meaning: string }
+> = {
+  none: { label: "None", tone: "neutral", icon: "x", meaning: "hidden" },
+  view: { label: "View", tone: "info", icon: "eye", meaning: "locked" },
+  edit: {
+    label: "Edit",
+    tone: "success",
+    icon: "check",
+    meaning: "create and change",
+  },
+  approve: {
+    label: "Approve",
+    tone: "ai",
+    icon: "shield",
+    meaning: "sign off",
+  },
 };
 
 const LEVEL_KEYS = Object.keys(permissionLevels) as PermissionLevel[];
@@ -28,13 +41,16 @@ export interface PermissionRow {
   levels: Partial<Record<string, PermissionLevel>>;
 }
 
-export interface LevelTagProps extends Omit<BadgeProps, 'tone' | 'icon' | 'children'> {
+export interface LevelTagProps extends Omit<
+  BadgeProps,
+  "tone" | "icon" | "children"
+> {
   /** 'none' | 'view' | 'edit' | 'approve'; default 'none' */
   level?: PermissionLevel;
 }
 
 /** LevelTag is the Badge for one permission level: its own icon and word, so the level reads without colour. */
-export function LevelTag({ level = 'none', ...rest }: LevelTagProps) {
+export function LevelTag({ level = "none", ...rest }: LevelTagProps) {
   const l = permissionLevels[level] ?? permissionLevels.none;
   return (
     <Badge tone={l.tone} icon={l.icon} {...rest}>
@@ -43,7 +59,10 @@ export function LevelTag({ level = 'none', ...rest }: LevelTagProps) {
   );
 }
 
-export interface PermissionMatrixProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface PermissionMatrixProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> {
   /** Role names, one column each (1 to 3 recommended); required */
   roles: string[];
   /** Rows (controlled): Array<{module, action, levels: Record<role, none|view|edit|approve>}>; default uncontrolled */
@@ -77,13 +96,22 @@ export function PermissionMatrix({
   defaultOnlyDifferences = false,
   onOnlyDifferencesChange,
   onChange,
-  caption = 'Permissions by role',
+  caption = "Permissions by role",
   className,
   ...rest
 }: PermissionMatrixProps) {
-  const [rows, setRows] = useControllableState(rowsProp, defaultRows, onRowsChange);
-  const [only, setOnly] = useControllableState(onlyDifferences, defaultOnlyDifferences, onOnlyDifferencesChange);
-  const levelOf = (r: PermissionRow, role: string): PermissionLevel => r.levels[role] ?? 'none';
+  const [rows, setRows] = useControllableState(
+    rowsProp,
+    defaultRows,
+    onRowsChange,
+  );
+  const [only, setOnly] = useControllableState(
+    onlyDifferences,
+    defaultOnlyDifferences,
+    onOnlyDifferencesChange,
+  );
+  const levelOf = (r: PermissionRow, role: string): PermissionLevel =>
+    r.levels[role] ?? "none";
   const shown = only
     ? rows.filter((r) => {
         const v = roles.map((ro) => levelOf(r, ro));
@@ -102,9 +130,13 @@ export function PermissionMatrix({
 
   let mod: string | null = null;
   return (
-    <div className={cx('co-dt', className)} {...rest}>
+    <div className={cx("co-dt", className)} {...rest}>
       <div className="co-row co-gap-8">
-        <Switch label="Only show differences" checked={only} onChange={setOnly} />
+        <Switch
+          label="Only show differences"
+          checked={only}
+          onChange={setOnly}
+        />
         <div className="co-legend co-ml">
           {LEVEL_KEYS.map((k) => (
             <span key={k}>
@@ -151,7 +183,13 @@ export function PermissionMatrix({
                               className="co-inp co-inp-sm co-pm-sel"
                               aria-label={`${r.action} for ${ro}`}
                               value={lv}
-                              onChange={(e) => setLevel(r, ro, e.target.value as PermissionLevel)}
+                              onChange={(e) =>
+                                setLevel(
+                                  r,
+                                  ro,
+                                  e.target.value as PermissionLevel,
+                                )
+                              }
                             >
                               {LEVEL_KEYS.map((k) => (
                                 <option key={k} value={k}>

@@ -93,10 +93,13 @@ defineCareOSElements();
 npm install
 npm run storybook        # component workshop at http://localhost:6006
 npm test                 # unit tests + every story rendered (DOM and SSR) and checked with axe
+npm run lint
 npm run typecheck
 npm run build            # dist/
 cd website && npm install && npm start   # docs site at http://localhost:3000/health-components/
 ```
+
+A working Angular app lives in [`examples/angular`](./examples/angular).
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the repository layout and the rules every component follows.
 

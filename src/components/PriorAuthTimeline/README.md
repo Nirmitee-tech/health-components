@@ -39,6 +39,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `alertTone` | 'warning' \| 'error' \| 'info' | 'warning' |
 | `UnitsMeter` | {used, approved, unit?, label?, helper?} |  |
 
+In this React port, `alert.onAction` runs the alert button.
+
 ## Usage
 
 ```jsx

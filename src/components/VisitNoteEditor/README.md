@@ -40,6 +40,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `lockText` | string | default |
 | `onSign / onAiDraft` | () => void | none |
 
+In this React port, `diagnoses`, `procedures` and `signed` are controlled props (with `onDiagnosesChange`, `onProceduresChange`, `onSign`); `defaultDiagnoses`, `defaultProcedures` and `defaultSigned` make them uncontrolled. Accept puts the AI draft into the section field; Edit does the same and focuses the field. `onSectionChange(id, text)` and `onSaveDraft` report edits.
+
 ## Usage
 
 ```jsx

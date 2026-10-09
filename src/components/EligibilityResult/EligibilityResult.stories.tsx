@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
-import { EligibilityResult } from './EligibilityResult';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { fn } from "storybook/test";
+import { EligibilityResult } from "./EligibilityResult";
 
 const meta = {
-  title: 'Complex/Revenue/EligibilityResult',
+  title: "Complex/Revenue/EligibilityResult",
   component: EligibilityResult,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
@@ -15,21 +15,24 @@ const meta = {
     },
   },
   argTypes: {
-    state: { control: 'inline-radio', options: ['active', 'inactive', 'error', 'waiting'] },
-    headline: { control: 'text' },
-    aaa: { control: 'text' },
-    meaning: { control: 'text' },
-    todo: { control: 'text' },
+    state: {
+      control: "inline-radio",
+      options: ["active", "inactive", "error", "waiting"],
+    },
+    headline: { control: "text" },
+    aaa: { control: "text" },
+    meaning: { control: "text" },
+    todo: { control: "text" },
   },
   args: {
-    state: 'active',
-    payer: 'Aetna',
-    headline: 'Active: Aetna PPO',
-    checkedAt: '10/09/2026 9:12 AM, 612 ms',
+    state: "active",
+    payer: "Aetna",
+    headline: "Active: Aetna PPO",
+    checkedAt: "10/09/2026 9:12 AM, 612 ms",
     benefits: [
-      ['Copay, office visit', '$25'],
-      ['Coinsurance', '20% after deductible'],
-      ['Out of pocket max', '$4,000 ($1,610 met)'],
+      ["Copay, office visit", "$25"],
+      ["Coinsurance", "20% after deductible"],
+      ["Out of pocket max", "$4,000 ($1,610 met)"],
     ],
     deductible: [1180, 1500],
     onRerun: fn(),
@@ -64,13 +67,13 @@ export const States: Story = {
 
 export const Inactive: Story = {
   args: {
-    state: 'inactive',
-    headline: 'Coverage ended 06/30/2026',
-    meaning: 'Aetna shows this plan ended on 06/30/2026.',
-    todo: 'Ask the patient for a new card, or offer a Good Faith Estimate.',
+    state: "inactive",
+    headline: "Coverage ended 06/30/2026",
+    meaning: "Aetna shows this plan ended on 06/30/2026.",
+    todo: "Ask the patient for a new card, or offer a Good Faith Estimate.",
     benefits: undefined,
     deductible: undefined,
   },
 };
 
-export const Waiting: Story = { args: { state: 'waiting', payer: 'BCBS IL' } };
+export const Waiting: Story = { args: { state: "waiting", payer: "BCBS IL" } };

@@ -53,6 +53,17 @@ const kebab = (s: string) => s.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
 /** `onSelect` -> `co-select`, `onRowClick` -> `co-row-click`. */
 export const eventName = (prop: string) => 'co-' + kebab(prop.slice(2)).replace(/^-/, '');
 
+/**
+ * Native change/input events (from components that pass the DOM event straight through, such as Select) do not
+ * cross the shadow boundary, and a React synthetic event is no use to Angular or Vue: send the control's value
+ * (or `checked` for checkboxes and radios) instead. Every other argument is passed as is.
+ */
+function eventValue(arg: unknown): unknown {
+  const e = arg as { nativeEvent?: Event; type?: string; target?: HTMLInputElement } | null;
+  if (!e || typeof e !== 'object' || !e.nativeEvent || !e.target || (e.type !== 'change' && e.type !== 'input')) return arg;
+  return e.target.type === 'checkbox' || e.target.type === 'radio' ? e.target.checked : e.target.value;
+}
+
 function parseAttr(kind: PropKind, value: string | null): unknown {
   if (value === null) return kind === 'boolean' ? false : undefined;
   switch (kind) {
@@ -94,6 +105,8 @@ export function createElementClass(spec: ElementSpec, options: DefineOptions = {
   const attrToProp = new Map<string, [string, PropKind]>();
   for (const [name, kind] of entries) {
     if (kind === 'string' || kind === 'number' || kind === 'boolean' || kind === 'json') attrToProp.set(kebab(name), [name, kind]);
+    // Content props other than children also take plain text from an attribute: <co-card title="Claim lines">.
+    else if (kind === 'node' && name !== 'children') attrToProp.set(kebab(name), [name, 'string']);
   }
   const css = HOST_CSS + (options.css ?? '');
 
@@ -190,9 +203,13 @@ export function createElementClass(spec: ElementSpec, options: DefineOptions = {
         if (kind === 'event') {
           const own = this._props[name] as ((...a: unknown[]) => unknown) | undefined;
           props[name] = (...args: unknown[]) => {
+            // `onChange(value, event)`: the trailing React event adds nothing outside React, so drop it.
+            const isSynthetic = (a: unknown) => !!a && typeof a === 'object' && 'nativeEvent' in (a as object);
+            const kept = args.length > 1 ? args.filter((a, i) => i === 0 || !isSynthetic(a)) : args;
+            const values = kept.map(eventValue);
             this.dispatchEvent(
               new CustomEvent(eventName(name), {
-                detail: args.length <= 1 ? args[0] : args,
+                detail: values.length <= 1 ? values[0] : values,
                 bubbles: true,
                 composed: true,
               })

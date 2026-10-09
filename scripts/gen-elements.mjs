@@ -8,7 +8,7 @@
  */
 import { writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
-import { components, eventName, kebab, root } from './lib/components-meta.mjs';
+import { components, eventName, kebab, root, tagFor } from './lib/components-meta.mjs';
 
 /* ---------- registry.generated.ts ---------- */
 const pascalTag = (tag) => tag.split('-').map((s) => s[0].toUpperCase() + s.slice(1)).join('');
@@ -23,7 +23,10 @@ for (const c of components) {
   const defaults = Object.entries(c.props)
     .filter(([, v]) => !v.optional && v.kind === 'json' && /\[\]$|^(Readonly)?Array</.test(v.type))
     .map(([k]) => `${k}: []`);
-  lines.push(`  { tag: '${c.tag}', component: C.${c.name} as never, props: { ${p} }${defaults.length ? `, defaults: { ${defaults.join(', ')} }` : ''} },`);
+  const tail = `props: { ${p} }${defaults.length ? `, defaults: { ${defaults.join(', ')} }` : ''} },`;
+  lines.push(`  { tag: '${c.tag}', component: C.${c.name} as never, ${tail}`);
+  // Aliases the design system promises (ScheduleCalendar, RoleSwitcher, ...) get their own tag too.
+  for (const a of c.aliases) lines.push(`  { tag: '${tagFor(a)}', component: C.${a} as never, ${tail}`);
 }
 lines.push('];');
 lines.push('');
@@ -37,7 +40,10 @@ for (const c of components) {
 lines.push('');
 lines.push('declare global {');
 lines.push('  interface HTMLElementTagNameMap {');
-for (const c of components) lines.push(`    '${c.tag}': ${pascalTag(c.tag)}Element;`);
+for (const c of components) {
+  lines.push(`    '${c.tag}': ${pascalTag(c.tag)}Element;`);
+  for (const a of c.aliases) lines.push(`    '${tagFor(a)}': ${pascalTag(c.tag)}Element;`);
+}
 lines.push('  }');
 lines.push('}');
 const header = "import type { ComponentProps } from 'react';\n";
@@ -59,7 +65,11 @@ const manifest = components.map((c) => ({
     .map(([k, v]) => ({ name: eventName(k), prop: k, description: v.doc })),
   slots: Object.entries(c.props)
     .filter(([, v]) => v.kind === 'node')
-    .map(([k, v]) => ({ name: k === 'children' ? '(default)' : kebab(k), prop: k, description: v.doc })),
+    .map(([k, v]) => ({
+      name: k === 'children' ? '(default)' : kebab(k),
+      prop: k,
+      description: (v.doc ? v.doc + ' ' : '') + (k === 'children' ? '' : `Plain text also works as the \`${kebab(k)}\` attribute.`),
+    })),
 }));
 writeFileSync(resolve(root, 'src/elements/manifest.generated.json'), JSON.stringify(manifest, null, 2) + '\n');
 console.log(`elements: ${components.length} custom elements (${relative(root, resolve(root, 'src/elements/registry.generated.ts'))})`);

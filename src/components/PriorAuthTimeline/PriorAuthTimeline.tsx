@@ -1,10 +1,10 @@
-import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
-import { Alert } from '../Alert/Alert';
-import { StatusTag } from '../Badge/Badge';
-import { Button } from '../Button/Button';
-import { Card } from '../Card/Card';
-import { ProgressBar } from '../ProgressBar/ProgressBar';
-import { Timeline, type TimelineItem } from '../Timeline/Timeline';
+import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
+import { Alert } from "../Alert/Alert";
+import { StatusTag } from "../Badge/Badge";
+import { Button } from "../Button/Button";
+import { Card } from "../Card/Card";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { Timeline, type TimelineItem } from "../Timeline/Timeline";
 
 export interface UnitsMeterProps extends HTMLAttributes<HTMLDivElement> {
   /** Units used so far; required */
@@ -20,24 +20,26 @@ export interface UnitsMeterProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /** UnitsMeter shows units used against units approved as a meter that turns amber at 75% and red at 90%. */
-export const UnitsMeter = forwardRef<HTMLDivElement, UnitsMeterProps>(function UnitsMeter(
-  { used, approved, unit = 'units', label = 'Units used', helper, ...rest },
-  ref
-) {
-  return (
-    <ProgressBar
-      ref={ref}
-      label={label}
-      value={used}
-      max={approved}
-      unit={unit}
-      meter
-      thresholds={[75, 90]}
-      helper={helper}
-      {...rest}
-    />
-  );
-});
+export const UnitsMeter = forwardRef<HTMLDivElement, UnitsMeterProps>(
+  function UnitsMeter(
+    { used, approved, unit = "units", label = "Units used", helper, ...rest },
+    ref,
+  ) {
+    return (
+      <ProgressBar
+        ref={ref}
+        label={label}
+        value={used}
+        max={approved}
+        unit={unit}
+        meter
+        thresholds={[75, 90]}
+        helper={helper}
+        {...rest}
+      />
+    );
+  },
+);
 
 /** The alert shown on a prior authorization. */
 export interface PriorAuthAlert {
@@ -51,7 +53,10 @@ export interface PriorAuthAlert {
   onAction?: () => void;
 }
 
-export interface PriorAuthTimelineProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
+export interface PriorAuthTimelineProps extends Omit<
+  HTMLAttributes<HTMLElement>,
+  "title"
+> {
   /** Authorization number ("PA-2026-11873"); default "Prior authorization" */
   authId?: string;
   /** Service and code ("Physical therapy 97110"); default none */
@@ -75,7 +80,7 @@ export interface PriorAuthTimelineProps extends Omit<HTMLAttributes<HTMLElement>
   /** {title, body, action?, onAction?}; default none */
   alert?: PriorAuthAlert;
   /** 'warning' | 'error' | 'info'; default 'warning' */
-  alertTone?: 'warning' | 'error' | 'info';
+  alertTone?: "warning" | "error" | "info";
 }
 
 /** PriorAuthTimeline shows a prior authorization: status, units used against approved (UnitsMeter), any alert and the status history. */
@@ -91,18 +96,25 @@ export function PriorAuthTimeline({
   expires,
   events = [],
   alert,
-  alertTone = 'warning',
+  alertTone = "warning",
   ...rest
 }: PriorAuthTimelineProps) {
   return (
     <Card
-      title={[authId || 'Prior authorization', service].filter(Boolean).join(' . ')}
-      subtitle={[payer, patient].filter(Boolean).join(' . ') || undefined}
+      title={[authId || "Prior authorization", service]
+        .filter(Boolean)
+        .join(" . ")}
+      subtitle={[payer, patient].filter(Boolean).join(" . ") || undefined}
       actions={<StatusTag kind="pa" status={status} />}
       {...rest}
     >
       {approved ? (
-        <UnitsMeter used={used} approved={approved} unit={unit} helper={expires ? `Valid ${expires}` : undefined} />
+        <UnitsMeter
+          used={used}
+          approved={approved}
+          unit={unit}
+          helper={expires ? `Valid ${expires}` : undefined}
+        />
       ) : null}
       {alert ? (
         <Alert

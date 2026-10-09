@@ -1,25 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
-import { InsuranceCoverageCard, type Coverage } from './InsuranceCoverageCard';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { fn } from "storybook/test";
+import { InsuranceCoverageCard, type Coverage } from "./InsuranceCoverageCard";
 
 const coverages: Coverage[] = [
-  { payer: 'AARP Medicare Supplement', plan: 'Plan G', memberId: 'AR 3388 1021', status: 'Active', checked: '10/08/2026' },
-  { payer: 'Medicare Part B', plan: 'Original Medicare', memberId: '1EG4-TE5-MK72', status: 'Active', checked: '10/08/2026' },
   {
-    payer: 'Aetna',
-    plan: 'Retiree PPO',
-    memberId: 'W123456789',
-    group: '0844512',
-    subscriber: 'Spouse: Maria Edwards',
-    status: 'Inactive',
-    checked: '09/02/2026',
+    payer: "AARP Medicare Supplement",
+    plan: "Plan G",
+    memberId: "AR 3388 1021",
+    status: "Active",
+    checked: "10/08/2026",
+  },
+  {
+    payer: "Medicare Part B",
+    plan: "Original Medicare",
+    memberId: "1EG4-TE5-MK72",
+    status: "Active",
+    checked: "10/08/2026",
+  },
+  {
+    payer: "Aetna",
+    plan: "Retiree PPO",
+    memberId: "W123456789",
+    group: "0844512",
+    subscriber: "Spouse: Maria Edwards",
+    status: "Inactive",
+    checked: "09/02/2026",
   },
 ];
 
 const meta = {
-  title: 'Complex/Revenue/InsuranceCoverageCard',
+  title: "Complex/Revenue/InsuranceCoverageCard",
   component: InsuranceCoverageCard,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
@@ -29,9 +41,9 @@ const meta = {
     },
   },
   argTypes: {
-    suggested: { control: 'text' },
-    selfPay: { control: 'boolean' },
-    readOnly: { control: 'boolean' },
+    suggested: { control: "text" },
+    selfPay: { control: "boolean" },
+    readOnly: { control: "boolean" },
   },
   args: {
     defaultCoverages: coverages,
@@ -50,9 +62,11 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {};
 
 export const SuggestedOrder: Story = {
-  args: { suggested: 'Medicare Part B first, then AARP Medicare Supplement' },
+  args: { suggested: "Medicare Part B first, then AARP Medicare Supplement" },
 };
 
 export const SelfPay: Story = { args: { selfPay: true, defaultCoverages: [] } };
 
-export const ReadOnly: Story = { args: { readOnly: true, defaultCoverages: coverages.slice(1, 3) } };
+export const ReadOnly: Story = {
+  args: { readOnly: true, defaultCoverages: coverages.slice(1, 3) },
+};

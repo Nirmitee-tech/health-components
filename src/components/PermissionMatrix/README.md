@@ -32,13 +32,17 @@ The consumer provides these. Everything else comes from the tokens.
 | `onlyDifferences` | boolean | false |
 | `onChange` | (row, role, level) => void | none |
 
+In this React port, `rows` and `onlyDifferences` are controlled props (pair them with `onRowsChange` and `onOnlyDifferencesChange`); `defaultRows` and `defaultOnlyDifferences` make them uncontrolled. The level helper is exported as `LevelTag`, the level map as `permissionLevels`.
+
 ## Usage
 
 ```jsx
 <PermissionMatrix
   roles={["Provider", "Nurse / MA", "Biller"]}
-  rows={[{ module: "Billing", action: "Submit claims", levels: { Provider: "none", "Nurse / MA": "none", Biller: "edit" } }]}
+  rows={rows} onRowsChange={setRows}
   editable onChange={(row, role, level) => savePermission(row, role, level)} />
+
+<PermissionMatrix roles={["Provider", "Biller"]} defaultRows={rows} defaultOnlyDifferences />
 ```
 
 ## Accessibility

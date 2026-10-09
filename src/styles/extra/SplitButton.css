@@ -1,0 +1,3 @@
+/* .co-mwrap (inline-block) is declared after .co-split and overrode its inline-flex, so the two halves sat on the
+   text baseline and the arrow rose 2px above the label button. Keep the split a flex row. */
+.co-split.co-mwrap { display: inline-flex; vertical-align: middle; }

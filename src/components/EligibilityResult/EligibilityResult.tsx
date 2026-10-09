@@ -1,23 +1,32 @@
-import type { HTMLAttributes } from 'react';
-import type { AlertTone } from '../Alert/Alert';
-import { Alert } from '../Alert/Alert';
-import { Button } from '../Button/Button';
-import { Card } from '../Card/Card';
-import { DescriptionList, type DescriptionItem } from '../DescriptionList/DescriptionList';
-import { ProgressBar } from '../ProgressBar/ProgressBar';
-import { Spinner } from '../Spinner/Spinner';
+import type { HTMLAttributes } from "react";
+import type { AlertTone } from "../Alert/Alert";
+import { Alert } from "../Alert/Alert";
+import { Button } from "../Button/Button";
+import { Card } from "../Card/Card";
+import {
+  DescriptionList,
+  type DescriptionItem,
+} from "../DescriptionList/DescriptionList";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { Spinner } from "../Spinner/Spinner";
 
-export type EligibilityState = 'active' | 'inactive' | 'error' | 'waiting';
+export type EligibilityState = "active" | "inactive" | "error" | "waiting";
 
 /** Alert tone and default headline per state. */
-export const eligibilityStates: Record<EligibilityState, { tone: AlertTone; title: string }> = {
-  active: { tone: 'success', title: 'Active' },
-  inactive: { tone: 'error', title: 'Inactive' },
-  error: { tone: 'error', title: 'Payer returned an error' },
-  waiting: { tone: 'info', title: 'Waiting for the payer' },
+export const eligibilityStates: Record<
+  EligibilityState,
+  { tone: AlertTone; title: string }
+> = {
+  active: { tone: "success", title: "Active" },
+  inactive: { tone: "error", title: "Inactive" },
+  error: { tone: "error", title: "Payer returned an error" },
+  waiting: { tone: "info", title: "Waiting for the payer" },
 };
 
-export interface EligibilityResultProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
+export interface EligibilityResultProps extends Omit<
+  HTMLAttributes<HTMLElement>,
+  "title"
+> {
   /** 'active' | 'inactive' | 'error' | 'waiting'; default 'active' */
   state?: EligibilityState;
   /** Payer name; required */
@@ -44,11 +53,11 @@ export interface EligibilityResultProps extends Omit<HTMLAttributes<HTMLElement>
   onSelfPay?: () => void;
 }
 
-const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
+const usd = (n: number) => `$${n.toLocaleString("en-US")}`;
 
 /** EligibilityResult shows the payer's 271 answer: active with benefits, inactive, an AAA error with what it means and what to do, or waiting. */
 export function EligibilityResult({
-  state = 'active',
+  state = "active",
   payer,
   headline,
   aaa,
@@ -63,7 +72,7 @@ export function EligibilityResult({
   ...rest
 }: EligibilityResultProps) {
   const e = eligibilityStates[state] ?? eligibilityStates.active;
-  if (state === 'waiting') {
+  if (state === "waiting") {
     return (
       <Card title="Response (271)" aria-busy="true" {...rest}>
         <div className="co-row co-gap-8">
@@ -84,14 +93,20 @@ export function EligibilityResult({
       }
       {...rest}
     >
-      <Alert tone={e.tone} title={(state === 'error' && aaa ? `AAA ${aaa}: ` : '') + (headline || e.title)}>
+      <Alert
+        tone={e.tone}
+        title={
+          (state === "error" && aaa ? `AAA ${aaa}: ` : "") +
+          (headline || e.title)
+        }
+      >
         {meaning ? (
           <span>
             <b>What it means: </b>
             {meaning}
           </span>
         ) : null}
-        {meaning && todo ? ' ' : null}
+        {meaning && todo ? " " : null}
         {todo ? (
           <span>
             <b>What to do: </b>
@@ -99,8 +114,10 @@ export function EligibilityResult({
           </span>
         ) : null}
       </Alert>
-      {state === 'active' && benefits.length ? <DescriptionList items={benefits} /> : null}
-      {state === 'active' && deductible ? (
+      {state === "active" && benefits.length ? (
+        <DescriptionList items={benefits} />
+      ) : null}
+      {state === "active" && deductible ? (
         <ProgressBar
           label="Deductible met"
           value={deductible[0]}
@@ -108,7 +125,7 @@ export function EligibilityResult({
           valueText={`${usd(deductible[0])} of ${usd(deductible[1])}`}
         />
       ) : null}
-      {state !== 'active' ? (
+      {state !== "active" ? (
         <div className="co-row co-gap-8">
           <Button size="sm" onClick={onFixCoverage}>
             Fix Coverage Details

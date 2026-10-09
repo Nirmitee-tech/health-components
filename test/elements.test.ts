@@ -76,3 +76,51 @@ describe('element state', () => {
     expect(host.shadowRoot!.querySelector('input')).toBe(input);
   });
 });
+
+describe('content props', () => {
+  it('take text from an attribute or rich content from a named slot', async () => {
+    document.body.innerHTML = '<co-card title="Claim lines">Body</co-card>';
+    await tick();
+    const host = document.querySelector('co-card')!;
+    expect(host.shadowRoot!.textContent).toContain('Claim lines');
+    host.innerHTML = '<span slot="title">Rich <b>title</b></span>Body';
+    await tick();
+    await tick();
+    expect(host.shadowRoot!.querySelector('slot[name="title"]')).not.toBeNull();
+  });
+});
+
+describe('native change events', () => {
+  it('re-dispatch as co-change with the plain value', async () => {
+    document.body.innerHTML = '<co-select label="Provider"></co-select><co-checkbox label="Only show differences"></co-checkbox>';
+    await tick();
+    const sel = document.querySelector('co-select') as HTMLElement & { options?: string[] };
+    sel.options = ['All', 'James Bell MD'];
+    await tick();
+    await tick();
+    const seen: unknown[] = [];
+    sel.addEventListener('co-change', (e) => seen.push((e as CustomEvent).detail));
+    const select = sel.shadowRoot!.querySelector('select')!;
+    select.value = 'James Bell MD';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    const cb = document.querySelector('co-checkbox')!;
+    cb.addEventListener('co-change', (e) => seen.push((e as CustomEvent).detail));
+    cb.shadowRoot!.querySelector('input')!.click();
+    expect(seen).toEqual(['James Bell MD', true]);
+  });
+});
+
+describe('callback arguments', () => {
+  it('sends the value alone for onChange(value, event)', async () => {
+    document.body.innerHTML = '<co-text-field label="Member ID"></co-text-field>';
+    await tick();
+    const host = document.querySelector('co-text-field')!;
+    const seen: unknown[] = [];
+    host.addEventListener('co-change', (e) => seen.push((e as CustomEvent).detail));
+    const input = host.shadowRoot!.querySelector('input')!;
+    const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
+    setter.call(input, 'W123');
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    expect(seen).toEqual(['W123']);
+  });
+});

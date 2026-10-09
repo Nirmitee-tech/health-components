@@ -1,16 +1,16 @@
-import { useState, type HTMLAttributes } from 'react';
-import { cx } from '../../internal/cx';
-import { useControllableState } from '../../internal/hooks';
-import type { AppointmentChipProps } from '../AppointmentChip/AppointmentChip';
-import { Button } from '../Button/Button';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
-import { CalendarCell } from '../CalendarCell/CalendarCell';
-import { SegmentedControl } from '../SegmentedControl/SegmentedControl';
-import { Select } from '../Select/Select';
+import { useState, type HTMLAttributes } from "react";
+import { cx } from "../../internal/cx";
+import { useControllableState } from "../../internal/hooks";
+import type { AppointmentChipProps } from "../AppointmentChip/AppointmentChip";
+import { Button } from "../Button/Button";
+import { ButtonGroup } from "../ButtonGroup/ButtonGroup";
+import { CalendarCell } from "../CalendarCell/CalendarCell";
+import { SegmentedControl } from "../SegmentedControl/SegmentedControl";
+import { Select } from "../Select/Select";
 
-export type CalendarView = 'day' | 'week' | 'month';
-export type CalendarColorMode = 'status' | 'type';
-export type CalendarNavigation = 'prev' | 'today' | 'next';
+export type CalendarView = "day" | "week" | "month";
+export type CalendarColorMode = "status" | "type";
+export type CalendarNavigation = "prev" | "today" | "next";
 
 /** One appointment: AppointmentChip props plus where it sits on the calendar. */
 export interface CalendarAppointment extends AppointmentChipProps {
@@ -22,7 +22,10 @@ export interface CalendarAppointment extends AppointmentChipProps {
   slot?: string;
 }
 
-export interface CalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CalendarProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "title"
+> {
   /** 'day' | 'week' | 'month' (controlled); default uncontrolled */
   view?: CalendarView;
   /** Initial view (uncontrolled); default 'week' */
@@ -63,11 +66,47 @@ export interface CalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   onAppointmentClick?: (appointment: CalendarAppointment) => void;
 }
 
-const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const DOW_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const DEFAULT_TIMES = ['8:00 AM', '8:20 AM', '8:40 AM', '9:00 AM', '9:20 AM', '9:40 AM', '12:00 PM'];
-const STATUSES = ['Scheduled', 'Confirmed', 'Arrived', 'In Room', 'Completed', 'No Show'];
+const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const DOW_LONG = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const DEFAULT_TIMES = [
+  "8:00 AM",
+  "8:20 AM",
+  "8:40 AM",
+  "9:00 AM",
+  "9:20 AM",
+  "9:40 AM",
+  "12:00 PM",
+];
+const STATUSES = [
+  "Scheduled",
+  "Confirmed",
+  "Arrived",
+  "In Room",
+  "Completed",
+  "No Show",
+];
 
 /* Dates are plain "YYYY-MM-DD" strings; arithmetic runs in UTC so it is the same on the server and in every time zone. */
 interface Ymd {
@@ -75,10 +114,10 @@ interface Ymd {
   m: number; // 0-based
   d: number;
 }
-const pad = (n: number) => String(n).padStart(2, '0');
+const pad = (n: number) => String(n).padStart(2, "0");
 const toIso = ({ y, m, d }: Ymd) => `${y}-${pad(m + 1)}-${pad(d)}`;
 function parseIso(s: string): Ymd {
-  const [y, m, d] = s.split('-').map(Number);
+  const [y, m, d] = s.split("-").map(Number);
   return { y: y || 1970, m: (m || 1) - 1, d: d || 1 };
 }
 function fromUtc(t: number): Ymd {
@@ -88,7 +127,8 @@ function fromUtc(t: number): Ymd {
 const utc = ({ y, m, d }: Ymd) => Date.UTC(y, m, d);
 const addDays = (p: Ymd, n: number) => fromUtc(utc(p) + n * 86400000);
 const weekday = (p: Ymd) => new Date(utc(p)).getUTCDay();
-const daysInMonth = (y: number, m: number) => new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+const daysInMonth = (y: number, m: number) =>
+  new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
 function addMonths(p: Ymd, n: number): Ymd {
   const t = new Date(Date.UTC(p.y, p.m + n, 1));
   const y = t.getUTCFullYear();
@@ -99,12 +139,13 @@ function localToday(): string {
   const n = new Date();
   return toIso({ y: n.getFullYear(), m: n.getMonth(), d: n.getDate() });
 }
-const longDate = (p: Ymd) => `${DOW_LONG[weekday(p)]}, ${MONTHS[p.m]} ${p.d}, ${p.y}`;
+const longDate = (p: Ymd) =>
+  `${DOW_LONG[weekday(p)]}, ${MONTHS[p.m]} ${p.d}, ${p.y}`;
 
 /** Calendar is the full schedule with Day, Week and Month views, built from CalendarCell and AppointmentChip. */
 export function Calendar({
   view: viewProp,
-  defaultView = 'week',
+  defaultView = "week",
   onViewChange,
   date: dateProp,
   defaultDate,
@@ -117,7 +158,7 @@ export function Calendar({
   monthBlocks = {},
   colorBy = false,
   colorMode: colorModeProp,
-  defaultColorMode = 'status',
+  defaultColorMode = "status",
   onColorModeChange,
   onNavigate,
   onBook,
@@ -126,54 +167,82 @@ export function Calendar({
   ...rest
 }: CalendarProps) {
   // The device date is read once, in a state initializer (not on every render).
-  const [deviceToday] = useState(() => todayProp ?? defaultDate ?? localToday());
+  const [deviceToday] = useState(
+    () => todayProp ?? defaultDate ?? localToday(),
+  );
   const today = todayProp ?? deviceToday;
-  const [view, setView] = useControllableState<CalendarView>(viewProp, defaultView, onViewChange);
-  const [date, setDate] = useControllableState<string>(dateProp, defaultDate ?? today, onDateChange);
+  const [view, setView] = useControllableState<CalendarView>(
+    viewProp,
+    defaultView,
+    onViewChange,
+  );
+  const [date, setDate] = useControllableState<string>(
+    dateProp,
+    defaultDate ?? today,
+    onDateChange,
+  );
   const [colorMode, setColorMode] = useControllableState<CalendarColorMode>(
     colorModeProp,
     defaultColorMode,
-    onColorModeChange
+    onColorModeChange,
   );
 
   const cur = parseIso(date);
   const todayIso = today;
 
   const onDay = (a: CalendarAppointment, p: Ymd) =>
-    a.date ? a.date === toIso(p) : a.day === p.d && p.m === cur.m && p.y === cur.y;
+    a.date
+      ? a.date === toIso(p)
+      : a.day === p.d && p.m === cur.m && p.y === cur.y;
   const chips = (list: CalendarAppointment[]): AppointmentChipProps[] =>
-    list.map(({ day: _day, date: _date, slot: _slot, onClick, ...chip }, i) => ({
-      ...chip,
-      colorBy: colorMode,
-      onClick: (e) => {
-        onClick?.(e);
-        onAppointmentClick?.(list[i]!);
-      },
-    }));
+    list.map(
+      ({ day: _day, date: _date, slot: _slot, onClick, ...chip }, i) => ({
+        ...chip,
+        colorBy: colorMode,
+        onClick: (e) => {
+          onClick?.(e);
+          onAppointmentClick?.(list[i]!);
+        },
+      }),
+    );
 
   const navigate = (dir: CalendarNavigation) => {
     let next: string;
-    if (dir === 'today') next = todayIso;
+    if (dir === "today") next = todayIso;
     else {
-      const step = dir === 'next' ? 1 : -1;
-      next = toIso(view === 'month' ? addMonths(cur, step) : addDays(cur, view === 'week' ? 7 * step : step));
+      const step = dir === "next" ? 1 : -1;
+      next = toIso(
+        view === "month"
+          ? addMonths(cur, step)
+          : addDays(cur, view === "week" ? 7 * step : step),
+      );
     }
     setDate(next);
     onNavigate?.(dir, next);
   };
   const openDay = (p: Ymd) => {
     setDate(toIso(p));
-    setView('day');
+    setView("day");
   };
 
   const head = (
     <div className="co-row co-gap-8">
       <ButtonGroup attached label="Change days">
-        <Button size="sm" iconLeft="chevron-left" aria-label="Previous" onClick={() => navigate('prev')} />
-        <Button size="sm" onClick={() => navigate('today')}>
+        <Button
+          size="sm"
+          iconLeft="chevron-left"
+          aria-label="Previous"
+          onClick={() => navigate("prev")}
+        />
+        <Button size="sm" onClick={() => navigate("today")}>
           Today
         </Button>
-        <Button size="sm" iconLeft="chevron-right" aria-label="Next" onClick={() => navigate('next')} />
+        <Button
+          size="sm"
+          iconLeft="chevron-right"
+          aria-label="Next"
+          onClick={() => navigate("next")}
+        />
       </ButtonGroup>
       <b aria-live="polite">{title ?? longDate(cur)}</b>
       <div className="co-ml">
@@ -183,9 +252,9 @@ export function Calendar({
           value={view}
           onChange={(v) => setView(v as CalendarView)}
           options={[
-            { value: 'day', label: 'Day' },
-            { value: 'week', label: 'Week' },
-            { value: 'month', label: 'Month' },
+            { value: "day", label: "Day" },
+            { value: "week", label: "Week" },
+            { value: "month", label: "Month" },
           ]}
         />
       </div>
@@ -197,8 +266,8 @@ export function Calendar({
           value={colorMode}
           onChange={(e) => setColorMode(e.target.value as CalendarColorMode)}
           options={[
-            { value: 'status', label: 'Color by Status' },
-            { value: 'type', label: 'Color by Appointment type' },
+            { value: "status", label: "Color by Status" },
+            { value: "type", label: "Color by Appointment type" },
           ]}
         />
       ) : null}
@@ -206,7 +275,7 @@ export function Calendar({
   );
 
   let body;
-  if (view === 'day') {
+  if (view === "day") {
     body = (
       <div role="grid" aria-label={`Day schedule, ${longDate(cur)}`}>
         {times.map((t) => (
@@ -215,17 +284,23 @@ export function Calendar({
             view="day"
             time={t}
             blocked={blocks[t]}
-            appointments={chips(appointments.filter((a) => a.slot === t && onDay(a, cur)))}
+            appointments={chips(
+              appointments.filter((a) => a.slot === t && onDay(a, cur)),
+            )}
             onBook={() => onBook?.(date, t)}
           />
         ))}
       </div>
     );
-  } else if (view === 'week') {
+  } else if (view === "week") {
     const start = addDays(cur, -weekday(cur));
     const days = Array.from({ length: 7 }, (_, i) => addDays(start, i));
     body = (
-      <div className="co-cal-wk" role="grid" aria-label={`Week of ${MONTHS[start.m]} ${start.d}, ${start.y}`}>
+      <div
+        className="co-cal-wk"
+        role="grid"
+        aria-label={`Week of ${MONTHS[start.m]} ${start.d}, ${start.y}`}
+      >
         <div role="row" className="co-cal-row">
           {days.map((p, i) => (
             <CalendarCell
@@ -252,10 +327,19 @@ export function Calendar({
       weeks[weeks.length - 1]!.push(addDays(start, i));
     }
     body = (
-      <div className="co-cal-mo" role="grid" aria-label={`${MONTHS[cur.m]} ${cur.y}`}>
+      <div
+        className="co-cal-mo"
+        role="grid"
+        aria-label={`${MONTHS[cur.m]} ${cur.y}`}
+      >
         <div role="row" className="co-cal-row">
           {DOW.map((w, i) => (
-            <div key={w} className="co-cal-wh" role="columnheader" aria-label={DOW_LONG[i]}>
+            <div
+              key={w}
+              className="co-cal-wh"
+              role="columnheader"
+              aria-label={DOW_LONG[i]}
+            >
               {w}
             </div>
           ))}
@@ -287,13 +371,16 @@ export function Calendar({
   }
 
   return (
-    <div className={cx('co-cal', className)} {...rest}>
+    <div className={cx("co-cal", className)} {...rest}>
       {head}
       {body}
       <div className="co-legend">
         {STATUSES.map((s) => (
           <span key={s}>
-            <i className={`co-dot co-ap-s-${s.replace(/\s.*/, '')}-dot`} aria-hidden="true" />
+            <i
+              className={`co-dot co-ap-s-${s.replace(/\s.*/, "")}-dot`}
+              aria-hidden="true"
+            />
             {s}
           </span>
         ))}

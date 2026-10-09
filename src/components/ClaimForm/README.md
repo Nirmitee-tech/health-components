@@ -37,6 +37,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `lockText` | string | default |
 | `onChange` | (lines) => void | none |
 
+In this React port, `lines` is controlled (update it from `onChange`, which fires on every edit, add and remove); `defaultLines` makes it uncontrolled. `onSaveDraft` and `onSubmit(action)` ('submit', 'submit-print', 'hold') run the footer buttons.
+
 ## Usage
 
 ```jsx

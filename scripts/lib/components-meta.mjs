@@ -30,10 +30,11 @@ export const tagFor = (name) => 'co-' + kebab(name).replace(/^-/, '');
 export const eventName = (prop) => 'co-' + kebab(prop.slice(2)).replace(/^-/, '');
 
 /** Exports that are not standalone visual components. */
-const SKIP = new Set(['Portal', 'ThemeProvider']);
+/** Exports that are not standalone visual components (internal helpers, React-only context providers). */
+const SKIP = new Set(['Portal', 'ThemeProvider', 'Overlay', 'ToastProvider']);
 
 /** Native attributes worth exposing on elements when a component accepts them (they come from @types/react). */
-const NATIVE = new Set(['disabled', 'placeholder', 'name', 'value', 'defaultValue', 'checked', 'defaultChecked', 'required', 'readOnly', 'type', 'autoFocus', 'maxLength', 'min', 'max', 'step', 'rows', 'accept', 'multiple', 'autoComplete']);
+const NATIVE = new Set(['disabled', 'placeholder', 'name', 'value', 'defaultValue', 'checked', 'defaultChecked', 'required', 'readOnly', 'type', 'autoFocus', 'maxLength', 'min', 'max', 'step', 'rows', 'accept', 'multiple', 'autoComplete', 'onChange', 'onInput']);
 
 const isFromSrc = (decl) => decl.getSourceFile().fileName.startsWith(srcDir.replaceAll(sep, '/')) || decl.getSourceFile().fileName.startsWith(srcDir);
 
@@ -78,8 +79,15 @@ for (const exp of exportsList) {
   const looksLikeComponent = /ExoticComponent|=> (React\.)?(JSX\.Element|ReactNode|ReactElement)|JSX\.Element|Element \| null/.test(typeStr) || /<[A-Za-z]/.test(declText);
   if (!looksLikeComponent) continue;
   const key = target.valueDeclaration ?? target.declarations[0];
+  // The canonical name is the declaration's own name (`Calendar`); other exports of it are aliases (`ScheduleCalendar`).
+  const declName = key.name?.getText?.() ?? name;
   if (seenDecl.has(key)) {
-    seenDecl.get(key).aliases.push(name);
+    const existing = seenDecl.get(key);
+    if (name === declName && existing.name !== declName) {
+      existing.aliases.push(existing.name);
+      existing.name = name;
+      existing.tag = tagFor(name);
+    } else existing.aliases.push(name);
     continue;
   }
   const props = {};

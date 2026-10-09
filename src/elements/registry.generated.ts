@@ -4,180 +4,345 @@ import * as C from '../index';
 import type { ElementSpec } from './define';
 
 export const elementSpecs: ElementSpec[] = [
-  { tag: 'co-ai-suggestion', component: C.AISuggestion as never, props: { title: 'string', source: 'string', confidence: 'string', children: 'node', actions: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-alert', component: C.Alert as never, props: { tone: 'string', title: 'node', children: 'node', actions: 'node', onDismiss: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-appointment-chip', component: C.AppointmentChip as never, props: { time: 'string', patient: 'string', type: 'string', status: 'json', colorBy: 'string', color: 'string', telehealth: 'boolean', paid: 'boolean', size: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', disabled: 'boolean', name: 'string', value: 'json' } },
-  { tag: 'co-avatar', component: C.Avatar as never, props: { name: 'string', src: 'string', size: 'string', color: 'string', status: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-badge', component: C.Badge as never, props: { tone: 'string', shape: 'string', size: 'string', icon: 'string', dot: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-bar-chart', component: C.BarChart as never, props: { data: 'json', title: 'string', height: 'number', max: 'number', threshold: 'number', thresholdLabel: 'string', unit: 'string', legend: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { data: [] } },
-  { tag: 'co-bottom-tab-bar', component: C.BottomTabBar as never, props: { items: 'json', active: 'string', label: 'string', onNavigate: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-breadcrumb', component: C.Breadcrumb as never, props: { items: 'json', label: 'string', onNavigate: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-button', component: C.Button as never, props: { variant: 'string', size: 'string', loading: 'boolean', iconLeft: 'string', iconRight: 'string', full: 'boolean', pressed: 'boolean', href: 'string', target: 'json', rel: 'string', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', type: 'string', disabled: 'boolean', name: 'string', value: 'json' } },
-  { tag: 'co-button-group', component: C.ButtonGroup as never, props: { attached: 'boolean', align: 'string', label: 'string', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-calendar-cell', component: C.CalendarCell as never, props: { view: 'string', date: 'json', time: 'string', appointments: 'json', count: 'number', today: 'boolean', dim: 'boolean', blocked: 'string', label: 'string', onBook: 'event', onMore: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-card', component: C.Card as never, props: { title: 'node', subtitle: 'node', actions: 'node', footer: 'node', flat: 'boolean', padding: 'string', as: 'json', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-chat-message', component: C.ChatMessage as never, props: { direction: 'string', author: 'string', time: 'string', status: 'string', ai: 'boolean', system: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-checkbox', component: C.Checkbox as never, props: { label: 'node', checked: 'boolean', defaultChecked: 'boolean', indeterminate: 'boolean', description: 'node', error: 'boolean', disabled: 'boolean', defaultValue: 'json', autoFocus: 'boolean', name: 'string', value: 'json', max: 'json', accept: 'string', autoComplete: 'json', maxLength: 'number', min: 'json', multiple: 'boolean', placeholder: 'string', readOnly: 'boolean', required: 'boolean', step: 'json' } },
-  { tag: 'co-claim-status-tag', component: C.ClaimStatusTag as never, props: { status: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', size: 'string', shape: 'string', dot: 'boolean' } },
-  { tag: 'co-combobox', component: C.Combobox as never, props: { label: 'string', kind: 'string', options: 'json', placeholder: 'string', query: 'string', defaultQuery: 'string', onQueryChange: 'event', open: 'boolean', defaultOpen: 'boolean', onOpenChange: 'event', onSelect: 'event', limit: 'number', emptyText: 'string', footer: 'node', error: 'string', helper: 'string', required: 'boolean', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', type: 'json', disabled: 'boolean', name: 'string', max: 'json', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', readOnly: 'boolean', step: 'json' }, defaults: { options: [] } },
-  { tag: 'co-command-palette', component: C.CommandPalette as never, props: { items: 'json', open: 'boolean', query: 'string', defaultQuery: 'string', onQueryChange: 'event', placeholder: 'string', onSelect: 'event', onClose: 'event', maxResults: 'number', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', ref: 'json' }, defaults: { items: [] } },
-  { tag: 'co-data-table', component: C.DataTable as never, props: { columns: 'json', rows: 'json', rowKey: 'json', selectable: 'boolean', selected: 'json', defaultSelected: 'json', onSelectedChange: 'event', bulkActions: 'node', rowMenu: 'function', renderExpanded: 'node', expanded: 'json', defaultExpanded: 'json', onExpandedChange: 'event', loading: 'boolean', emptyText: 'node', emptyState: 'node', pageSize: 'number', pageSizes: 'json', onPageSizeChange: 'event', page: 'number', defaultPage: 'number', onPageChange: 'event', pagination: 'boolean', sort: 'json', defaultSort: 'json', onSortChange: 'event', toolbar: 'node', caption: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { columns: [], rows: [] } },
-  { tag: 'co-date-picker', component: C.DatePicker as never, props: { label: 'string', value: 'string', defaultValue: 'string', onChange: 'event', today: 'string', open: 'boolean', defaultOpen: 'boolean', onOpenChange: 'event', disablePast: 'boolean', disableFuture: 'boolean', disableWeekends: 'boolean', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', type: 'json', disabled: 'boolean', name: 'string', max: 'json', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', placeholder: 'string', step: 'json' } },
-  { tag: 'co-description-list', component: C.DescriptionList as never, props: { items: 'json', compact: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-donut-chart', component: C.DonutChart as never, props: { data: 'json', title: 'string', centerValue: 'json', centerLabel: 'string', size: 'number', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { data: [] } },
-  { tag: 'co-drawer', component: C.Drawer as never, props: { open: 'boolean', title: 'string', side: 'string', developer: 'boolean', sections: 'json', children: 'node', footer: 'node', width: 'number', onClose: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-empty-state', component: C.EmptyState as never, props: { kind: 'string', title: 'node', children: 'node', actions: 'node', icon: 'string', compact: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
+  { tag: 'co-ai-suggestion', component: C.AISuggestion as never, props: { title: 'string', source: 'string', confidence: 'string', children: 'node', actions: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-alert', component: C.Alert as never, props: { tone: 'string', title: 'node', children: 'node', actions: 'node', onDismiss: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-allergy-alert', component: C.AllergyAlert as never, props: { kind: 'string', title: 'string', body: 'string', severity: 'string', source: 'string', overridable: 'boolean', reasons: 'json', reason: 'string', defaultReason: 'string', onReasonChange: 'event', onOverride: 'event', onChangeOrder: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-allergy-badge', component: C.AllergyBadge as never, props: { substance: 'string', severity: 'string', reaction: 'string', showSeverity: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-allergy-list', component: C.AllergyList as never, props: { items: 'json', reviewed: 'string', readOnly: 'boolean', onMarkReviewed: 'event', onAdd: 'event', onItemAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-appointment-chip', component: C.AppointmentChip as never, props: { time: 'string', patient: 'string', type: 'string', status: 'json', colorBy: 'string', color: 'string', telehealth: 'boolean', paid: 'boolean', size: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', disabled: 'boolean', name: 'string', value: 'json' } },
+  { tag: 'co-audit-log-row', component: C.AuditLogRow as never, props: { event: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-avatar', component: C.Avatar as never, props: { name: 'string', src: 'string', size: 'string', color: 'string', status: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-badge', component: C.Badge as never, props: { tone: 'string', shape: 'string', size: 'string', icon: 'string', dot: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-bar-chart', component: C.BarChart as never, props: { data: 'json', title: 'string', height: 'number', max: 'number', threshold: 'number', thresholdLabel: 'string', unit: 'string', legend: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { data: [] } },
+  { tag: 'co-body-map', component: C.BodyMap as never, props: { marks: 'json', title: 'string', subtitle: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-bottom-tab-bar', component: C.BottomTabBar as never, props: { items: 'json', active: 'string', label: 'string', onNavigate: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-breadcrumb', component: C.Breadcrumb as never, props: { items: 'json', label: 'string', onNavigate: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-break-the-glass-dialog', component: C.BreakTheGlassDialog as never, props: { patient: 'string', dob: 'string', careTeam: 'string', reason: 'string', note: 'string', onConfirm: 'event', onClose: 'event', open: 'boolean', accessReason: 'string', onAccessReasonChange: 'event', loading: 'boolean', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-button', component: C.Button as never, props: { variant: 'string', size: 'string', loading: 'boolean', iconLeft: 'string', iconRight: 'string', full: 'boolean', pressed: 'boolean', href: 'string', target: 'json', rel: 'string', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', type: 'string', disabled: 'boolean', name: 'string', value: 'json' } },
+  { tag: 'co-button-group', component: C.ButtonGroup as never, props: { attached: 'boolean', align: 'string', label: 'string', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-calendar', component: C.Calendar as never, props: { view: 'string', defaultView: 'string', onViewChange: 'event', date: 'string', defaultDate: 'string', onDateChange: 'event', today: 'string', appointments: 'json', title: 'string', times: 'json', blocks: 'json', monthBlocks: 'json', colorBy: 'boolean', colorMode: 'string', defaultColorMode: 'string', onColorModeChange: 'event', onNavigate: 'event', onBook: 'event', onAppointmentClick: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-schedule-calendar', component: C.ScheduleCalendar as never, props: { view: 'string', defaultView: 'string', onViewChange: 'event', date: 'string', defaultDate: 'string', onDateChange: 'event', today: 'string', appointments: 'json', title: 'string', times: 'json', blocks: 'json', monthBlocks: 'json', colorBy: 'boolean', colorMode: 'string', defaultColorMode: 'string', onColorModeChange: 'event', onNavigate: 'event', onBook: 'event', onAppointmentClick: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-calendar-cell', component: C.CalendarCell as never, props: { view: 'string', date: 'json', time: 'string', appointments: 'json', count: 'number', today: 'boolean', dim: 'boolean', blocked: 'string', label: 'string', onBook: 'event', onMore: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-card', component: C.Card as never, props: { title: 'node', subtitle: 'node', actions: 'node', footer: 'node', flat: 'boolean', padding: 'string', as: 'json', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-care-gap-row', component: C.CareGapRow as never, props: { gap: 'json', onAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-ccm-timer', component: C.CCMTimer as never, props: { patient: 'string', month: 'string', minutes: 'number', clock: 'string', running: 'boolean', defaultRunning: 'boolean', onRunningChange: 'event', onLogActivity: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', footer: 'node', flat: 'boolean', as: 'json' } },
+  { tag: 'co-chart-card', component: C.ChartCard as never, props: { title: 'string', subtitle: 'node', periods: 'json', period: 'string', defaultPeriod: 'string', onPeriod: 'event', loading: 'boolean', empty: 'string', source: 'node', actions: 'node', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', padding: 'string', footer: 'node', flat: 'boolean', as: 'json' } },
+  { tag: 'co-chat-message', component: C.ChatMessage as never, props: { direction: 'string', author: 'string', time: 'string', status: 'string', ai: 'boolean', system: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-chat-thread', component: C.ChatThread as never, props: { messages: 'json', defaultMessages: 'json', onMessagesChange: 'event', title: 'string', subtitle: 'node', placeholder: 'string', ai: 'boolean', readOnly: 'boolean', lockText: 'node', onSend: 'event', onSuggest: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-secure-chat-thread', component: C.SecureChatThread as never, props: { messages: 'json', defaultMessages: 'json', onMessagesChange: 'event', title: 'string', subtitle: 'node', placeholder: 'string', ai: 'boolean', readOnly: 'boolean', lockText: 'node', onSend: 'event', onSuggest: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-checkbox', component: C.Checkbox as never, props: { label: 'node', checked: 'boolean', defaultChecked: 'boolean', indeterminate: 'boolean', description: 'node', error: 'boolean', disabled: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', readOnly: 'boolean', name: 'string', value: 'json', max: 'json', placeholder: 'string', accept: 'string', autoComplete: 'json', maxLength: 'number', min: 'json', multiple: 'boolean', required: 'boolean', step: 'json' } },
+  { tag: 'co-check-in-stepper', component: C.CheckInStepper as never, props: { patient: 'string', appt: 'string', steps: 'json', current: 'number', issues: 'json', items: 'json', done: 'boolean', onItemAction: 'event', onComplete: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-claim-form', component: C.ClaimForm as never, props: { lines: 'json', defaultLines: 'json', payerOrder: 'string', frequency: 'string', errorsCount: 'number', readOnly: 'boolean', lockText: 'string', onChange: 'event', onSaveDraft: 'event', onSubmit: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' } },
+  { tag: 'co-claim-line-editor', component: C.ClaimLineEditor as never, props: { lines: 'json', defaultLines: 'json', payerOrder: 'string', frequency: 'string', errorsCount: 'number', readOnly: 'boolean', lockText: 'string', onChange: 'event', onSaveDraft: 'event', onSubmit: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' } },
+  { tag: 'co-claim-status-tag', component: C.ClaimStatusTag as never, props: { status: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', size: 'string', shape: 'string', dot: 'boolean' } },
+  { tag: 'co-code-status-banner', component: C.CodeStatusBanner as never, props: { status: 'string', directive: 'string', polst: 'string', proxy: 'string', onViewDocuments: 'event', documentsHref: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-combobox', component: C.Combobox as never, props: { label: 'string', kind: 'string', options: 'json', placeholder: 'string', query: 'string', defaultQuery: 'string', onQueryChange: 'event', open: 'boolean', defaultOpen: 'boolean', onOpenChange: 'event', onSelect: 'event', limit: 'number', emptyText: 'string', footer: 'node', error: 'string', helper: 'string', required: 'boolean', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event', readOnly: 'boolean', type: 'json', disabled: 'boolean', name: 'string', max: 'json', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', step: 'json' }, defaults: { options: [] } },
+  { tag: 'co-command-palette', component: C.CommandPalette as never, props: { items: 'json', open: 'boolean', query: 'string', defaultQuery: 'string', onQueryChange: 'event', placeholder: 'string', onSelect: 'event', onClose: 'event', maxResults: 'number', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', ref: 'json' }, defaults: { items: [] } },
+  { tag: 'co-consent-signer', component: C.ConsentSigner as never, props: { title: 'string', version: 'string', body: 'string', signer: 'string', guardian: 'string', agreed: 'boolean', agreedValue: 'boolean', onAgreedChange: 'event', signed: 'boolean', onSignedChange: 'event', agreeLabel: 'string', signerLabel: 'string', compact: 'boolean', onSignConsent: 'event', onDecline: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-copay-collector', component: C.CopayCollector as never, props: { patient: 'string', copay: 'number', prior: 'number', priorNote: 'string', plan: 'string', cardLast4: 'string', due: 'number', amount: 'string', onAmountChange: 'event', method: 'string', defaultMethod: 'string', onMethodChange: 'event', onCollect: 'event', onSkip: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-patient-balance', component: C.PatientBalance as never, props: { patient: 'string', copay: 'number', prior: 'number', priorNote: 'string', plan: 'string', cardLast4: 'string', due: 'number', amount: 'string', onAmountChange: 'event', method: 'string', defaultMethod: 'string', onMethodChange: 'event', onCollect: 'event', onSkip: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-coverage-row', component: C.CoverageRow as never, props: { coverage: 'json', index: 'number', last: 'boolean', editable: 'boolean', onMove: 'event', onCheckEligibility: 'event', onAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-cpt-picker', component: C.CPTPicker as never, props: { options: 'json', lines: 'json', value: 'json', onChange: 'event', telehealth: 'boolean', label: 'string', placeholder: 'string', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' }, defaults: { options: [] } },
+  { tag: 'co-data-table', component: C.DataTable as never, props: { columns: 'json', rows: 'json', rowKey: 'json', selectable: 'boolean', selected: 'json', defaultSelected: 'json', onSelectedChange: 'event', bulkActions: 'node', rowMenu: 'function', renderExpanded: 'node', expanded: 'json', defaultExpanded: 'json', onExpandedChange: 'event', loading: 'boolean', emptyText: 'node', emptyState: 'node', pageSize: 'number', pageSizes: 'json', onPageSizeChange: 'event', page: 'number', defaultPage: 'number', onPageChange: 'event', pagination: 'boolean', sort: 'json', defaultSort: 'json', onSortChange: 'event', toolbar: 'node', caption: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' }, defaults: { columns: [], rows: [] } },
+  { tag: 'co-date-picker', component: C.DatePicker as never, props: { label: 'string', value: 'string', defaultValue: 'string', onChange: 'event', today: 'string', open: 'boolean', defaultOpen: 'boolean', onOpenChange: 'event', disablePast: 'boolean', disableFuture: 'boolean', disableWeekends: 'boolean', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event', type: 'json', disabled: 'boolean', name: 'string', max: 'json', placeholder: 'string', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', step: 'json' } },
+  { tag: 'co-description-list', component: C.DescriptionList as never, props: { items: 'json', compact: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-dev-drawer', component: C.DevDrawer as never, props: { screen: 'string', purpose: 'string', roles: 'string', api: 'string', fields: 'string', states: 'string', entry: 'string', width: 'number', open: 'boolean', onClose: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-donut-chart', component: C.DonutChart as never, props: { data: 'json', title: 'string', centerValue: 'json', centerLabel: 'string', size: 'number', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { data: [] } },
+  { tag: 'co-drawer', component: C.Drawer as never, props: { open: 'boolean', title: 'string', side: 'string', developer: 'boolean', sections: 'json', children: 'node', footer: 'node', width: 'number', onClose: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-drug-interaction-alert', component: C.DrugInteractionAlert as never, props: { kind: 'string', title: 'string', body: 'string', severity: 'string', source: 'string', overridable: 'boolean', reasons: 'json', reason: 'string', defaultReason: 'string', onReasonChange: 'event', onOverride: 'event', onChangeOrder: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-drug-search', component: C.DrugSearch as never, props: { options: 'json', label: 'string', payer: 'string', onSelect: 'event', defaultChecked: 'boolean', autoFocus: 'boolean', style: 'json', onInput: 'event', error: 'string', readOnly: 'boolean', type: 'json', disabled: 'boolean', name: 'string', max: 'json', open: 'boolean', placeholder: 'string', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', required: 'boolean', step: 'json', query: 'string', defaultQuery: 'string', onQueryChange: 'event', defaultOpen: 'boolean', onOpenChange: 'event', limit: 'number', emptyText: 'string', helper: 'string' }, defaults: { options: [] } },
+  { tag: 'co-eligibility-result', component: C.EligibilityResult as never, props: { state: 'string', payer: 'string', headline: 'string', aaa: 'string', meaning: 'string', todo: 'string', benefits: 'json', deductible: 'json', checkedAt: 'string', onRerun: 'event', onFixCoverage: 'event', onSelfPay: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-empty-state', component: C.EmptyState as never, props: { kind: 'string', title: 'node', children: 'node', actions: 'node', icon: 'string', compact: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-epcs-approval', component: C.EPCSApproval as never, props: { drug: 'string', schedule: 'string', sig: 'string', qty: 'json', prescriber: 'string', dea: 'string', pdmp: 'string', pharmacy: 'string', audit: 'string', state: 'string', pin: 'string', onPinChange: 'event', code: 'string', onCodeChange: 'event', error: 'string', onSign: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-era-posting-row', component: C.ERAPostingRow as never, props: { row: 'json', onPost: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-fax-document-viewer', component: C.FaxDocumentViewer as never, props: { from: 'string', pages: 'number', patients: 'json', patientQuery: 'string', ai: 'json', page: 'number', defaultPage: 'number', onPageChange: 'event', documentTypes: 'json', routes: 'json', onFile: 'event', onJunk: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
   { tag: 'co-field', component: C.Field as never, props: { id: 'string', label: 'node', required: 'boolean', error: 'node', helper: 'node', lock: 'node', className: 'string', style: 'json', children: 'node' } },
-  { tag: 'co-file-upload', component: C.FileUpload as never, props: { label: 'string', accept: 'string', multiple: 'boolean', variant: 'string', files: 'json', defaultFiles: 'json', onFilesChange: 'event', dragging: 'boolean', done: 'boolean', title: 'string', hint: 'string', doneText: 'string', error: 'string', onFiles: 'event', onRemove: 'event', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', disabled: 'boolean', name: 'string', max: 'json', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', placeholder: 'string', readOnly: 'boolean', required: 'boolean', step: 'json' } },
-  { tag: 'co-filter-chip', component: C.FilterChip as never, props: { children: 'node', selected: 'boolean', defaultSelected: 'boolean', count: 'number', check: 'boolean', onRemove: 'event', removeLabel: 'string', onChange: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', disabled: 'boolean', name: 'string', value: 'json' } },
-  { tag: 'co-icon', component: C.Icon as never, props: { name: 'string', size: 'number', strokeWidth: 'number', label: 'string', type: 'string', max: 'json', min: 'json' } },
-  { tag: 'co-icon-button', component: C.IconButton as never, props: { icon: 'string', label: 'string', variant: 'string', size: 'string', badge: 'json', disabled: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', type: 'string', name: 'string', value: 'json' } },
-  { tag: 'co-icon-rail', component: C.IconRail as never, props: { items: 'json', active: 'string', showTip: 'string', onNavigate: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-insurance-card', component: C.InsuranceCard as never, props: { payer: 'string', plan: 'string', member: 'string', memberId: 'string', group: 'string', copay: 'string', rx: 'string', payerId: 'string', claimsAddress: 'string', phone: 'string', precert: 'string', side: 'string', defaultSide: 'string', onSideChange: 'event', scanned: 'string', onScan: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
+  { tag: 'co-file-upload', component: C.FileUpload as never, props: { label: 'string', accept: 'string', multiple: 'boolean', variant: 'string', files: 'json', defaultFiles: 'json', onFilesChange: 'event', dragging: 'boolean', done: 'boolean', title: 'string', hint: 'string', doneText: 'string', error: 'string', onFiles: 'event', onRemove: 'event', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event', readOnly: 'boolean', disabled: 'boolean', name: 'string', max: 'json', placeholder: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', required: 'boolean', step: 'json' } },
+  { tag: 'co-filter-chip', component: C.FilterChip as never, props: { children: 'node', selected: 'boolean', defaultSelected: 'boolean', count: 'number', check: 'boolean', onRemove: 'event', removeLabel: 'string', onChange: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event', disabled: 'boolean', name: 'string', value: 'json' } },
+  { tag: 'co-growth-chart', component: C.GrowthChart as never, props: { points: 'json', percentiles: 'json', ages: 'json', min: 'number', max: 'number', title: 'string', unit: 'string', note: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { points: [] } },
+  { tag: 'co-i-c-d10-picker', component: C.ICD10Picker as never, props: { options: 'json', favorites: 'json', label: 'string', onSelect: 'event', value: 'string', defaultValue: 'string', defaultQuery: 'string', defaultOpen: 'boolean', placeholder: 'string', error: 'string', required: 'boolean', defaultChecked: 'boolean', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { options: [] } },
+  { tag: 'co-icon', component: C.Icon as never, props: { name: 'string', size: 'number', strokeWidth: 'number', label: 'string', onChange: 'event', onInput: 'event', type: 'string', max: 'json', min: 'json' } },
+  { tag: 'co-icon-button', component: C.IconButton as never, props: { icon: 'string', label: 'string', variant: 'string', size: 'string', badge: 'json', disabled: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', type: 'string', name: 'string', value: 'json' } },
+  { tag: 'co-icon-rail', component: C.IconRail as never, props: { items: 'json', active: 'string', showTip: 'string', onNavigate: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-immunization-schedule', component: C.ImmunizationSchedule as never, props: { columns: 'json', rows: 'json', synced: 'string', subtitle: 'node', readOnly: 'boolean', onRecordDose: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { columns: [], rows: [] } },
+  { tag: 'co-inbox-item', component: C.InboxItem as never, props: { item: 'json', onAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-inbox-list', component: C.InboxList as never, props: { items: 'json', categories: 'json', critical: 'json', canSign: 'boolean', lockText: 'node', pageSize: 'number', category: 'string', defaultCategory: 'string', onCategoryChange: 'event', onAcknowledge: 'event', onOpenChart: 'event', onSign: 'event', onMarkReviewed: 'event', onAssign: 'event', onRowAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-insurance-card', component: C.InsuranceCard as never, props: { payer: 'string', plan: 'string', member: 'string', memberId: 'string', group: 'string', copay: 'string', rx: 'string', payerId: 'string', claimsAddress: 'string', phone: 'string', precert: 'string', side: 'string', defaultSide: 'string', onSideChange: 'event', scanned: 'string', onScan: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-insurance-coverage-card', component: C.InsuranceCoverageCard as never, props: { coverages: 'json', defaultCoverages: 'json', onReorder: 'event', suggested: 'string', selfPay: 'boolean', readOnly: 'boolean', onAdd: 'event', onApplySuggested: 'event', onKeepOrder: 'event', onCheckEligibility: 'event', onCoverageAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-coverage-stack', component: C.CoverageStack as never, props: { coverages: 'json', defaultCoverages: 'json', onReorder: 'event', suggested: 'string', selfPay: 'boolean', readOnly: 'boolean', onAdd: 'event', onApplySuggested: 'event', onKeepOrder: 'event', onCheckEligibility: 'event', onCoverageAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
   { tag: 'co-kebab-menu', component: C.KebabMenu as never, props: { items: 'json', label: 'string', horizontal: 'boolean', align: 'string', defaultOpen: 'boolean', open: 'boolean', onOpenChange: 'event', onItemSelect: 'event', className: 'string' }, defaults: { items: [] } },
-  { tag: 'co-line-chart', component: C.LineChart as never, props: { labels: 'json', series: 'json', title: 'string', height: 'number', min: 'number', max: 'number', band: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { labels: [], series: [] } },
-  { tag: 'co-list-row', component: C.ListRow as never, props: { title: 'string', meta: 'string', leading: 'node', trailing: 'node', onClick: 'event', href: 'string', target: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-menu', component: C.Menu as never, props: { items: 'json', align: 'string', inline: 'boolean', label: 'string', onItemSelect: 'event', onClose: 'event', autoFocus: 'json', style: 'json', defaultChecked: 'boolean', defaultValue: 'json' }, defaults: { items: [] } },
-  { tag: 'co-mobile-header', component: C.MobileHeader as never, props: { title: 'node', subtitle: 'node', back: 'string', onBack: 'event', action: 'node', variant: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-modal', component: C.Modal as never, props: { open: 'boolean', title: 'node', kind: 'string', size: 'string', children: 'node', primaryLabel: 'string', cancelLabel: 'string', onPrimary: 'event', onClose: 'event', loading: 'boolean', primaryDisabled: 'boolean', footer: 'node', closeOnScrim: 'boolean', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-overlay', component: C.Overlay as never, props: { inline: 'boolean', side: 'string', onScrimPress: 'event', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-pagination', component: C.Pagination as never, props: { total: 'number', page: 'number', defaultPage: 'number', pageSize: 'number', defaultPageSize: 'number', pageSizes: 'json', onPage: 'event', onPageSize: 'event', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-patient-banner', component: C.PatientBanner as never, props: { name: 'string', sex: 'string', age: 'json', dob: 'string', mrn: 'string', phone: 'string', insurance: 'string', preferred: 'string', allergies: 'json', flags: 'json', codeStatus: 'string', restricted: 'boolean', photo: 'string', actions: 'node', variant: 'string', headingLevel: 'number', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-patient-tabs', component: C.PatientTabs as never, props: { tabs: 'json', active: 'string', defaultActive: 'string', onChange: 'event', onClose: 'event', onAdd: 'event', addLabel: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { tabs: [] } },
-  { tag: 'co-pa-timeline', component: C.PATimeline as never, props: { items: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-pick-card', component: C.PickCard as never, props: { title: 'string', meta: 'string', selected: 'boolean', disabled: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', name: 'string', value: 'json' } },
-  { tag: 'co-pin-entry', component: C.PinEntry as never, props: { length: 'number', value: 'string', defaultValue: 'string', onChange: 'event', label: 'string', error: 'string', biometric: 'boolean', biometricLabel: 'string', locked: 'boolean', lockedText: 'string', onComplete: 'event', onBiometric: 'event', defaultChecked: 'boolean', autoFocus: 'boolean' } },
+  { tag: 'co-kiosk-step', component: C.KioskStep as never, props: { step: 'number', total: 'number', stepName: 'string', title: 'string', subtitle: 'node', practice: 'string', nextLabel: 'string', nextDisabled: 'boolean', onBack: 'event', onNext: 'event', onHelp: 'event', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-kpi-grid', component: C.KPIGrid as never, props: { items: 'json', filter: 'boolean', selected: 'string', defaultSelected: 'string', onSelect: 'event', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-lab-result-table', component: C.LabResultTable as never, props: { rows: 'json', title: 'string', subtitle: 'node', critical: 'node', onSign: 'event', onRoute: 'event', actions: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { rows: [] } },
+  { tag: 'co-level-tag', component: C.LevelTag as never, props: { level: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', size: 'string', shape: 'string', dot: 'boolean' } },
+  { tag: 'co-line-chart', component: C.LineChart as never, props: { labels: 'json', series: 'json', title: 'string', height: 'number', min: 'number', max: 'number', band: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { labels: [], series: [] } },
+  { tag: 'co-list-row', component: C.ListRow as never, props: { title: 'string', meta: 'string', leading: 'node', trailing: 'node', onClick: 'event', href: 'string', target: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-locked-field', component: C.LockedField as never, props: { label: 'string', value: 'string', message: 'string', defaultChecked: 'boolean', autoFocus: 'boolean', style: 'json', onInput: 'event', type: 'json', disabled: 'boolean', name: 'string', size: 'string', max: 'json', iconLeft: 'string', placeholder: 'string', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', step: 'json', helper: 'string', suffix: 'string' } },
+  { tag: 'co-medication-list', component: C.MedicationList as never, props: { items: 'json', reconciled: 'string', readOnly: 'boolean', onReconcile: 'event', onPrescribe: 'event', onItemAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-medication-row', component: C.MedicationRow as never, props: { med: 'json', actions: 'boolean', onAction: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', value: 'json' } },
+  { tag: 'co-menu', component: C.Menu as never, props: { items: 'json', align: 'string', inline: 'boolean', label: 'string', onItemSelect: 'event', onClose: 'event', autoFocus: 'json', style: 'json', defaultChecked: 'boolean', defaultValue: 'json', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-mobile-header', component: C.MobileHeader as never, props: { title: 'node', subtitle: 'node', back: 'string', onBack: 'event', action: 'node', variant: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-modal', component: C.Modal as never, props: { open: 'boolean', title: 'node', kind: 'string', size: 'string', children: 'node', primaryLabel: 'string', cancelLabel: 'string', onPrimary: 'event', onClose: 'event', loading: 'boolean', primaryDisabled: 'boolean', footer: 'node', closeOnScrim: 'boolean', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-order-set-picker', component: C.OrderSetPicker as never, props: { sets: 'json', subtitle: 'string', current: 'number', defaultCurrent: 'number', onCurrentChange: 'event', onSign: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' }, defaults: { sets: [] } },
+  { tag: 'co-pagination', component: C.Pagination as never, props: { total: 'number', page: 'number', defaultPage: 'number', pageSize: 'number', defaultPageSize: 'number', pageSizes: 'json', onPage: 'event', onPageSize: 'event', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-patient-banner', component: C.PatientBanner as never, props: { name: 'string', sex: 'string', age: 'json', dob: 'string', mrn: 'string', phone: 'string', insurance: 'string', preferred: 'string', allergies: 'json', flags: 'json', codeStatus: 'string', restricted: 'boolean', photo: 'string', actions: 'node', variant: 'string', headingLevel: 'number', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-patient-tabs', component: C.PatientTabs as never, props: { tabs: 'json', active: 'string', defaultActive: 'string', onChange: 'event', onClose: 'event', onAdd: 'event', addLabel: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' }, defaults: { tabs: [] } },
+  { tag: 'co-permission-denied', component: C.PermissionDenied as never, props: { defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', role: 'string', onChange: 'event', onInput: 'event', home: 'string', permission: 'string', onHome: 'event', onCompareRoles: 'event' } },
+  { tag: 'co-permission-matrix', component: C.PermissionMatrix as never, props: { roles: 'json', rows: 'json', defaultRows: 'json', onRowsChange: 'event', editable: 'boolean', onlyDifferences: 'boolean', defaultOnlyDifferences: 'boolean', onOnlyDifferencesChange: 'event', onChange: 'event', caption: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' }, defaults: { roles: [] } },
+  { tag: 'co-permission-state', component: C.PermissionState as never, props: { kind: 'string', role: 'string', permission: 'string', home: 'string', onHome: 'event', onCompareRoles: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-phone-scaffold', component: C.PhoneScaffold as never, props: { title: 'node', subtitle: 'node', back: 'string', onBack: 'event', action: 'node', tabs: 'json', active: 'string', onNavigate: 'event', lockText: 'node', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-pick-card', component: C.PickCard as never, props: { title: 'string', meta: 'string', selected: 'boolean', disabled: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', name: 'string', value: 'json' } },
+  { tag: 'co-pin-entry', component: C.PinEntry as never, props: { length: 'number', value: 'string', defaultValue: 'string', onChange: 'event', label: 'string', error: 'string', biometric: 'boolean', biometricLabel: 'string', locked: 'boolean', lockedText: 'string', onComplete: 'event', onBiometric: 'event', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' } },
   { tag: 'co-popover', component: C.Popover as never, props: { trigger: 'node', title: 'string', children: 'node', align: 'string', defaultOpen: 'boolean', open: 'boolean', onOpenChange: 'event', triggerVariant: 'string', size: 'string', label: 'string', className: 'string' } },
-  { tag: 'co-progress-bar', component: C.ProgressBar as never, props: { value: 'number', max: 'number', label: 'string', unit: 'string', valueText: 'string', meter: 'boolean', thresholds: 'json', tone: 'string', compact: 'boolean', size: 'string', helper: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-quick-actions', component: C.QuickActions as never, props: { items: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-radio', component: C.Radio as never, props: { label: 'node', description: 'node', disabled: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', name: 'string', value: 'json', max: 'json', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', placeholder: 'string', readOnly: 'boolean', required: 'boolean', step: 'json' } },
-  { tag: 'co-radio-group', component: C.RadioGroup as never, props: { label: 'node', options: 'json', value: 'string', defaultValue: 'string', inline: 'boolean', required: 'boolean', error: 'node', disabled: 'boolean', name: 'string', onChange: 'event', defaultChecked: 'boolean', autoFocus: 'boolean' }, defaults: { options: [] } },
-  { tag: 'co-role-pill', component: C.RolePill as never, props: { role: 'string', defaultRole: 'string', roles: 'json', defaultOpen: 'boolean', open: 'boolean', onOpenChange: 'event', onChange: 'event', className: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', type: 'string', disabled: 'boolean', name: 'string', value: 'json' }, defaults: { roles: [] } },
-  { tag: 'co-section-nav', component: C.SectionNav as never, props: { items: 'json', active: 'string', label: 'string', onChange: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-segmented-control', component: C.SegmentedControl as never, props: { options: 'json', value: 'string', defaultValue: 'string', size: 'string', label: 'string', onChange: 'event', defaultChecked: 'boolean', autoFocus: 'boolean' }, defaults: { options: [] } },
-  { tag: 'co-select', component: C.Select as never, props: { label: 'string', options: 'json', placeholder: 'string', size: 'string', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', style: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', disabled: 'boolean', name: 'string', value: 'json', autoComplete: 'string', multiple: 'boolean' }, defaults: { options: [] } },
-  { tag: 'co-setting-row', component: C.SettingRow as never, props: { label: 'string', help: 'string', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-sidebar-nav', component: C.SidebarNav as never, props: { groups: 'json', active: 'string', collapsed: 'boolean', defaultCollapsed: 'boolean', product: 'string', onCollapse: 'event', onNavigate: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' }, defaults: { groups: [] } },
-  { tag: 'co-signature-pad', component: C.SignaturePad as never, props: { label: 'string', name: 'string', signed: 'boolean', defaultSigned: 'boolean', onSignedChange: 'event', when: 'string', compact: 'boolean', required: 'boolean', error: 'string', onSign: 'event', onClear: 'event', style: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', type: 'string', disabled: 'boolean', value: 'json' } },
-  { tag: 'co-skeleton', component: C.Skeleton as never, props: { variant: 'string', lines: 'number', rows: 'number', width: 'json', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-slot-picker', component: C.SlotPicker as never, props: { slots: 'json', days: 'json', value: 'string', defaultValue: 'string', onChange: 'event', day: 'string', defaultDay: 'string', onDayChange: 'event', label: 'string', defaultChecked: 'boolean', autoFocus: 'boolean' }, defaults: { slots: [] } },
-  { tag: 'co-soap-section', component: C.SOAPSection as never, props: { title: 'string', text: 'string', value: 'string', onChange: 'event', ai: 'string', onAcceptAI: 'event', macros: 'json', onInsertMacro: 'event', required: 'boolean', error: 'string', readOnly: 'boolean', rows: 'number', children: 'node', defaultChecked: 'boolean', autoFocus: 'boolean' } },
-  { tag: 'co-sparkline', component: C.Sparkline as never, props: { values: 'json', width: 'number', height: 'number', color: 'string', label: 'string', type: 'string', name: 'string', max: 'json', min: 'json' }, defaults: { values: [] } },
-  { tag: 'co-spinner', component: C.Spinner as never, props: { size: 'string', tone: 'string', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
+  { tag: 'co-prior-auth-timeline', component: C.PriorAuthTimeline as never, props: { authId: 'string', service: 'string', payer: 'string', patient: 'string', status: 'string', used: 'number', approved: 'number', unit: 'string', expires: 'string', events: 'json', alert: 'json', alertTone: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-prior-auth-card', component: C.PriorAuthCard as never, props: { authId: 'string', service: 'string', payer: 'string', patient: 'string', status: 'string', used: 'number', approved: 'number', unit: 'string', expires: 'string', events: 'json', alert: 'json', alertTone: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-problem-list', component: C.ProblemList as never, props: { items: 'json', icdOptions: 'json', readOnly: 'boolean', filter: 'string', defaultFilter: 'string', onFilterChange: 'event', onAdd: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-progress-bar', component: C.ProgressBar as never, props: { value: 'number', max: 'number', label: 'string', unit: 'string', valueText: 'string', meter: 'boolean', thresholds: 'json', tone: 'string', compact: 'boolean', size: 'string', helper: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-provider-day-columns', component: C.ProviderDayColumns as never, props: { times: 'json', providers: 'json', onBook: 'event', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { times: [], providers: [] } },
+  { tag: 'co-quality-measure-card', component: C.QualityMeasureCard as never, props: { measure: 'json', onViewGaps: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', actions: 'node', padding: 'string', footer: 'node', flat: 'boolean', as: 'json' } },
+  { tag: 'co-quick-actions', component: C.QuickActions as never, props: { items: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-radio', component: C.Radio as never, props: { label: 'node', description: 'node', disabled: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', readOnly: 'boolean', name: 'string', value: 'json', max: 'json', placeholder: 'string', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', required: 'boolean', step: 'json' } },
+  { tag: 'co-radio-group', component: C.RadioGroup as never, props: { label: 'node', options: 'json', value: 'string', defaultValue: 'string', inline: 'boolean', required: 'boolean', error: 'node', disabled: 'boolean', name: 'string', onChange: 'event', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' }, defaults: { options: [] } },
+  { tag: 'co-referral-card', component: C.ReferralCard as never, props: { referral: 'json', actions: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', padding: 'string', footer: 'node', flat: 'boolean', as: 'json' } },
+  { tag: 'co-role-pill', component: C.RolePill as never, props: { role: 'string', defaultRole: 'string', roles: 'json', defaultOpen: 'boolean', open: 'boolean', onOpenChange: 'event', onChange: 'event', className: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event', type: 'string', disabled: 'boolean', name: 'string', value: 'json' }, defaults: { roles: [] } },
+  { tag: 'co-viewing-as', component: C.ViewingAs as never, props: { role: 'string', defaultRole: 'string', roles: 'json', defaultOpen: 'boolean', open: 'boolean', onOpenChange: 'event', onChange: 'event', className: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event', type: 'string', disabled: 'boolean', name: 'string', value: 'json' }, defaults: { roles: [] } },
+  { tag: 'co-role-switcher', component: C.RoleSwitcher as never, props: { role: 'string', defaultRole: 'string', roles: 'json', defaultOpen: 'boolean', open: 'boolean', onOpenChange: 'event', onChange: 'event', className: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event', type: 'string', disabled: 'boolean', name: 'string', value: 'json' }, defaults: { roles: [] } },
+  { tag: 'co-rpm-reading-chart', component: C.RPMReadingChart as never, props: { readings: 'json', metric: 'string', device: 'string', title: 'string', high: 'number', low: 'number', max: 'number', days: 'number', minutes: 'number', alert: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', padding: 'string', footer: 'node', flat: 'boolean', as: 'json' }, defaults: { readings: [] } },
+  { tag: 'co-score-questionnaire', component: C.ScoreQuestionnaire as never, props: { instrument: 'string', questions: 'json', answers: 'json', value: 'json', onChange: 'event', title: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' }, defaults: { questions: [] } },
+  { tag: 'co-section-nav', component: C.SectionNav as never, props: { items: 'json', active: 'string', label: 'string', onChange: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-segmented-control', component: C.SegmentedControl as never, props: { options: 'json', value: 'string', defaultValue: 'string', size: 'string', label: 'string', onChange: 'event', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' }, defaults: { options: [] } },
+  { tag: 'co-select', component: C.Select as never, props: { label: 'string', options: 'json', placeholder: 'string', size: 'string', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', style: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', disabled: 'boolean', name: 'string', value: 'json', autoComplete: 'string', multiple: 'boolean' }, defaults: { options: [] } },
+  { tag: 'co-setting-row', component: C.SettingRow as never, props: { label: 'string', help: 'string', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-sidebar-nav', component: C.SidebarNav as never, props: { groups: 'json', active: 'string', collapsed: 'boolean', defaultCollapsed: 'boolean', product: 'string', onCollapse: 'event', onNavigate: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { groups: [] } },
+  { tag: 'co-sig-builder', component: C.SigBuilder as never, props: { value: 'json', defaultValue: 'json', onChange: 'event', routes: 'json', frequencies: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' } },
+  { tag: 'co-signature-pad', component: C.SignaturePad as never, props: { label: 'string', name: 'string', signed: 'boolean', defaultSigned: 'boolean', onSignedChange: 'event', when: 'string', compact: 'boolean', required: 'boolean', error: 'string', onSign: 'event', onClear: 'event', style: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', type: 'string', disabled: 'boolean', value: 'json' } },
+  { tag: 'co-skeleton', component: C.Skeleton as never, props: { variant: 'string', lines: 'number', rows: 'number', width: 'json', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-soap-section', component: C.SOAPSection as never, props: { title: 'string', text: 'string', value: 'string', onChange: 'event', ai: 'string', onAcceptAI: 'event', macros: 'json', onInsertMacro: 'event', required: 'boolean', error: 'string', readOnly: 'boolean', rows: 'number', children: 'node', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' } },
+  { tag: 'co-sparkline', component: C.Sparkline as never, props: { values: 'json', width: 'number', height: 'number', color: 'string', label: 'string', onChange: 'event', onInput: 'event', type: 'string', name: 'string', max: 'json', min: 'json' }, defaults: { values: [] } },
+  { tag: 'co-spinner', component: C.Spinner as never, props: { size: 'string', tone: 'string', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
   { tag: 'co-split-button', component: C.SplitButton as never, props: { label: 'string', onClick: 'event', items: 'json', variant: 'string', size: 'string', menuLabel: 'string', defaultOpen: 'boolean', open: 'boolean', onOpenChange: 'event', onItemSelect: 'event', disabled: 'boolean', align: 'string', className: 'string' }, defaults: { items: [] } },
-  { tag: 'co-stat-card', component: C.StatCard as never, props: { label: 'string', value: 'node', sub: 'node', trend: 'string', trendDir: 'string', trendGood: 'boolean', selected: 'boolean', onClick: 'event', meter: 'json', loading: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-status-tag', component: C.StatusTag as never, props: { kind: 'string', status: 'string', tone: 'string', icon: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', size: 'string', shape: 'string', dot: 'boolean' } },
-  { tag: 'co-stepper', component: C.Stepper as never, props: { steps: 'json', current: 'number', variant: 'string', count: 'number', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-style-chooser', component: C.StyleChooser as never, props: { styles: 'json', value: 'string', defaultValue: 'string', onChange: 'event', canApply: 'boolean', onApply: 'event', label: 'string', defaultChecked: 'boolean', autoFocus: 'boolean' } },
-  { tag: 'co-success-dialog', component: C.SuccessDialog as never, props: { title: 'string', children: 'node', okayLabel: 'string', onOkay: 'event', secondary: 'string', onSecondary: 'event', open: 'boolean', onClose: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-switch', component: C.Switch as never, props: { label: 'node', checked: 'boolean', defaultChecked: 'boolean', description: 'node', row: 'boolean', disabled: 'boolean', onChange: 'event', className: 'string', defaultValue: 'json', autoFocus: 'boolean', name: 'string', value: 'json' } },
-  { tag: 'co-tabs', component: C.Tabs as never, props: { items: 'json', value: 'string', defaultValue: 'string', variant: 'string', label: 'string', onChange: 'event', defaultChecked: 'boolean', autoFocus: 'boolean' }, defaults: { items: [] } },
-  { tag: 'co-text-area', component: C.TextArea as never, props: { label: 'string', rows: 'number', maxLength: 'number', value: 'string', defaultValue: 'string', onChange: 'event', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', disabled: 'boolean', name: 'string', autoComplete: 'string', placeholder: 'string' } },
-  { tag: 'co-text-field', component: C.TextField as never, props: { label: 'string', mask: 'string', value: 'string', defaultValue: 'string', onChange: 'event', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', size: 'string', iconLeft: 'string', suffix: 'string', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', type: 'json', disabled: 'boolean', name: 'string', max: 'json', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', placeholder: 'string', step: 'json' } },
-  { tag: 'co-toast', component: C.Toast as never, props: { message: 'string', tone: 'string', action: 'string', onAction: 'event', onDismiss: 'event', inline: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
-  { tag: 'co-toast-provider', component: C.ToastProvider as never, props: { children: 'node', max: 'number', duration: 'number', className: 'string' } },
+  { tag: 'co-stat-card', component: C.StatCard as never, props: { label: 'string', value: 'node', sub: 'node', trend: 'string', trendDir: 'string', trendGood: 'boolean', selected: 'boolean', onClick: 'event', meter: 'json', loading: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-status-tag', component: C.StatusTag as never, props: { kind: 'string', status: 'string', tone: 'string', icon: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event', size: 'string', shape: 'string', dot: 'boolean' } },
+  { tag: 'co-stepper', component: C.Stepper as never, props: { steps: 'json', current: 'number', variant: 'string', count: 'number', label: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-stepper-form', component: C.StepperForm as never, props: { title: 'string', steps: 'json', current: 'number', defaultCurrent: 'number', finishLabel: 'string', errorSummary: 'node', saving: 'boolean', onStep: 'event', onFinish: 'event', onCancel: 'event', onSaveDraft: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { steps: [] } },
+  { tag: 'co-style-chooser', component: C.StyleChooser as never, props: { styles: 'json', value: 'string', defaultValue: 'string', onChange: 'event', canApply: 'boolean', onApply: 'event', label: 'string', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' } },
+  { tag: 'co-success-dialog', component: C.SuccessDialog as never, props: { title: 'string', children: 'node', okayLabel: 'string', onOkay: 'event', secondary: 'string', onSecondary: 'event', open: 'boolean', onClose: 'event', inline: 'boolean', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-superbill-table', component: C.SuperbillTable as never, props: { groups: 'json', selected: 'json', defaultSelected: 'json', onSelectedChange: 'event', subtitle: 'string', onPrint: 'event', onSend: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { groups: [] } },
+  { tag: 'co-switch', component: C.Switch as never, props: { label: 'node', checked: 'boolean', defaultChecked: 'boolean', description: 'node', row: 'boolean', disabled: 'boolean', onChange: 'event', className: 'string', defaultValue: 'json', autoFocus: 'boolean', onInput: 'event', name: 'string', value: 'json' } },
+  { tag: 'co-tabs', component: C.Tabs as never, props: { items: 'json', value: 'string', defaultValue: 'string', variant: 'string', label: 'string', onChange: 'event', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-task-card', component: C.TaskCard as never, props: { task: 'json', done: 'boolean', onDoneChange: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-telehealth-call-frame', component: C.TelehealthCallFrame as never, props: { remote: 'string', state: 'string', elapsed: 'string', consent: 'boolean', location: 'string', pos: 'string', muted: 'boolean', defaultMuted: 'boolean', onMutedChange: 'event', cameraOff: 'boolean', defaultCameraOff: 'boolean', onCameraOffChange: 'event', onChat: 'event', onAdmit: 'event', onEnd: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-text-area', component: C.TextArea as never, props: { label: 'string', rows: 'number', maxLength: 'number', value: 'string', defaultValue: 'string', onChange: 'event', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event', disabled: 'boolean', name: 'string', placeholder: 'string', autoComplete: 'string' } },
+  { tag: 'co-text-field', component: C.TextField as never, props: { label: 'string', mask: 'string', value: 'string', defaultValue: 'string', onChange: 'event', error: 'string', helper: 'string', required: 'boolean', readOnly: 'boolean', lockMessage: 'string', size: 'string', iconLeft: 'string', suffix: 'string', style: 'json', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event', type: 'json', disabled: 'boolean', name: 'string', max: 'json', placeholder: 'string', accept: 'string', autoComplete: 'json', checked: 'boolean', maxLength: 'number', min: 'json', multiple: 'boolean', step: 'json' } },
+  { tag: 'co-timeline', component: C.Timeline as never, props: { items: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-pa-timeline', component: C.PATimeline as never, props: { items: 'json', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-time-slot-picker', component: C.TimeSlotPicker as never, props: { slots: 'json', days: 'json', value: 'string', defaultValue: 'string', onChange: 'event', day: 'string', defaultDay: 'string', onDayChange: 'event', label: 'string', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' }, defaults: { slots: [] } },
+  { tag: 'co-slot-picker', component: C.SlotPicker as never, props: { slots: 'json', days: 'json', value: 'string', defaultValue: 'string', onChange: 'event', day: 'string', defaultDay: 'string', onDayChange: 'event', label: 'string', defaultChecked: 'boolean', autoFocus: 'boolean', onInput: 'event' }, defaults: { slots: [] } },
+  { tag: 'co-toast', component: C.Toast as never, props: { message: 'string', tone: 'string', action: 'string', onAction: 'event', onDismiss: 'event', inline: 'boolean', children: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
   { tag: 'co-tooltip', component: C.Tooltip as never, props: { label: 'string', children: 'node', placement: 'string', open: 'boolean', id: 'string', className: 'string' } },
-  { tag: 'co-top-bar', component: C.TopBar as never, props: { variant: 'string', role: 'string', roles: 'json', onRoleChange: 'event', notifications: 'number', quickAdd: 'string', product: 'string', user: 'string', tabs: 'node', module: 'string', onOpenPalette: 'event', onOpenModules: 'event', links: 'json', active: 'string', onNavigate: 'event', onSearchChange: 'event', onQuickAdd: 'event', onNotifications: 'event', onAccount: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean' } },
+  { tag: 'co-top-bar', component: C.TopBar as never, props: { variant: 'string', role: 'string', roles: 'json', onRoleChange: 'event', notifications: 'number', quickAdd: 'string', product: 'string', user: 'string', tabs: 'node', module: 'string', onOpenPalette: 'event', onOpenModules: 'event', links: 'json', active: 'string', onNavigate: 'event', linkHref: 'function', onSearchChange: 'event', onQuickAdd: 'event', onNotifications: 'event', onAccount: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-units-meter', component: C.UnitsMeter as never, props: { used: 'number', approved: 'number', unit: 'string', label: 'string', helper: 'node', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-visit-note-editor', component: C.VisitNoteEditor as never, props: { sections: 'json', diagnoses: 'json', defaultDiagnoses: 'json', onDiagnosesChange: 'event', procedures: 'json', defaultProcedures: 'json', onProceduresChange: 'event', icdOptions: 'json', cptOptions: 'json', title: 'string', meta: 'string', signed: 'boolean', defaultSigned: 'boolean', readOnly: 'boolean', lockText: 'string', onSign: 'event', onAiDraft: 'event', onSaveDraft: 'event', onSectionChange: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { sections: [] } },
+  { tag: 'co-visit-note', component: C.VisitNote as never, props: { sections: 'json', diagnoses: 'json', defaultDiagnoses: 'json', onDiagnosesChange: 'event', procedures: 'json', defaultProcedures: 'json', onProceduresChange: 'event', icdOptions: 'json', cptOptions: 'json', title: 'string', meta: 'string', signed: 'boolean', defaultSigned: 'boolean', readOnly: 'boolean', lockText: 'string', onSign: 'event', onAiDraft: 'event', onSaveDraft: 'event', onSectionChange: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { sections: [] } },
+  { tag: 'co-vital-sign', component: C.VitalSign as never, props: { label: 'string', value: 'json', unit: 'string', flag: 'string', trend: 'json', taken: 'string', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
+  { tag: 'co-vitals-panel', component: C.VitalsPanel as never, props: { items: 'json', subtitle: 'node', readOnly: 'boolean', onEnterVitals: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' }, defaults: { items: [] } },
+  { tag: 'co-waitlist-row', component: C.WaitlistRow as never, props: { item: 'json', onOffer: 'event', onText: 'event', onEdit: 'event', onRemove: 'event', defaultChecked: 'boolean', defaultValue: 'json', autoFocus: 'boolean', onChange: 'event', onInput: 'event' } },
 ];
 
 /** `<co-ai-suggestion>`: the AISuggestion component as a custom element. */
 export type CoAiSuggestionElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.AISuggestion>, "title" | "source" | "confidence" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-alert>`: the Alert component as a custom element. */
 export type CoAlertElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Alert>, "tone" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-allergy-alert>`: the AllergyAlert component as a custom element. */
+export type CoAllergyAlertElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.AllergyAlert>, "kind" | "title" | "body" | "severity" | "source" | "overridable" | "reasons" | "reason" | "defaultReason" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-allergy-badge>`: the AllergyBadge component as a custom element. */
+export type CoAllergyBadgeElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.AllergyBadge>, "substance" | "severity" | "reaction" | "showSeverity" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-allergy-list>`: the AllergyList component as a custom element. */
+export type CoAllergyListElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.AllergyList>, "items" | "reviewed" | "readOnly" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-appointment-chip>`: the AppointmentChip component as a custom element. */
 export type CoAppointmentChipElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.AppointmentChip>, "time" | "patient" | "type" | "status" | "colorBy" | "color" | "telehealth" | "paid" | "size" | "defaultChecked" | "defaultValue" | "autoFocus" | "disabled" | "name" | "value">>;
+/** `<co-audit-log-row>`: the AuditLogRow component as a custom element. */
+export type CoAuditLogRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.AuditLogRow>, "event" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-avatar>`: the Avatar component as a custom element. */
 export type CoAvatarElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Avatar>, "name" | "src" | "size" | "color" | "status" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-badge>`: the Badge component as a custom element. */
 export type CoBadgeElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Badge>, "tone" | "shape" | "size" | "icon" | "dot" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-bar-chart>`: the BarChart component as a custom element. */
 export type CoBarChartElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.BarChart>, "data" | "title" | "height" | "max" | "threshold" | "thresholdLabel" | "unit" | "legend" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-body-map>`: the BodyMap component as a custom element. */
+export type CoBodyMapElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.BodyMap>, "marks" | "title" | "subtitle" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-bottom-tab-bar>`: the BottomTabBar component as a custom element. */
 export type CoBottomTabBarElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.BottomTabBar>, "items" | "active" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-breadcrumb>`: the Breadcrumb component as a custom element. */
 export type CoBreadcrumbElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Breadcrumb>, "items" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-break-the-glass-dialog>`: the BreakTheGlassDialog component as a custom element. */
+export type CoBreakTheGlassDialogElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.BreakTheGlassDialog>, "patient" | "dob" | "careTeam" | "reason" | "note" | "open" | "accessReason" | "loading" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-button>`: the Button component as a custom element. */
 export type CoButtonElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Button>, "variant" | "size" | "loading" | "iconLeft" | "iconRight" | "full" | "pressed" | "href" | "target" | "rel" | "defaultChecked" | "defaultValue" | "autoFocus" | "type" | "disabled" | "name" | "value">>;
 /** `<co-button-group>`: the ButtonGroup component as a custom element. */
 export type CoButtonGroupElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ButtonGroup>, "attached" | "align" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-calendar>`: the Calendar component as a custom element. */
+export type CoCalendarElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Calendar>, "view" | "defaultView" | "date" | "defaultDate" | "today" | "appointments" | "title" | "times" | "blocks" | "monthBlocks" | "colorBy" | "colorMode" | "defaultColorMode" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-calendar-cell>`: the CalendarCell component as a custom element. */
 export type CoCalendarCellElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CalendarCell>, "view" | "date" | "time" | "appointments" | "count" | "today" | "dim" | "blocked" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-card>`: the Card component as a custom element. */
 export type CoCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Card>, "flat" | "padding" | "as" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-care-gap-row>`: the CareGapRow component as a custom element. */
+export type CoCareGapRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CareGapRow>, "gap" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-ccm-timer>`: the CCMTimer component as a custom element. */
+export type CoCcmTimerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CCMTimer>, "patient" | "month" | "minutes" | "clock" | "running" | "defaultRunning" | "defaultChecked" | "defaultValue" | "autoFocus" | "flat" | "as">>;
+/** `<co-chart-card>`: the ChartCard component as a custom element. */
+export type CoChartCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ChartCard>, "title" | "periods" | "period" | "defaultPeriod" | "loading" | "empty" | "defaultChecked" | "defaultValue" | "autoFocus" | "padding" | "flat" | "as">>;
 /** `<co-chat-message>`: the ChatMessage component as a custom element. */
 export type CoChatMessageElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ChatMessage>, "direction" | "author" | "time" | "status" | "ai" | "system" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-chat-thread>`: the ChatThread component as a custom element. */
+export type CoChatThreadElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ChatThread>, "messages" | "defaultMessages" | "title" | "placeholder" | "ai" | "readOnly" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-checkbox>`: the Checkbox component as a custom element. */
-export type CoCheckboxElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Checkbox>, "checked" | "defaultChecked" | "indeterminate" | "error" | "disabled" | "defaultValue" | "autoFocus" | "name" | "value" | "max" | "accept" | "autoComplete" | "maxLength" | "min" | "multiple" | "placeholder" | "readOnly" | "required" | "step">>;
+export type CoCheckboxElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Checkbox>, "checked" | "defaultChecked" | "indeterminate" | "error" | "disabled" | "defaultValue" | "autoFocus" | "readOnly" | "name" | "value" | "max" | "placeholder" | "accept" | "autoComplete" | "maxLength" | "min" | "multiple" | "required" | "step">>;
+/** `<co-check-in-stepper>`: the CheckInStepper component as a custom element. */
+export type CoCheckInStepperElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CheckInStepper>, "patient" | "appt" | "steps" | "current" | "issues" | "items" | "done" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-claim-form>`: the ClaimForm component as a custom element. */
+export type CoClaimFormElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ClaimForm>, "lines" | "defaultLines" | "payerOrder" | "frequency" | "errorsCount" | "readOnly" | "lockText" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-claim-status-tag>`: the ClaimStatusTag component as a custom element. */
 export type CoClaimStatusTagElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ClaimStatusTag>, "status" | "defaultChecked" | "defaultValue" | "autoFocus" | "size" | "shape" | "dot">>;
+/** `<co-code-status-banner>`: the CodeStatusBanner component as a custom element. */
+export type CoCodeStatusBannerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CodeStatusBanner>, "status" | "directive" | "polst" | "proxy" | "documentsHref" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-combobox>`: the Combobox component as a custom element. */
-export type CoComboboxElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Combobox>, "label" | "kind" | "options" | "placeholder" | "query" | "defaultQuery" | "open" | "defaultOpen" | "limit" | "emptyText" | "error" | "helper" | "required" | "style" | "defaultChecked" | "autoFocus" | "type" | "disabled" | "name" | "max" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "readOnly" | "step">>;
+export type CoComboboxElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Combobox>, "label" | "kind" | "options" | "placeholder" | "query" | "defaultQuery" | "open" | "defaultOpen" | "limit" | "emptyText" | "error" | "helper" | "required" | "style" | "defaultChecked" | "autoFocus" | "readOnly" | "type" | "disabled" | "name" | "max" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "step">>;
 /** `<co-command-palette>`: the CommandPalette component as a custom element. */
 export type CoCommandPaletteElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CommandPalette>, "items" | "open" | "query" | "defaultQuery" | "placeholder" | "maxResults" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus" | "ref">>;
+/** `<co-consent-signer>`: the ConsentSigner component as a custom element. */
+export type CoConsentSignerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ConsentSigner>, "title" | "version" | "body" | "signer" | "guardian" | "agreed" | "agreedValue" | "signed" | "agreeLabel" | "signerLabel" | "compact" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-copay-collector>`: the CopayCollector component as a custom element. */
+export type CoCopayCollectorElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CopayCollector>, "patient" | "copay" | "prior" | "priorNote" | "plan" | "cardLast4" | "due" | "amount" | "method" | "defaultMethod" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-coverage-row>`: the CoverageRow component as a custom element. */
+export type CoCoverageRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CoverageRow>, "coverage" | "index" | "last" | "editable" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-cpt-picker>`: the CPTPicker component as a custom element. */
+export type CoCptPickerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.CPTPicker>, "options" | "lines" | "value" | "telehealth" | "label" | "placeholder" | "defaultChecked" | "autoFocus">>;
 /** `<co-data-table>`: the DataTable component as a custom element. */
 export type CoDataTableElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DataTable>, "columns" | "rows" | "rowKey" | "selectable" | "selected" | "defaultSelected" | "rowMenu" | "expanded" | "defaultExpanded" | "loading" | "pageSize" | "pageSizes" | "page" | "defaultPage" | "pagination" | "sort" | "defaultSort" | "caption" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-date-picker>`: the DatePicker component as a custom element. */
-export type CoDatePickerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DatePicker>, "label" | "value" | "defaultValue" | "today" | "open" | "defaultOpen" | "disablePast" | "disableFuture" | "disableWeekends" | "error" | "helper" | "required" | "readOnly" | "lockMessage" | "style" | "defaultChecked" | "autoFocus" | "type" | "disabled" | "name" | "max" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "placeholder" | "step">>;
+export type CoDatePickerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DatePicker>, "label" | "value" | "defaultValue" | "today" | "open" | "defaultOpen" | "disablePast" | "disableFuture" | "disableWeekends" | "error" | "helper" | "required" | "readOnly" | "lockMessage" | "style" | "defaultChecked" | "autoFocus" | "type" | "disabled" | "name" | "max" | "placeholder" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "step">>;
 /** `<co-description-list>`: the DescriptionList component as a custom element. */
 export type CoDescriptionListElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DescriptionList>, "items" | "compact" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-dev-drawer>`: the DevDrawer component as a custom element. */
+export type CoDevDrawerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DevDrawer>, "screen" | "purpose" | "roles" | "api" | "fields" | "states" | "entry" | "width" | "open" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-donut-chart>`: the DonutChart component as a custom element. */
 export type CoDonutChartElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DonutChart>, "data" | "title" | "centerValue" | "centerLabel" | "size" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-drawer>`: the Drawer component as a custom element. */
 export type CoDrawerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Drawer>, "open" | "title" | "side" | "developer" | "sections" | "width" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-drug-interaction-alert>`: the DrugInteractionAlert component as a custom element. */
+export type CoDrugInteractionAlertElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DrugInteractionAlert>, "kind" | "title" | "body" | "severity" | "source" | "overridable" | "reasons" | "reason" | "defaultReason" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-drug-search>`: the DrugSearch component as a custom element. */
+export type CoDrugSearchElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.DrugSearch>, "options" | "label" | "payer" | "defaultChecked" | "autoFocus" | "style" | "error" | "readOnly" | "type" | "disabled" | "name" | "max" | "open" | "placeholder" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "required" | "step" | "query" | "defaultQuery" | "defaultOpen" | "limit" | "emptyText" | "helper">>;
+/** `<co-eligibility-result>`: the EligibilityResult component as a custom element. */
+export type CoEligibilityResultElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.EligibilityResult>, "state" | "payer" | "headline" | "aaa" | "meaning" | "todo" | "benefits" | "deductible" | "checkedAt" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-empty-state>`: the EmptyState component as a custom element. */
 export type CoEmptyStateElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.EmptyState>, "kind" | "icon" | "compact" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-epcs-approval>`: the EPCSApproval component as a custom element. */
+export type CoEpcsApprovalElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.EPCSApproval>, "drug" | "schedule" | "sig" | "qty" | "prescriber" | "dea" | "pdmp" | "pharmacy" | "audit" | "state" | "pin" | "code" | "error" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-era-posting-row>`: the ERAPostingRow component as a custom element. */
+export type CoEraPostingRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ERAPostingRow>, "row" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-fax-document-viewer>`: the FaxDocumentViewer component as a custom element. */
+export type CoFaxDocumentViewerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.FaxDocumentViewer>, "from" | "pages" | "patients" | "patientQuery" | "ai" | "page" | "defaultPage" | "documentTypes" | "routes" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-field>`: the Field component as a custom element. */
 export type CoFieldElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Field>, "id" | "required" | "className" | "style">>;
 /** `<co-file-upload>`: the FileUpload component as a custom element. */
-export type CoFileUploadElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.FileUpload>, "label" | "accept" | "multiple" | "variant" | "files" | "defaultFiles" | "dragging" | "done" | "title" | "hint" | "doneText" | "error" | "style" | "defaultChecked" | "autoFocus" | "disabled" | "name" | "max" | "autoComplete" | "checked" | "maxLength" | "min" | "placeholder" | "readOnly" | "required" | "step">>;
+export type CoFileUploadElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.FileUpload>, "label" | "accept" | "multiple" | "variant" | "files" | "defaultFiles" | "dragging" | "done" | "title" | "hint" | "doneText" | "error" | "style" | "defaultChecked" | "autoFocus" | "readOnly" | "disabled" | "name" | "max" | "placeholder" | "autoComplete" | "checked" | "maxLength" | "min" | "required" | "step">>;
 /** `<co-filter-chip>`: the FilterChip component as a custom element. */
 export type CoFilterChipElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.FilterChip>, "selected" | "defaultSelected" | "count" | "check" | "removeLabel" | "defaultChecked" | "defaultValue" | "autoFocus" | "disabled" | "name" | "value">>;
+/** `<co-growth-chart>`: the GrowthChart component as a custom element. */
+export type CoGrowthChartElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.GrowthChart>, "points" | "percentiles" | "ages" | "min" | "max" | "title" | "unit" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-i-c-d10-picker>`: the ICD10Picker component as a custom element. */
+export type CoICD10PickerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ICD10Picker>, "options" | "favorites" | "label" | "value" | "defaultValue" | "defaultQuery" | "defaultOpen" | "placeholder" | "error" | "required" | "defaultChecked" | "autoFocus">>;
 /** `<co-icon>`: the Icon component as a custom element. */
 export type CoIconElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Icon>, "name" | "size" | "strokeWidth" | "label" | "type" | "max" | "min">>;
 /** `<co-icon-button>`: the IconButton component as a custom element. */
 export type CoIconButtonElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.IconButton>, "icon" | "label" | "variant" | "size" | "badge" | "disabled" | "defaultChecked" | "defaultValue" | "autoFocus" | "type" | "name" | "value">>;
 /** `<co-icon-rail>`: the IconRail component as a custom element. */
 export type CoIconRailElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.IconRail>, "items" | "active" | "showTip" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-immunization-schedule>`: the ImmunizationSchedule component as a custom element. */
+export type CoImmunizationScheduleElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ImmunizationSchedule>, "columns" | "rows" | "synced" | "readOnly" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-inbox-item>`: the InboxItem component as a custom element. */
+export type CoInboxItemElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.InboxItem>, "item" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-inbox-list>`: the InboxList component as a custom element. */
+export type CoInboxListElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.InboxList>, "items" | "categories" | "critical" | "canSign" | "pageSize" | "category" | "defaultCategory" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-insurance-card>`: the InsuranceCard component as a custom element. */
 export type CoInsuranceCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.InsuranceCard>, "payer" | "plan" | "member" | "memberId" | "group" | "copay" | "rx" | "payerId" | "claimsAddress" | "phone" | "precert" | "side" | "defaultSide" | "scanned" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-insurance-coverage-card>`: the InsuranceCoverageCard component as a custom element. */
+export type CoInsuranceCoverageCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.InsuranceCoverageCard>, "coverages" | "defaultCoverages" | "suggested" | "selfPay" | "readOnly" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-kebab-menu>`: the KebabMenu component as a custom element. */
 export type CoKebabMenuElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.KebabMenu>, "items" | "label" | "horizontal" | "align" | "defaultOpen" | "open" | "className">>;
+/** `<co-kiosk-step>`: the KioskStep component as a custom element. */
+export type CoKioskStepElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.KioskStep>, "step" | "total" | "stepName" | "title" | "practice" | "nextLabel" | "nextDisabled" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-kpi-grid>`: the KPIGrid component as a custom element. */
+export type CoKpiGridElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.KPIGrid>, "items" | "filter" | "selected" | "defaultSelected" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-lab-result-table>`: the LabResultTable component as a custom element. */
+export type CoLabResultTableElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.LabResultTable>, "rows" | "title" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-level-tag>`: the LevelTag component as a custom element. */
+export type CoLevelTagElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.LevelTag>, "level" | "defaultChecked" | "defaultValue" | "autoFocus" | "size" | "shape" | "dot">>;
 /** `<co-line-chart>`: the LineChart component as a custom element. */
 export type CoLineChartElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.LineChart>, "labels" | "series" | "title" | "height" | "min" | "max" | "band" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-list-row>`: the ListRow component as a custom element. */
 export type CoListRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ListRow>, "title" | "meta" | "href" | "target" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-locked-field>`: the LockedField component as a custom element. */
+export type CoLockedFieldElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.LockedField>, "label" | "value" | "message" | "defaultChecked" | "autoFocus" | "style" | "type" | "disabled" | "name" | "size" | "max" | "iconLeft" | "placeholder" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "step" | "helper" | "suffix">>;
+/** `<co-medication-list>`: the MedicationList component as a custom element. */
+export type CoMedicationListElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.MedicationList>, "items" | "reconciled" | "readOnly" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-medication-row>`: the MedicationRow component as a custom element. */
+export type CoMedicationRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.MedicationRow>, "med" | "actions" | "defaultChecked" | "defaultValue" | "autoFocus" | "value">>;
 /** `<co-menu>`: the Menu component as a custom element. */
 export type CoMenuElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Menu>, "items" | "align" | "inline" | "label" | "autoFocus" | "style" | "defaultChecked" | "defaultValue">>;
 /** `<co-mobile-header>`: the MobileHeader component as a custom element. */
 export type CoMobileHeaderElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.MobileHeader>, "back" | "variant" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-modal>`: the Modal component as a custom element. */
 export type CoModalElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Modal>, "open" | "kind" | "size" | "primaryLabel" | "cancelLabel" | "loading" | "primaryDisabled" | "closeOnScrim" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
-/** `<co-overlay>`: the Overlay component as a custom element. */
-export type CoOverlayElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Overlay>, "inline" | "side" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-order-set-picker>`: the OrderSetPicker component as a custom element. */
+export type CoOrderSetPickerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.OrderSetPicker>, "sets" | "subtitle" | "current" | "defaultCurrent" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-pagination>`: the Pagination component as a custom element. */
 export type CoPaginationElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Pagination>, "total" | "page" | "defaultPage" | "pageSize" | "defaultPageSize" | "pageSizes" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-patient-banner>`: the PatientBanner component as a custom element. */
 export type CoPatientBannerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PatientBanner>, "name" | "sex" | "age" | "dob" | "mrn" | "phone" | "insurance" | "preferred" | "allergies" | "flags" | "codeStatus" | "restricted" | "photo" | "variant" | "headingLevel" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-patient-tabs>`: the PatientTabs component as a custom element. */
 export type CoPatientTabsElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PatientTabs>, "tabs" | "active" | "defaultActive" | "addLabel" | "defaultChecked" | "defaultValue" | "autoFocus">>;
-/** `<co-pa-timeline>`: the PATimeline component as a custom element. */
-export type CoPaTimelineElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PATimeline>, "items" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-permission-denied>`: the PermissionDenied component as a custom element. */
+export type CoPermissionDeniedElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PermissionDenied>, "defaultChecked" | "defaultValue" | "autoFocus" | "role" | "home" | "permission">>;
+/** `<co-permission-matrix>`: the PermissionMatrix component as a custom element. */
+export type CoPermissionMatrixElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PermissionMatrix>, "roles" | "rows" | "defaultRows" | "editable" | "onlyDifferences" | "defaultOnlyDifferences" | "caption" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-permission-state>`: the PermissionState component as a custom element. */
+export type CoPermissionStateElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PermissionState>, "kind" | "role" | "permission" | "home" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-phone-scaffold>`: the PhoneScaffold component as a custom element. */
+export type CoPhoneScaffoldElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PhoneScaffold>, "back" | "tabs" | "active" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-pick-card>`: the PickCard component as a custom element. */
 export type CoPickCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PickCard>, "title" | "meta" | "selected" | "disabled" | "defaultChecked" | "defaultValue" | "autoFocus" | "name" | "value">>;
 /** `<co-pin-entry>`: the PinEntry component as a custom element. */
 export type CoPinEntryElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PinEntry>, "length" | "value" | "defaultValue" | "label" | "error" | "biometric" | "biometricLabel" | "locked" | "lockedText" | "defaultChecked" | "autoFocus">>;
 /** `<co-popover>`: the Popover component as a custom element. */
 export type CoPopoverElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Popover>, "title" | "align" | "defaultOpen" | "open" | "triggerVariant" | "size" | "label" | "className">>;
+/** `<co-prior-auth-timeline>`: the PriorAuthTimeline component as a custom element. */
+export type CoPriorAuthTimelineElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.PriorAuthTimeline>, "authId" | "service" | "payer" | "patient" | "status" | "used" | "approved" | "unit" | "expires" | "events" | "alert" | "alertTone" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-problem-list>`: the ProblemList component as a custom element. */
+export type CoProblemListElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ProblemList>, "items" | "icdOptions" | "readOnly" | "filter" | "defaultFilter" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-progress-bar>`: the ProgressBar component as a custom element. */
 export type CoProgressBarElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ProgressBar>, "value" | "max" | "label" | "unit" | "valueText" | "meter" | "thresholds" | "tone" | "compact" | "size" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-provider-day-columns>`: the ProviderDayColumns component as a custom element. */
+export type CoProviderDayColumnsElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ProviderDayColumns>, "times" | "providers" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-quality-measure-card>`: the QualityMeasureCard component as a custom element. */
+export type CoQualityMeasureCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.QualityMeasureCard>, "measure" | "defaultChecked" | "defaultValue" | "autoFocus" | "padding" | "flat" | "as">>;
 /** `<co-quick-actions>`: the QuickActions component as a custom element. */
 export type CoQuickActionsElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.QuickActions>, "items" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-radio>`: the Radio component as a custom element. */
-export type CoRadioElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Radio>, "disabled" | "defaultChecked" | "defaultValue" | "autoFocus" | "name" | "value" | "max" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "placeholder" | "readOnly" | "required" | "step">>;
+export type CoRadioElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Radio>, "disabled" | "defaultChecked" | "defaultValue" | "autoFocus" | "readOnly" | "name" | "value" | "max" | "placeholder" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "required" | "step">>;
 /** `<co-radio-group>`: the RadioGroup component as a custom element. */
 export type CoRadioGroupElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.RadioGroup>, "options" | "value" | "defaultValue" | "inline" | "required" | "disabled" | "name" | "defaultChecked" | "autoFocus">>;
+/** `<co-referral-card>`: the ReferralCard component as a custom element. */
+export type CoReferralCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ReferralCard>, "referral" | "defaultChecked" | "defaultValue" | "autoFocus" | "padding" | "flat" | "as">>;
 /** `<co-role-pill>`: the RolePill component as a custom element. */
 export type CoRolePillElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.RolePill>, "role" | "defaultRole" | "roles" | "defaultOpen" | "open" | "className" | "defaultChecked" | "defaultValue" | "autoFocus" | "type" | "disabled" | "name" | "value">>;
+/** `<co-rpm-reading-chart>`: the RPMReadingChart component as a custom element. */
+export type CoRpmReadingChartElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.RPMReadingChart>, "readings" | "metric" | "device" | "title" | "high" | "low" | "max" | "days" | "minutes" | "alert" | "defaultChecked" | "defaultValue" | "autoFocus" | "padding" | "flat" | "as">>;
+/** `<co-score-questionnaire>`: the ScoreQuestionnaire component as a custom element. */
+export type CoScoreQuestionnaireElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ScoreQuestionnaire>, "instrument" | "questions" | "answers" | "value" | "title" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-section-nav>`: the SectionNav component as a custom element. */
 export type CoSectionNavElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SectionNav>, "items" | "active" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-segmented-control>`: the SegmentedControl component as a custom element. */
@@ -188,12 +353,12 @@ export type CoSelectElement = HTMLElement & Partial<Pick<ComponentProps<typeof C
 export type CoSettingRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SettingRow>, "label" | "help" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-sidebar-nav>`: the SidebarNav component as a custom element. */
 export type CoSidebarNavElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SidebarNav>, "groups" | "active" | "collapsed" | "defaultCollapsed" | "product" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-sig-builder>`: the SigBuilder component as a custom element. */
+export type CoSigBuilderElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SigBuilder>, "value" | "defaultValue" | "routes" | "frequencies" | "defaultChecked" | "autoFocus">>;
 /** `<co-signature-pad>`: the SignaturePad component as a custom element. */
 export type CoSignaturePadElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SignaturePad>, "label" | "name" | "signed" | "defaultSigned" | "when" | "compact" | "required" | "error" | "style" | "defaultChecked" | "defaultValue" | "autoFocus" | "type" | "disabled" | "value">>;
 /** `<co-skeleton>`: the Skeleton component as a custom element. */
 export type CoSkeletonElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Skeleton>, "variant" | "lines" | "rows" | "width" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
-/** `<co-slot-picker>`: the SlotPicker component as a custom element. */
-export type CoSlotPickerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SlotPicker>, "slots" | "days" | "value" | "defaultValue" | "day" | "defaultDay" | "label" | "defaultChecked" | "autoFocus">>;
 /** `<co-soap-section>`: the SOAPSection component as a custom element. */
 export type CoSoapSectionElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SOAPSection>, "title" | "text" | "value" | "ai" | "macros" | "required" | "error" | "readOnly" | "rows" | "defaultChecked" | "autoFocus">>;
 /** `<co-sparkline>`: the Sparkline component as a custom element. */
@@ -208,86 +373,162 @@ export type CoStatCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof
 export type CoStatusTagElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.StatusTag>, "kind" | "status" | "tone" | "icon" | "defaultChecked" | "defaultValue" | "autoFocus" | "size" | "shape" | "dot">>;
 /** `<co-stepper>`: the Stepper component as a custom element. */
 export type CoStepperElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Stepper>, "steps" | "current" | "variant" | "count" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-stepper-form>`: the StepperForm component as a custom element. */
+export type CoStepperFormElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.StepperForm>, "title" | "steps" | "current" | "defaultCurrent" | "finishLabel" | "saving" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-style-chooser>`: the StyleChooser component as a custom element. */
 export type CoStyleChooserElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.StyleChooser>, "styles" | "value" | "defaultValue" | "canApply" | "label" | "defaultChecked" | "autoFocus">>;
 /** `<co-success-dialog>`: the SuccessDialog component as a custom element. */
 export type CoSuccessDialogElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SuccessDialog>, "title" | "okayLabel" | "secondary" | "open" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-superbill-table>`: the SuperbillTable component as a custom element. */
+export type CoSuperbillTableElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.SuperbillTable>, "groups" | "selected" | "defaultSelected" | "subtitle" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-switch>`: the Switch component as a custom element. */
 export type CoSwitchElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Switch>, "checked" | "defaultChecked" | "row" | "disabled" | "className" | "defaultValue" | "autoFocus" | "name" | "value">>;
 /** `<co-tabs>`: the Tabs component as a custom element. */
 export type CoTabsElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Tabs>, "items" | "value" | "defaultValue" | "variant" | "label" | "defaultChecked" | "autoFocus">>;
+/** `<co-task-card>`: the TaskCard component as a custom element. */
+export type CoTaskCardElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TaskCard>, "task" | "done" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-telehealth-call-frame>`: the TelehealthCallFrame component as a custom element. */
+export type CoTelehealthCallFrameElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TelehealthCallFrame>, "remote" | "state" | "elapsed" | "consent" | "location" | "pos" | "muted" | "defaultMuted" | "cameraOff" | "defaultCameraOff" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 /** `<co-text-area>`: the TextArea component as a custom element. */
-export type CoTextAreaElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TextArea>, "label" | "rows" | "maxLength" | "value" | "defaultValue" | "error" | "helper" | "required" | "readOnly" | "lockMessage" | "style" | "defaultChecked" | "autoFocus" | "disabled" | "name" | "autoComplete" | "placeholder">>;
+export type CoTextAreaElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TextArea>, "label" | "rows" | "maxLength" | "value" | "defaultValue" | "error" | "helper" | "required" | "readOnly" | "lockMessage" | "style" | "defaultChecked" | "autoFocus" | "disabled" | "name" | "placeholder" | "autoComplete">>;
 /** `<co-text-field>`: the TextField component as a custom element. */
-export type CoTextFieldElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TextField>, "label" | "mask" | "value" | "defaultValue" | "error" | "helper" | "required" | "readOnly" | "lockMessage" | "size" | "iconLeft" | "suffix" | "style" | "defaultChecked" | "autoFocus" | "type" | "disabled" | "name" | "max" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "placeholder" | "step">>;
+export type CoTextFieldElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TextField>, "label" | "mask" | "value" | "defaultValue" | "error" | "helper" | "required" | "readOnly" | "lockMessage" | "size" | "iconLeft" | "suffix" | "style" | "defaultChecked" | "autoFocus" | "type" | "disabled" | "name" | "max" | "placeholder" | "accept" | "autoComplete" | "checked" | "maxLength" | "min" | "multiple" | "step">>;
+/** `<co-timeline>`: the Timeline component as a custom element. */
+export type CoTimelineElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Timeline>, "items" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-time-slot-picker>`: the TimeSlotPicker component as a custom element. */
+export type CoTimeSlotPickerElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TimeSlotPicker>, "slots" | "days" | "value" | "defaultValue" | "day" | "defaultDay" | "label" | "defaultChecked" | "autoFocus">>;
 /** `<co-toast>`: the Toast component as a custom element. */
 export type CoToastElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Toast>, "message" | "tone" | "action" | "inline" | "defaultChecked" | "defaultValue" | "autoFocus">>;
-/** `<co-toast-provider>`: the ToastProvider component as a custom element. */
-export type CoToastProviderElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.ToastProvider>, "max" | "duration" | "className">>;
 /** `<co-tooltip>`: the Tooltip component as a custom element. */
 export type CoTooltipElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.Tooltip>, "label" | "placement" | "open" | "id" | "className">>;
 /** `<co-top-bar>`: the TopBar component as a custom element. */
-export type CoTopBarElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TopBar>, "variant" | "role" | "roles" | "notifications" | "quickAdd" | "product" | "user" | "module" | "links" | "active" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+export type CoTopBarElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.TopBar>, "variant" | "role" | "roles" | "notifications" | "quickAdd" | "product" | "user" | "module" | "links" | "active" | "linkHref" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-units-meter>`: the UnitsMeter component as a custom element. */
+export type CoUnitsMeterElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.UnitsMeter>, "used" | "approved" | "unit" | "label" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-visit-note-editor>`: the VisitNoteEditor component as a custom element. */
+export type CoVisitNoteEditorElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.VisitNoteEditor>, "sections" | "diagnoses" | "defaultDiagnoses" | "procedures" | "defaultProcedures" | "icdOptions" | "cptOptions" | "title" | "meta" | "signed" | "defaultSigned" | "readOnly" | "lockText" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-vital-sign>`: the VitalSign component as a custom element. */
+export type CoVitalSignElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.VitalSign>, "label" | "value" | "unit" | "flag" | "trend" | "taken" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-vitals-panel>`: the VitalsPanel component as a custom element. */
+export type CoVitalsPanelElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.VitalsPanel>, "items" | "readOnly" | "defaultChecked" | "defaultValue" | "autoFocus">>;
+/** `<co-waitlist-row>`: the WaitlistRow component as a custom element. */
+export type CoWaitlistRowElement = HTMLElement & Partial<Pick<ComponentProps<typeof C.WaitlistRow>, "item" | "defaultChecked" | "defaultValue" | "autoFocus">>;
 
 declare global {
   interface HTMLElementTagNameMap {
     'co-ai-suggestion': CoAiSuggestionElement;
     'co-alert': CoAlertElement;
+    'co-allergy-alert': CoAllergyAlertElement;
+    'co-allergy-badge': CoAllergyBadgeElement;
+    'co-allergy-list': CoAllergyListElement;
     'co-appointment-chip': CoAppointmentChipElement;
+    'co-audit-log-row': CoAuditLogRowElement;
     'co-avatar': CoAvatarElement;
     'co-badge': CoBadgeElement;
     'co-bar-chart': CoBarChartElement;
+    'co-body-map': CoBodyMapElement;
     'co-bottom-tab-bar': CoBottomTabBarElement;
     'co-breadcrumb': CoBreadcrumbElement;
+    'co-break-the-glass-dialog': CoBreakTheGlassDialogElement;
     'co-button': CoButtonElement;
     'co-button-group': CoButtonGroupElement;
+    'co-calendar': CoCalendarElement;
+    'co-schedule-calendar': CoCalendarElement;
     'co-calendar-cell': CoCalendarCellElement;
     'co-card': CoCardElement;
+    'co-care-gap-row': CoCareGapRowElement;
+    'co-ccm-timer': CoCcmTimerElement;
+    'co-chart-card': CoChartCardElement;
     'co-chat-message': CoChatMessageElement;
+    'co-chat-thread': CoChatThreadElement;
+    'co-secure-chat-thread': CoChatThreadElement;
     'co-checkbox': CoCheckboxElement;
+    'co-check-in-stepper': CoCheckInStepperElement;
+    'co-claim-form': CoClaimFormElement;
+    'co-claim-line-editor': CoClaimFormElement;
     'co-claim-status-tag': CoClaimStatusTagElement;
+    'co-code-status-banner': CoCodeStatusBannerElement;
     'co-combobox': CoComboboxElement;
     'co-command-palette': CoCommandPaletteElement;
+    'co-consent-signer': CoConsentSignerElement;
+    'co-copay-collector': CoCopayCollectorElement;
+    'co-patient-balance': CoCopayCollectorElement;
+    'co-coverage-row': CoCoverageRowElement;
+    'co-cpt-picker': CoCptPickerElement;
     'co-data-table': CoDataTableElement;
     'co-date-picker': CoDatePickerElement;
     'co-description-list': CoDescriptionListElement;
+    'co-dev-drawer': CoDevDrawerElement;
     'co-donut-chart': CoDonutChartElement;
     'co-drawer': CoDrawerElement;
+    'co-drug-interaction-alert': CoDrugInteractionAlertElement;
+    'co-drug-search': CoDrugSearchElement;
+    'co-eligibility-result': CoEligibilityResultElement;
     'co-empty-state': CoEmptyStateElement;
+    'co-epcs-approval': CoEpcsApprovalElement;
+    'co-era-posting-row': CoEraPostingRowElement;
+    'co-fax-document-viewer': CoFaxDocumentViewerElement;
     'co-field': CoFieldElement;
     'co-file-upload': CoFileUploadElement;
     'co-filter-chip': CoFilterChipElement;
+    'co-growth-chart': CoGrowthChartElement;
+    'co-i-c-d10-picker': CoICD10PickerElement;
     'co-icon': CoIconElement;
     'co-icon-button': CoIconButtonElement;
     'co-icon-rail': CoIconRailElement;
+    'co-immunization-schedule': CoImmunizationScheduleElement;
+    'co-inbox-item': CoInboxItemElement;
+    'co-inbox-list': CoInboxListElement;
     'co-insurance-card': CoInsuranceCardElement;
+    'co-insurance-coverage-card': CoInsuranceCoverageCardElement;
+    'co-coverage-stack': CoInsuranceCoverageCardElement;
     'co-kebab-menu': CoKebabMenuElement;
+    'co-kiosk-step': CoKioskStepElement;
+    'co-kpi-grid': CoKpiGridElement;
+    'co-lab-result-table': CoLabResultTableElement;
+    'co-level-tag': CoLevelTagElement;
     'co-line-chart': CoLineChartElement;
     'co-list-row': CoListRowElement;
+    'co-locked-field': CoLockedFieldElement;
+    'co-medication-list': CoMedicationListElement;
+    'co-medication-row': CoMedicationRowElement;
     'co-menu': CoMenuElement;
     'co-mobile-header': CoMobileHeaderElement;
     'co-modal': CoModalElement;
-    'co-overlay': CoOverlayElement;
+    'co-order-set-picker': CoOrderSetPickerElement;
     'co-pagination': CoPaginationElement;
     'co-patient-banner': CoPatientBannerElement;
     'co-patient-tabs': CoPatientTabsElement;
-    'co-pa-timeline': CoPaTimelineElement;
+    'co-permission-denied': CoPermissionDeniedElement;
+    'co-permission-matrix': CoPermissionMatrixElement;
+    'co-permission-state': CoPermissionStateElement;
+    'co-phone-scaffold': CoPhoneScaffoldElement;
     'co-pick-card': CoPickCardElement;
     'co-pin-entry': CoPinEntryElement;
     'co-popover': CoPopoverElement;
+    'co-prior-auth-timeline': CoPriorAuthTimelineElement;
+    'co-prior-auth-card': CoPriorAuthTimelineElement;
+    'co-problem-list': CoProblemListElement;
     'co-progress-bar': CoProgressBarElement;
+    'co-provider-day-columns': CoProviderDayColumnsElement;
+    'co-quality-measure-card': CoQualityMeasureCardElement;
     'co-quick-actions': CoQuickActionsElement;
     'co-radio': CoRadioElement;
     'co-radio-group': CoRadioGroupElement;
+    'co-referral-card': CoReferralCardElement;
     'co-role-pill': CoRolePillElement;
+    'co-viewing-as': CoRolePillElement;
+    'co-role-switcher': CoRolePillElement;
+    'co-rpm-reading-chart': CoRpmReadingChartElement;
+    'co-score-questionnaire': CoScoreQuestionnaireElement;
     'co-section-nav': CoSectionNavElement;
     'co-segmented-control': CoSegmentedControlElement;
     'co-select': CoSelectElement;
     'co-setting-row': CoSettingRowElement;
     'co-sidebar-nav': CoSidebarNavElement;
+    'co-sig-builder': CoSigBuilderElement;
     'co-signature-pad': CoSignaturePadElement;
     'co-skeleton': CoSkeletonElement;
-    'co-slot-picker': CoSlotPickerElement;
     'co-soap-section': CoSoapSectionElement;
     'co-sparkline': CoSparklineElement;
     'co-spinner': CoSpinnerElement;
@@ -295,15 +536,28 @@ declare global {
     'co-stat-card': CoStatCardElement;
     'co-status-tag': CoStatusTagElement;
     'co-stepper': CoStepperElement;
+    'co-stepper-form': CoStepperFormElement;
     'co-style-chooser': CoStyleChooserElement;
     'co-success-dialog': CoSuccessDialogElement;
+    'co-superbill-table': CoSuperbillTableElement;
     'co-switch': CoSwitchElement;
     'co-tabs': CoTabsElement;
+    'co-task-card': CoTaskCardElement;
+    'co-telehealth-call-frame': CoTelehealthCallFrameElement;
     'co-text-area': CoTextAreaElement;
     'co-text-field': CoTextFieldElement;
+    'co-timeline': CoTimelineElement;
+    'co-pa-timeline': CoTimelineElement;
+    'co-time-slot-picker': CoTimeSlotPickerElement;
+    'co-slot-picker': CoTimeSlotPickerElement;
     'co-toast': CoToastElement;
-    'co-toast-provider': CoToastProviderElement;
     'co-tooltip': CoTooltipElement;
     'co-top-bar': CoTopBarElement;
+    'co-units-meter': CoUnitsMeterElement;
+    'co-visit-note-editor': CoVisitNoteEditorElement;
+    'co-visit-note': CoVisitNoteEditorElement;
+    'co-vital-sign': CoVitalSignElement;
+    'co-vitals-panel': CoVitalsPanelElement;
+    'co-waitlist-row': CoWaitlistRowElement;
   }
 }

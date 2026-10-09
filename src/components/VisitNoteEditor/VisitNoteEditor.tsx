@@ -1,14 +1,14 @@
-import { useRef, useState, type HTMLAttributes } from 'react';
-import { cx } from '../../internal/cx';
-import { useControllableState } from '../../internal/hooks';
-import { AISuggestion } from '../AISuggestion/AISuggestion';
-import { Alert } from '../Alert/Alert';
-import { Badge } from '../Badge/Badge';
-import { Button } from '../Button/Button';
-import { Card } from '../Card/Card';
-import { Combobox } from '../Combobox/Combobox';
-import { Icon } from '../Icon/Icon';
-import { TextArea } from '../TextArea/TextArea';
+import { useRef, useState, type HTMLAttributes } from "react";
+import { cx } from "../../internal/cx";
+import { useControllableState } from "../../internal/hooks";
+import { AISuggestion } from "../AISuggestion/AISuggestion";
+import { Alert } from "../Alert/Alert";
+import { Badge } from "../Badge/Badge";
+import { Button } from "../Button/Button";
+import { Card } from "../Card/Card";
+import { Combobox } from "../Combobox/Combobox";
+import { Icon } from "../Icon/Icon";
+import { TextArea } from "../TextArea/TextArea";
 
 /** One note section (template section). */
 export interface VisitNoteSection {
@@ -36,7 +36,10 @@ export interface VisitNoteCode {
   label: string;
 }
 
-export interface VisitNoteEditorProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface VisitNoteEditorProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "title"
+> {
   /** Array<{id, title, text?, ai?, required?, error?, rows?}>; required */
   sections: VisitNoteSection[];
   /** Diagnoses on the note (controlled); default uncontrolled */
@@ -78,9 +81,9 @@ export interface VisitNoteEditorProps extends Omit<HTMLAttributes<HTMLDivElement
 }
 
 const chipStyle = {
-  background: 'var(--co-primary-soft)',
-  color: 'var(--co-primary-strong)',
-  borderColor: 'var(--co-primary-line)',
+  background: "var(--co-primary-soft)",
+  color: "var(--co-primary-strong)",
+  borderColor: "var(--co-primary-line)",
 };
 
 /** VisitNoteEditor is the section-by-section visit note with AI Scribe drafts and ICD-10 and CPT search, from Draft to Signed. */
@@ -94,12 +97,12 @@ export function VisitNoteEditor({
   onProceduresChange,
   icdOptions = [],
   cptOptions = [],
-  title = 'Visit Note',
+  title = "Visit Note",
   meta,
   signed,
   defaultSigned = false,
   readOnly = false,
-  lockText = 'Your role can view this note but not edit it.',
+  lockText = "Your role can view this note but not edit it.",
   onSign,
   onAiDraft,
   onSaveDraft,
@@ -108,10 +111,18 @@ export function VisitNoteEditor({
   ...rest
 }: VisitNoteEditorProps) {
   const [isSigned, setSigned] = useControllableState(signed, defaultSigned);
-  const [dx, setDx] = useControllableState(diagnoses, defaultDiagnoses, onDiagnosesChange);
-  const [px, setPx] = useControllableState(procedures, defaultProcedures, onProceduresChange);
+  const [dx, setDx] = useControllableState(
+    diagnoses,
+    defaultDiagnoses,
+    onDiagnosesChange,
+  );
+  const [px, setPx] = useControllableState(
+    procedures,
+    defaultProcedures,
+    onProceduresChange,
+  );
   const [texts, setTexts] = useState<Record<string, string>>(() =>
-    Object.fromEntries(sections.map((s) => [s.id, s.text ?? '']))
+    Object.fromEntries(sections.map((s) => [s.id, s.text ?? ""])),
   );
   const [accepted, setAccepted] = useState<Record<string, boolean>>({});
   const fieldRefs = useRef<Record<string, HTMLTextAreaElement | null>>({});
@@ -122,23 +133,38 @@ export function VisitNoteEditor({
     onSectionChange?.(id, text);
   };
   const acceptAi = (s: VisitNoteSection, focus: boolean) => {
-    const prev = texts[s.id] ?? s.text ?? '';
-    setText(s.id, prev ? `${prev}\n${s.ai}` : (s.ai ?? ''));
+    const prev = texts[s.id] ?? s.text ?? "";
+    setText(s.id, prev ? `${prev}\n${s.ai}` : (s.ai ?? ""));
     setAccepted((a) => ({ ...a, [s.id]: true }));
     if (focus) fieldRefs.current[s.id]?.focus();
   };
 
-  const codeList = (list: VisitNoteCode[], set: (next: VisitNoteCode[]) => void, name: string) =>
+  const codeList = (
+    list: VisitNoteCode[],
+    set: (next: VisitNoteCode[]) => void,
+    name: string,
+  ) =>
     list.length ? (
       <ul className="co-row co-gap-6 co-vne-codes" aria-label={name}>
         {list.map((c, i) => (
-          <li key={c.code} className="co-chipb is-on co-chip-rm" style={chipStyle}>
-            <span className="co-code" style={{ background: 'var(--co-surface)' }}>
+          <li
+            key={c.code}
+            className="co-chipb is-on co-chip-rm"
+            style={chipStyle}
+          >
+            <span
+              className="co-code"
+              style={{ background: "var(--co-surface)" }}
+            >
               {c.code}
             </span>
             {c.label}
             {ro ? null : (
-              <button type="button" aria-label={`Remove ${c.code}`} onClick={() => set(list.filter((_, j) => j !== i))}>
+              <button
+                type="button"
+                aria-label={`Remove ${c.code}`}
+                onClick={() => set(list.filter((_, j) => j !== i))}
+              >
                 <Icon name="x" size={14} />
               </button>
             )}
@@ -147,21 +173,32 @@ export function VisitNoteEditor({
       </ul>
     ) : null;
 
-  const addCode = (list: VisitNoteCode[], set: (next: VisitNoteCode[]) => void) => (o: { code?: string; label: string }) => {
-    if (o.code && !list.some((d) => d.code === o.code)) set([...list, { code: o.code, label: o.label }]);
-  };
+  const addCode =
+    (list: VisitNoteCode[], set: (next: VisitNoteCode[]) => void) =>
+    (o: { code?: string; label: string }) => {
+      if (o.code && !list.some((d) => d.code === o.code))
+        set([...list, { code: o.code, label: o.label }]);
+    };
 
   return (
-    <div className={cx('co-note', className)} {...rest}>
+    <div className={cx("co-note", className)} {...rest}>
       <div className="co-row">
         <h2>{title}</h2>
-        <Badge tone={isSigned ? 'success' : 'warning'} icon={isSigned ? 'check' : 'clock'}>
-          {isSigned ? 'Signed' : 'Draft'}
+        <Badge
+          tone={isSigned ? "success" : "warning"}
+          icon={isSigned ? "check" : "clock"}
+        >
+          {isSigned ? "Signed" : "Draft"}
         </Badge>
         {meta ? <span className="co-muted">{meta}</span> : null}
         <div className="co-ml co-row co-gap-8">
           {onAiDraft && !ro ? (
-            <Button variant="ai" iconLeft="sparkle" size="sm" onClick={onAiDraft}>
+            <Button
+              variant="ai"
+              iconLeft="sparkle"
+              size="sm"
+              onClick={onAiDraft}
+            >
               Draft with AI Scribe
             </Button>
           ) : null}
@@ -187,7 +224,9 @@ export function VisitNoteEditor({
       {readOnly ? (
         <Alert tone="lock">{lockText}</Alert>
       ) : isSigned ? (
-        <Alert tone="note">Signed notes are locked. Add an addendum to change them.</Alert>
+        <Alert tone="note">
+          Signed notes are locked. Add an addendum to change them.
+        </Alert>
       ) : null}
       {sections.map((s) => (
         <Card
@@ -211,7 +250,11 @@ export function VisitNoteEditor({
               title="AI Scribe draft"
               actions={
                 <>
-                  <Button size="sm" variant="ai" onClick={() => acceptAi(s, false)}>
+                  <Button
+                    size="sm"
+                    variant="ai"
+                    onClick={() => acceptAi(s, false)}
+                  >
                     Accept
                   </Button>
                   <Button size="sm" onClick={() => acceptAi(s, true)}>
@@ -229,7 +272,7 @@ export function VisitNoteEditor({
             }}
             label=""
             aria-label={s.title}
-            value={texts[s.id] ?? s.text ?? ''}
+            value={texts[s.id] ?? s.text ?? ""}
             onChange={(v) => setText(s.id, v)}
             readOnly={ro}
             rows={s.rows ?? 3}
@@ -240,7 +283,7 @@ export function VisitNoteEditor({
       ))}
       <Card title="Assessment codes" padding="compact">
         <div className="co-lbl">Diagnoses (ICD-10)</div>
-        {codeList(dx, setDx, 'Diagnoses')}
+        {codeList(dx, setDx, "Diagnoses")}
         {ro ? null : (
           <Combobox
             label="Add diagnosis"
@@ -251,7 +294,7 @@ export function VisitNoteEditor({
           />
         )}
         <div className="co-lbl co-vne-lbl2">Procedures (CPT)</div>
-        {codeList(px, setPx, 'Procedures')}
+        {codeList(px, setPx, "Procedures")}
         {ro ? null : (
           <Combobox
             label="Add procedure"

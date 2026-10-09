@@ -88,5 +88,5 @@ a host application's own variables.
 
 ## Commits and releases
 
-Conventional commits (`feat(Button): ...`). Releases publish to npm from `main` via
-`.github/workflows/release.yaml`; the docs site and Storybook deploy to GitHub Pages via `docs.yaml`.
+Conventional commits (`feat(Button): ...`). Releases publish to npm when you run
+`.github/workflows/release.yaml` from the Actions tab (choose `none` to publish the current version); the docs site and Storybook deploy to GitHub Pages via `docs.yaml`.

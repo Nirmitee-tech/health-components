@@ -1,17 +1,15 @@
 name: Release
-# Publishes to npm when package.json carries a version that is not on npm yet (push to main),
-# or bumps and publishes on demand (workflow_dispatch).
+# Publishes to npm on demand only (Actions > Release > Run workflow): bumps the version if asked, then publishes
+# package.json's version when it is not on npm yet. Merging to main never publishes by itself.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
     inputs:
       release_type:
         description: Version bump
         required: true
-        default: patch
+        default: none
         type: choice
-        options: [patch, minor, major]
+        options: [none, patch, minor, major]
 
 permissions:
   contents: write
@@ -35,7 +33,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: npm ci
       - name: Bump version (manual release)
-        if: github.event_name == 'workflow_dispatch'
+        if: inputs.release_type != 'none'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'

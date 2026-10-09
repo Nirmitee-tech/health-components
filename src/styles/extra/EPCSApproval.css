@@ -1,0 +1,3 @@
+/* EPCSApproval: PIN pad beside the token code column (source: inline styles). */
+.co-epcs .co-epcs-row { align-items: flex-start; gap: var(--co-space-6); }
+.co-epcs .co-epcs-f { max-width: 280px; }

@@ -81,6 +81,7 @@ export const ConsentSigner = forwardRef<HTMLElement, ConsentSignerProps>(functio
 
   return (
     <Card ref={ref} id={id} title={title} subtitle={version} className={cx('co-consent', className)} {...rest}>
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- scrollable document must be keyboard focusable so it can be scrolled (axe scrollable-region-focusable). */}
       <div className="co-consentdoc" tabIndex={0} role="document" aria-label={title} id={`${base}-doc`}>
         {body}
       </div>

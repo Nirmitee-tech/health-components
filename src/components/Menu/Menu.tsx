@@ -139,6 +139,7 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus -- menu container: items carry a roving tabindex (APG menu).
     <div
       ref={setRefs}
       className={cx('co-menu', align === 'left' && 'co-menu-left', inline && 'co-menu-inline', className)}
@@ -311,6 +312,7 @@ export function Popover({
         {trigger}
       </Button>
       {mb.open ? (
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- popover dialog closes on Escape and Tab-out.
         <div
           ref={panelRef}
           id={mb.popupId}

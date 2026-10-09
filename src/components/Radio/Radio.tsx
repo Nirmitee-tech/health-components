@@ -125,6 +125,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(funct
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- fieldset delegates arrow keys for the roving radio group (APG radio group).
     <fieldset
       ref={ref}
       id={id}

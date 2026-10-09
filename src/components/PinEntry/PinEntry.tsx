@@ -80,6 +80,7 @@ export const PinEntry = forwardRef<HTMLDivElement, PinEntryProps>(function PinEn
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- accepts digits and Backspace from a hardware keyboard while focus is on any key.
     <div ref={ref} className={cx('co-pinbox', className)} onKeyDown={handleKeyDown} {...rest}>
       {label ? <div className="co-lbl co-center">{label}</div> : null}
       <div className="co-pin-dots" role="status" aria-label={`${value.length} of ${n} digits entered`}>

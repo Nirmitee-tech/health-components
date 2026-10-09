@@ -70,6 +70,7 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus -- radiogroup container: options carry a roving tabindex (APG radio group).
     <div
       ref={ref}
       className={cx('co-seg', size === 'sm' && 'co-seg-sm', className)}

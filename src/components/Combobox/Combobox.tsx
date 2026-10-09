@@ -213,6 +213,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(function Com
             {list.length ? (
               <div id={listId} role="listbox" aria-labelledby={`${id}-label`}>
                 {list.map((o, i) => (
+                  // eslint-disable-next-line jsx-a11y/interactive-supports-focus -- option in an aria-activedescendant listbox: the input keeps focus (APG combobox).
                   <div
                     key={optionKey(o)}
                     id={`${id}-o${i}`}

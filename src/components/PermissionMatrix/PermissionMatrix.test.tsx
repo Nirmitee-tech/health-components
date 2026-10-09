@@ -47,7 +47,7 @@ describe('PermissionMatrix', () => {
     await userEvent.selectOptions(sel, 'view');
     expect(sel).toHaveValue('view');
     expect(onChange).toHaveBeenCalledWith(rows[0], 'Biller', 'view');
-    expect(onRowsChange.mock.calls[0][0][0].levels).toEqual({ Provider: 'approve', Biller: 'view' });
+    expect(onRowsChange.mock.calls[0]![0][0].levels).toEqual({ Provider: 'approve', Biller: 'view' });
   });
 
   it('is controlled by rows', async () => {

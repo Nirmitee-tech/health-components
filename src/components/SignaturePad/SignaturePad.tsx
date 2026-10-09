@@ -84,7 +84,6 @@ export const SignaturePad = forwardRef<HTMLButtonElement, SignaturePadProps>(fun
         className={cx('co-sigpad', signed && 'is-signed', compact && 'co-sigpad-sm', error && 'is-bad')}
         aria-label={`${label}: ${signed ? `Signed by ${signer}. Clear to sign again` : `Tap to sign as ${name || 'patient'}`}`}
         aria-describedby={describedBy}
-        aria-invalid={error ? true : undefined}
         onClick={() => {
           if (signed) return;
           setSignedAt(stamp(new Date()));

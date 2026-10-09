@@ -34,6 +34,7 @@ export function Overlay({ inline = false, side = 'center', onScrimPress, classNa
   }
   return (
     <Portal>
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions -- scrim click closes the overlay; keyboard users close it with Escape. */}
       <div
         className={cls}
         onMouseDown={(e) => {

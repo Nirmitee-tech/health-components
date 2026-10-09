@@ -1,0 +1,2 @@
+/* InsuranceCoverageCard: the row actions sit at the top of the row (was an inline style in the source). */
+.co-cov-act { align-self: flex-start; }

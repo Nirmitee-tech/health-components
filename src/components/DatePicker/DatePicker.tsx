@@ -288,6 +288,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
           </button>
         </div>
         {open && !readOnly && !disabled ? (
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- dialog delegates grid arrow keys and Escape for its day buttons (APG date picker dialog).
           <div
             id={`${id}-pop`}
             className="co-pop co-dp-pop co-menu-left"

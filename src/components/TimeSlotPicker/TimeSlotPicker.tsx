@@ -119,6 +119,7 @@ export const TimeSlotPicker = forwardRef<HTMLDivElement, TimeSlotPickerProps>(fu
   return (
     <div ref={ref} id={id} className={cx('co-tsp', className)} {...rest}>
       {days ? (
+        // eslint-disable-next-line jsx-a11y/interactive-supports-focus -- radiogroup container: options carry a roving tabindex (APG radio group).
         <div
           className="co-hscroll"
           role="radiogroup"
@@ -154,6 +155,7 @@ export const TimeSlotPicker = forwardRef<HTMLDivElement, TimeSlotPickerProps>(fu
           {label}
         </div>
       ) : null}
+      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus -- radiogroup container: options carry a roving tabindex (APG radio group). */}
       <div
         className="co-slotg"
         role="radiogroup"

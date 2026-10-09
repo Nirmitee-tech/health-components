@@ -7,8 +7,10 @@
 @import './extra/CopayCollector.css';
 @import './extra/DatePicker.css';
 @import './extra/DrugInteractionAlert.css';
+@import './extra/EPCSApproval.css';
 @import './extra/ICD10Picker.css';
 @import './extra/ImmunizationSchedule.css';
+@import './extra/InsuranceCoverageCard.css';
 @import './extra/PatientTabs.css';
 @import './extra/PermissionMatrix.css';
 @import './extra/ProviderDayColumns.css';

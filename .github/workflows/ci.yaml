@@ -32,6 +32,7 @@ jobs:
           node scripts/gen-index.mjs
           node scripts/gen-elements.mjs
           git diff --exit-code -- src || (echo "::error::Run npm run build and commit the generated files" && exit 1)
+      - run: npm run lint
       - run: npm run typecheck
       - run: npm test
       - run: npm run build

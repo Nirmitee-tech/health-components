@@ -91,6 +91,7 @@ export const StyleChooser = forwardRef<HTMLDivElement, StyleChooserProps>(functi
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus -- radiogroup container: options carry a roving tabindex (APG radio group).
     <div
       ref={ref}
       id={id}

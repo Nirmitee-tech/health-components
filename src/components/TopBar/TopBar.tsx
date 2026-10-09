@@ -41,6 +41,8 @@ export interface TopBarProps extends HTMLAttributes<HTMLElement> {
   active?: string;
   /** Classic only: called when a module link is clicked; default none */
   onNavigate?: (link: string, event: MouseEvent<HTMLAnchorElement>) => void;
+  /** Classic only: URL of each module link, for real navigation; default none (links call onNavigate) */
+  linkHref?: (link: string) => string;
   /** Sidebar only: called as the patient search text changes; default none */
   onSearchChange?: (query: string) => void;
   /** Quick add handler; default none */
@@ -72,6 +74,7 @@ export const TopBar = forwardRef<HTMLElement, TopBarProps>(function TopBar(
     links = DEFAULT_LINKS,
     active,
     onNavigate,
+    linkHref,
     onSearchChange,
     onQuickAdd,
     onNotifications,
@@ -97,11 +100,12 @@ export const TopBar = forwardRef<HTMLElement, TopBarProps>(function TopBar(
           {links.map((l) => (
             <a
               key={l}
-              href="#"
+              href={linkHref ? linkHref(l) : `#${l.toLowerCase().replace(/\s+/g, '-')}`}
               className={cx('co-cl-a', l === active && 'is-on')}
               aria-current={l === active ? 'page' : undefined}
               onClick={(e) => {
-                e.preventDefault();
+                // Without real URLs the links are app-router hooks: keep the page where it is.
+                if (!linkHref) e.preventDefault();
                 onNavigate?.(l, e);
               }}
             >

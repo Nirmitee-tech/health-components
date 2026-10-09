@@ -95,7 +95,6 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         target={target}
         rel={rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined)}
         aria-disabled={disabled || undefined}
-        aria-pressed={pressed === undefined ? undefined : pressed}
         {...anchorRest}
       >
         {content}

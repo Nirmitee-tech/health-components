@@ -127,6 +127,7 @@ function CommandPaletteInner<T extends CommandPaletteItem>(
         {res.length ? (
           <div className="co-pres" id={listId} role="listbox" aria-label="Results">
             {res.map((r, i) => (
+              // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events -- option in an aria-activedescendant listbox: arrows and Enter are handled by the input (APG combobox).
               <div
                 key={r.id ?? `${r.kind}-${r.label}-${i}`}
                 id={optId(i)}

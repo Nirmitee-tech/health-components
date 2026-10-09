@@ -43,6 +43,7 @@ The consumer provides these. Everything else comes from the tokens.
 | `onAddColumn` | (column) => void | none |
 | `title / subtitle` | string | "Flowsheet" |
 | `rangeContext` | 'outpatient' \| 'inpatient' \| 'ed' \| 'pediatric' \| 'pregnancy': which shared reference range flags use. The lab range on a result still wins. See Reference ranges and flags in the main README. | 'inpatient' when no global context is set |
+| `view / onViewChange` | controlled view and its change callback | uncontrolled |
 
 ## Usage
 

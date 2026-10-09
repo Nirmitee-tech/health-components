@@ -24,12 +24,36 @@ export interface IsolationPrecaution {
 /** Label, tone and protection per precaution type. */
 export const isolationPrecautions: Readonly<Record<IsolationType, IsolationPrecaution>> = {
   contact: { label: 'Contact', tone: 'warning', hint: 'Gown and gloves' },
-  'contact-plus': { label: 'Contact Plus', tone: 'warning', hint: 'Gown, gloves, soap and water (C. diff)' },
-  droplet: { label: 'Droplet', tone: 'info', hint: 'Surgical mask within 6 feet' },
-  airborne: { label: 'Airborne', tone: 'danger', hint: 'N95 and negative-pressure room' },
-  'airborne-contact': { label: 'Airborne + Contact', tone: 'danger', hint: 'N95, gown, gloves, negative-pressure room' },
-  neutropenic: { label: 'Protective', tone: 'ai', hint: 'Neutropenic precautions: mask on entry, no fresh flowers' },
-  standard: { label: 'Standard', tone: 'neutral', hint: 'Standard precautions only' },
+  'contact-plus': {
+    label: 'Contact Plus',
+    tone: 'warning',
+    hint: 'Gown, gloves, soap and water (C. diff)',
+  },
+  droplet: {
+    label: 'Droplet',
+    tone: 'info',
+    hint: 'Surgical mask within 6 feet',
+  },
+  airborne: {
+    label: 'Airborne',
+    tone: 'danger',
+    hint: 'N95 and negative-pressure room',
+  },
+  'airborne-contact': {
+    label: 'Airborne + Contact',
+    tone: 'danger',
+    hint: 'N95, gown, gloves, negative-pressure room',
+  },
+  neutropenic: {
+    label: 'Protective',
+    tone: 'ai',
+    hint: 'Neutropenic precautions: mask on entry, no fresh flowers',
+  },
+  standard: {
+    label: 'Standard',
+    tone: 'neutral',
+    hint: 'Standard precautions only',
+  },
 };
 
 export interface IsolationBadgeProps extends Omit<BadgeProps, 'tone' | 'icon' | 'children' | 'shape' | 'dot' | 'size'> {
@@ -64,7 +88,9 @@ const IsolationBadgeBase = forwardRef<HTMLSpanElement, IsolationBadgeProps>(func
       title={t.hint + (organism ? '. Organism: ' + organism : '')}
       {...rest}
     >
-      {(compact ? t.label : 'Isolation: ' + t.label) + (organism ? ' (' + organism + ')' : '') + (pending ? ', pending' : '')}
+      {(compact ? t.label : 'Isolation: ' + t.label) +
+        (organism ? ' (' + organism + ')' : '') +
+        (pending ? ', pending' : '')}
     </Badge>
   );
 });

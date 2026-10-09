@@ -178,7 +178,7 @@ export const EDTrackingBoard = forwardRef<HTMLElement, EDTrackingBoardProps>(fun
   const late = (x: EDPatient) => !!x.esi && x.wait > targets[x.esi] && isWaiting(x);
   const shown = pts
     .filter((x) =>
-      f === 'waiting' ? isWaiting(x) : f === 'boarding' ? x.status === 'Boarding' : f === 'mine' ? x.provider === currentProvider : true
+      f === 'waiting' ? isWaiting(x) : f === 'boarding' ? x.status === 'Boarding' : f === 'mine' ? !!currentProvider && x.provider === currentProvider : true
     )
     .slice()
     .sort((a, b) => (a.esi || 9) - (b.esi || 9) || (b.wait || 0) - (a.wait || 0));

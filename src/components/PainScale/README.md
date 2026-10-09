@@ -40,6 +40,8 @@ The consumer provides these. Everything else comes from the tokens.
 | `readOnly` | boolean | false |
 | `onChange` | ({mode, score}) => void | none |
 | `rangeContext` | 'outpatient' \| 'inpatient' \| 'ed' \| 'pediatric' \| 'pregnancy': which shared reference range flags use. The lab range on a result still wins. See Reference ranges and flags in the main README. | 'inpatient' when no global context is set |
+| `mode / onModeChange` | controlled scale and its change callback | uncontrolled |
+| `value` | controlled numeric or faces score, 0 to 10 | uncontrolled |
 
 ## Usage
 

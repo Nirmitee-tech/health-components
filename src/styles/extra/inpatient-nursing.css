@@ -79,3 +79,58 @@
 .nu-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .nu-inp{font:inherit;font-size:13px;padding:5px 8px;border:1px solid var(--co-border-strong);border-radius:var(--co-radius-sm);background:var(--co-surface);color:var(--co-ink)}
 .nu-lbl{font-size:12px;color:var(--co-ink-2);display:flex;flex-direction:column;gap:3px}
+
+/* Layout helpers: inline styles of the source, moved to classes. */
+.nu-foot{margin-top:8px}
+.nu-th-r{text-align:right}.nu-t thead th.nu-th-r,.nu-t th.nu-th-r{text-align:right}
+.nu-th-c,.nu-t th.nu-th-c,.nu-t td.nu-th-c{text-align:center}
+.nu-scan-body{flex:1;min-width:0}
+.nu-scan-title{font-weight:600;color:var(--co-ink)}
+.nu-scan-form{margin-top:6px}
+.nu-panel-h{margin-bottom:8px}.nu-panel-h>b{color:var(--co-ink)}
+.nu-scans{display:grid;gap:8px}
+.nu-lbl-w{max-width:360px}
+.nu-lbl-reason{max-width:420px;margin-top:8px}
+.nu-hint{margin-top:6px}
+.nu-actions{margin-top:10px}
+.nu-mar th.nu-rh{min-width:230px}
+.nu-med{font-weight:600}
+.nu-tags{gap:4px;margin-top:2px}
+.nu-slot-in{display:inline-flex;flex-direction:column;align-items:center;gap:2px}
+.nu-reason{max-width:120px;white-space:normal}
+.nu-io-form{margin-bottom:10px}
+.nu-w80{width:80px}.nu-w90{width:90px}
+.nu-end{align-self:flex-end}
+.nu-progress{flex:1;min-width:120px}
+.nu-sys-name{color:var(--co-ink);font-size:13px}
+.nu-sys-body{font-size:13px}
+.nu-chips-mb{margin-bottom:6px}
+.nu-note-input{width:100%;box-sizing:border-box}
+.nu-help{margin-bottom:6px}
+.nu-action{font-size:13px;color:var(--co-ink-2);max-width:360px}
+.nu-prev{margin-top:6px}
+.nu-face-word{font-size:11px}
+.nu-goal{font-size:13px}
+.nu-pending{margin-top:10px}.nu-pending>b{font-size:13px;color:var(--co-ink)}
+.nu-handoff-f{margin-top:12px}
+.nu-cp-goal{padding:6px 12px}
+.nu-cp-tbl{overflow-x:auto}
+.nu-cp-eval{padding:6px 12px 10px;font-size:13px}
+.nu-opt.nu-cp-btn{padding:2px 6px}
+.nu-w-name{font-weight:600;color:var(--co-ink)}
+.nu-photo{margin-top:8px;height:90px;border-radius:var(--co-radius-md);background:var(--co-surface-muted);display:grid;place-items:center;color:var(--co-muted);font-size:12px;border:1px solid var(--co-border)}
+.nu-delta-good{color:var(--co-success-strong)}.nu-delta-bad{color:var(--co-danger-strong)}
+.nu-tissue-wrap{margin-top:10px}
+.nu-tissue-h{margin-bottom:4px}
+.nu-tissue-bad{color:var(--co-danger-strong)}
+.nu-legend{margin-top:4px;font-size:12px}
+.nu-sw{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}
+.nu-tis-granulation{background:var(--co-danger)}
+.nu-tis-slough{background:var(--co-warning)}
+.nu-tis-eschar{background:var(--co-ink)}
+.nu-tis-epithelial{background:var(--co-accent,var(--co-primary))}
+.nu-tis-other{background:var(--co-muted)}
+.nu-kv-mt{margin-top:8px}
+.nu-treat{margin-top:8px;font-size:13px}
+.nu-tbx-mt{margin-top:12px}
+.nu-mar td.nu-slot button[aria-pressed=true]{outline:2px solid var(--co-primary);outline-offset:-2px}

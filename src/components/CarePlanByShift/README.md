@@ -34,6 +34,7 @@ The consumer provides these. Everything else comes from the tokens.
 | `currentShift` | number index | none |
 | `readOnly` | boolean | false |
 | `rangeContext` | 'outpatient' \| 'inpatient' \| 'ed' \| 'pediatric' \| 'pregnancy': which shared reference range flags use. The lab range on a result still wins. See Reference ranges and flags in the main README. | 'inpatient' when no global context is set |
+| `onStatusChange` | ({problem, intervention, shift, status}) => void | none |
 
 ## Usage
 

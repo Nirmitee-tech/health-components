@@ -40,6 +40,7 @@ The consumer provides these. Everything else comes from the tokens.
 | `onScan` | (code, ok) => void | none |
 | `onOverride / onReset` | () => void | none |
 | `rangeContext` | 'outpatient' \| 'inpatient' \| 'ed' \| 'pediatric' \| 'pregnancy': which shared reference range flags use. The lab range on a result still wins. See Reference ranges and flags in the main README. | 'inpatient' when no global context is set |
+| `onStateChange` | (state) => void, called on check, Cannot scan and Rescan | none |
 
 ## Usage
 

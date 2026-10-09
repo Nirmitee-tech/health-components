@@ -152,7 +152,11 @@ export function mmss(sec: number): string {
   return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
 }
 
-const FLAG_MARK: Partial<Record<FlagCode, string>> = { HH: 'H!', LL: 'L!', AA: 'A!' };
+const FLAG_MARK: Partial<Record<FlagCode, string>> = {
+  HH: 'H!',
+  LL: 'L!',
+  AA: 'A!',
+};
 
 export interface ValueProps extends Partial<InpatientMeasureValue> {
   /** 'dose' writes the number the ISMP way (no trailing zero, leading zero) */
@@ -256,24 +260,37 @@ export interface InpatientMedication {
 /** Plain-text medicine: 'Furosemide 40 mg PO BID'. */
 export function medText(m: InpatientMedication | null | undefined): string {
   return m
-    ? m.name + ' ' + doseNumber(m.dose) + ' ' + doseUnit(m.unit) + (m.route ? ' ' + m.route : '') + (m.freq ? ' ' + m.freq : '')
+    ? m.name +
+        ' ' +
+        doseNumber(m.dose) +
+        ' ' +
+        doseUnit(m.unit) +
+        (m.route ? ' ' + m.route : '') +
+        (m.freq ? ' ' + m.freq : '')
     : '';
 }
 
 /** A medicine cell: bold name and dose, sig underneath; `empty` text when there is none. */
-export function MedCell({ med, empty, struck }: { med?: InpatientMedication | null; empty?: string; struck?: boolean }) {
+export function MedCell({
+  med,
+  empty,
+  struck,
+}: {
+  med?: InpatientMedication | null;
+  empty?: string;
+  struck?: boolean;
+}) {
   if (!med) return <span className="ip-none">{empty || 'Not on list'}</span>;
   return (
     <div className={cx('ip-med', struck && 'ip-strike')}>
       <b>{med.name} </b>
       <Dose value={med.dose} unit={med.unit} />
-      <div className="ip-sig">{[med.route, med.freq, med.prn ? 'PRN ' + med.prn : null].filter(Boolean).join(' · ')}</div>
+      <div className="ip-sig">
+        {[med.route, med.freq, med.prn ? 'PRN ' + med.prn : null].filter(Boolean).join(' · ')}
+      </div>
     </div>
   );
 }
-
-/** A reconciliation decision. */
-export type ReconDecision = 'continue' | 'modify' | 'stop' | 'new';
 
 /**
  * A segmented radio group of decisions (Continue / Modify / Stop / New). WAI-ARIA radio group: one tab stop,

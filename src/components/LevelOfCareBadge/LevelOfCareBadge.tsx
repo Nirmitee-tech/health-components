@@ -18,13 +18,29 @@ export interface LevelOfCareInfo {
 export const levelsOfCare: Readonly<Record<LevelOfCare, LevelOfCareInfo>> = {
   icu: { label: 'ICU', long: 'Intensive care', tone: 'danger' },
   stepdown: { label: 'Step-down', long: 'Intermediate care', tone: 'warning' },
-  tele: { label: 'Telemetry', long: 'Med-surg with cardiac monitoring', tone: 'info' },
+  tele: {
+    label: 'Telemetry',
+    long: 'Med-surg with cardiac monitoring',
+    tone: 'info',
+  },
   medsurg: { label: 'Med-Surg', long: 'Medical-surgical', tone: 'neutral' },
-  obs: { label: 'Observation', long: 'Outpatient observation status', tone: 'ai' },
-  boarding: { label: 'ED boarding', long: 'Admitted, waiting in the ED for a bed', tone: 'warning' },
+  obs: {
+    label: 'Observation',
+    long: 'Outpatient observation status',
+    tone: 'ai',
+  },
+  boarding: {
+    label: 'ED boarding',
+    long: 'Admitted, waiting in the ED for a bed',
+    tone: 'warning',
+  },
   'l-d': { label: 'L&D', long: 'Labor and delivery', tone: 'info' },
   nicu: { label: 'NICU', long: 'Neonatal intensive care', tone: 'danger' },
-  psych: { label: 'Behavioral', long: 'Inpatient behavioral health', tone: 'neutral' },
+  psych: {
+    label: 'Behavioral',
+    long: 'Inpatient behavioral health',
+    tone: 'neutral',
+  },
 };
 
 /** The info for a level; unknown levels read as Med-Surg. */
@@ -34,7 +50,10 @@ export function levelOfCareInfo(level: string | null | undefined): LevelOfCareIn
     : levelsOfCare.medsurg;
 }
 
-export interface LevelOfCareBadgeProps extends Omit<BadgeProps, 'tone' | 'icon' | 'children' | 'shape' | 'dot' | 'size'> {
+export interface LevelOfCareBadgeProps extends Omit<
+  BadgeProps,
+  'tone' | 'icon' | 'children' | 'shape' | 'dot' | 'size'
+> {
   /** 'icu' | 'stepdown' | 'tele' | 'medsurg' | 'obs' | 'boarding' | 'l-d' | 'nicu' | 'psych'; required */
   level: LevelOfCare;
   /** A requested change of level, shown as "ICU → Step-down pending"; default none */

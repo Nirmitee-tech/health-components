@@ -394,7 +394,7 @@ export function RadioButtons({
 /* ---------- ScoreForm: shared by FallRiskScore and BradenScore ---------- */
 
 /** One answer of a score item. */
-export interface ScoreOption {
+export interface NursingScoreOption {
   /** Answer text */
   label: string;
   /** Points it adds */
@@ -404,7 +404,7 @@ export interface ScoreOption {
 }
 
 /** One item (question or subscale) of a score tool. */
-export interface ScoreItem {
+export interface NursingScoreItem {
   /** Key in the values record */
   id: string;
   /** Item text */
@@ -412,11 +412,11 @@ export interface ScoreItem {
   /** Help line */
   help?: string;
   /** Answers */
-  options: ScoreOption[];
+  options: NursingScoreOption[];
 }
 
 /** Risk band for a total: Badge tone, label and the action it calls for. */
-export interface ScoreBand {
+export interface NursingScoreBand {
   /** Badge tone */
   tone: BadgeTone;
   /** Band label ('High fall risk') */
@@ -426,7 +426,7 @@ export interface ScoreBand {
 }
 
 /** The last recorded score. */
-export interface PreviousScore {
+export interface NursingPreviousScore {
   /** Total */
   total: number;
   /** When ('yesterday 20:00') */
@@ -434,15 +434,15 @@ export interface PreviousScore {
 }
 
 /** Props shared by FallRiskScore and BradenScore. */
-export interface ScoreToolProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | 'onChange' | 'defaultValue'> {
+export interface NursingScoreToolProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | 'onChange' | 'defaultValue'> {
   /** Option index per item (uncontrolled); default {} */
   defaultValues?: Record<string, number>;
   /** Option index per item (controlled) */
   values?: Record<string, number>;
   /** Cut-offs: total to band; default the tool's standard bands */
-  band?: (total: number) => ScoreBand;
+  band?: (total: number) => NursingScoreBand;
   /** Last score; default none */
-  previous?: PreviousScore;
+  previous?: NursingPreviousScore;
   /** default false */
   readOnly?: boolean;
   /** Called with all answers after each pick */
@@ -456,7 +456,7 @@ export interface ScoreToolProps extends Omit<HTMLAttributes<HTMLElement>, 'title
 }
 
 /** Sum of the picked options' points; null until every item is answered. */
-export function scoreTotal(items: ScoreItem[], values: Record<string, number>): number | null {
+export function scoreTotal(items: readonly NursingScoreItem[], values: Record<string, number>): number | null {
   let total = 0;
   for (const it of items) {
     const i = values[it.id];
@@ -467,11 +467,11 @@ export function scoreTotal(items: ScoreItem[], values: Record<string, number>): 
   return total;
 }
 
-export interface ScoreFormProps extends ScoreToolProps {
+export interface ScoreFormProps extends NursingScoreToolProps {
   /** Items of the tool */
-  items: ScoreItem[];
+  items: readonly NursingScoreItem[];
   /** Total to band */
-  band: (total: number) => ScoreBand;
+  band: (total: number) => NursingScoreBand;
   /** Card title */
   title: string;
   /** Highest possible total */

@@ -30,3 +30,8 @@
 .cp-qrow{display:flex;gap:8px;align-items:flex-start;padding:10px;border:0;border-bottom:1px solid var(--co-line-soft);background:none;width:100%;text-align:left;cursor:pointer;color:var(--co-ink);font:inherit}
 .cp-qrow.is-on{background:var(--co-primary-soft)}.cp-qrow:focus-visible{outline:2px solid var(--co-focus-ring);outline-offset:-2px}
 @media (max-width:720px){.cp-prob,.cp-doc,.cp-q{grid-template-columns:1fr}.cp-layout{flex-direction:column}.cp-split{display:none}}
+
+/* Port additions: each line of an editable page is a button (keyboard reachable), styled as plain page text. */
+.cp-line{display:block;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;line-height:inherit;text-align:left;cursor:text;white-space:pre-wrap}
+.cp-line:hover{background:var(--co-primary-soft)}
+.cp-line:focus-visible,.cp-page mark:focus-visible{outline:2px solid var(--co-focus-ring);outline-offset:1px}

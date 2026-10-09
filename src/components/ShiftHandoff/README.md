@@ -35,6 +35,7 @@ The consumer provides these. Everything else comes from the tokens.
 | `ackTime` | string | none |
 | `onAcknowledge` | () => void | none |
 | `rangeContext` | 'outpatient' \| 'inpatient' \| 'ed' \| 'pediatric' \| 'pregnancy': which shared reference range flags use. The lab range on a result still wins. See Reference ranges and flags in the main README. | 'inpatient' when no global context is set |
+| `defaultAcknowledged` | boolean: initial accepted state when `acknowledged` is not set | false |
 
 ## Usage
 

@@ -1,61 +1,75 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { GrowthChart } from './GrowthChart';
 
-const whoGirlsWeight = {
-  '3': [2.4, 6.1, 7.6, 8.7, 9.6, 11.2],
-  '50': [3.2, 7.3, 8.9, 10.2, 11.5, 13.9],
-  '97': [4.2, 8.9, 10.9, 12.6, 14.1, 17.0],
-};
-
 const meta = {
-  title: 'Complex/Clinical/GrowthChart',
+  title: 'Complex/Specialty/GrowthChart',
   component: GrowthChart,
   tags: ['autodocs'],
   parameters: {
+    layout: 'padded',
     docs: {
       description: {
         component:
-          "GrowthChart plots a child's measurements over WHO or CDC percentile curves. The 50th percentile is solid, the others dashed; the patient line is the primary colour. Screen readers get the title, every measurement and the percentile curves.",
+          'GrowthChart plots a child’s measurements against WHO (birth to 24 months) or CDC (2 to 20 years) percentile lines and names the percentile band of every point. Built-in curves are rounded illustrations: production passes `curves` from the published LMS tables.',
       },
     },
   },
-  argTypes: { title: { control: 'text' }, note: { control: 'text' }, unit: { control: 'text' } },
+  argTypes: {
+    standard: { control: 'inline-radio', options: [undefined, 'who', 'cdc'] },
+    defaultStandard: { control: 'inline-radio', options: ['who', 'cdc'] },
+    measure: { control: 'inline-radio', options: ['weight', 'bmi'] },
+    sex: { control: 'inline-radio', options: ['male', 'female'] },
+    rangeContext: { control: 'select', options: [undefined, 'outpatient', 'inpatient', 'ed', 'pediatric', 'pregnancy'] },
+    title: { control: 'text' },
+    subtitle: { control: 'text' },
+    note: { control: 'text' },
+  },
   args: {
-    title: 'Weight-for-age, girls (kg), WHO 0 to 36 months',
-    unit: 'kg',
+    defaultStandard: 'who',
+    measure: 'weight',
+    subtitle: 'Noah Kim . boy . born 10/02/2024',
     points: [
-      [0, 3.3],
-      [6, 7.6],
-      [12, 9.4],
-      [18, 10.6],
-      [24, 11.6],
+      [0, 3.42, '10/02/2024'],
+      [2, 5.48, '12/02/2024'],
+      [4, 6.91, '02/03/2025'],
+      [6, 7.84, '04/02/2025'],
+      [9, 8.8, '07/02/2025'],
+      [12, 9.71, '10/02/2025'],
+      [18, 11.1, '04/03/2026'],
+      [24, 12.36, '10/02/2026'],
     ],
-    percentiles: whoGirlsWeight,
-    note: 'Last: 11.6 kg at 24 months, about the 50th percentile.',
+    onStandardChange: fn(),
   },
 } satisfies Meta<typeof GrowthChart>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** WHO 0-2, weight-for-age, tracking the 50th. */
 export const Playground: Story = {};
 
-export const FalteringGrowth: Story = {
+/** CDC 2-20, BMI-for-age, crossing above the 95th. */
+export const CdcBmiAbove95th: Story = {
   args: {
-    title: 'Weight-for-age, girls (kg), WHO 0 to 36 months',
+    defaultStandard: 'cdc',
+    measure: 'bmi',
+    subtitle: 'Mateo Silva . boy . 12 y',
     points: [
-      [0, 3.2],
-      [6, 6.9],
-      [12, 7.9],
-      [18, 8.4],
+      [4, 15.9, '2018'],
+      [6, 16.4, '2020'],
+      [8, 18.6, '2022'],
+      [10, 21.9, '2024'],
+      [12, 24.8, '2026'],
     ],
-    note: 'Crossed down from the 50th to below the 3rd percentile since 6 months. Consider a feeding assessment.',
   },
 };
 
-export const LengthForAge: Story = {
+/** The earlier API (`percentiles`, `ages`, `unit`, `min`, `max`) still works; the standard switch hides for custom curves. */
+export const LegacyPercentiles: Story = {
   args: {
     title: 'Length-for-age, boys (cm), WHO 0 to 24 months',
+    subtitle: undefined,
     unit: 'cm',
     ages: [0, 6, 12, 18, 24],
     min: 44,
@@ -71,6 +85,6 @@ export const LengthForAge: Story = {
       [12, 76.4],
       [18, 83.0],
     ],
-    note: undefined,
+    onStandardChange: undefined,
   },
 };

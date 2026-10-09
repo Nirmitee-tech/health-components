@@ -1,6 +1,6 @@
 # Contributing to health-components (CareOS)
 
-This repository is the production implementation of the **CareOS design system**: design tokens, 123 React
+This repository is the production implementation of the **CareOS design system**: design tokens, 185 React
 components, Web Components for Angular, Vue and plain HTML, a Storybook and a documentation site.
 
 ## Setup

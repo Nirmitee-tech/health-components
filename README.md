@@ -3,7 +3,7 @@
 **Production React components, Web Components and design tokens for healthcare EHR, practice management,
 revenue cycle and patient apps.**
 
-CareOS is the set of building blocks the CareOS screens are made of: the colours, type, spacing and **123 components**,
+CareOS is the set of building blocks the CareOS screens are made of: the colours, type, spacing and **185 components**,
 from the schedule and the patient chart to claims, prior authorization, the patient portal, the phone app and the
 check-in kiosk. A team that uses it does not design a patient banner, an allergy list, an ICD-10 picker, an ERA posting
 row or a break-the-glass dialog again; it composes screens from parts that already carry the clinical, billing and
@@ -15,10 +15,16 @@ privacy rules.
 
 ## Features
 
-- **123 components in two layers.** 51 Basic components (buttons, inputs, selection, data display, feedback,
-  overlays, navigation, charts, layout) and 72 Complex healthcare components (clinical lists, e-prescribing, notes and
+- **185 components in two layers.** 58 Basic components (buttons, inputs, selection, data display, feedback,
+  overlays, navigation, charts, layout) and 127 Complex healthcare components: clinical lists, e-prescribing, notes and
   coding, revenue cycle, scheduling, work queues, quality programs, access control, app shells for desktop, phone and
-  kiosk).
+  kiosk, inpatient nursing (Flowsheet, MAR, barcode scanning) and patient flow (bed board, ADT, reconciliation), ED,
+  perioperative and labor and delivery, specialty clinics (dental, eye, hearing, prenatal, PT, behavioral health,
+  pediatric dosing, oncology) and chart panels.
+- **One source for clinical numbers.** `fmt` and the `ClinicalValue` family format every value, unit, dose, date,
+  identifier and code, with a shared reference-range registry (outpatient, inpatient, ED, pediatric, pregnancy) and a
+  `RangeContextProvider`.
+- **Machine-readable manifest for AI agents:** `health-components/manifest.agents.json`.
 - **React and Angular.** Typed React components for React 18 and 19, and the same components as standards-based
   custom elements (`<co-button>`) for Angular, Vue, Svelte and plain HTML.
 - **Five themes from one token file:** Classic, Clinical Sidebar, Focus Rail, Command Bar and Dark, as scoped

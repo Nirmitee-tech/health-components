@@ -40,6 +40,249 @@
     "slots": []
   },
   {
+    "component": "ADTPanel",
+    "tag": "co-adt-panel",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "json",
+        "description": "{ name, mrn, location, level, isolation, status }; required"
+      },
+      {
+        "name": "mode",
+        "property": "mode",
+        "kind": "string",
+        "description": "'admit' | 'transfer' | 'discharge': the starting action (uncontrolled); default 'admit'"
+      },
+      {
+        "name": "mode-value",
+        "property": "modeValue",
+        "kind": "string",
+        "description": "The action (controlled); pair with onModeChange; default uncontrolled"
+      },
+      {
+        "name": "level",
+        "property": "level",
+        "kind": "string",
+        "description": "Starting level of care (uncontrolled); default 'medsurg'"
+      },
+      {
+        "name": "level-value",
+        "property": "levelValue",
+        "kind": "string",
+        "description": "Level of care (controlled); default uncontrolled"
+      },
+      {
+        "name": "reason",
+        "property": "reason",
+        "kind": "string",
+        "description": "Starting reason, diagnosis or disposition (uncontrolled); default ''"
+      },
+      {
+        "name": "reason-value",
+        "property": "reasonValue",
+        "kind": "string",
+        "description": "Reason (controlled); default uncontrolled"
+      },
+      {
+        "name": "blockers",
+        "property": "blockers",
+        "kind": "json",
+        "description": "string[]: open discharge items that block discharge; default []"
+      },
+      {
+        "name": "units",
+        "property": "units",
+        "kind": "json",
+        "description": "string[]: target units for a transfer; default sample list"
+      },
+      {
+        "name": "attendings",
+        "property": "attendings",
+        "kind": "json",
+        "description": "string[]: attendings; default sample list"
+      },
+      {
+        "name": "discharge-at",
+        "property": "dischargeAt",
+        "kind": "string",
+        "description": "Discharge date and time shown at start; default '10/09/2026 14:30'"
+      },
+      {
+        "name": "show-errors",
+        "property": "showErrors",
+        "kind": "boolean",
+        "description": "Shows required-field errors; default false"
+      },
+      {
+        "name": "done",
+        "property": "done",
+        "kind": "boolean",
+        "description": "Shows the confirmation (already submitted); default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-mode-change",
+        "prop": "onModeChange",
+        "description": "Called with the new action; default none"
+      },
+      {
+        "name": "co-level-change",
+        "prop": "onLevelChange",
+        "description": "Called with the new level of care; default none"
+      },
+      {
+        "name": "co-reason-change",
+        "prop": "onReasonChange",
+        "description": "Called with the new reason; default none"
+      },
+      {
+        "name": "co-submit",
+        "prop": "onSubmit",
+        "description": "function({ mode, level, reason }) on the main action; default none"
+      },
+      {
+        "name": "co-cancel",
+        "prop": "onCancel",
+        "description": "function on Cancel; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "AfterVisitSummary",
+    "tag": "co-after-visit-summary",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name; default none"
+      },
+      {
+        "name": "dates",
+        "property": "dates",
+        "kind": "string",
+        "description": "Stay dates; default none"
+      },
+      {
+        "name": "reason",
+        "property": "reason",
+        "kind": "string",
+        "description": "Why they were in the hospital, in plain words; required"
+      },
+      {
+        "name": "meds",
+        "property": "meds",
+        "kind": "json",
+        "description": "Array of { name, dose, unit, route, freq, action: new | changed | continue | stop, note }; default []"
+      },
+      {
+        "name": "results",
+        "property": "results",
+        "kind": "json",
+        "description": "Array of { measure, value, range }; default []"
+      },
+      {
+        "name": "followups",
+        "property": "followups",
+        "kind": "json",
+        "description": "Array of { when, with, where }; default []"
+      },
+      {
+        "name": "instructions",
+        "property": "instructions",
+        "kind": "json",
+        "description": "string[]: home care; default none"
+      },
+      {
+        "name": "warnings",
+        "property": "warnings",
+        "kind": "json",
+        "description": "string[]: warning signs; default none"
+      },
+      {
+        "name": "language",
+        "property": "language",
+        "kind": "string",
+        "description": "Language of the printed copy; a language other than English adds a note; default 'English'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-print",
+        "prop": "onPrint",
+        "description": "Called by Print; default none"
+      },
+      {
+        "name": "co-send-to-portal",
+        "prop": "onSendToPortal",
+        "description": "Called by Send to Portal; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "AISuggestion",
     "tag": "co-ai-suggestion",
     "aliases": [],
@@ -365,6 +608,105 @@
     "slots": []
   },
   {
+    "component": "AnesthesiaRecord",
+    "tag": "co-anesthesia-record",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "times",
+        "property": "times",
+        "kind": "json",
+        "description": "Column times 'HH:MM', usually every 5 minutes; required"
+      },
+      {
+        "name": "vitals",
+        "property": "vitals",
+        "kind": "json",
+        "description": "Vitals aligned to `times`; required"
+      },
+      {
+        "name": "events",
+        "property": "events",
+        "kind": "json",
+        "description": "Case events; default []"
+      },
+      {
+        "name": "meds",
+        "property": "meds",
+        "kind": "json",
+        "description": "Medications given; default []"
+      },
+      {
+        "name": "airway",
+        "property": "airway",
+        "kind": "json",
+        "description": "Airway; default none (Airway not documented)"
+      },
+      {
+        "name": "totals",
+        "property": "totals",
+        "kind": "json",
+        "description": "Fluid totals in mL; default {}"
+      },
+      {
+        "name": "alert",
+        "property": "alert",
+        "kind": "json",
+        "description": "Critical event banner {title, body}; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Signed record: no actions; default false"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-add-event",
+        "prop": "onAddEvent",
+        "description": "Called by Add Event; default none"
+      },
+      {
+        "name": "co-give-medication",
+        "prop": "onGiveMedication",
+        "description": "Called by Give Medication; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "AppointmentChip",
     "tag": "co-appointment-chip",
     "aliases": [],
@@ -457,6 +799,70 @@
         "name": "value",
         "property": "value",
         "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "Audiogram",
+    "tag": "co-audiogram",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "right",
+        "property": "right",
+        "kind": "json",
+        "description": "Right ear {ac, bc?, nr?}; required"
+      },
+      {
+        "name": "left",
+        "property": "left",
+        "kind": "json",
+        "description": "Left ear {ac, bc?, nr?}; required"
+      },
+      {
+        "name": "speech",
+        "property": "speech",
+        "kind": "string",
+        "description": "Speech results line; default none"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Audiogram'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
         "description": ""
       }
     ],
@@ -697,27 +1103,190 @@
     "slots": []
   },
   {
-    "component": "BodyMap",
-    "tag": "co-body-map",
+    "component": "BarcodeScanPrompt",
+    "tag": "co-barcode-scan-prompt",
     "aliases": [],
     "attributes": [
       {
-        "name": "marks",
-        "property": "marks",
+        "name": "target",
+        "property": "target",
+        "kind": "string",
+        "description": "'patient' (wristband) | 'medication' | 'witness' (badge); default 'medication'"
+      },
+      {
+        "name": "expected",
+        "property": "expected",
+        "kind": "string",
+        "description": "Code to match (compared trimmed and case-insensitive); default none (any scan matches)"
+      },
+      {
+        "name": "expected-label",
+        "property": "expectedLabel",
+        "kind": "string",
+        "description": "What it should be ('Marcus Hill, DOB 03/14/1959'); default none"
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "number",
+        "description": "Step number shown before the prompt; default none"
+      },
+      {
+        "name": "state",
+        "property": "state",
+        "kind": "string",
+        "description": "Controlled state: 'waiting' | 'matched' | 'mismatch' | 'override'; default uncontrolled"
+      },
+      {
+        "name": "default-state",
+        "property": "defaultState",
+        "kind": "string",
+        "description": "Initial state (uncontrolled); default 'waiting'"
+      },
+      {
+        "name": "default-code",
+        "property": "defaultCode",
+        "kind": "string",
+        "description": "Scanned code shown in the field and the status line; default ''"
+      },
+      {
+        "name": "allow-override",
+        "property": "allowOverride",
+        "kind": "boolean",
+        "description": "Shows a Cannot scan button; default false"
+      },
+      {
+        "name": "override-reason",
+        "property": "overrideReason",
+        "kind": "string",
+        "description": "Reason shown in the override state; default 'barcode damaged'"
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": "Focuses the field on mount (the scanner types into it); default false"
+      },
+      {
+        "name": "matched-text",
+        "property": "matchedText",
+        "kind": "string",
+        "description": "Replaces the matched message; default 'Scan matches <expectedLabel>'"
+      },
+      {
+        "name": "mismatch-text",
+        "property": "mismatchText",
+        "kind": "string",
+        "description": "Replaces the mismatch message; default 'Scan does not match. Do not give...'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Accepted for API consistency with the nursing set (no values are flagged here); default 'inpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
         "kind": "json",
-        "description": "Array<{x, y, site, desc, concern?}> in a 200 by 260 frame; default []"
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-state-change",
+        "prop": "onStateChange",
+        "description": "Called when the state changes (a scan is checked, Cannot scan, Rescan); default none"
+      },
+      {
+        "name": "co-scan",
+        "prop": "onScan",
+        "description": "Called with the code and whether it matched when a scan is checked; default none"
+      },
+      {
+        "name": "co-override",
+        "prop": "onOverride",
+        "description": "Called on Cannot scan; default none"
+      },
+      {
+        "name": "co-reset",
+        "prop": "onReset",
+        "description": "Shows Rescan in the matched state and is called by it; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "BedBoard",
+    "tag": "co-bed-board",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "units",
+        "property": "units",
+        "kind": "json",
+        "description": "Array of { id, name, level, ratio, rooms: [{ id, negativePressure, beds: [{ id, status, note, patient }] }] }: the initial board (uncontrolled); required"
+      },
+      {
+        "name": "units-value",
+        "property": "unitsValue",
+        "kind": "json",
+        "description": "The board (controlled); pair with onUnitsChange; default uncontrolled from `units`"
+      },
+      {
+        "name": "queue",
+        "property": "queue",
+        "kind": "json",
+        "description": "Array of patients waiting for a bed { id, name, age, sex, reason, level, isolation, waiting }: the initial queue; default []"
+      },
+      {
+        "name": "queue-value",
+        "property": "queueValue",
+        "kind": "json",
+        "description": "The queue (controlled); pair with onQueueChange; default uncontrolled from `queue`"
+      },
+      {
+        "name": "default-selected",
+        "property": "defaultSelected",
+        "kind": "string",
+        "description": "Queue id selected at start (uncontrolled); default none"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "string",
+        "description": "Selected queue id (controlled; null for none); default uncontrolled"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only: no drag, no assign; default false"
       },
       {
         "name": "title",
         "property": "title",
         "kind": "string",
-        "description": "Card title; default \"Body map\""
+        "description": "Card title; default 'Bed Board'"
       },
       {
         "name": "subtitle",
         "property": "subtitle",
         "kind": "string",
-        "description": "Line under the title (patient and date); default none"
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
       },
       {
         "name": "default-checked",
@@ -739,7 +1308,201 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-units-change",
+        "prop": "onUnitsChange",
+        "description": "Called with the new board after an assignment; default none"
+      },
+      {
+        "name": "co-queue-change",
+        "prop": "onQueueChange",
+        "description": "Called with the new queue after an assignment; default none"
+      },
+      {
+        "name": "co-selected-change",
+        "prop": "onSelectedChange",
+        "description": "Called with the newly selected queue id (null when cleared); default none"
+      },
+      {
+        "name": "co-assign",
+        "prop": "onAssign",
+        "description": "function(patient, bed, room) after a patient is assigned; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "BehavioralTreatmentPlan",
+    "tag": "co-behavioral-treatment-plan",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "problems",
+        "property": "problems",
+        "kind": "json",
+        "description": "Problems with goals, objectives and interventions; default []"
+      },
+      {
+        "name": "review-due",
+        "property": "reviewDue",
+        "kind": "string",
+        "description": "Next review date; default none"
+      },
+      {
+        "name": "review-overdue",
+        "property": "reviewOverdue",
+        "kind": "boolean",
+        "description": "The review date has passed; default false"
+      },
+      {
+        "name": "signatures",
+        "property": "signatures",
+        "kind": "json",
+        "description": "Signatures; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Treatment plan'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Review Plan and Sign Plan; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-review-plan",
+        "prop": "onReviewPlan",
+        "description": "Review Plan action; default none"
+      },
+      {
+        "name": "co-sign-plan",
+        "prop": "onSignPlan",
+        "description": "Sign Plan action; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "BodyMap",
+    "tag": "co-body-map",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "marks",
+        "property": "marks",
+        "kind": "json",
+        "description": "Marks in a 200 by 262 frame; default []"
+      },
+      {
+        "name": "view",
+        "property": "view",
+        "kind": "string",
+        "description": "First view shown (uncontrolled); default 'front'"
+      },
+      {
+        "name": "current-view",
+        "property": "currentView",
+        "kind": "string",
+        "description": "Shown view (controlled); default uncontrolled"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Body map'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title (patient and date); default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Add Photo; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-view-change",
+        "prop": "onViewChange",
+        "description": "Called when the view changes; default none"
+      },
+      {
+        "name": "co-mark-select",
+        "prop": "onMarkSelect",
+        "description": "Called with the mark number when a pin is clicked; default none"
+      },
+      {
+        "name": "co-add-photo",
+        "prop": "onAddPhoto",
+        "description": "Add Photo action; default none"
+      }
+    ],
     "slots": []
   },
   {
@@ -790,6 +1553,81 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when a tab is clicked; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "BradenScore",
+    "tag": "co-braden-score",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "default-values",
+        "property": "defaultValues",
+        "kind": "json",
+        "description": "Option index per subscale (uncontrolled), keyed by sensory, moisture, activity, mobility, nutrition, friction; default {}"
+      },
+      {
+        "name": "values",
+        "property": "values",
+        "kind": "json",
+        "description": "Option index per subscale (controlled); default uncontrolled"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Braden Scale'"
+      },
+      {
+        "name": "previous",
+        "property": "previous",
+        "kind": "json",
+        "description": "Last score; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "default false"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Patient line"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [
+      {
+        "name": "band",
+        "description": "Bands, total to band; default bradenBand (9 or less very high ... 19+ no risk)"
+      }
+    ],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with all answers after each pick"
       }
     ],
     "slots": []
@@ -1453,6 +2291,161 @@
     "slots": []
   },
   {
+    "component": "CarePlanByShift",
+    "tag": "co-care-plan-by-shift",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "problems",
+        "property": "problems",
+        "kind": "json",
+        "description": "Problems; required"
+      },
+      {
+        "name": "shifts",
+        "property": "shifts",
+        "kind": "json",
+        "description": "Shift labels; default ['Day 07-15', 'Evening 15-23', 'Night 23-07']"
+      },
+      {
+        "name": "current-shift",
+        "property": "currentShift",
+        "kind": "number",
+        "description": "Index of the current (only editable) shift; default none (nothing editable)"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Care Plan by Shift'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Patient line; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; a goal measure's own range still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-status-change",
+        "prop": "onStatusChange",
+        "description": "Called when a current-shift status is changed (Done, Partly, Not done, N/A in turn)"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "CareTeamPanel",
+    "tag": "co-care-team-panel",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "members",
+        "property": "members",
+        "kind": "json",
+        "description": "Team members; default none (empty state)"
+      },
+      {
+        "name": "updated",
+        "property": "updated",
+        "kind": "string",
+        "description": "When the team was last updated; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "No Add Member or row menus; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Care Team'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-add-member",
+        "prop": "onAddMember",
+        "description": "Called by Add Member; default none"
+      },
+      {
+        "name": "co-call",
+        "prop": "onCall",
+        "description": "Called by Call; default none"
+      },
+      {
+        "name": "co-message",
+        "prop": "onMessage",
+        "description": "Called by Message; default none"
+      },
+      {
+        "name": "co-member-action",
+        "prop": "onMemberAction",
+        "description": "Called with a row menu action; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "CCMTimer",
     "tag": "co-ccm-timer",
     "aliases": [],
@@ -1546,6 +2539,98 @@
     ]
   },
   {
+    "component": "CensusList",
+    "tag": "co-census-list",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "Array of { bed, name, mrn, age, sex, dx, level, pendingTo, los, gmlos, vitals: [{ measure, value }], isolation, organism, attending, edd, dischargeToday }; required"
+      },
+      {
+        "name": "default-filter",
+        "property": "defaultFilter",
+        "kind": "string",
+        "description": "'all' | 'dc' | 'iso' | 'flag' | 'obs': starting filter (uncontrolled); default 'all'"
+      },
+      {
+        "name": "filter",
+        "property": "filter",
+        "kind": "string",
+        "description": "Filter (controlled); default uncontrolled"
+      },
+      {
+        "name": "loading",
+        "property": "loading",
+        "kind": "boolean",
+        "description": "Shows skeleton rows; default false"
+      },
+      {
+        "name": "page-size",
+        "property": "pageSize",
+        "kind": "number",
+        "description": "Rows per page; default 10"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Census'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-filter-change",
+        "prop": "onFilterChange",
+        "description": "Called with the new filter; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "ChartCard",
     "tag": "co-chart-card",
     "aliases": [],
@@ -1605,16 +2690,16 @@
         "description": ""
       },
       {
-        "name": "padding",
-        "property": "padding",
-        "kind": "string",
-        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
-      },
-      {
         "name": "flat",
         "property": "flat",
         "kind": "boolean",
         "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
       },
       {
         "name": "as",
@@ -1656,6 +2741,94 @@
         "name": "footer",
         "prop": "footer",
         "description": "Footer content; default none Plain text also works as the `footer` attribute."
+      }
+    ]
+  },
+  {
+    "component": "ChartSummary",
+    "tag": "co-chart-summary",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "problems",
+        "property": "problems",
+        "kind": "json",
+        "description": "Active problems with their results, medications, plan and gap; default none (empty state)"
+      },
+      {
+        "name": "allergies",
+        "property": "allergies",
+        "kind": "json",
+        "description": "Allergies. undefined = not reviewed, [] = No Known Allergies; default undefined"
+      },
+      {
+        "name": "vitals",
+        "property": "vitals",
+        "kind": "json",
+        "description": "Last recorded vitals; default none ('No vitals this year')"
+      },
+      {
+        "name": "vitals-taken",
+        "property": "vitalsTaken",
+        "kind": "string",
+        "description": "When the vitals were taken; default none"
+      },
+      {
+        "name": "code-status",
+        "property": "codeStatus",
+        "kind": "string",
+        "description": "Code status ('DNR/DNI'); default none"
+      },
+      {
+        "name": "gaps",
+        "property": "gaps",
+        "kind": "json",
+        "description": "Care gaps not tied to one problem; default none"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Chart Summary'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Card subtitle (patient, age, MRN); default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Header actions; default none Plain text also works as the `actions` attribute."
       }
     ]
   },
@@ -1904,6 +3077,12 @@
         "description": ""
       },
       {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "placeholder",
         "property": "placeholder",
         "kind": "string",
@@ -1943,12 +3122,6 @@
         "name": "required",
         "property": "required",
         "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
         "description": ""
       }
     ],
@@ -2200,6 +3373,91 @@
     "slots": []
   },
   {
+    "component": "ClinicalDecisionSupportCard",
+    "tag": "co-clinical-decision-support-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "card",
+        "property": "card",
+        "kind": "json",
+        "description": "The CDS Hooks card; required"
+      },
+      {
+        "name": "state",
+        "property": "state",
+        "kind": "string",
+        "description": "Card state (controlled): 'open' | 'accepted' | 'overridden'; default uncontrolled"
+      },
+      {
+        "name": "default-state",
+        "property": "defaultState",
+        "kind": "string",
+        "description": "Initial state; default 'open'"
+      },
+      {
+        "name": "override-reason",
+        "property": "overrideReason",
+        "kind": "string",
+        "description": "Reason shown for an already overridden card; default 'recorded'"
+      },
+      {
+        "name": "feedback",
+        "property": "feedback",
+        "kind": "boolean",
+        "description": "Shows 'Overrides are logged with the reason.'; default true"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-state-change",
+        "prop": "onStateChange",
+        "description": "Called when the state changes; default none"
+      },
+      {
+        "name": "co-override",
+        "prop": "onOverride",
+        "description": "Called with the reason code ('other' plus the typed text for Other) when the user overrides; default none"
+      },
+      {
+        "name": "co-accept",
+        "prop": "onAccept",
+        "description": "Called with the suggestion the user applies; default none"
+      },
+      {
+        "name": "co-link",
+        "prop": "onLink",
+        "description": "Called when a link without `url` is clicked; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "ClinicalValue",
     "tag": "co-clinical-value",
     "aliases": [],
@@ -2387,6 +3645,128 @@
     ],
     "properties": [],
     "events": [],
+    "slots": []
+  },
+  {
+    "component": "CodeBlueTimer",
+    "tag": "co-code-blue-timer",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient ('Ruiz, Carmen, 81 F'); required"
+      },
+      {
+        "name": "location",
+        "property": "location",
+        "kind": "string",
+        "description": "Location ('4 West 404B'); required"
+      },
+      {
+        "name": "started-at",
+        "property": "startedAt",
+        "kind": "number",
+        "description": "When the code started, epoch ms; default when the component mounts"
+      },
+      {
+        "name": "now",
+        "property": "now",
+        "kind": "number",
+        "description": "Freezes the clock at this epoch ms (for review and tests); default live"
+      },
+      {
+        "name": "events",
+        "property": "events",
+        "kind": "json",
+        "description": "Array of { t: seconds, text, by }: the starting log (uncontrolled); default []"
+      },
+      {
+        "name": "events-value",
+        "property": "eventsValue",
+        "kind": "json",
+        "description": "The log (controlled); pair with onEventsChange; default uncontrolled"
+      },
+      {
+        "name": "rhythm",
+        "property": "rhythm",
+        "kind": "string",
+        "description": "Current rhythm ('VF', 'PEA'); default none"
+      },
+      {
+        "name": "energy",
+        "property": "energy",
+        "kind": "json",
+        "description": "Defibrillator energy, joules biphasic; default none (200 in the shock log)"
+      },
+      {
+        "name": "vitals",
+        "property": "vitals",
+        "kind": "json",
+        "description": "Array of { measure, value }: monitor values; default []"
+      },
+      {
+        "name": "team",
+        "property": "team",
+        "kind": "json",
+        "description": "string[]: the team; default none"
+      },
+      {
+        "name": "ended",
+        "property": "ended",
+        "kind": "string",
+        "description": "Outcome; ends the code (header shows it, actions hidden, clock stops); default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Review of a past code: no actions; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-events-change",
+        "prop": "onEventsChange",
+        "description": "Called with the new log when an event is added; default none"
+      },
+      {
+        "name": "co-event",
+        "prop": "onEvent",
+        "description": "Called with each new event; default none"
+      },
+      {
+        "name": "co-rosc",
+        "prop": "onRosc",
+        "description": "Called by ROSC; default none"
+      }
+    ],
     "slots": []
   },
   {
@@ -2649,6 +4029,12 @@
         "description": ""
       },
       {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "accept",
         "property": "accept",
         "kind": "string",
@@ -2682,12 +4068,6 @@
         "name": "multiple",
         "property": "multiple",
         "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
         "description": ""
       }
     ],
@@ -3511,6 +4891,12 @@
         "description": ""
       },
       {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "placeholder",
         "property": "placeholder",
         "kind": "string",
@@ -3550,12 +4936,6 @@
         "name": "multiple",
         "property": "multiple",
         "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
         "description": ""
       }
     ],
@@ -3665,6 +5045,98 @@
     ],
     "properties": [],
     "events": [],
+    "slots": []
+  },
+  {
+    "component": "DentalChart",
+    "tag": "co-dental-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "teeth",
+        "property": "teeth",
+        "kind": "json",
+        "description": "Record<tooth number 1-32, ToothRecord>; default {}"
+      },
+      {
+        "name": "plan",
+        "property": "plan",
+        "kind": "json",
+        "description": "Treatment plan rows; default []"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "number",
+        "description": "Tooth selected first (uncontrolled); default none"
+      },
+      {
+        "name": "selected-tooth",
+        "property": "selectedTooth",
+        "kind": "number",
+        "description": "Selected tooth (controlled); null for none; default uncontrolled"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Dental chart'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default 'Universal numbering . viewed facing the patient'"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides the Perio Chart and Add Procedure actions; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-selected-change",
+        "prop": "onSelectedChange",
+        "description": "Called with the tooth number, or null when the selection is cleared; default none"
+      },
+      {
+        "name": "co-perio-chart",
+        "prop": "onPerioChart",
+        "description": "Perio Chart action; default none"
+      },
+      {
+        "name": "co-add-procedure",
+        "prop": "onAddProcedure",
+        "description": "Add Procedure action; default none"
+      }
+    ],
     "slots": []
   },
   {
@@ -3797,6 +5269,197 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called by the x button, Escape and a scrim press; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "DischargeChecklist",
+    "tag": "co-discharge-checklist",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Array of { label, detail, required, done, auto, owner, by }: the starting list (uncontrolled); required"
+      },
+      {
+        "name": "items-value",
+        "property": "itemsValue",
+        "kind": "json",
+        "description": "The list (controlled); pair with onItemsChange; default uncontrolled"
+      },
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name; default none"
+      },
+      {
+        "name": "edd",
+        "property": "edd",
+        "kind": "string",
+        "description": "Expected discharge; default 'not set'"
+      },
+      {
+        "name": "user",
+        "property": "user",
+        "kind": "string",
+        "description": "Name stamped on ticks; default 'You'"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-items-change",
+        "prop": "onItemsChange",
+        "description": "Called with the new list when a task is ticked or unticked; default none"
+      },
+      {
+        "name": "co-ready",
+        "prop": "onReady",
+        "description": "Called by Ready for Discharge (enabled once every required task is done); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "DocumentViewer",
+    "tag": "co-document-viewer",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "pages",
+        "property": "pages",
+        "kind": "json",
+        "description": "Pages; default none (empty state)"
+      },
+      {
+        "name": "annotations",
+        "property": "annotations",
+        "kind": "json",
+        "description": "Initial annotations; the viewer keeps its own copy; default none"
+      },
+      {
+        "name": "page",
+        "property": "page",
+        "kind": "number",
+        "description": "Shown page index (controlled), from 0; default uncontrolled"
+      },
+      {
+        "name": "default-page",
+        "property": "defaultPage",
+        "kind": "number",
+        "description": "Initial page index; default 0"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default none"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Card subtitle (source, received); default none"
+      },
+      {
+        "name": "user",
+        "property": "user",
+        "kind": "string",
+        "description": "Author name on new annotations; default 'You'"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "No adding annotations; default false"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Why the document could not be opened; shows the error state; default none"
+      },
+      {
+        "name": "max-height",
+        "property": "maxHeight",
+        "kind": "number",
+        "description": "Height of the page area in px; default 520"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-annotations-change",
+        "prop": "onAnnotationsChange",
+        "description": "Called with all annotations after one is added; default none"
+      },
+      {
+        "name": "co-page-change",
+        "prop": "onPageChange",
+        "description": "Called with the new page index; default none"
+      },
+      {
+        "name": "co-download",
+        "prop": "onDownload",
+        "description": "Called by Download; default none"
       }
     ],
     "slots": []
@@ -4204,16 +5867,16 @@
         "description": "Inline style of the root"
       },
       {
-        "name": "error",
-        "property": "error",
-        "kind": "string",
-        "description": "Error message (as TextField); default none"
-      },
-      {
         "name": "read-only",
         "property": "readOnly",
         "kind": "boolean",
         "description": ""
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message (as TextField); default none"
       },
       {
         "name": "type",
@@ -4236,6 +5899,12 @@
       {
         "name": "max",
         "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
         "kind": "json",
         "description": ""
       },
@@ -4292,12 +5961,6 @@
         "property": "required",
         "kind": "boolean",
         "description": "Red asterisk plus aria-required; default false"
-      },
-      {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
-        "description": ""
       },
       {
         "name": "query",
@@ -4357,6 +6020,111 @@
         "name": "co-open-change",
         "prop": "onOpenChange",
         "description": "Called when the list opens or closes"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "EDTrackingBoard",
+    "tag": "co-ed-tracking-board",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patients",
+        "property": "patients",
+        "kind": "json",
+        "description": "Patients in the department; required"
+      },
+      {
+        "name": "wait-targets",
+        "property": "waitTargets",
+        "kind": "json",
+        "description": "Wait targets in minutes per ESI level; default {1: 0, 2: 10, 3: 30, 4: 60, 5: 120}"
+      },
+      {
+        "name": "current-provider",
+        "property": "currentProvider",
+        "kind": "string",
+        "description": "Provider name for the My patients filter; default none"
+      },
+      {
+        "name": "density",
+        "property": "density",
+        "kind": "string",
+        "description": "'comfortable' | 'compact' (hides the vitals column, for wall boards); default 'comfortable'"
+      },
+      {
+        "name": "filter",
+        "property": "filter",
+        "kind": "string",
+        "description": "Filter (controlled): 'all' | 'waiting' | 'boarding' | 'mine'; default uncontrolled"
+      },
+      {
+        "name": "default-filter",
+        "property": "defaultFilter",
+        "kind": "string",
+        "description": "Initial filter (uncontrolled); default 'all'"
+      },
+      {
+        "name": "summary",
+        "property": "summary",
+        "kind": "boolean",
+        "description": "Shows the summary tiles; default true"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides the Quick Register action; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'ED Tracking Board'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-filter-change",
+        "prop": "onFilterChange",
+        "description": "Called with the new filter; default none"
+      },
+      {
+        "name": "co-quick-register",
+        "prop": "onQuickRegister",
+        "description": "Called by Quick Register; default none"
       }
     ],
     "slots": []
@@ -4684,6 +6452,202 @@
     "slots": []
   },
   {
+    "component": "ESIBadge",
+    "tag": "co-esi-badge",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "level",
+        "property": "level",
+        "kind": "number",
+        "description": "ESI level 1 to 5, or null when not set; required"
+      },
+      {
+        "name": "show-label",
+        "property": "showLabel",
+        "kind": "boolean",
+        "description": "Adds the level name (\"ESI 2 Emergent\"); default false"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "EyeExam",
+    "tag": "co-eye-exam",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "exam",
+        "property": "exam",
+        "kind": "json",
+        "description": "{od, os, iopMethod, iopTime}; required"
+      },
+      {
+        "name": "refractions",
+        "property": "refractions",
+        "kind": "json",
+        "description": "Refraction rows; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Eye exam'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Copy Last Exam and Finalize Rx; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-copy-last-exam",
+        "prop": "onCopyLastExam",
+        "description": "Copy Last Exam action; default none"
+      },
+      {
+        "name": "co-finalize-rx",
+        "prop": "onFinalizeRx",
+        "description": "Finalize Rx action; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "FallRiskScore",
+    "tag": "co-fall-risk-score",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "default-values",
+        "property": "defaultValues",
+        "kind": "json",
+        "description": "Option index per item (uncontrolled), keyed by item id: history, secondary, aid, iv, gait, mental; default {}"
+      },
+      {
+        "name": "values",
+        "property": "values",
+        "kind": "json",
+        "description": "Option index per item (controlled); default uncontrolled"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Morse Fall Scale'"
+      },
+      {
+        "name": "previous",
+        "property": "previous",
+        "kind": "json",
+        "description": "Last score; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "default false"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Patient line"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [
+      {
+        "name": "band",
+        "description": "Cut-offs, total to band; default morseBand (0-24 low, 25-44 moderate, 45+ high)"
+      }
+    ],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with all answers after each pick"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "FaxDocumentViewer",
     "tag": "co-fax-document-viewer",
     "aliases": [],
@@ -4779,6 +6743,82 @@
         "description": "Called by Mark as Junk; default none"
       }
     ],
+    "slots": []
+  },
+  {
+    "component": "FetalMonitorStrip",
+    "tag": "co-fetal-monitor-strip",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "fhr",
+        "property": "fhr",
+        "kind": "json",
+        "description": "FHR samples in bpm, oldest first; null for signal loss; default []"
+      },
+      {
+        "name": "toco",
+        "property": "toco",
+        "kind": "json",
+        "description": "Uterine activity samples in mmHg; null for signal loss; default []"
+      },
+      {
+        "name": "state",
+        "property": "state",
+        "kind": "string",
+        "description": "'live' | 'paused' | 'disconnected'; default 'live' when data exists, else 'disconnected'"
+      },
+      {
+        "name": "category",
+        "property": "category",
+        "kind": "string",
+        "description": "Tracing category assigned by the clinician; default none (Category not assigned)"
+      },
+      {
+        "name": "category-by",
+        "property": "categoryBy",
+        "kind": "string",
+        "description": "Who assigned the category and when; default none"
+      },
+      {
+        "name": "room",
+        "property": "room",
+        "kind": "string",
+        "description": "Room named in the disconnected state; default 'L&D'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
     "slots": []
   },
   {
@@ -4961,6 +7001,12 @@
         "description": ""
       },
       {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "placeholder",
         "property": "placeholder",
         "kind": "string",
@@ -4994,12 +7040,6 @@
         "name": "required",
         "property": "required",
         "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
         "description": ""
       }
     ],
@@ -5122,51 +7162,219 @@
     ]
   },
   {
-    "component": "GrowthChart",
-    "tag": "co-growth-chart",
+    "component": "Flowsheet",
+    "tag": "co-flowsheet",
     "aliases": [],
     "attributes": [
       {
-        "name": "points",
-        "property": "points",
+        "name": "rows",
+        "property": "rows",
         "kind": "json",
-        "description": "Array<[ageMonths, value]>: the child's measurements; required"
+        "description": "Measures down the side; required"
       },
       {
-        "name": "percentiles",
-        "property": "percentiles",
+        "name": "columns",
+        "property": "columns",
         "kind": "json",
-        "description": "Record<percentile label, value per age in `ages`> ({'3': [...], '50': [...], '97': [...]}); required"
+        "description": "Charting times across the top; required"
       },
       {
-        "name": "ages",
-        "property": "ages",
+        "name": "now-column",
+        "property": "nowColumn",
+        "kind": "string",
+        "description": "Id of the current column (marked with a left rule); default none"
+      },
+      {
+        "name": "view",
+        "property": "view",
+        "kind": "string",
+        "description": "Controlled view: 'grid' | 'graph'"
+      },
+      {
+        "name": "default-view",
+        "property": "defaultView",
+        "kind": "string",
+        "description": "Initial view (uncontrolled); default 'grid'"
+      },
+      {
+        "name": "default-collapsed",
+        "property": "defaultCollapsed",
         "kind": "json",
-        "description": "number[]: ages (months) of the x axis and of each percentile value; default [0,6,12,18,24,36]"
+        "description": "Initially collapsed group names; default []"
       },
       {
-        "name": "min",
-        "property": "min",
-        "kind": "number",
-        "description": "Bottom of the y axis; default 2"
+        "name": "default-editing",
+        "property": "defaultEditing",
+        "kind": "string",
+        "description": "Cell open for editing at first, as 'rowId|colId'; default none"
       },
       {
-        "name": "max",
-        "property": "max",
-        "kind": "number",
-        "description": "Top of the y axis; default 18"
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only: no editing, no Add column; default false"
       },
       {
         "name": "title",
         "property": "title",
         "kind": "string",
-        "description": "Caption and accessible name; default \"Weight-for-age (kg), WHO 0 to 36 months\""
+        "description": "Card title; default 'Flowsheet'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Patient and unit line; default none"
+      },
+      {
+        "name": "max-height",
+        "property": "maxHeight",
+        "kind": "number",
+        "description": "Scroll height of the grid in px; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; a row's own range still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [
+      {
+        "name": "nextTime",
+        "description": "Label for an added column, from the current columns; default 'New'"
+      }
+    ],
+    "events": [
+      {
+        "name": "co-view-change",
+        "prop": "onViewChange",
+        "description": "Called when the view changes"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called when a cell is saved"
+      },
+      {
+        "name": "co-add-column",
+        "prop": "onAddColumn",
+        "description": "Called when a column is added"
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "GrowthChart",
+    "tag": "co-growth-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "standard",
+        "property": "standard",
+        "kind": "string",
+        "description": "Standard shown (controlled): 'who' | 'cdc'; default uncontrolled"
+      },
+      {
+        "name": "default-standard",
+        "property": "defaultStandard",
+        "kind": "string",
+        "description": "First standard shown (uncontrolled); default 'who'"
+      },
+      {
+        "name": "measure",
+        "property": "measure",
+        "kind": "json",
+        "description": "'weight' | 'bmi' | string: picks the built-in curve; default 'weight'"
+      },
+      {
+        "name": "sex",
+        "property": "sex",
+        "kind": "string",
+        "description": "'male' | 'female': picks the built-in curve; default 'male'"
+      },
+      {
+        "name": "points",
+        "property": "points",
+        "kind": "json",
+        "description": "Array<[age, value, date?]>; default []"
+      },
+      {
+        "name": "curves",
+        "property": "curves",
+        "kind": "json",
+        "description": "{unit, ages, ageUnit, lines, title}; default the built-in sample for standard, measure and sex"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default the curves' title"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "percentiles",
+        "property": "percentiles",
+        "kind": "json",
+        "description": "Legacy (use `curves`): Record<percentile, value per age in `ages`>, ages in months"
+      },
+      {
+        "name": "ages",
+        "property": "ages",
+        "kind": "json",
+        "description": "Legacy (use `curves`): ages in months of `percentiles`; default [0,6,12,18,24,36]"
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "number",
+        "description": "Legacy: bottom of the y axis; default from the data"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Legacy: top of the y axis; default from the data"
       },
       {
         "name": "unit",
         "property": "unit",
         "kind": "string",
-        "description": "Unit read with each measurement in the accessible summary; default none"
+        "description": "Legacy (use `curves.unit`): unit label of the values ('kg')"
       },
       {
         "name": "default-checked",
@@ -5188,14 +7396,129 @@
       }
     ],
     "properties": [],
-    "events": [],
+    "events": [
+      {
+        "name": "co-standard-change",
+        "prop": "onStandardChange",
+        "description": "Called with the new standard; the parent passes the matching `curves`. Without it, custom curves hide the switch; default none"
+      }
+    ],
     "slots": [
       {
         "name": "note",
         "prop": "note",
-        "description": "Note under the chart (\"Last: 11.6 kg at 24 months, about the 50th percentile.\"); default none Plain text also works as the `note` attribute."
+        "description": "Note under the table; default how percentile bands are read Plain text also works as the `note` attribute."
       }
     ]
+  },
+  {
+    "component": "HistoryPanels",
+    "tag": "co-history-panels",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "pmh",
+        "property": "pmh",
+        "kind": "json",
+        "description": "Past medical history. undefined = not asked, [] = none; default undefined"
+      },
+      {
+        "name": "psh",
+        "property": "psh",
+        "kind": "json",
+        "description": "Surgical history. undefined = not asked, [] = none; default undefined"
+      },
+      {
+        "name": "family",
+        "property": "family",
+        "kind": "json",
+        "description": "Family history by relative. undefined = not asked; default undefined"
+      },
+      {
+        "name": "social",
+        "property": "social",
+        "kind": "json",
+        "description": "Social history. undefined = not asked; default undefined"
+      },
+      {
+        "name": "tab",
+        "property": "tab",
+        "kind": "string",
+        "description": "Shown tab (controlled): 'pmh' | 'psh' | 'fam' | 'soc'; default uncontrolled"
+      },
+      {
+        "name": "default-tab",
+        "property": "defaultTab",
+        "kind": "string",
+        "description": "Initial tab; default 'pmh'"
+      },
+      {
+        "name": "reviewed",
+        "property": "reviewed",
+        "kind": "string",
+        "description": "When and by whom it was last reviewed; default none ('Not reviewed this visit')"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "No Mark Reviewed and Add buttons; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'History'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-tab-change",
+        "prop": "onTabChange",
+        "description": "Called when the tab changes; default none"
+      },
+      {
+        "name": "co-mark-reviewed",
+        "prop": "onMarkReviewed",
+        "description": "Called by Mark Reviewed; default none"
+      },
+      {
+        "name": "co-add",
+        "prop": "onAdd",
+        "description": "Called by Add with the shown tab; default none"
+      },
+      {
+        "name": "co-refer",
+        "prop": "onRefer",
+        "description": "Called by Refer with the SDOH domain; default none"
+      }
+    ],
+    "slots": []
   },
   {
     "component": "ICD10Picker",
@@ -5790,6 +8113,138 @@
     ]
   },
   {
+    "component": "InpatientOrderEntry",
+    "tag": "co-inpatient-order-entry",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "order",
+        "property": "order",
+        "kind": "json",
+        "description": "{ name, dose, unit, route, freq, prn, prnReason, maxDaily, duration, priority, weightBased, warnings: [{ tone, title, text }] }; required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": "Frequency, PRN, PRN reason, priority and duration (controlled); default uncontrolled from `order`"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "'draft' | 'pending' | 'verified' | 'rejected' | 'override'; default 'draft'"
+      },
+      {
+        "name": "role",
+        "property": "role",
+        "kind": "string",
+        "description": "'prescriber' | 'pharmacist'; default 'prescriber'"
+      },
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient line; default none"
+      },
+      {
+        "name": "verified-by",
+        "property": "verifiedBy",
+        "kind": "string",
+        "description": "Pharmacist who verified it; default none"
+      },
+      {
+        "name": "verified-at",
+        "property": "verifiedAt",
+        "kind": "string",
+        "description": "When it was verified; default none"
+      },
+      {
+        "name": "pharmacist",
+        "property": "pharmacist",
+        "kind": "string",
+        "description": "Pharmacist who returned it; default 'pharmacy'"
+      },
+      {
+        "name": "pharmacist-note",
+        "property": "pharmacistNote",
+        "kind": "string",
+        "description": "Why it was returned; default none"
+      },
+      {
+        "name": "override-by",
+        "property": "overrideBy",
+        "kind": "string",
+        "description": "Nurse who gave it before verification; default 'the nurse'"
+      },
+      {
+        "name": "show-errors",
+        "property": "showErrors",
+        "kind": "boolean",
+        "description": "Shows required-field errors; default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the new draft when the prescriber changes it; default none"
+      },
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Called by Sign Order with the draft and the order sentence; default none"
+      },
+      {
+        "name": "co-verify",
+        "prop": "onVerify",
+        "description": "Called by Verify (pharmacist); default none"
+      },
+      {
+        "name": "co-return",
+        "prop": "onReturn",
+        "description": "Called by Return to Prescriber (pharmacist); default none"
+      },
+      {
+        "name": "co-cancel",
+        "prop": "onCancel",
+        "description": "Called by Cancel; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "InsuranceCard",
     "tag": "co-insurance-card",
     "aliases": [],
@@ -6001,6 +8456,176 @@
         "description": "An item of a coverage's More menu; default none"
       }
     ],
+    "slots": []
+  },
+  {
+    "component": "IntakeOutputPanel",
+    "tag": "co-intake-output-panel",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "entries",
+        "property": "entries",
+        "kind": "json",
+        "description": "Entries in time order (initial list; entries added here are appended); default []"
+      },
+      {
+        "name": "weight-kg",
+        "property": "weightKg",
+        "kind": "number",
+        "description": "Weight in kg, for urine output in mL/kg/h; default none (no rate)"
+      },
+      {
+        "name": "hours",
+        "property": "hours",
+        "kind": "number",
+        "description": "Hours the entries cover, for mL/kg/h; default none (no rate)"
+      },
+      {
+        "name": "uo-target",
+        "property": "uoTarget",
+        "kind": "number",
+        "description": "Urine output target in mL/kg/h; default 0.5"
+      },
+      {
+        "name": "in-categories",
+        "property": "inCategories",
+        "kind": "json",
+        "description": "Intake sources; default ['PO', 'IV', 'IV piggyback', 'Blood', 'Tube feed']"
+      },
+      {
+        "name": "out-categories",
+        "property": "outCategories",
+        "kind": "json",
+        "description": "Output sources; default ['Urine', 'Emesis', 'Stool', 'Drain', 'NG', 'Blood loss']"
+      },
+      {
+        "name": "now",
+        "property": "now",
+        "kind": "string",
+        "description": "Default time of a new entry; default ''"
+      },
+      {
+        "name": "default-adding",
+        "property": "defaultAdding",
+        "kind": "boolean",
+        "description": "Opens the add form at first; default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only: no Add entry; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Intake and Output'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Shift line; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-add",
+        "prop": "onAdd",
+        "description": "Called with the new entry when one is saved"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "IsolationBadge",
+    "tag": "co-isolation-badge",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": "'contact' | 'contact-plus' | 'droplet' | 'airborne' | 'airborne-contact' | 'neutropenic' | 'standard'; required"
+      },
+      {
+        "name": "organism",
+        "property": "organism",
+        "kind": "string",
+        "description": "Organism, shown in brackets ('MRSA'); default none"
+      },
+      {
+        "name": "pending",
+        "property": "pending",
+        "kind": "boolean",
+        "description": "Rule-out: on precautions while the test is pending; default false"
+      },
+      {
+        "name": "compact",
+        "property": "compact",
+        "kind": "boolean",
+        "description": "Drops the \"Isolation:\" prefix in dense rows; default false"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "show-standard",
+        "property": "showStandard",
+        "kind": "boolean",
+        "description": "Shows 'standard' (hidden by default because it applies to everyone); default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
     "slots": []
   },
   {
@@ -6228,6 +8853,58 @@
     "slots": []
   },
   {
+    "component": "LaborDeliveryBoard",
+    "tag": "co-labor-delivery-board",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patients",
+        "property": "patients",
+        "kind": "json",
+        "description": "Patients on the unit; required"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Labor and Delivery Board'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
     "component": "LabResultTable",
     "tag": "co-lab-result-table",
     "aliases": [],
@@ -6303,6 +8980,58 @@
         "description": "Card header actions; default none Plain text also works as the `actions` attribute."
       }
     ]
+  },
+  {
+    "component": "LevelOfCareBadge",
+    "tag": "co-level-of-care-badge",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "level",
+        "property": "level",
+        "kind": "string",
+        "description": "'icu' | 'stepdown' | 'tele' | 'medsurg' | 'obs' | 'boarding' | 'l-d' | 'nicu' | 'psych'; required"
+      },
+      {
+        "name": "pending-to",
+        "property": "pendingTo",
+        "kind": "string",
+        "description": "A requested change of level, shown as \"ICU → Step-down pending\"; default none"
+      },
+      {
+        "name": "compact",
+        "property": "compact",
+        "kind": "boolean",
+        "description": "Short label only (hides the pending change); default false"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
   },
   {
     "component": "LevelTag",
@@ -6567,6 +9296,12 @@
         "description": ""
       },
       {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "icon-left",
         "property": "iconLeft",
         "kind": "string",
@@ -6615,12 +9350,6 @@
         "description": ""
       },
       {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
-        "description": ""
-      },
-      {
         "name": "helper",
         "property": "helper",
         "kind": "string",
@@ -6635,6 +9364,151 @@
     ],
     "properties": [],
     "events": [
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "MAR",
+    "tag": "co-m-a-r",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "Orders; required"
+      },
+      {
+        "name": "times",
+        "property": "times",
+        "kind": "json",
+        "description": "Column times; required"
+      },
+      {
+        "name": "now-time",
+        "property": "nowTime",
+        "kind": "string",
+        "description": "Current column; default none"
+      },
+      {
+        "name": "patient-name",
+        "property": "patientName",
+        "kind": "string",
+        "description": "Patient name for the wristband step; default none"
+      },
+      {
+        "name": "patient-barcode",
+        "property": "patientBarcode",
+        "kind": "string",
+        "description": "Expected wristband code; default none"
+      },
+      {
+        "name": "nurse",
+        "property": "nurse",
+        "kind": "string",
+        "description": "Who records; default 'You'"
+      },
+      {
+        "name": "now",
+        "property": "now",
+        "kind": "string",
+        "description": "Time recorded; default the scheduled time"
+      },
+      {
+        "name": "default-active",
+        "property": "defaultActive",
+        "kind": "json",
+        "description": "Administer panel open at first; default none"
+      },
+      {
+        "name": "default-scans",
+        "property": "defaultScans",
+        "kind": "json",
+        "description": "Initial scan results; default {}"
+      },
+      {
+        "name": "default-witness",
+        "property": "defaultWitness",
+        "kind": "string",
+        "description": "Initial witness; default ''"
+      },
+      {
+        "name": "filter",
+        "property": "filter",
+        "kind": "string",
+        "description": "Controlled filter"
+      },
+      {
+        "name": "default-filter",
+        "property": "defaultFilter",
+        "kind": "string",
+        "description": "Initial filter (uncontrolled); default 'all'"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only: cells are not buttons; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Medication Administration Record'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Patient line; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-filter-change",
+        "prop": "onFilterChange",
+        "description": "Called when the filter changes"
+      },
+      {
+        "name": "co-record",
+        "prop": "onRecord",
+        "description": "Called when a dose is recorded Given, Held or Refused"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
       {
         "name": "co-input",
         "prop": "onInput",
@@ -6753,6 +9627,103 @@
         "name": "co-action",
         "prop": "onAction",
         "description": "A menu action was chosen; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "MedReconciliation",
+    "tag": "co-med-reconciliation",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "Array of { home, inpatient, decision, modified, stopReason, note }; a medicine is { name, dose, unit, route, freq, prn }: the starting rows (uncontrolled); required"
+      },
+      {
+        "name": "rows-value",
+        "property": "rowsValue",
+        "kind": "json",
+        "description": "The rows (controlled); pair with onRowsChange; default uncontrolled"
+      },
+      {
+        "name": "stage",
+        "property": "stage",
+        "kind": "string",
+        "description": "'admission' | 'discharge'; default 'discharge'"
+      },
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name; default none"
+      },
+      {
+        "name": "source",
+        "property": "source",
+        "kind": "string",
+        "description": "Source of the home list; default 'Patient interview and pharmacy fill history'"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Signed and view only; default false"
+      },
+      {
+        "name": "signed-by",
+        "property": "signedBy",
+        "kind": "string",
+        "description": "Who signed it, shown when readOnly; default 'the attending'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-rows-change",
+        "prop": "onRowsChange",
+        "description": "Called with the new rows when a decision changes; default none"
+      },
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Called by Sign Reconciliation with the rows (enabled once every row has a decision); default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -7056,6 +10027,232 @@
     "slots": []
   },
   {
+    "component": "NursingAssessment",
+    "tag": "co-nursing-assessment",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "systems",
+        "property": "systems",
+        "kind": "json",
+        "description": "Body systems; default DEFAULT_NURSING_SYSTEMS (eight systems)"
+      },
+      {
+        "name": "values",
+        "property": "values",
+        "kind": "json",
+        "description": "Saved answers by system id (initial); default none (not assessed)"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Signed, view only; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Head-to-toe Assessment'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Shift line; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Accepted for API consistency with the nursing set; default 'inpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the system id and its new answer"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "OncologyRegimen",
+    "tag": "co-oncology-regimen",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "regimen",
+        "property": "regimen",
+        "kind": "json",
+        "description": "{name, intent, cycleDays, cycles, bsaCap?, hold, drugs}; required"
+      },
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "json",
+        "description": "{heightCm, weightKg, bsa?, weightChange?}; required"
+      },
+      {
+        "name": "cycles",
+        "property": "cycles",
+        "kind": "json",
+        "description": "Cycles; default []"
+      },
+      {
+        "name": "cumulative",
+        "property": "cumulative",
+        "kind": "json",
+        "description": "Lifetime doses; default []"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Hold Cycle and Release to Pharmacy; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-hold-cycle",
+        "prop": "onHoldCycle",
+        "description": "Hold Cycle action; default none"
+      },
+      {
+        "name": "co-release",
+        "prop": "onRelease",
+        "description": "Release to Pharmacy action (disabled while hold criteria are met); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "OrderReconciliation",
+    "tag": "co-order-reconciliation",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "orders",
+        "property": "orders",
+        "kind": "json",
+        "description": "Array of { type, name, dose, unit, detail, action, notAllowedOn: level[] }: the starting orders (uncontrolled); required"
+      },
+      {
+        "name": "orders-value",
+        "property": "ordersValue",
+        "kind": "json",
+        "description": "The orders (controlled); pair with onOrdersChange; default uncontrolled"
+      },
+      {
+        "name": "from",
+        "property": "from",
+        "kind": "string",
+        "description": "Level of care the patient leaves; required"
+      },
+      {
+        "name": "to",
+        "property": "to",
+        "kind": "string",
+        "description": "Level of care the patient goes to; required"
+      },
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name and context; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-orders-change",
+        "prop": "onOrdersChange",
+        "description": "Called with the new orders when an action changes; default none"
+      },
+      {
+        "name": "co-release",
+        "prop": "onRelease",
+        "description": "Called by Release Orders with the orders (enabled once every order is reviewed); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "OrderSetPicker",
     "tag": "co-order-set-picker",
     "aliases": [],
@@ -7114,6 +10311,170 @@
         "name": "co-sign",
         "prop": "onSign",
         "description": "Called by Sign Orders with the ticked items of the shown set; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "ORSchedule",
+    "tag": "co-or-schedule",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "rooms",
+        "property": "rooms",
+        "kind": "json",
+        "description": "Operating rooms, top to bottom; required"
+      },
+      {
+        "name": "cases",
+        "property": "cases",
+        "kind": "json",
+        "description": "Cases of the day; required"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'timeline' (rooms as rows, cases as blocks) | 'board' (status table); default 'timeline'"
+      },
+      {
+        "name": "day-start",
+        "property": "dayStart",
+        "kind": "string",
+        "description": "Timeline start 'HH:MM'; default '07:00'"
+      },
+      {
+        "name": "day-end",
+        "property": "dayEnd",
+        "kind": "string",
+        "description": "Timeline end 'HH:MM'; default '19:00'"
+      },
+      {
+        "name": "now",
+        "property": "now",
+        "kind": "string",
+        "description": "Current time 'HH:MM' for the red Now line; default none"
+      },
+      {
+        "name": "public-view",
+        "property": "publicView",
+        "kind": "boolean",
+        "description": "Board for families: shows publicId instead of names; default false"
+      },
+      {
+        "name": "date",
+        "property": "date",
+        "kind": "string",
+        "description": "Day shown in the empty state; default 'this day'"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'OR Schedule' (timeline) or 'Surgery Status Board' (board)"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "PACUScore",
+    "tag": "co-pacu-score",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "values",
+        "property": "values",
+        "kind": "json",
+        "description": "Item scores (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-values",
+        "property": "defaultValues",
+        "kind": "json",
+        "description": "Initial item scores (uncontrolled), 0 | 1 | 2 each; default {}"
+      },
+      {
+        "name": "history",
+        "property": "history",
+        "kind": "json",
+        "description": "Earlier scores by time; default []"
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": "Radio group name prefix when several are on a page; default a generated unique prefix"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Locked review; default false"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with every item score when one changes; default none"
       }
     ],
     "slots": []
@@ -7197,6 +10558,181 @@
         "description": "Called with the new rows per page (the page also resets to 1); default none"
       }
     ],
+    "slots": []
+  },
+  {
+    "component": "PainScale",
+    "tag": "co-pain-scale",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "modes",
+        "property": "modes",
+        "kind": "json",
+        "description": "Scales offered; one entry hides the switch; default ['numeric', 'faces', 'flacc']"
+      },
+      {
+        "name": "mode",
+        "property": "mode",
+        "kind": "string",
+        "description": "Controlled scale"
+      },
+      {
+        "name": "default-mode",
+        "property": "defaultMode",
+        "kind": "string",
+        "description": "Initial scale (uncontrolled); default 'numeric'"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "number",
+        "description": "Controlled numeric or faces score, 0 to 10 (null = not scored)"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "number",
+        "description": "Initial numeric or faces score, 0 to 10 (uncontrolled); default none"
+      },
+      {
+        "name": "default-flacc",
+        "property": "defaultFlacc",
+        "kind": "json",
+        "description": "Initial FLACC answers: option index (0 to 2) per category face, legs, activity, cry, consol; default {}"
+      },
+      {
+        "name": "goal",
+        "property": "goal",
+        "kind": "number",
+        "description": "Patient pain goal (0 to 10); default none"
+      },
+      {
+        "name": "reassess",
+        "property": "reassess",
+        "kind": "string",
+        "description": "Reassessment window shown when above goal; default '60 min'"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Not selectable; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Pain Assessment'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Patient line; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Accepted for API consistency with the nursing set; the pain score is never flagged; default 'inpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-mode-change",
+        "prop": "onModeChange",
+        "description": "Called when the scale changes"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the scale and score when a score is picked (FLACC: once all five categories are scored)"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PartogramChart",
+    "tag": "co-partogram-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "dilation",
+        "property": "dilation",
+        "kind": "json",
+        "description": "Cervical exams as [hours, cm]; required"
+      },
+      {
+        "name": "descent",
+        "property": "descent",
+        "kind": "json",
+        "description": "Head descent as [hours, fifths palpable 0 to 5]; default []"
+      },
+      {
+        "name": "fhr",
+        "property": "fhr",
+        "kind": "json",
+        "description": "Fetal heart rate as [hours, bpm]; default []"
+      },
+      {
+        "name": "contractions",
+        "property": "contractions",
+        "kind": "json",
+        "description": "Contractions as [hours, per 10 min]; default []"
+      },
+      {
+        "name": "hours",
+        "property": "hours",
+        "kind": "number",
+        "description": "Hours on the x axis; default 12"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default 'Active phase, alert line at 1 cm per hour, action line 4 hours to the right'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
     "slots": []
   },
   {
@@ -7387,6 +10923,121 @@
         "name": "co-add",
         "prop": "onAdd",
         "description": "Add (+) button handler; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PediatricDosingCalculator",
+    "tag": "co-pediatric-dosing-calculator",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "drugs",
+        "property": "drugs",
+        "kind": "json",
+        "description": "Medications to choose from; required"
+      },
+      {
+        "name": "weight",
+        "property": "weight",
+        "kind": "string",
+        "description": "Weight in kg typed in the field (controlled, text); default uncontrolled"
+      },
+      {
+        "name": "default-weight",
+        "property": "defaultWeight",
+        "kind": "number",
+        "description": "First weight in kg (uncontrolled); default none"
+      },
+      {
+        "name": "drug",
+        "property": "drug",
+        "kind": "number",
+        "description": "Selected medication index (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-drug",
+        "property": "defaultDrug",
+        "kind": "number",
+        "description": "First medication index (uncontrolled); default 0"
+      },
+      {
+        "name": "weight-date",
+        "property": "weightDate",
+        "kind": "string",
+        "description": "When the weight was taken; default none (helper asks for today's weight)"
+      },
+      {
+        "name": "weight-stale",
+        "property": "weightStale",
+        "kind": "string",
+        "description": "How old the weight is (\"45 days\"): shows a warning; default none"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Pediatric dose calculator'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Use in Order and Request Double Check; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-weight-change",
+        "prop": "onWeightChange",
+        "description": "Called with the weight text as typed; default none"
+      },
+      {
+        "name": "co-drug-change",
+        "prop": "onDrugChange",
+        "description": "Called with the medication index; default none"
+      },
+      {
+        "name": "co-use-in-order",
+        "prop": "onUseInOrder",
+        "description": "Use in Order action, with the result and the medication; default none"
+      },
+      {
+        "name": "co-request-double-check",
+        "prop": "onRequestDoubleCheck",
+        "description": "Request Double Check action; default none"
       }
     ],
     "slots": []
@@ -7598,6 +11249,98 @@
         "name": "co-compare-roles",
         "prop": "onCompareRoles",
         "description": "\"Compare roles\" clicked (denied); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PharmacyVerificationQueue",
+    "tag": "co-pharmacy-verification-queue",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "orders",
+        "property": "orders",
+        "kind": "json",
+        "description": "Initial orders; the queue keeps its own copy as statuses change; default none"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "string",
+        "description": "Selected order id (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-selected",
+        "property": "defaultSelected",
+        "kind": "string",
+        "description": "Initially selected order id; default the first order"
+      },
+      {
+        "name": "filter",
+        "property": "filter",
+        "kind": "string",
+        "description": "Status filter (controlled): 'pending' | 'clarify' | 'all'; default uncontrolled"
+      },
+      {
+        "name": "default-filter",
+        "property": "defaultFilter",
+        "kind": "string",
+        "description": "Initial status filter; default 'pending'"
+      },
+      {
+        "name": "user",
+        "property": "user",
+        "kind": "string",
+        "description": "Pharmacist name, recorded as `by` on orders they act on; default none"
+      },
+      {
+        "name": "oldest",
+        "property": "oldest",
+        "kind": "string",
+        "description": "Age of the oldest pending order ('42 min'); default 'now'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-selected-change",
+        "prop": "onSelectedChange",
+        "description": "Called with the selected order id; default none"
+      },
+      {
+        "name": "co-filter-change",
+        "prop": "onFilterChange",
+        "description": "Called when the filter changes; default none"
+      },
+      {
+        "name": "co-status-change",
+        "prop": "onStatusChange",
+        "description": "Called when the pharmacist verifies, asks to clarify or rejects an order; default none"
       }
     ],
     "slots": []
@@ -7923,6 +11666,76 @@
     ]
   },
   {
+    "component": "PrenatalFlowsheet",
+    "tag": "co-prenatal-flowsheet",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "header",
+        "property": "header",
+        "kind": "json",
+        "description": "{edd, eddBy, gp, blood, rubella, gbs, bmi, risks}; default {}"
+      },
+      {
+        "name": "visits",
+        "property": "visits",
+        "kind": "json",
+        "description": "Visits, oldest first; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Prenatal flowsheet'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Add Visit; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'pregnancy' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-add-visit",
+        "prop": "onAddVisit",
+        "description": "Add Visit action; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "PriorAuthTimeline",
     "tag": "co-prior-auth-timeline",
     "aliases": [
@@ -8094,6 +11907,154 @@
     "slots": []
   },
   {
+    "component": "ProblemListEditor",
+    "tag": "co-problem-list-editor",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Initial problems; the editor keeps its own copy; default none (empty state)"
+      },
+      {
+        "name": "editing",
+        "property": "editing",
+        "kind": "number",
+        "description": "Index of the problem being edited (controlled), -1 for none; default uncontrolled"
+      },
+      {
+        "name": "default-editing",
+        "property": "defaultEditing",
+        "kind": "number",
+        "description": "Index of the problem open for editing at first; default -1 (none)"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "No edit buttons; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-items-change",
+        "prop": "onItemsChange",
+        "description": "Called with the problems after every change (code picked, status changed); default none"
+      },
+      {
+        "name": "co-editing-change",
+        "prop": "onEditingChange",
+        "description": "Called when a problem opens or closes for editing; default none"
+      },
+      {
+        "name": "co-add",
+        "prop": "onAdd",
+        "description": "Called by Add Problem (open your SNOMED CT search); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "ProcedureNote",
+    "tag": "co-procedure-note",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "template",
+        "property": "template",
+        "kind": "string",
+        "description": "'laceration repair' | 'central line' | 'lumbar puncture' | 'cesarean delivery'; default 'laceration repair'"
+      },
+      {
+        "name": "values",
+        "property": "values",
+        "kind": "json",
+        "description": "Note values; default {}"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "'draft' (template fields editable) | 'signed' (read-only); default 'draft'"
+      },
+      {
+        "name": "addendum",
+        "property": "addendum",
+        "kind": "json",
+        "description": "Addendum under a signed note {at, text}; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Called by Sign Note with the template field text; default none"
+      },
+      {
+        "name": "co-save-draft",
+        "prop": "onSaveDraft",
+        "description": "Called by Save Draft with the template field text; default none"
+      },
+      {
+        "name": "co-details-change",
+        "prop": "onDetailsChange",
+        "description": "Called when a template field changes; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "ProgressBar",
     "tag": "co-progress-bar",
     "aliases": [],
@@ -8240,6 +12201,226 @@
     "slots": []
   },
   {
+    "component": "PsychRatingScales",
+    "tag": "co-psych-rating-scales",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "answers",
+        "property": "answers",
+        "kind": "json",
+        "description": "Answers (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-answers",
+        "property": "defaultAnswers",
+        "kind": "json",
+        "description": "First answers (uncontrolled) {phq9?, gad7?, cssrs?}; default {}"
+      },
+      {
+        "name": "tab",
+        "property": "tab",
+        "kind": "string",
+        "description": "Tab shown (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-tab",
+        "property": "defaultTab",
+        "kind": "string",
+        "description": "First tab (uncontrolled): 'phq9' | 'gad7' | 'cssrs'; default 'phq9'"
+      },
+      {
+        "name": "history",
+        "property": "history",
+        "kind": "json",
+        "description": "Earlier scores, oldest first; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Rating scales'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Locks the answers; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-answers-change",
+        "prop": "onAnswersChange",
+        "description": "Called with every answer change; default none"
+      },
+      {
+        "name": "co-tab-change",
+        "prop": "onTabChange",
+        "description": "Called with the new tab; default none"
+      },
+      {
+        "name": "co-call-crisis-team",
+        "prop": "onCallCrisisTeam",
+        "description": "Call Crisis Team action (high risk); default none"
+      },
+      {
+        "name": "co-start-safety-plan",
+        "prop": "onStartSafetyPlan",
+        "description": "Start Safety Plan action (moderate or high risk); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PTPlanOfCare",
+    "tag": "co-pt-plan-of-care",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "diagnosis",
+        "property": "diagnosis",
+        "kind": "string",
+        "description": "Diagnosis with code; default 'Not recorded'"
+      },
+      {
+        "name": "cert",
+        "property": "cert",
+        "kind": "string",
+        "description": "Certification period; default 'Not recorded'"
+      },
+      {
+        "name": "frequency",
+        "property": "frequency",
+        "kind": "string",
+        "description": "Visit frequency; default 'Not recorded'"
+      },
+      {
+        "name": "referring",
+        "property": "referring",
+        "kind": "string",
+        "description": "Referring provider; default 'Not recorded'"
+      },
+      {
+        "name": "auth",
+        "property": "auth",
+        "kind": "json",
+        "description": "{used, authorized, payer, expires}; required"
+      },
+      {
+        "name": "visits-since-progress-note",
+        "property": "visitsSinceProgressNote",
+        "kind": "number",
+        "description": "Visits since the last progress note; default 0"
+      },
+      {
+        "name": "progress-note-due",
+        "property": "progressNoteDue",
+        "kind": "boolean",
+        "description": "Forces the Progress note due badge; default false (due at 10 visits)"
+      },
+      {
+        "name": "scores",
+        "property": "scores",
+        "kind": "json",
+        "description": "Functional outcome scores; default []"
+      },
+      {
+        "name": "goals",
+        "property": "goals",
+        "kind": "json",
+        "description": "Goals; default []"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Physical therapy plan of care'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Hides Progress Note and Send for Certification; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-progress-note",
+        "prop": "onProgressNote",
+        "description": "Progress Note action; default none"
+      },
+      {
+        "name": "co-send-for-certification",
+        "prop": "onSendForCertification",
+        "description": "Send for Certification action; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "QualityMeasureCard",
     "tag": "co-quality-measure-card",
     "aliases": [],
@@ -8269,16 +12450,16 @@
         "description": ""
       },
       {
-        "name": "padding",
-        "property": "padding",
-        "kind": "string",
-        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
-      },
-      {
         "name": "flat",
         "property": "flat",
         "kind": "boolean",
         "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
       },
       {
         "name": "as",
@@ -8396,6 +12577,12 @@
         "description": ""
       },
       {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "placeholder",
         "property": "placeholder",
         "kind": "string",
@@ -8441,12 +12628,6 @@
         "name": "required",
         "property": "required",
         "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
         "description": ""
       }
     ],
@@ -8561,6 +12742,128 @@
         "description": "Error message under the options; default none Plain text also works as the `error` attribute."
       }
     ]
+  },
+  {
+    "component": "RapidResponsePanel",
+    "tag": "co-rapid-response-panel",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient ('Kowalski, Anna, 34 F'); required"
+      },
+      {
+        "name": "location",
+        "property": "location",
+        "kind": "string",
+        "description": "Location; required"
+      },
+      {
+        "name": "called-by",
+        "property": "calledBy",
+        "kind": "string",
+        "description": "Who called ('J. Patel, RN', 'Family'); default none"
+      },
+      {
+        "name": "reason",
+        "property": "reason",
+        "kind": "string",
+        "description": "Why the team was called; required"
+      },
+      {
+        "name": "called-at",
+        "property": "calledAt",
+        "kind": "number",
+        "description": "When the call was made, epoch ms; default when the component mounts"
+      },
+      {
+        "name": "now",
+        "property": "now",
+        "kind": "number",
+        "description": "Freezes the clock at this epoch ms (for review and tests); default live"
+      },
+      {
+        "name": "vitals",
+        "property": "vitals",
+        "kind": "json",
+        "description": "Array of { measure, value, range, taken }; default []"
+      },
+      {
+        "name": "labs",
+        "property": "labs",
+        "kind": "json",
+        "description": "Array of { measure, value, range, taken }; default []"
+      },
+      {
+        "name": "interventions",
+        "property": "interventions",
+        "kind": "json",
+        "description": "Array of { at, text }; default []"
+      },
+      {
+        "name": "outcome",
+        "property": "outcome",
+        "kind": "string",
+        "description": "Starting outcome (uncontrolled); a chosen outcome closes the call and stops the clock; default none"
+      },
+      {
+        "name": "outcome-value",
+        "property": "outcomeValue",
+        "kind": "string",
+        "description": "Outcome (controlled); default uncontrolled"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-outcome-change",
+        "prop": "onOutcomeChange",
+        "description": "Called with the chosen outcome; default none"
+      },
+      {
+        "name": "co-escalate",
+        "prop": "onEscalate",
+        "description": "Called by Escalate to Code Blue; default none"
+      },
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called by Close Call with the outcome; default none"
+      }
+    ],
+    "slots": []
   },
   {
     "component": "ReferenceRangeBar",
@@ -8722,16 +13025,16 @@
         "description": ""
       },
       {
-        "name": "padding",
-        "property": "padding",
-        "kind": "string",
-        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
-      },
-      {
         "name": "flat",
         "property": "flat",
         "kind": "boolean",
         "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
       },
       {
         "name": "as",
@@ -8754,6 +13057,172 @@
         "description": "Footer content; default none Plain text also works as the `footer` attribute."
       }
     ]
+  },
+  {
+    "component": "ResultsReview",
+    "tag": "co-results-review",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "result",
+        "property": "result",
+        "kind": "json",
+        "description": "The resulted order; required"
+      },
+      {
+        "name": "route-options",
+        "property": "routeOptions",
+        "kind": "json",
+        "description": "People and pools the result can be routed to; default none"
+      },
+      {
+        "name": "user",
+        "property": "user",
+        "kind": "string",
+        "description": "Name of the signed-in user, used on new comments; default 'You'"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only (role cannot acknowledge); default false"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "Review status (controlled); default uncontrolled, starting at `result.status`"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-status-change",
+        "prop": "onStatusChange",
+        "description": "Called when the status changes; default none"
+      },
+      {
+        "name": "co-acknowledge",
+        "prop": "onAcknowledge",
+        "description": "Called when the user acknowledges the result; default none"
+      },
+      {
+        "name": "co-comment",
+        "prop": "onComment",
+        "description": "Called with a comment the user adds; default none"
+      },
+      {
+        "name": "co-route",
+        "prop": "onRoute",
+        "description": "Called with the person or pool the result is routed to; default none"
+      },
+      {
+        "name": "co-notify-patient",
+        "prop": "onNotifyPatient",
+        "description": "Called when the user clicks Notify Patient; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "ResultsTrendPanel",
+    "tag": "co-results-trend-panel",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "groups",
+        "property": "groups",
+        "kind": "json",
+        "description": "Groups of trended tests; default none (empty state)"
+      },
+      {
+        "name": "view",
+        "property": "view",
+        "kind": "string",
+        "description": "Shown view (controlled): 'grid' (sparkline tiles) | 'table' (date by test); default uncontrolled"
+      },
+      {
+        "name": "default-view",
+        "property": "defaultView",
+        "kind": "string",
+        "description": "Initial view: 'grid' | 'table'; default 'grid'"
+      },
+      {
+        "name": "max-columns",
+        "property": "maxColumns",
+        "kind": "number",
+        "description": "Most recent dates shown as table columns; default all"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Results Trend'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Card subtitle; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-view-change",
+        "prop": "onViewChange",
+        "description": "Called when the view changes; default none"
+      }
+    ],
+    "slots": []
   },
   {
     "component": "RolePill",
@@ -8941,16 +13410,16 @@
         "description": ""
       },
       {
-        "name": "padding",
-        "property": "padding",
-        "kind": "string",
-        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
-      },
-      {
         "name": "flat",
         "property": "flat",
         "kind": "boolean",
         "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
       },
       {
         "name": "as",
@@ -9322,6 +13791,124 @@
         "description": "The control, right column. Give it its own accessible label. "
       }
     ]
+  },
+  {
+    "component": "ShiftHandoff",
+    "tag": "co-shift-handoff",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "situation",
+        "property": "situation",
+        "kind": "json",
+        "description": "S: Situation; default none (shows Not filled in)"
+      },
+      {
+        "name": "background",
+        "property": "background",
+        "kind": "json",
+        "description": "B: Background"
+      },
+      {
+        "name": "assessment",
+        "property": "assessment",
+        "kind": "json",
+        "description": "A: Assessment"
+      },
+      {
+        "name": "recommendation",
+        "property": "recommendation",
+        "kind": "json",
+        "description": "R: Recommendation"
+      },
+      {
+        "name": "pending",
+        "property": "pending",
+        "kind": "json",
+        "description": "What is due in the next 4 hours; default none"
+      },
+      {
+        "name": "flags",
+        "property": "flags",
+        "kind": "json",
+        "description": "Header flags; default none"
+      },
+      {
+        "name": "from",
+        "property": "from",
+        "kind": "string",
+        "description": "Giving nurse"
+      },
+      {
+        "name": "to",
+        "property": "to",
+        "kind": "string",
+        "description": "Receiving nurse"
+      },
+      {
+        "name": "acknowledged",
+        "property": "acknowledged",
+        "kind": "boolean",
+        "description": "Controlled accepted state"
+      },
+      {
+        "name": "default-acknowledged",
+        "property": "defaultAcknowledged",
+        "kind": "boolean",
+        "description": "Initial accepted state (uncontrolled); default false"
+      },
+      {
+        "name": "ack-time",
+        "property": "ackTime",
+        "kind": "string",
+        "description": "When it was accepted ('19:12'); default none"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Shift Handoff (SBAR)'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Unit line; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; a value's own range still wins; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-acknowledge",
+        "prop": "onAcknowledge",
+        "description": "Called when the receiving nurse accepts"
+      }
+    ],
+    "slots": []
   },
   {
     "component": "SidebarNav",
@@ -9935,6 +14522,207 @@
     "slots": []
   },
   {
+    "component": "SplitPaneChartLayout",
+    "tag": "co-split-pane-chart-layout",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "right-title",
+        "property": "rightTitle",
+        "kind": "string",
+        "description": "Right pane title; default 'Context'"
+      },
+      {
+        "name": "main-label",
+        "property": "mainLabel",
+        "kind": "string",
+        "description": "Accessible name of the middle pane; default 'Note'"
+      },
+      {
+        "name": "left-width",
+        "property": "leftWidth",
+        "kind": "number",
+        "description": "Initial left pane width in px (160 to 360); default 220"
+      },
+      {
+        "name": "right-width",
+        "property": "rightWidth",
+        "kind": "number",
+        "description": "Initial right pane width in px (240 to 520); default 300"
+      },
+      {
+        "name": "left-collapsed",
+        "property": "leftCollapsed",
+        "kind": "boolean",
+        "description": "Left pane collapsed to a rail (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-left-collapsed",
+        "property": "defaultLeftCollapsed",
+        "kind": "boolean",
+        "description": "Left pane starts collapsed; default false"
+      },
+      {
+        "name": "right-open",
+        "property": "rightOpen",
+        "kind": "boolean",
+        "description": "Right pane open (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-right-open",
+        "property": "defaultRightOpen",
+        "kind": "boolean",
+        "description": "Right pane starts open; default true"
+      },
+      {
+        "name": "height",
+        "property": "height",
+        "kind": "number",
+        "description": "Layout height in px; default 420"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-left-width-change",
+        "prop": "onLeftWidthChange",
+        "description": "Called with the left width after a resize; default none"
+      },
+      {
+        "name": "co-right-width-change",
+        "prop": "onRightWidthChange",
+        "description": "Called with the right width after a resize; default none"
+      },
+      {
+        "name": "co-left-collapsed-change",
+        "prop": "onLeftCollapsedChange",
+        "description": "Called when the left pane collapses or expands; default none"
+      },
+      {
+        "name": "co-right-open-change",
+        "prop": "onRightOpenChange",
+        "description": "Called when the right pane opens or closes; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "nav",
+        "prop": "nav",
+        "description": "Left pane: chart section navigation; default none Plain text also works as the `nav` attribute."
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Middle pane: the note "
+      },
+      {
+        "name": "context",
+        "prop": "context",
+        "description": "Right pane: context (results, CDS cards); default none Plain text also works as the `context` attribute."
+      }
+    ]
+  },
+  {
+    "component": "Splitter",
+    "tag": "co-splitter",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name ('Resize chart sections'); required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "number",
+        "description": "Current size of the pane it controls, in px; required"
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "number",
+        "description": "Smallest size in px; required"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Largest size in px; required"
+      },
+      {
+        "name": "side",
+        "property": "side",
+        "kind": "string",
+        "description": "Which side the controlled pane is on: 'left' grows with ArrowRight, 'right' grows with ArrowLeft; default 'left'"
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "number",
+        "description": "Arrow key step in px (Shift multiplies by 3); default 16"
+      },
+      {
+        "name": "controls",
+        "property": "controls",
+        "kind": "string",
+        "description": "Id of the pane it resizes (aria-controls); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-resize",
+        "prop": "onResize",
+        "description": "Called with the new size, already clamped to min and max"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "StatCard",
     "tag": "co-stat-card",
     "aliases": [],
@@ -10241,6 +15029,91 @@
     ]
   },
   {
+    "component": "StructuredDataGrid",
+    "tag": "co-structured-data-grid",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "columns",
+        "property": "columns",
+        "kind": "json",
+        "description": "Columns; required"
+      },
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "Initial rows; the grid keeps its own copy as the user types; default none"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title, also the grid's accessible name; default none"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Card subtitle; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Whole grid read only; default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-save",
+        "prop": "onSave",
+        "description": "Called with the rows when Save passes the checks; default none"
+      },
+      {
+        "name": "co-rows-change",
+        "prop": "onRowsChange",
+        "description": "Called with the rows after every edit; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "StyleChooser",
     "tag": "co-style-chooser",
     "aliases": [],
@@ -10447,6 +15320,185 @@
         "name": "co-send",
         "prop": "onSend",
         "description": "Called with the selected codes when Send to Billing is pressed; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "SurgeryBoard",
+    "tag": "co-surgery-board",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'OR Schedule' (timeline) or 'Surgery Status Board' (board)"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "date",
+        "property": "date",
+        "kind": "string",
+        "description": "Day shown in the empty state; default 'this day'"
+      },
+      {
+        "name": "now",
+        "property": "now",
+        "kind": "string",
+        "description": "Current time 'HH:MM' for the red Now line; default none"
+      },
+      {
+        "name": "rooms",
+        "property": "rooms",
+        "kind": "json",
+        "description": "Operating rooms, top to bottom; required"
+      },
+      {
+        "name": "cases",
+        "property": "cases",
+        "kind": "json",
+        "description": "Cases of the day; required"
+      },
+      {
+        "name": "day-start",
+        "property": "dayStart",
+        "kind": "string",
+        "description": "Timeline start 'HH:MM'; default '07:00'"
+      },
+      {
+        "name": "day-end",
+        "property": "dayEnd",
+        "kind": "string",
+        "description": "Timeline end 'HH:MM'; default '19:00'"
+      },
+      {
+        "name": "public-view",
+        "property": "publicView",
+        "kind": "boolean",
+        "description": "Board for families: shows publicId instead of names; default false"
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "SurgicalSafetyChecklist",
+    "tag": "co-surgical-safety-checklist",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "json",
+        "description": "Checked items (controlled), keyed phase + index ('signin0'); default uncontrolled"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "json",
+        "description": "Initially checked items (uncontrolled), keyed phase + index ('signin0'); default {}"
+      },
+      {
+        "name": "confirmed",
+        "property": "confirmed",
+        "kind": "json",
+        "description": "Phases already confirmed, with their time 'HH:MM' (initial state); default {}"
+      },
+      {
+        "name": "clock",
+        "property": "clock",
+        "kind": "string",
+        "description": "Time 'HH:MM' stamped on a new confirmation; default the device clock"
+      },
+      {
+        "name": "mismatch",
+        "property": "mismatch",
+        "kind": "string",
+        "description": "Site or procedure mismatch: shows a red stop alert; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Review only: nothing can be checked or confirmed; default false"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Line under the title; default 'WHO checklist, adapted. Each phase is confirmed aloud by the team.'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-checked-change",
+        "prop": "onCheckedChange",
+        "description": "Called with every checked item when one changes; default none"
+      },
+      {
+        "name": "co-confirm",
+        "prop": "onConfirm",
+        "description": "Called when the team confirms a phase, with the time stamped; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": ""
+      },
+      {
+        "name": "co-input",
+        "prop": "onInput",
+        "description": ""
       }
     ],
     "slots": []
@@ -10998,6 +16050,12 @@
         "description": ""
       },
       {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "placeholder",
         "property": "placeholder",
         "kind": "string",
@@ -11037,12 +16095,6 @@
         "name": "multiple",
         "property": "multiple",
         "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "step",
-        "property": "step",
-        "kind": "json",
         "description": ""
       }
     ],
@@ -11428,6 +16480,81 @@
         "description": "Rail only: the PatientTabs; default none Plain text also works as the `tabs` attribute."
       }
     ]
+  },
+  {
+    "component": "TriageForm",
+    "tag": "co-triage-form",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "default-values",
+        "property": "defaultValues",
+        "kind": "json",
+        "description": "Initial answers (the form is uncontrolled); default {}"
+      },
+      {
+        "name": "isolation",
+        "property": "isolation",
+        "kind": "string",
+        "description": "Positive isolation screen name, shown as a warning; default none"
+      },
+      {
+        "name": "show-errors",
+        "property": "showErrors",
+        "kind": "boolean",
+        "description": "Marks a missing chief complaint; default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Signed triage: every field locked, no actions; default false"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Card subtitle (patient, arrival time); default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default 'ed' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-submit",
+        "prop": "onSubmit",
+        "description": "Called by Complete Triage with the values and the final ESI; default none"
+      },
+      {
+        "name": "co-save-draft",
+        "prop": "onSaveDraft",
+        "description": "Called by Save Draft; default none"
+      }
+    ],
+    "slots": []
   },
   {
     "component": "UnitsMeter",
@@ -11905,6 +17032,81 @@
         "name": "co-remove",
         "prop": "onRemove",
         "description": "Row menu: Remove from Waitlist; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "WoundCareDoc",
+    "tag": "co-wound-care-doc",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "wound",
+        "property": "wound",
+        "kind": "json",
+        "description": "The wound; required"
+      },
+      {
+        "name": "history",
+        "property": "history",
+        "kind": "json",
+        "description": "Measurement history, oldest first; default []"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "View only; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Card title; default 'Wound Care'"
+      },
+      {
+        "name": "subtitle",
+        "property": "subtitle",
+        "kind": "string",
+        "description": "Patient line; default none"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; default 'inpatient' when no global context is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-save",
+        "prop": "onSave",
+        "description": "Called with the current assessment on Save wound assessment"
+      },
+      {
+        "name": "co-add-photo",
+        "prop": "onAddPhoto",
+        "description": "Called on Add photo; default none"
       }
     ],
     "slots": []

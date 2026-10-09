@@ -1,0 +1,27 @@
+---
+title: Accessibility
+sidebar_position: 7
+description: "Contrast, focus, keyboard and touch rules, with every measured exception."
+---
+
+# Accessibility
+
+- Text pairs are checked at 4.5:1 (3:1 for icons, control marks and 24px text) in all five themes. Source values that miss are kept exactly and flagged in their token notes. Measured with the WCAG 2 formula on the token values on 10/09/2026:
+  - Classic: `muted` on `canvas` 4.32:1; `muted` on `surface-muted` 4.39:1; `accent` on `surface-muted` 2.01:1; `accent` on `surface` 2.21:1; `on-accent` on `accent` 2.21:1.
+  - Clinical Sidebar: `accent` on `surface-muted` 4.26:1.
+  - Focus Rail: `muted` on `canvas` 4.41:1; `muted` on `surface-muted` 4.17:1; `accent` on `surface-muted` 2.88:1; `accent` on `surface` 3.29:1; `on-accent` on `accent` 3.29:1.
+  - Command Bar: `muted` on `surface-muted` 4.39:1; `accent` on `surface-muted` 2.67:1; `accent` on `surface` 2.94:1; `on-accent` on `accent` 2.94:1.
+  - Dark: none.
+  - Meaning: in Classic, Focus Rail and Command Bar, `muted` help text is just under 4.5:1 on grey grounds; keep it on `surface`. `accent` is not a text colour on light grounds, and the white initials on the account avatar miss 4.5:1 in Classic, Focus Rail and Command Bar (the avatar also has an aria-label, so the name is not lost).
+- Control borders: `border` on `surface` is about 1.2 to 1.3:1 in every light theme, under the 3:1 asked for control boundaries. The screens use it for inputs; CareOS keeps it and relies on the visible label above each field and the white field on grey canvas. A practice that needs 3:1 should add a high-contrast theme rather than re-tint these.
+- Appointment stripes in Blue, Teal, Orange and Yellow are under 3:1 on `surface-alt` in the light themes; the type name is always printed.
+- Focus ring: 2px solid `focus-ring` (the theme primary), offset 2px, 5:1 or better on `surface` and `canvas` in every theme. The screens had no focus style; this is an addition.
+- Every overlay closes on Escape; dialogs have labels; tables have headers; tabs, comboboxes, menus, switches and segmented controls follow the ARIA patterns. Touch targets are 44px on phones and 48px on the kiosk.
+
+## How the library enforces it
+
+- Every Storybook story is rendered in CI and checked with **axe-core**; serious and critical violations fail the build.
+- The Storybook **Accessibility** panel runs the same checks live on every story and theme.
+- Overlays trap focus, close on Escape and return focus; menus, tabs, comboboxes, radio groups, segmented controls and
+  date grids follow the WAI-ARIA Authoring Practices keyboard patterns.
+

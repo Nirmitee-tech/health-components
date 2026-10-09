@@ -1,0 +1,33 @@
+---
+title: Colour
+sidebar_position: 2
+description: "Colour tokens in all five themes."
+---
+
+import { ColorTokens } from '@site/src/components/docs/Foundations';
+
+# Colour
+
+Use tokens by name, never hex. Every token's note in `tokens.json` says where it goes and what text reads on it.
+
+- `primary` fills the one main action per area, selected slots and chips, active tab lines. `primary-ink` is the text on it. `primary-soft` with `primary-strong` text marks active nav items and info tags.
+- `ink` for body text on `surface`, `canvas` and `surface-muted`; `ink-2` for secondary text; `muted` for help text and meta.
+- `surface` for cards, modals and inputs; `canvas` for the page; `surface-muted` for table headers and read-only fields; `surface-alt` for the lock banner.
+- `border` for card and input lines; `border-strong` for switch tracks and signature pads.
+- Status: `success`, `danger`, `warning` (stripes and bars, never text), with `-strong` text on `-soft` fills for tags and banners. `warning-box` with `warning-line` for warning banners.
+- AI purple `ai`, `ai-soft`, `ai-line` only for AI actions and AI-made content.
+- Appointment types `appt-blue` to `appt-gray` only as the 4px chip stripe and legend dots, always beside the type name.
+- `accent` only for style highlights: the account avatar, the active patient tab line, New badges.
+
+## Brand and surfaces
+
+<ColorTokens filter="^(primary|line-soft|link|ink|muted|border|surface|canvas|accent|nav|focus|toast|overlay)" />
+
+## Status and AI
+
+<ColorTokens filter="^(success|danger|warning|ai|on-)" />
+
+## Appointment types
+
+<ColorTokens filter="^appt-" />
+

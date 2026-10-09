@@ -1,0 +1,4 @@
+/* ToastProvider: the fixed stack that holds queued toasts (each toast inside is rendered inline). */
+.co-toast-stack { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: var(--co-z-toast); display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none; max-width: calc(100vw - 32px); }
+.co-toast-stack .co-toast { pointer-events: auto; align-self: center; }
+.co-toast-x { display: inline-grid; place-items: center; text-decoration: none; padding: 2px; }

@@ -1,84 +1,140 @@
 {
-  "type": "module",
   "name": "health-components",
-  "version": "0.0.3",
-  "description": "This is a react component library for health related applications.",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    },
-    "./styles": "./dist/styles/components.css",
-    "./styles/components.css": "./dist/styles/components.css"
-  },
-  "files": [
-    "dist",
-    "docs"
-  ],
-  "scripts": {
-    "build": "npm run build:css && npx rollup -c config/rollup.config.mjs",
-    "build:css": "npx @tailwindcss/cli -i ./src/styles/components.css -o ./dist/styles/components.css",
-    "dev": "npm run build:css && npx rollup -c config/rollup.config.mjs -w",
-    "dev:css": "npx @tailwindcss/cli -i ./src/styles/components.css -o ./dist/styles/components.css --watch",
-    "clean": "npx rimraf dist",
-    "test": "jest --config config/jest.config.cjs",
-    "test:watch": "jest --config config/jest.config.cjs --watch",
-    "storybook": "npm run build:css && storybook dev -p 6006",
-    "build-storybook": "npm run build:css && storybook build"
-  },
+  "version": "1.0.0",
+  "description": "CareOS: production-grade React components, Web Components and design tokens for healthcare EHR, practice management, revenue cycle and patient apps.",
+  "type": "module",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Nirmitee-tech/health-components.git"
   },
-  "keywords": [
-    "react",
-    "components",
-    "ui"
-  ],
-  "author": "",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Nirmitee-tech/health-components/issues"
   },
-  "homepage": "https://github.com/Nirmitee-tech/health-components#readme",
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-typescript": "^12.3.0",
-    "@storybook/addon-docs": "^8.6.14",
-    "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/addon-interactions": "^8.6.14",
-    "@storybook/react-vite": "^8.6.14",
-    "@storybook/testing-library": "^0.2.2",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/jest": "^30.0.0",
-    "@types/react": "^18.3.5",
-    "@vitejs/plugin-react": "^5.1.0",
-    "autoprefixer": "^10.4.22",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
-    "postcss": "^8.5.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "rollup": "^4.52.5",
-    "rollup-plugin-postcss": "^4.0.2",
-    "storybook": "^8.6.14",
-    "tailwindcss": "^4.1.17",
-    "ts-jest": "^29.4.5",
-    "tslib": "^2.8.1",
-    "typescript": "^5.9.3",
-    "vite": "^6.4.1"
+  "homepage": "https://nirmitee-tech.github.io/health-components/",
+  "keywords": [
+    "react",
+    "angular",
+    "web-components",
+    "design-system",
+    "healthcare",
+    "ehr",
+    "emr",
+    "fhir",
+    "components",
+    "ui"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./elements": {
+      "import": {
+        "types": "./dist/elements/index.d.ts",
+        "default": "./dist/elements/index.js"
+      },
+      "require": {
+        "types": "./dist/elements/index.d.cts",
+        "default": "./dist/elements/index.cjs"
+      }
+    },
+    "./elements/register": {
+      "import": {
+        "types": "./dist/elements/register.d.ts",
+        "default": "./dist/elements/register.js"
+      },
+      "require": {
+        "types": "./dist/elements/register.d.cts",
+        "default": "./dist/elements/register.cjs"
+      }
+    },
+    "./tokens": {
+      "import": {
+        "types": "./dist/tokens/index.d.ts",
+        "default": "./dist/tokens/index.js"
+      },
+      "require": {
+        "types": "./dist/tokens/index.d.cts",
+        "default": "./dist/tokens/index.cjs"
+      }
+    },
+    "./tokens.json": "./dist/tokens.json",
+    "./styles.css": "./dist/styles.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./components.css": "./dist/components.css",
+    "./cdn/careos-elements.js": "./dist/cdn/careos-elements.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "*.css",
+    "./dist/elements/register.*",
+    "./dist/cdn/*"
+  ],
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "build": "npm run clean && npm run tokens && node scripts/gen-index.mjs && node scripts/gen-elements.mjs && tsup && node scripts/build-css.mjs && node scripts/build-umd.mjs",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "gen:elements": "node scripts/gen-elements.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static",
+    "docs:gen": "node scripts/gen-docs.mjs",
+    "verify:package": "node scripts/verify-package.mjs",
+    "prepublishOnly": "npm run build && npm run verify:package"
   },
   "peerDependencies": {
-    "react": ">=16",
-    "react-dom": ">=16"
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
   },
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.17"
-  }
+  "engines": {
+    "node": ">=20.19"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.1",
+    "@storybook/addon-docs": "^10.6.1",
+    "@storybook/addon-themes": "^10.6.1",
+    "@storybook/react-vite": "^10.6.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "axe-core": "^4.14.0",
+    "esbuild": "^0.28.2",
+    "jsdom": "^26.1.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "storybook": "^10.6.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.7",
+    "vitest": "^3.2.4"
+  },
+  "unpkg": "./dist/cdn/careos-elements.js",
+  "jsdelivr": "./dist/cdn/careos-elements.js"
 }

@@ -1,0 +1,47 @@
+/*
+ * CareOS base layer. Scoped so the library never restyles a host application:
+ * nothing here matches an element unless it is a CareOS component (a `co-` class)
+ * or sits inside a `.co-root` (ThemeProvider, or a class you add yourself).
+ */
+.co-root {
+  background: var(--co-canvas);
+  color: var(--co-ink);
+  font: 14px/20px var(--co-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:where(.co-root, [class^='co-'], [class*=' co-']),
+:where(.co-root, [class^='co-'], [class*=' co-']) *,
+:where(.co-root, [class^='co-'], [class*=' co-']) *::before,
+:where(.co-root, [class^='co-'], [class*=' co-']) *::after {
+  box-sizing: border-box;
+}
+
+/* Components set their own font so they read correctly inside any host page. */
+:where([class^='co-'], [class*=' co-']) {
+  font-family: var(--co-font-sans);
+}
+
+:where(.co-root, [class^='co-'], [class*=' co-']) :where(h2) {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+:where(.co-root, [class^='co-'], [class*=' co-']) :where(h3) {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Focus ring: 2px focus-ring, 2px offset, on every interactive CareOS element. */
+:where(.co-root, [class^='co-'], [class*=' co-']) :where(button, a, input, select, textarea, [tabindex]):focus-visible,
+:where(button, a, input, select, textarea, [tabindex]):where([class^='co-'], [class*=' co-']):focus-visible {
+  outline: 2px solid var(--co-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Portal wrapper for overlays: carries the theme, paints nothing itself. */
+.co-portal {
+  background: none;
+}

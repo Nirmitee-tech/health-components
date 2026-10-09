@@ -1,0 +1,4 @@
+/* DatePicker: ARIA grid rows that do not break the 7-column CSS grid, and focusable disabled days. */
+.co-dp-row { display: contents; }
+.co-dp-d[aria-disabled='true'] { color: var(--co-border-strong); cursor: not-allowed; text-decoration: line-through; }
+.co-dp-d[aria-disabled='true']:hover { background: none; }

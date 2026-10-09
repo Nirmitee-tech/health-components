@@ -1,0 +1,70 @@
+---
+title: Theming
+sidebar_position: 5
+description: Five themes, scoped CSS variables and custom brand colours.
+---
+
+import { ThemeSelect } from '@site/src/components/docs';
+
+# Theming
+
+A practice picks one style in Settings. Anyone can preview a style for their own session; only Practice Admin and
+Super Admin apply it to the practice. Status colours, the AI purple and appointment colours never change with the style.
+
+| Theme id | Name | Look | Suits |
+|---|---|---|---|
+| `classic` | Classic (default) | Navy top bar, `primary` #2E5880, cool grey canvas. | Teams who already know CareOS. |
+| `sidebar` | Clinical Sidebar | Grouped left sidebar, deep teal `primary` #0F766E, warm neutrals. | Most teams: new staff find things by job. |
+| `rail` | Focus Rail | 64px slate icon rail, indigo `primary` #3B4FD8, open patients as tabs. | Providers juggling many charts. |
+| `command` | Command Bar | No side navigation; Jump to anything (Ctrl K); forest `primary`; borders instead of shadows. | Power users, small practices. |
+| `dark` | Dark | Built on the Clinical Sidebar teal with dark `primary-ink`. | Night shifts and reading rooms. |
+
+Try them on any example in these docs: <ThemeSelect />
+
+## Applying a theme
+
+```html
+<!-- Whole page -->
+<html data-co-theme="sidebar" class="co-root">
+```
+
+```tsx
+// A subtree (themes nest: a dark panel inside a classic page works)
+<ThemeProvider theme="dark">...</ThemeProvider>
+```
+
+The theme is only CSS variables, so switching it at runtime is instant and needs no re-render.
+
+## Variables
+
+Every token is a CSS custom property prefixed `--co-` so it never clashes with your app's own `--primary` or
+`--border`: `--co-primary`, `--co-surface`, `--co-radius-md`, `--co-space-4`, `--co-control-h`, `--co-font-sans`.
+Use them in your own CSS to match CareOS:
+
+```css
+.my-panel {
+  background: var(--co-surface);
+  border: 1px solid var(--co-border);
+  border-radius: var(--co-radius-md);
+  padding: var(--co-space-4);
+  color: var(--co-ink);
+}
+```
+
+## A practice brand colour
+
+A brand colour may replace `primary` (and its hover and strong steps) only. Check its contrast with `primary-ink` first.
+
+```css
+[data-co-theme='classic'].brand-acme {
+  --co-primary: #7a1f5c;
+  --co-primary-hover: #64194b;
+  --co-primary-strong: #5a1744;
+  --co-focus-ring: #7a1f5c;
+}
+```
+
+## Density
+
+Comfortable controls are 36px (`--co-control-h`), Compact 30px (`--co-control-h-compact`), phones 44px
+(`--co-control-h-touch`), kiosk 48px (`--co-control-h-kiosk`). Components take a `size` prop where it matters.

@@ -1,0 +1,60 @@
+---
+title: Introduction
+sidebar_position: 1
+slug: /
+description: CareOS is the set of building blocks for healthcare EHRs, as React components, Web Components and design tokens.
+---
+
+# CareOS
+
+CareOS is the set of building blocks for healthcare EHRs: the colours, type, spacing and **123 components** that the
+CareOS screens are made of, from the schedule and the patient chart to claims, prior authorization, the patient portal,
+the phone app and the check-in kiosk.
+
+It is for product teams that build EHR, practice management (PM), revenue cycle (RCM) and patient apps. A team that uses
+it does not design a patient banner, an allergy list, an ICD-10 picker, an ERA posting row or a break-the-glass dialog
+again; it composes screens from parts that already carry the clinical, billing and privacy rules.
+
+## Install
+
+```bash
+npm install health-components
+```
+
+The package ships:
+
+| Entry | What |
+|---|---|
+| `health-components` | React components with TypeScript types (ESM and CommonJS, tree-shakeable). |
+| `health-components/styles.css` | Tokens for all five themes plus every component style. |
+| `health-components/elements` | The same components as **custom elements** (`<co-button>`) for Angular, Vue, Svelte and plain HTML. |
+| `health-components/tokens` | Every token as typed data, for charts, canvas or native code. |
+| `health-components/tokens.css`, `tokens.json` | Tokens only. |
+| `health-components/fonts.css` | Optional Roboto and Roboto Mono from Google Fonts. |
+| `health-components/cdn/careos-elements.js` | One script tag with every element and React bundled, for pages without a build step. |
+
+## Three layers
+
+1. **Foundations.** Tokens for colour in five themes (Classic, Clinical Sidebar, Focus Rail, Command Bar, Dark), type,
+   spacing, radius, shadow, z-index and density. Every component reads them as CSS variables (`--co-*`), so a theme
+   change needs no code change. See [Foundations](./foundations/overview.mdx).
+2. **Basic components.** Generic controls with every variant, size and state: buttons, inputs, selection, badges,
+   avatars, cards, table parts, feedback, overlays, navigation parts, charts, layout rows.
+3. **Complex components.** Healthcare parts built only from the basic ones: patient identity and clinical lists,
+   medications and e-prescribing, orders and notes, revenue cycle, scheduling and visits, work queues, quality and care
+   programs, access control and audit, app shells for desktop, phone and kiosk.
+
+Use the highest layer that fits. Build a claim screen from `ClaimForm`, not from `TextField`s in a table.
+
+## Pick your framework
+
+- [React](./getting-started/react.mdx): import components, wrap the app in `ThemeProvider`.
+- [Angular](./getting-started/angular.mdx): register the custom elements once, use `<co-*>` tags in templates.
+- [Vue](./getting-started/vue.mdx) and [plain HTML](./getting-started/html.mdx): the same custom elements.
+- [Next.js and SSR](./getting-started/nextjs.mdx): the React components render on the server.
+
+## Explore
+
+- [Components](./components/index.mdx): live examples in every theme, guidelines, props and the Web Component API.
+- **Storybook**: every component and state with interactive controls and accessibility checks.
+- [Screen recipes](./screen-recipes.mdx): which components make up the common EHR screens.

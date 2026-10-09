@@ -1,109 +1,119 @@
-import React from 'react';
+import { forwardRef, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type ReactNode, type Ref } from 'react';
+import { cx } from '../../internal/cx';
+import { Icon, type IconName } from '../Icon/Icon';
+import { Spinner } from '../Spinner/Spinner';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
-  outline?: boolean;
-  size?: 'xs' | 'small' | 'medium' | 'large' | 'xl';
-  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'full';
-  fullWidth?: boolean;
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger' | 'danger-solid' | 'link' | 'ai';
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
+/** Maps a variant to its CSS class. Shared with SplitButton. */
+export const buttonVariantClass: Record<ButtonVariant, string> = {
+  primary: 'co-btn-pri',
+  secondary: 'co-btn-sec',
+  tertiary: 'co-btn-ghost',
+  ghost: 'co-btn-ghost',
+  danger: 'co-btn-dng',
+  'danger-solid': 'co-btn-dngs',
+  link: 'co-btn-lnk',
+  ai: 'co-btn-ai',
+};
+
+export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+  /** Visual weight. Use `primary` once per area; `ai` only for actions that run an AI model. Default 'secondary' */
+  variant?: ButtonVariant;
+  /** 'sm' 30px (tables, toolbars), 'md' 36px, 'lg' 48px (kiosk, portal); default 'md' */
+  size?: ButtonSize;
+  /** Shows a spinner, keeps the label, disables the button and sets aria-busy; default false */
   loading?: boolean;
-  disabled?: boolean;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-  className?: string;
+  /** Icon before the label; default none */
+  iconLeft?: IconName;
+  /** Icon after the label; default none */
+  iconRight?: IconName;
+  /** Full width (phone screens); default false */
+  full?: boolean;
+  /** Toggle state; sets aria-pressed; default undefined (not a toggle) */
+  pressed?: boolean;
+  /** Renders an `<a>` with button styling */
+  href?: string;
+  /** Link target when `href` is set */
+  target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
+  /** Link rel when `href` is set */
+  rel?: string;
+  /** Label text: a verb in Title Case that says what happens ("Submit Claim"). */
+  children?: ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  label,
-  variant = 'primary',
-  outline = false,
-  size = 'medium',
-  rounded = 'md',
-  fullWidth = false,
-  loading = false,
-  disabled = false,
-  icon,
-  iconPosition = 'left',
-  className = '',
-  ...props
-}) => {
-  // Tailwind variants
-  const variantClasses = {
-    primary: outline
-      ? 'border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white'
-      : 'bg-blue-500 text-white hover:bg-blue-600',
-    secondary: outline
-      ? 'border border-gray-500 text-gray-700 hover:bg-gray-100'
-      : 'bg-gray-500 text-white hover:bg-gray-600',
-    success: outline
-      ? 'border border-green-500 text-green-500 hover:bg-green-500 hover:text-white'
-      : 'bg-green-500 text-white hover:bg-green-600',
-    danger: outline
-      ? 'border border-red-500 text-red-500 hover:bg-red-500 hover:text-white'
-      : 'bg-red-500 text-white hover:bg-red-600',
-    warning: outline
-      ? 'border border-yellow-400 text-yellow-500 hover:bg-yellow-400 hover:text-white'
-      : 'bg-yellow-400 text-black hover:bg-yellow-500',
-    info: outline
-      ? 'border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white'
-      : 'bg-sky-500 text-white hover:bg-sky-600',
-    light: outline
-      ? 'border border-gray-300 text-gray-600 hover:bg-gray-100'
-      : 'bg-gray-100 text-gray-800 hover:bg-gray-200',
-    dark: outline
-      ? 'border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white'
-      : 'bg-gray-800 text-white hover:bg-gray-900',
-  }[variant];
+/** Button runs one action on the screen, from Save Claim to Start Visit Note. */
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(function Button(
+  {
+    variant = 'secondary',
+    size = 'md',
+    loading = false,
+    disabled = false,
+    iconLeft,
+    iconRight,
+    full = false,
+    pressed,
+    href,
+    target,
+    rel,
+    className,
+    children,
+    type = 'button',
+    ...rest
+  },
+  ref
+) {
+  const cls = cx(
+    'co-btn',
+    buttonVariantClass[variant],
+    size !== 'md' && `co-btn-${size}`,
+    full && 'co-btn-full',
+    pressed && 'is-on',
+    loading && 'is-loading',
+    className
+  );
+  const content = (
+    <>
+      {loading ? (
+        <Spinner label="Working" />
+      ) : iconLeft ? (
+        <Icon name={iconLeft} size={size === 'lg' ? 18 : 16} />
+      ) : null}
+      {children != null ? <span>{children}</span> : null}
+      {iconRight ? <Icon name={iconRight} size={16} /> : null}
+    </>
+  );
 
-  // Sizes
-  const sizeClasses = {
-    xs: 'px-2 py-1 text-xs',
-    small: 'px-3 py-1.5 text-sm',
-    medium: 'px-4 py-2 text-base',
-    large: 'px-5 py-3 text-lg',
-    xl: 'px-6 py-3 text-xl',
-  }[size];
-
-  // Rounded options
-  const roundedClasses = {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    full: 'rounded-full',
-  }[rounded];
-
-  // Common base styles
-  const baseClasses =
-    'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed';
+  if (href !== undefined) {
+    const anchorRest = rest as AnchorHTMLAttributes<HTMLAnchorElement>;
+    return (
+      <a
+        ref={ref as Ref<HTMLAnchorElement>}
+        className={cls}
+        href={disabled ? undefined : href}
+        target={target}
+        rel={rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined)}
+        aria-disabled={disabled || undefined}
+        aria-pressed={pressed === undefined ? undefined : pressed}
+        {...anchorRest}
+      >
+        {content}
+      </a>
+    );
+  }
 
   return (
     <button
-      className={`
-        ${baseClasses}
-        ${variantClasses}
-        ${sizeClasses}
-        ${roundedClasses}
-        ${fullWidth ? 'w-full' : ''}
-        ${loading ? 'opacity-70 cursor-wait' : ''}
-        ${className}
-      `}
+      ref={ref as Ref<HTMLButtonElement>}
+      type={type}
+      className={cls}
+      aria-pressed={pressed === undefined ? undefined : pressed}
+      aria-busy={loading || undefined}
       disabled={disabled || loading}
-      {...props}
+      {...rest}
     >
-      {loading && (
-        <span className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
-      )}
-      {!loading && icon && iconPosition === 'left' && (
-        <span className="mr-2">{icon}</span>
-      )}
-      <span>{label}</span>
-      {!loading && icon && iconPosition === 'right' && (
-        <span className="ml-2">{icon}</span>
-      )}
+      {content}
     </button>
   );
-};
-
-export default Button;
+});

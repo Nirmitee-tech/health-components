@@ -1,0 +1,53 @@
+---
+title: Vue
+sidebar_position: 3
+description: Use CareOS custom elements in Vue 3.
+---
+
+# Vue
+
+Vue 3 supports custom elements natively.
+
+```bash
+npm install health-components react react-dom
+```
+
+```ts title="src/main.ts"
+import { createApp } from 'vue';
+import { defineCareOSElements } from 'health-components/elements';
+import App from './App.vue';
+
+defineCareOSElements();
+createApp(App).mount('#app');
+```
+
+Tell the Vue compiler that `co-*` tags are custom elements:
+
+```ts title="vite.config.ts"
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [vue({ template: { compilerOptions: { isCustomElement: (tag) => tag.startsWith('co-') } } })],
+});
+```
+
+```vue title="App.vue"
+<script setup lang="ts">
+import { ref } from 'vue';
+const tabs = [
+  { id: 'summary', label: 'Summary' },
+  { id: 'meds', label: 'Medications', count: 6 },
+];
+const current = ref('summary');
+</script>
+
+<template>
+  <div class="co-root" data-co-theme="sidebar">
+    <co-tabs :tabs="tabs" :value="current" @co-change="current = $event.detail"></co-tabs>
+    <co-button variant="primary">Save Changes</co-button>
+  </div>
+</template>
+```
+
+Vue sets arrays and objects as properties automatically (`:tabs`), and `@co-change` listens to the element's events.

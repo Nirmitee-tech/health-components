@@ -1,0 +1,33 @@
+---
+title: Next.js and SSR
+sidebar_position: 6
+description: Server rendering with Next.js App Router or Pages Router.
+---
+
+# Next.js and SSR
+
+The React components render on the server: ids come from `useId`, nothing touches `window` during render, and
+overlays mount their portal after hydration. Every story is rendered with `renderToString` in CI to keep it that way.
+
+## App Router
+
+```tsx title="app/layout.tsx"
+import 'health-components/styles.css';
+import 'health-components/fonts.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" data-co-theme="classic" className="co-root">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+Interactive components use state and effects, so use them from Client Components (`'use client'`), or wrap them in
+one. Static ones (Badge, Card, DescriptionList, PatientBanner) render fine in Server Components through a client
+boundary of your own.
+
+## Pages Router
+
+Import `health-components/styles.css` in `pages/_app.tsx`.

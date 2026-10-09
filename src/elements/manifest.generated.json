@@ -1,0 +1,1836 @@
+[
+  {
+    "component": "AISuggestion",
+    "tag": "co-ai-suggestion",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Title; also names the region; default \"AI suggestion\""
+      },
+      {
+        "name": "source",
+        "property": "source",
+        "kind": "string",
+        "description": "Tag text; default \"Draft, needs review\""
+      },
+      {
+        "name": "confidence",
+        "property": "confidence",
+        "kind": "string",
+        "description": "Confidence word shown on the right (\"medium\"); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "The AI-drafted content. Required."
+      },
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Accept, Edit, Discard buttons; default none"
+      }
+    ]
+  },
+  {
+    "component": "Alert",
+    "tag": "co-alert",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "tone",
+        "property": "tone",
+        "kind": "string",
+        "description": "'info' | 'success' | 'warning' | 'error' | 'lock' | 'denied' | 'btg' | 'note' | 'ai'; default 'info'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-dismiss",
+        "prop": "onDismiss",
+        "description": "Shows a Dismiss (x) button that calls this; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "title",
+        "prop": "title",
+        "description": "Bold first line; default none"
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Body text; default none"
+      },
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Buttons under the body; default none"
+      }
+    ]
+  },
+  {
+    "component": "AppointmentChip",
+    "tag": "co-appointment-chip",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "time",
+        "property": "time",
+        "kind": "string",
+        "description": "Start time, e.g. \"9:20\""
+      },
+      {
+        "name": "patient",
+        "property": "patient",
+        "kind": "string",
+        "description": "Patient name"
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": "Appointment type, e.g. \"Follow-Up\""
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "json",
+        "description": "Appointment status ('Scheduled', 'Confirmed', 'Arrived', 'In Room', 'Completed', 'No Show', 'Cancelled'...); default none"
+      },
+      {
+        "name": "color-by",
+        "property": "colorBy",
+        "kind": "string",
+        "description": "Colour the stripe by status or by appointment type; default 'status'"
+      },
+      {
+        "name": "color",
+        "property": "color",
+        "kind": "string",
+        "description": "'blue' | 'green' | 'teal' | 'purple' | 'red' | 'orange' | 'yellow' | 'pink' | 'gray'; default 'blue'"
+      },
+      {
+        "name": "telehealth",
+        "property": "telehealth",
+        "kind": "boolean",
+        "description": "Shows the video icon; default false"
+      },
+      {
+        "name": "paid",
+        "property": "paid",
+        "kind": "boolean",
+        "description": "true: copay paid icon, false: copay due icon, undefined: no icon; default undefined"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' (month view, no type line) | 'md'; default 'md'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "Avatar",
+    "tag": "co-avatar",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": "Full name; gives the initials and the accessible name. Required"
+      },
+      {
+        "name": "src",
+        "property": "src",
+        "kind": "string",
+        "description": "Photo URL; default none (initials)"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'xs' 20 | 'sm' 30 | 'md' 40 | 'lg' 48 | 'xl' 64; default 'md'"
+      },
+      {
+        "name": "color",
+        "property": "color",
+        "kind": "string",
+        "description": "Initials background: 'primary' (patients) | 'accent' (signed-in user) | 'ai' | 'success-strong' | 'ink-2'; default 'primary'"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "Presence dot: 'online' | 'busy' | 'away' | 'offline'; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "Badge",
+    "tag": "co-badge",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "tone",
+        "property": "tone",
+        "kind": "string",
+        "description": "'neutral' | 'success' | 'danger' | 'warning' | 'info' | 'ai' | 'outline'; default 'neutral'"
+      },
+      {
+        "name": "shape",
+        "property": "shape",
+        "kind": "string",
+        "description": "'square' | 'pill'; default 'square'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "icon",
+        "property": "icon",
+        "kind": "string",
+        "description": "Icon before the label; default none"
+      },
+      {
+        "name": "dot",
+        "property": "dot",
+        "kind": "boolean",
+        "description": "Shows a small dot in the current colour before the label (ignored when `icon` is set); default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Label text, a status word in Title Case."
+      }
+    ]
+  },
+  {
+    "component": "Button",
+    "tag": "co-button",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "Visual weight. Use `primary` once per area; `ai` only for actions that run an AI model. Default 'secondary'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' 30px (tables, toolbars), 'md' 36px, 'lg' 48px (kiosk, portal); default 'md'"
+      },
+      {
+        "name": "loading",
+        "property": "loading",
+        "kind": "boolean",
+        "description": "Shows a spinner, keeps the label, disables the button and sets aria-busy; default false"
+      },
+      {
+        "name": "icon-left",
+        "property": "iconLeft",
+        "kind": "string",
+        "description": "Icon before the label; default none"
+      },
+      {
+        "name": "icon-right",
+        "property": "iconRight",
+        "kind": "string",
+        "description": "Icon after the label; default none"
+      },
+      {
+        "name": "full",
+        "property": "full",
+        "kind": "boolean",
+        "description": "Full width (phone screens); default false"
+      },
+      {
+        "name": "pressed",
+        "property": "pressed",
+        "kind": "boolean",
+        "description": "Toggle state; sets aria-pressed; default undefined (not a toggle)"
+      },
+      {
+        "name": "href",
+        "property": "href",
+        "kind": "string",
+        "description": "Renders an `<a>` with button styling"
+      },
+      {
+        "name": "target",
+        "property": "target",
+        "kind": "json",
+        "description": "Link target when `href` is set"
+      },
+      {
+        "name": "rel",
+        "property": "rel",
+        "kind": "string",
+        "description": "Link rel when `href` is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Label text: a verb in Title Case that says what happens (\"Submit Claim\")."
+      }
+    ]
+  },
+  {
+    "component": "Card",
+    "tag": "co-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "flat",
+        "property": "flat",
+        "kind": "boolean",
+        "description": "Border instead of shadow; default false"
+      },
+      {
+        "name": "padding",
+        "property": "padding",
+        "kind": "string",
+        "description": "'default' | 'compact' (10px) | 'none' (edge-to-edge tables); default 'default'"
+      },
+      {
+        "name": "as",
+        "property": "as",
+        "kind": "json",
+        "description": "Root tag name; default 'section'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "title",
+        "prop": "title",
+        "description": "Heading, rendered as an h2; default none"
+      },
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Line under the title; default none"
+      },
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Header actions (one primary at most); default none"
+      },
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Footer content; default none"
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Card body."
+      }
+    ]
+  },
+  {
+    "component": "Checkbox",
+    "tag": "co-checkbox",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": "Checked state (controlled); pair with `onChange`"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": "Initial checked state (uncontrolled); default false"
+      },
+      {
+        "name": "indeterminate",
+        "property": "indeterminate",
+        "kind": "boolean",
+        "description": "Mixed state, for \"select all\" when only some items are selected; default false"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "boolean",
+        "description": "Marks the input invalid (aria-invalid); default false"
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": "Disables the checkbox; default false"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "label",
+        "prop": "label",
+        "description": "Visible label; the whole row is clickable. Required"
+      },
+      {
+        "name": "description",
+        "prop": "description",
+        "description": "Help text under the label; default none"
+      }
+    ]
+  },
+  {
+    "component": "CommandPalette",
+    "tag": "co-command-palette",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "The search index. Required."
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Whether the palette is shown; default true"
+      },
+      {
+        "name": "query",
+        "property": "query",
+        "kind": "string",
+        "description": "Query (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-query",
+        "property": "defaultQuery",
+        "kind": "string",
+        "description": "Initial query when uncontrolled; default \"\""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": "Input placeholder and accessible name; default \"Jump to a screen, patient or action\""
+      },
+      {
+        "name": "max-results",
+        "property": "maxResults",
+        "kind": "number",
+        "description": "Most results shown; default 9"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Render in place for docs: no portal, focus trap, scroll lock or Escape; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "ref",
+        "property": "ref",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-query-change",
+        "prop": "onQueryChange",
+        "description": "Called on every keystroke; default none"
+      },
+      {
+        "name": "co-select",
+        "prop": "onSelect",
+        "description": "Called with the chosen item (Enter or click); default none"
+      },
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called on Escape and a scrim press; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "Drawer",
+    "tag": "co-drawer",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Whether the drawer is shown; default true"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Drawer title; names the dialog. Required."
+      },
+      {
+        "name": "side",
+        "property": "side",
+        "kind": "string",
+        "description": "'right' panel or 'bottom' sheet (phones); default 'right'"
+      },
+      {
+        "name": "developer",
+        "property": "developer",
+        "kind": "boolean",
+        "description": "The \"For developers\" panel: code icon, \"For developers: <title>\"; default false"
+      },
+      {
+        "name": "sections",
+        "property": "sections",
+        "kind": "json",
+        "description": "Developer drawer sections; replace `children` when `developer` is set; default none"
+      },
+      {
+        "name": "width",
+        "property": "width",
+        "kind": "number",
+        "description": "Panel width in px; default 560 (from CSS)"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Render in place for docs: no portal, focus trap, scroll lock or Escape; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called by the x button, Escape and a scrim press; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Body; default none"
+      },
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Footer actions; default none"
+      }
+    ]
+  },
+  {
+    "component": "Icon",
+    "tag": "co-icon",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": "Icon name, one of `Icon.names`."
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "number",
+        "description": "Size in px; default 16"
+      },
+      {
+        "name": "stroke-width",
+        "property": "strokeWidth",
+        "kind": "number",
+        "description": "Stroke width; default 2"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Makes the icon meaningful to screen readers (role img). Without it the icon is decorative and hidden."
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "IconButton",
+    "tag": "co-icon-button",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "icon",
+        "property": "icon",
+        "kind": "string",
+        "description": "Icon name (see Icon); required"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name: becomes aria-label and the hover title; required"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'ghost' | 'secondary' | 'primary' | 'danger'; default 'ghost'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' 30px, 'md' 34px, 'lg' 44px (touch); default 'md'"
+      },
+      {
+        "name": "badge",
+        "property": "badge",
+        "kind": "json",
+        "description": "Count bubble, read as \"N unread\"; default none"
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": "Disables the button; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "KebabMenu",
+    "tag": "co-kebab-menu",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Menu items, as Menu; required"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name of the three-dot button and the menu; default \"Row actions\""
+      },
+      {
+        "name": "horizontal",
+        "property": "horizontal",
+        "kind": "boolean",
+        "description": "Horizontal dots instead of vertical; default false"
+      },
+      {
+        "name": "align",
+        "property": "align",
+        "kind": "string",
+        "description": "'right' | 'left'; default 'right'"
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Open on first render (uncontrolled); default false"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Controlled open state; default undefined (uncontrolled)"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the wrapper"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-open-change",
+        "prop": "onOpenChange",
+        "description": "Called when the menu opens or closes"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "Menu",
+    "tag": "co-menu",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Array<{label, icon?, hint?, shortcut?, danger?, disabled?, active?, onSelect?} | {divider:true} | {heading}>; required"
+      },
+      {
+        "name": "align",
+        "property": "align",
+        "kind": "string",
+        "description": "'right' | 'left': which edge of the trigger the dropdown lines up with; default 'right'"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Static, in-flow menu for docs and previews; default false"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "aria-label of the menu; default none"
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "json",
+        "description": "Moves focus to the first or last item on mount (used by menu buttons); default false"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the menu"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called after an item is chosen, and on Escape or Tab inside the menu; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "Modal",
+    "tag": "co-modal",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Whether the dialog is shown; default true"
+      },
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "'form' | 'confirm' | 'destructive'; form is a dialog, the others alertdialog; default 'form'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' 420px | 'md' 640px | 'wide' 980px; default 'md'"
+      },
+      {
+        "name": "primary-label",
+        "property": "primaryLabel",
+        "kind": "string",
+        "description": "Primary button label, a verb (\"Void Claim\"); default \"Save\""
+      },
+      {
+        "name": "cancel-label",
+        "property": "cancelLabel",
+        "kind": "string",
+        "description": "Cancel button label; default \"Cancel\""
+      },
+      {
+        "name": "loading",
+        "property": "loading",
+        "kind": "boolean",
+        "description": "Shows a spinner on the primary button; default false"
+      },
+      {
+        "name": "primary-disabled",
+        "property": "primaryDisabled",
+        "kind": "boolean",
+        "description": "Disables the primary button; default false"
+      },
+      {
+        "name": "close-on-scrim",
+        "property": "closeOnScrim",
+        "kind": "boolean",
+        "description": "Close when the scrim is pressed (set false for forms with typed input); default true"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Render in place for docs: no portal, focus trap, scroll lock or Escape; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-primary",
+        "prop": "onPrimary",
+        "description": "Primary button handler; default none"
+      },
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called by Cancel, the x button, Escape and (when `closeOnScrim`) a scrim press; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "title",
+        "prop": "title",
+        "description": "Dialog title; names the dialog. Required."
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Dialog body"
+      },
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Replaces the default Cancel + primary footer; `null` removes the footer; default the two buttons"
+      }
+    ]
+  },
+  {
+    "component": "Overlay",
+    "tag": "co-overlay",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Render in place (no portal, no scrim behaviour) for documentation; default false"
+      },
+      {
+        "name": "side",
+        "property": "side",
+        "kind": "string",
+        "description": "Where the panel sits: 'center' | 'right' | 'bottom'; default 'center'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-scrim-press",
+        "prop": "onScrimPress",
+        "description": "Called when the scrim (outside the panel) is pressed; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "component": "Popover",
+    "tag": "co-popover",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Bold title at the top of the panel; also its accessible name; default none"
+      },
+      {
+        "name": "align",
+        "property": "align",
+        "kind": "string",
+        "description": "'right' | 'left'; default 'right'"
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Open on first render (uncontrolled); default false"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Controlled open state; default undefined (uncontrolled)"
+      },
+      {
+        "name": "trigger-variant",
+        "property": "triggerVariant",
+        "kind": "string",
+        "description": "Trigger button variant; default 'secondary'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "Trigger button size; default 'sm'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "aria-label of the panel when there is no title and the trigger is not text; default title or trigger"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the wrapper"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-open-change",
+        "prop": "onOpenChange",
+        "description": "Called when the panel opens or closes"
+      }
+    ],
+    "slots": [
+      {
+        "name": "trigger",
+        "prop": "trigger",
+        "description": "Trigger button text (\"Filters (2)\"); required"
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Panel content: a small form or filter set"
+      }
+    ]
+  },
+  {
+    "component": "Radio",
+    "tag": "co-radio",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": "Disables the radio; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "label",
+        "prop": "label",
+        "description": "Visible label; the whole row is clickable. Required"
+      },
+      {
+        "name": "description",
+        "prop": "description",
+        "description": "Help text under the label; default none"
+      }
+    ]
+  },
+  {
+    "component": "RadioGroup",
+    "tag": "co-radio-group",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "options",
+        "property": "options",
+        "kind": "json",
+        "description": "Options: strings or `{value, label, description?, disabled?}`. Required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Selected value (controlled)"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initially selected value (uncontrolled); default none"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Options in a row instead of a column; default false"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Shows a required asterisk and sets `required` on the inputs; default false"
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": "Disables every option; default false"
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": "Input `name`; default a generated id"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the newly selected value; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "label",
+        "prop": "label",
+        "description": "Legend text. Required"
+      },
+      {
+        "name": "error",
+        "prop": "error",
+        "description": "Error message under the options; default none"
+      }
+    ]
+  },
+  {
+    "component": "Spinner",
+    "tag": "co-spinner",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'lg'; default 'sm'"
+      },
+      {
+        "name": "tone",
+        "property": "tone",
+        "kind": "string",
+        "description": "'primary' | 'ai'; default 'primary'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name announced by screen readers; default \"Loading\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "StatusTag",
+    "tag": "co-status-tag",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "'claim' | 'pa' | 'appointment' | 'eligibility': which status map to use"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "Status word in Title Case, as in `StatusTag.statuses[kind]`."
+      },
+      {
+        "name": "tone",
+        "property": "tone",
+        "kind": "string",
+        "description": "Overrides the tone from the map; default from the map, else 'neutral'"
+      },
+      {
+        "name": "icon",
+        "property": "icon",
+        "kind": "boolean",
+        "description": "`false` hides the tone icon; default true"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "shape",
+        "property": "shape",
+        "kind": "string",
+        "description": "'square' | 'pill'; default 'square'"
+      },
+      {
+        "name": "dot",
+        "property": "dot",
+        "kind": "boolean",
+        "description": "Shows a small dot in the current colour before the label (ignored when `icon` is set); default false"
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "SuccessDialog",
+    "tag": "co-success-dialog",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "\"... Successfully\" title, such as \"Electronic Claim Submitted Successfully\". Required."
+      },
+      {
+        "name": "okay-label",
+        "property": "okayLabel",
+        "kind": "string",
+        "description": "Okay button label; default \"Okay\""
+      },
+      {
+        "name": "secondary",
+        "property": "secondary",
+        "kind": "string",
+        "description": "Secondary button label, such as \"Add Another Patient\"; default none"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Whether the dialog is shown; default true"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Render in place for docs; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-okay",
+        "prop": "onOkay",
+        "description": "Okay handler; default none"
+      },
+      {
+        "name": "co-secondary",
+        "prop": "onSecondary",
+        "description": "Secondary button handler; default none"
+      },
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called on Escape; default `onOkay`"
+      }
+    ],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Body: what happens next; default none"
+      }
+    ]
+  },
+  {
+    "component": "Toast",
+    "tag": "co-toast",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "message",
+        "property": "message",
+        "kind": "string",
+        "description": "Message in the \"... Successfully\" voice (\"Draft Saved Successfully\"). Falls back to `children`."
+      },
+      {
+        "name": "tone",
+        "property": "tone",
+        "kind": "string",
+        "description": "'neutral' | 'success' | 'error'; default 'neutral'"
+      },
+      {
+        "name": "action",
+        "property": "action",
+        "kind": "string",
+        "description": "One text action, such as \"Undo\"; default none"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Static, rendered in place (previews, docs, and inside ToastProvider); otherwise fixed at the bottom through a portal; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-action",
+        "prop": "onAction",
+        "description": "Action handler; default none"
+      },
+      {
+        "name": "co-dismiss",
+        "prop": "onDismiss",
+        "description": "Shows a Dismiss (x) button that calls this; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Message content when `message` is not set"
+      }
+    ]
+  },
+  {
+    "component": "ToastProvider",
+    "tag": "co-toast-provider",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Toasts visible at once; the rest wait in the queue; default 3"
+      },
+      {
+        "name": "duration",
+        "property": "duration",
+        "kind": "number",
+        "description": "Default duration in ms for neutral and success toasts; default 2800"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the fixed stack at the bottom of the screen; default none"
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Your app"
+      }
+    ]
+  }
+]

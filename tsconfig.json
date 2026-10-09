@@ -1,52 +1,22 @@
 {
   "compilerOptions": {
-    // File Layout
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "declarationDir": "./dist/types",
-    
-    // Environment Settings
-    "allowJs": true,
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ESNext",
     "moduleResolution": "bundler",
-    "module": "esnext",
-    "target": "esnext",
     "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "es6"],
-    
-    // Module Resolution
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    
-    // Type Checking
-    "types": ["react", "jest", "@testing-library/jest-dom"],
-    
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
     "strict": true,
-    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
-    
-    // Build Options
-    "verbatimModuleSyntax": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "vite/client", "vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ]
+  "include": ["src", ".storybook", "test", "vitest.config.ts", "tsup.config.ts"]
 }

@@ -1,0 +1,25 @@
+---
+title: Overview
+sidebar_position: 1
+description: "Tokens: the single source for colour, type, spacing and density."
+---
+
+# Foundations
+
+Tokens live in one file, `src/tokens/tokens.json`, and are generated into:
+
+- `health-components/tokens.css`: CSS custom properties (`--co-*`) for every theme,
+- `health-components/tokens`: typed JavaScript data (`tokens`, `colorValue`, `tokenVar`),
+- `health-components/tokens.json`: the raw source, for design tools and native apps.
+
+Every component reads tokens as CSS variables, so a theme change needs no code change.
+
+| Family | Tokens |
+|---|---|
+| [Colour](./color.mdx) | 55 colours in five themes |
+| [Typography](./typography.mdx) | 3 families, 15 text styles |
+| [Layout](./layout.mdx) | 9 spacing steps, 8 radii, 5 shadows, 5 z-index layers, 8 density values |
+| [Iconography](./iconography.mdx) | 53 stroke icons |
+
+Use tokens by name, never hex.
+

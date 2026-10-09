@@ -1,0 +1,119 @@
+---
+title: Angular
+sidebar_position: 2
+description: Use CareOS in Angular through standards-based custom elements.
+---
+
+# Angular
+
+Angular uses CareOS through **custom elements**: every component is also registered as a `<co-*>` tag
+(`Button` is `<co-button>`, `PatientBanner` is `<co-patient-banner>`). They are the same components as the React
+package, so behaviour, accessibility and styling are identical. React is bundled inside the elements; your Angular app
+does not use React directly.
+
+## 1. Install
+
+```bash
+npm install health-components react react-dom
+```
+
+## 2. Register the elements once
+
+```ts title="src/main.ts"
+import { bootstrapApplication } from '@angular/platform-browser';
+import { defineCareOSElements } from 'health-components/elements';
+import { AppComponent } from './app/app.component';
+
+defineCareOSElements(); // registers every <co-*> element and injects the token stylesheet
+
+bootstrapApplication(AppComponent);
+```
+
+Register only what you use with `defineCareOSElements({ only: ['co-button', 'co-patient-banner'] })`.
+
+Add the fonts (optional) in `angular.json` under `styles`:
+
+```json
+"styles": ["node_modules/health-components/dist/fonts.css", "src/styles.css"]
+```
+
+## 3. Allow custom elements in your components
+
+```ts title="src/app/app.component.ts"
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './app.component.html',
+})
+export class AppComponent {
+  patient = { name: 'Henna West', sex: 'F', age: 38, dob: '03/14/1988', mrn: 'MRN-100231' };
+  claimActions = [{ label: 'Submit and Print CMS-1500' }, { label: 'Save as Draft' }];
+
+  submit() {
+    /* ... */
+  }
+  onAction(item: { label: string }) {
+    console.log('Picked', item.label);
+  }
+}
+```
+
+For NgModule apps, add `schemas: [CUSTOM_ELEMENTS_SCHEMA]` to the module instead.
+
+## 4. Use them in templates
+
+```html title="src/app/app.component.html"
+<div data-co-theme="classic" class="co-root">
+  <co-patient-banner [patient]="patient"></co-patient-banner>
+
+  <co-button variant="primary" icon-left="plus" (click)="submit()">Start Visit Note</co-button>
+
+  <co-split-button label="Submit Claim" [items]="claimActions" (co-select)="onAction($event.detail)">
+  </co-split-button>
+</div>
+```
+
+## How bindings map
+
+| React | Custom element | Angular |
+|---|---|---|
+| String, number or boolean prop `iconLeft="plus"` | attribute `icon-left="plus"` or property `iconLeft` | `icon-left="plus"` or `[iconLeft]="icon"` |
+| Array or object prop `items={[...]}` | property `items` (or a JSON attribute) | `[items]="items"` |
+| Callback `onChange(value)` | event `co-change`, value in `event.detail` | `(co-change)="save($event.detail)"` |
+| Callback with several arguments `onSort(key, dir)` | `event.detail` is `[key, dir]` | `(co-sort)="sort($event.detail)"` |
+| `children` | default slot (the element's content) | `<co-card>...</co-card>` |
+| Other content props, for example `footer` | named slot | `<div slot="footer">...</div>` |
+| Render functions, for example a column `render` | property only | `[columns]="columns"` with functions inside |
+
+Native events from inside a component (`click`, `input`, `keydown`) reach the host element as usual, so `(click)`
+works on `<co-button>`.
+
+Each component page lists its tag, attributes, properties, events and slots under **Angular, Vue and HTML**.
+
+## Forms
+
+Elements are not `ControlValueAccessor`s. Bind the value and listen to the change event:
+
+```html
+<co-text-field label="Mobile Phone" mask="phone" [value]="phone" (co-change)="phone = $event.detail"></co-text-field>
+```
+
+## Theming
+
+Set `data-co-theme` on any ancestor, `<html>` included: `classic`, `sidebar`, `rail`, `command` or `dark`. The tokens
+are CSS variables and inherit into every element. Switching the attribute at runtime re-themes everything without a
+re-render.
+
+## TypeScript
+
+`health-components/elements` declares every tag in `HTMLElementTagNameMap`, so
+`document.querySelector('co-button')` is typed as `CoButtonElement` with its properties.
+
+## Styling and layout
+
+The elements render in shadow DOM with the CareOS stylesheet adopted, so your global CSS does not leak in and theirs
+does not leak out. The host element is `display: contents`, so it lays out like the component inside it. Content you
+put in a slot is styled by your own CSS.

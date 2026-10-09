@@ -1,0 +1,30 @@
+---
+title: Screen recipes
+sidebar_position: 2
+description: "Which components compose the common EHR screens."
+---
+
+# Screen recipes
+
+## How screens use this system
+
+1. Wrap the app in `<html data-co-theme="classic">` (or the practice's style) and load `health-components/styles.css` and import the components (or register the custom elements).
+2. Start every desktop screen with the shell for the style: `TopBar` (all styles), plus `SidebarNav` (Clinical Sidebar) or `IconRail` and `PatientTabs` (Focus Rail) or `CommandPalette` (Command Bar).
+3. Under the shell: page title (`h1`) with a short "For:" line, header actions in a `ButtonGroup` ending with "For developers" that opens `DevDrawer`, then `PermissionState` when the role is view-only, then `Card`s.
+4. Lists are `DataTable` with `Pagination`; counts on top are a `KPIGrid`; record detail opens in a `Drawer`; decisions in a `Modal`; small confirmations in a `Toast`; flow endings in a `SuccessDialog`.
+5. Phone and portal screens use `PhoneScaffold`; the kiosk uses `KioskStep`.
+
+## Recipes
+
+| Screen | Compose it from |
+|---|---|
+| Schedule calendar (sched-calendar) | TopBar, Select filters (Provider, Specialty, Location, Status, Visit Mode), Calendar (Day, Week, Month) or ProviderDayColumns, AppointmentChip, CalendarCell, Drawer for the appointment, WaitlistRow, DevDrawer |
+| Add patient (pat-add) | StepperForm with 7 steps; TextField (phone, SSN, ZIP masks), DatePicker, Select, RadioGroup, Combobox for pharmacy, InsuranceCard scan, CoverageStack, ConsentSigner; SuccessDialog "Patient Added Successfully" |
+| Patient chart (pat-chart) | PatientBanner, CodeStatusBanner, SectionNav, AllergyList, ProblemList, MedicationList, VitalsPanel, LabResultTable, ImmunizationSchedule, GrowthChart (pediatrics), CareGapRow, PermissionState, BreakTheGlassDialog for restricted charts |
+| Visit note (enc-note) | PatientBanner (compact), VisitNoteEditor or SOAPSection per section, AISuggestion, ScoreQuestionnaire (GAD-7, PHQ-9), BodyMap (dermatology), ICD10Picker, CPTPicker, OrderSetPicker, Modal to sign |
+| eRx (cpoe-rx-new, cpoe-erx) | DrugSearch, SigBuilder, DrugInteractionAlert, AllergyAlert, MedicationRow review, Combobox for pharmacy, EPCSApproval for C-II to C-V, Toast "Prescription Sent Successfully" |
+| Prior auth queue (ins-pa-queue) | KPIGrid filter, FilterChip, DataTable with StatusTag kind pa and bulk Assign, PriorAuthTimeline with UnitsMeter in a Drawer, EligibilityResult, DevDrawer |
+| Claim edit (bill-claim-edit) | SectionNav, ClaimForm (ClaimLineEditor), ClaimStatusTag, Select for payer order and frequency, TextField for ICN, Alert claim check, ERAPostingRow on the ERA tab, SplitButton Submit Claim, SuccessDialog |
+| Roles matrix (rbac-compare, set-roles) | RoleSwitcher, Select role pickers, Switch "Only show differences", PermissionMatrix (editable on set-roles), AuditLogRow for changes |
+| Patient portal home (portal-home) | PhoneScaffold with portal tabs, QuickActions, AppointmentChip or PickCard for the next visit, CopayCollector (Pay Bill), InboxItem for new results and messages, PermissionState kind preview for staff |
+| Mobile scribe (mob-scribe) | PhoneScaffold, PatientBanner variant mobile, Button ai "Start AI Scribe", Spinner tone ai, AISuggestion per section, SOAPSection, ChatMessage transcript, SuccessDialog "Note Sent for Signing Successfully" |

@@ -1,0 +1,8 @@
+/* Story-only layout helpers (not shipped in the package). */
+.pv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: start; }
+.pv-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--co-muted); margin: 4px 0 -4px; }
+.pv-stack { display: flex; flex-direction: column; gap: 12px; }
+.sb-co-canvas { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+html, body { background: var(--co-canvas); }
+.sb-co-canvas { min-height: 100vh; }
+.sbdocs .sb-co-canvas { min-height: 0; }

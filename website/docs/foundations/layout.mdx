@@ -1,0 +1,39 @@
+---
+title: Layout, spacing and density
+sidebar_position: 4
+description: "Spacing, radius, shadow, z-index and density tokens."
+---
+
+import { ScaleTokens } from '@site/src/components/docs/Foundations';
+
+# Layout, spacing and density
+
+- Page wrap: max 1440px (`content-max`), 12px padding and 12px gaps (`space-3`). Cards pad 16px (`space-4`), modals 20px (`space-5`).
+- Grids: `.grid2` columns of at least 260px, `.grid3` at least 220px, form grids at least 240px; section menus 220 to 260px beside a flexible main column.
+- Clinical Sidebar offsets content by `side-w` 240px (64px collapsed); Focus Rail by 64px; Classic and Command Bar by none. Under 900px the sidebar and rail fold into a menu button.
+- Density: Comfortable controls are `control-h` 36px with 9px table cell padding; Compact is 30px (`control-h-compact`) with 4px cells and 10px card padding. Phones use `control-h-touch` 44px minimum; the kiosk `control-h-kiosk` 48px. Classic does not apply Compact.
+- Radius: 4px inputs and tags, 6px buttons and menus, 8px cards, 10px shell menus, 12px modals, 999px pills.
+- Shadow: `shadow-card` on cards (none in Command Bar and Dark, which use a border), `shadow-pop` on menus, modals and drawers.
+- Z-index: page menus 30, nav and overlays 40, toasts 60, tooltips 70, command palette 80.
+- Motion (notes, not tokens): sidebar width 150ms, switch knob 150ms, spinner 0.8s per turn, toast stays 2800ms, skeleton pulse 1.4s. All slow down or stop under prefers-reduced-motion.
+
+## Spacing
+
+<ScaleTokens family="spacing" visual="bar" />
+
+## Radius
+
+<ScaleTokens family="radius" visual="radius" />
+
+## Shadow
+
+<ScaleTokens family="shadow" visual="shadow" />
+
+## Z-index
+
+<ScaleTokens family="zIndex" />
+
+## Density
+
+<ScaleTokens family="density" />
+

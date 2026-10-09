@@ -1,0 +1,44 @@
+---
+title: Plain HTML and CDN
+sidebar_position: 4
+description: Use CareOS with one script tag, no build step.
+---
+
+# Plain HTML and CDN
+
+One script registers every element. React is bundled inside it.
+
+```html
+<!doctype html>
+<html lang="en" data-co-theme="classic" class="co-root">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/health-components@1/dist/fonts.css" />
+    <script src="https://cdn.jsdelivr.net/npm/health-components@1/dist/cdn/careos-elements.js" defer></script>
+  </head>
+  <body>
+    <co-button variant="primary" icon-left="plus" id="start">Start Visit Note</co-button>
+
+    <co-select label="Provider" id="provider"></co-select>
+
+    <script type="module">
+      const select = document.getElementById('provider');
+      select.options = ['All', 'James Bell MD', 'Kristen Yale MD'];
+      select.addEventListener('co-change', (e) => console.log('Provider', e.detail));
+      document.getElementById('start').addEventListener('click', () => alert('Starting note'));
+    </script>
+  </body>
+</html>
+```
+
+Pin an exact version in production (`health-components@1.0.0`) and serve the file from your own origin if your
+Content Security Policy does not allow a CDN.
+
+## Arrays and objects in attributes
+
+Set them as properties from script (as above), or as JSON in the attribute:
+
+```html
+<co-filter-chip label="Rejected" count="12" selected></co-filter-chip>
+<co-breadcrumb items='[{"label":"Patients","href":"/patients"},{"label":"Henna West"}]'></co-breadcrumb>
+```

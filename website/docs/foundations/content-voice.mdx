@@ -1,0 +1,17 @@
+---
+title: Content voice
+sidebar_position: 6
+description: "How CareOS copy is written."
+---
+
+# Content voice
+
+Copy the screens' patterns exactly.
+
+- **Title Case for actions and labels:** "Start Visit Note", "Submit Claim", "Check Eligibility", "Date of Birth". Sentence case for help text and messages.
+- **Done messages end in "Successfully":** "Draft Saved Successfully", "Appointment Type Added Successfully", "Electronic Claim Submitted Successfully". Small ones are a Toast for 2.8 seconds; the end of a flow is a SuccessDialog with an **Okay** button.
+- **Errors name the field and the fix:** "Termination date is required", "Enter the EIN as XX-XXXXXXX.", "Enter a whole number from 1 to 240.", "Original claim number is required for a corrected or void claim." Never "Invalid input".
+- **Role states name the role and the permission:** "Your role (Biller) can view this screen but not edit it. Permission needed to edit: Edit clinical chart." and "You do not have access to this screen. Your role (Front Desk) does not include the permission Manage claims. Ask your Practice Admin..."
+- **Explain codes in plain words next to them:** "Sent as REF*F8. Without it the payer treats the claim as a duplicate." "AAA 72: invalid member ID."
+- **Say what a check catches.** A mask proves a value's shape, not that it is real. A name match is a candidate that a person confirms. AI output is a draft until someone accepts it.
+- Second person for patients ("Enter your last name"), plain words, no emoji, no exclamation marks.

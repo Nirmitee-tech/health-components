@@ -1,0 +1,21 @@
+---
+title: Iconography
+sidebar_position: 5
+description: "The CareOS stroke icon set."
+---
+
+import { IconGallery } from '@site/src/components/docs/Foundations';
+
+# Iconography
+
+Inline SVG line icons, 24 by 24 viewBox, `stroke="currentColor"`, stroke width 2, round caps, no fill, as every screen draws them. There is no icon font and no emoji. `Icon` holds the set; sizes 12 to 26px. An icon beside text is hidden from screen readers; an icon that carries meaning alone gets a label and 3:1 contrast. Status always pairs colour with an icon or a word: check for done, x for denied, clock for pending, alert for warning, lock for read-only, shield for restricted, sparkle for AI.
+
+```tsx
+import { Icon } from 'health-components';
+
+<Icon name="pill" size={20} />          // decorative, hidden from screen readers
+<Icon name="alert" label="Critical" />  // meaningful on its own
+```
+
+<IconGallery />
+

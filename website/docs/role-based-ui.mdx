@@ -1,0 +1,16 @@
+---
+title: Role-based UI
+sidebar_position: 3
+description: "Hide, lock, deny: how screens respond to a role"s access level."
+---
+
+# Role-based UI: hide, lock, deny
+
+Every screen has an access level per role: **none**, **view**, **edit** (and **approve** in the permission matrix).
+
+- **None inside a screen: hide.** Do not render the menu item, button or section. Do not show it disabled.
+- **View: lock.** Show the `PermissionState kind="lock"` banner at the top, render fields as `LockedField` or `readOnly`, hide save and edit buttons. Values stay readable and copyable.
+- **None for a whole screen reached by link: deny.** Show `PermissionState kind="denied"` with "Go to my home screen" and "Compare roles".
+- **Staff looking at patient screens: preview.** `kind="preview"`; patient actions (book, pay, send, sign) are blocked.
+- **Restricted charts: break the glass.** `BreakTheGlassDialog` asks for a reason; access is written to the audit log (`AuditLogRow` action btg).
+- The "Viewing as" `RoleSwitcher` previews another role for the session only and never grants rights.

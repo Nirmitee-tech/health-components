@@ -15,6 +15,7 @@ function fixture() {
   writeFileSync(join(previous,'storybook/assets/old.js'),'export const old = true;');
   writeFileSync(join(previous,'storybook/assets/expired.js'),'expired');
   writeFileSync(join(previous,'storybook/assets-current.json'),JSON.stringify(['old.js','../private.txt']));
+  writeFileSync(join(previous,'storybook/assets-retained.json'),'{}');
   return {current,previous};
 }
 it('retains only the previous generation without replacing the current build', () => {
@@ -39,4 +40,25 @@ it('serves the stale browser bundle URL and the new bundle from the same deploym
       expect(result.status).toBe(200); expect(await result.text()).toContain('export const');
     }
   } finally { await new Promise<void>((resolve,reject)=>server.close(error => error ? reject(error) : resolve())); }
+});
+it('keeps a cached bundle through consecutive deployments within the retention window', () => {
+  const {current,previous}=fixture(); retainPagesAssets(current,previous,0);
+  const next=join(current,'..','next'); mkdirSync(join(next,'storybook/assets'),{recursive:true});
+  writeFileSync(join(next,'storybook/assets/next.js'),'next');
+  retainPagesAssets(next,current,1000);
+  expect(existsSync(join(next,'storybook/assets/old.js'))).toBe(true);
+});
+it('drops expired retained bundles from the next clean deployment', () => {
+  const {current,previous}=fixture(); retainPagesAssets(current,previous,0);
+  const next=join(current,'..','next'); mkdirSync(join(next,'storybook/assets'),{recursive:true});
+  writeFileSync(join(next,'storybook/assets/next.js'),'next');
+  retainPagesAssets(next,current,60*60*1000+1);
+  expect(existsSync(join(next,'storybook/assets/old.js'))).toBe(false);
+  expect(existsSync(join(next,'storybook/assets/current.js'))).toBe(true);
+});
+it('recovers bundles from deployments created before expiry manifests existed', () => {
+  const {current,previous}=fixture();
+  rmSync(join(previous,'storybook/assets-retained.json'));
+  retainPagesAssets(current,previous,0);
+  expect(existsSync(join(current,'storybook/assets/expired.js'))).toBe(true);
 });

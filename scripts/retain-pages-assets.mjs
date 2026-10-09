@@ -3,7 +3,7 @@ import { basename, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 /** Retains prior original assets so an open browser can finish loading its hashed bundles. */
-export function retainPagesAssets(current, previous) {
+export function retainPagesAssets(current, previous, now = Date.now()) {
   let retained = 0;
   for (const directory of ['assets', 'storybook/assets']) {
     const destination = join(current, directory);
@@ -11,18 +11,28 @@ export function retainPagesAssets(current, previous) {
     const currentManifest = join(current, directory.replace(/assets$/, 'assets-current.json'));
     const currentFiles = existsSync(currentManifest) ? JSON.parse(readFileSync(currentManifest, 'utf8')) : readdirSync(destination).filter(file => /\.(js|css|woff2?|svg|png|jpg|webp)$/.test(file));
     const oldDirectory = join(previous, directory);
+    const retainedManifest = join(current, directory.replace(/assets$/, 'assets-retained.json'));
+    const retainedFiles = existsSync(retainedManifest) ? JSON.parse(readFileSync(retainedManifest, 'utf8')) : {};
+    const oldRetainedManifest = join(previous, directory.replace(/assets$/, 'assets-retained.json'));
+    const oldRetained = existsSync(oldRetainedManifest) ? JSON.parse(readFileSync(oldRetainedManifest, 'utf8')) : {};
     const manifest = join(previous, directory.replace(/assets$/, 'assets-current.json'));
     const oldFiles = existsSync(manifest) ? JSON.parse(readFileSync(manifest, 'utf8')) : existsSync(oldDirectory) ? readdirSync(oldDirectory) : [];
     if (!Array.isArray(oldFiles)) throw new Error('Invalid previous asset manifest');
     mkdirSync(destination, { recursive: true });
-    for (const file of oldFiles) {
+    // Earlier deployments had no expiry manifest; carry their cached bundles through the first upgrade.
+    const legacyFiles = !existsSync(oldRetainedManifest) && existsSync(oldDirectory) ? readdirSync(oldDirectory) : [];
+    const candidates = new Set([...oldFiles, ...legacyFiles, ...Object.keys(oldRetained).filter(file => oldRetained[file] > now)]);
+    for (const file of candidates) {
       // The manifest may only name files directly inside the known asset directory.
       if (typeof file !== 'string' || basename(file) !== file || !/\.(js|css|woff2?|svg|png|jpg|webp)$/.test(file)) continue;
       const source = join(oldDirectory, file);
       const target = join(destination, file);
-      if (!existsSync(target) && existsSync(source)) { copyFileSync(source, target); retained++; }
+      if (!existsSync(source)) continue;
+      if (!existsSync(target)) { copyFileSync(source, target); retained++; }
+      if (!currentFiles.includes(file)) retainedFiles[file] = oldRetained[file] ?? retainedFiles[file] ?? now + 60 * 60 * 1000;
     }
-    writeFileSync(join(current, directory.replace(/assets$/, 'assets-current.json')), JSON.stringify(currentFiles));
+    writeFileSync(currentManifest, JSON.stringify(currentFiles));
+    writeFileSync(retainedManifest, JSON.stringify(retainedFiles));
   }
   return retained;
 }

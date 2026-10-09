@@ -177,11 +177,11 @@ export const tokens = {
       "name": "muted",
       "cssVar": "--co-muted",
       "value": {
-        "classic": "#686F7D",
-        "sidebar": "#5B6B69",
-        "rail": "#5F6E84",
-        "command": "#69707E",
-        "dark": "#93A3A0"
+        "classic": "#586779",
+        "sidebar": "#526A63",
+        "rail": "#596879",
+        "command": "#586779",
+        "dark": "#ADBDB8"
       },
       "usage": "Helper text, column meta, inactive tabs, placeholder, on `surface` and `canvas`. Contrast fix applied 10/09/2026 (lightness only, hue and saturation kept, WCAG 2 formula): Classic was #6B7280 (canvas 4.32:1, surface-muted 4.39:1, under 4.5:1 for help and caption text); Focus Rail was #64748B (canvas 4.41:1, surface-muted 4.17:1, under 4.5:1 for help and caption text); Command Bar was #6B7280 (surface-muted 4.39:1, under 4.5:1 for help and caption text)."
     },
@@ -189,11 +189,11 @@ export const tokens = {
       "name": "border",
       "cssVar": "--co-border",
       "value": {
-        "classic": "#8996A7",
-        "sidebar": "#A19378",
-        "rail": "#8894B9",
-        "command": "#8C95A7",
-        "dark": "#546F6C"
+        "classic": "#CBD5E1",
+        "sidebar": "#CBD5D3",
+        "rail": "#CDD5E0",
+        "command": "#CBD5D8",
+        "dark": "#405351"
       },
       "usage": "Card, input, table and divider lines. Decorative only; inputs rely on the label plus this line. Contrast fix applied 10/09/2026 (lightness only, hue and saturation kept, WCAG 2 formula): Classic was #E3E6EA (surface 1.25:1, under 3:1 for input boundary (WCAG 1.4.11 non-text, 3:1)); Clinical Sidebar was #E4E0D8 (surface 1.32:1, under 3:1 for input boundary (WCAG 1.4.11 non-text, 3:1)); Focus Rail was #E2E5EE (surface 1.26:1, under 3:1 for input boundary (WCAG 1.4.11 non-text, 3:1)); Command Bar was #E5E7EB (surface 1.24:1, under 3:1 for input boundary (WCAG 1.4.11 non-text, 3:1)). Contrast fix applied 10/09/2026 (lightness only, hue and saturation kept, WCAG 2 formula): Dark was #2E3D3B (surface 1.45:1, under 3:1 for input boundary (WCAG 1.4.11 non-text, 3:1))."
     },
@@ -201,11 +201,11 @@ export const tokens = {
       "name": "border-strong",
       "cssVar": "--co-border-strong",
       "value": {
-        "classic": "#C8CED6",
-        "sidebar": "#CFC9BD",
-        "rail": "#CBD0DD",
-        "command": "#D1D5DB",
-        "dark": "#465A57"
+        "classic": "#8291A5",
+        "sidebar": "#8291A5",
+        "rail": "#8291A5",
+        "command": "#8291A5",
+        "dark": "#718884"
       },
       "usage": "Unchecked switch track, dashed add button, signature pad border."
     },
@@ -249,11 +249,11 @@ export const tokens = {
       "name": "canvas",
       "cssVar": "--co-canvas",
       "value": {
-        "classic": "#F1F2F4",
-        "sidebar": "#F7F5F0",
-        "rail": "#F5F6FA",
-        "command": "#FFFFFF",
-        "dark": "#0E1514"
+        "classic": "#F4F7FA",
+        "sidebar": "#F3F7F6",
+        "rail": "#F4F7FB",
+        "command": "#F4F7F8",
+        "dark": "#111C1B"
       },
       "usage": "Page background behind cards."
     },
@@ -549,11 +549,11 @@ export const tokens = {
       "name": "ai-soft",
       "cssVar": "--co-ai-soft",
       "value": {
-        "classic": "#FBEAF6",
-        "sidebar": "#FBEAF6",
-        "rail": "#FBEAF6",
-        "command": "#FBEAF6",
-        "dark": "#2C1838"
+        "classic": "#F5F2FA",
+        "sidebar": "#F5F2FA",
+        "rail": "#F5F2FA",
+        "command": "#F5F2FA",
+        "dark": "#2E263A"
       },
       "usage": "AI suggestion box and AI tag background."
     },

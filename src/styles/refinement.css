@@ -1,0 +1,42 @@
+/* Shared refinements apply to React, custom elements, documentation and Storybook. */
+.co-root { line-height: 1.5; font-variant-numeric: tabular-nums; }
+.co-root :where(p) { margin: 0 0 12px; }
+.co-root :where(button, input, select, textarea) { font-family: var(--co-font-sans); }
+.co-btn, .co-ib, .co-mi, .co-cl-a { transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease; }
+.co-btn:active:not(:disabled) { transform: translateY(1px); }
+.co-btn-sec, .co-ib-secondary { box-shadow: 0 1px 2px rgb(16 24 40 / 4%); }
+.co-card, .co-pb { border-color: var(--co-border); box-shadow: 0 1px 2px rgb(16 24 40 / 3%); }
+.co-card { border-radius: var(--co-radius-lg); }
+.co-card-h :where(h2, h3) { font-weight: 600; letter-spacing: -.015em; }
+.co-pb { padding: 20px; }
+.co-pb h1 { font-size: 22px; font-weight: 600; line-height: 1.3; letter-spacing: -.025em; }
+.co-table { line-height: 1.5; }
+.co-table th { color: var(--co-muted); font-weight: 600; }
+.co-table td { padding-top: 12px; padding-bottom: 12px; }
+.co-vitals { grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 12px; }
+.co-vital { padding: 14px; background: var(--co-canvas-soft); }
+.co-vital.is-crit { background: var(--co-danger-soft); }
+.co-aibox { padding: 18px; gap: 12px; border-radius: var(--co-radius-lg); border-left: 3px solid var(--co-ai); }
+.co-aibox-b { font-size: 14px; line-height: 1.6; max-width: 80ch; }
+.co-aibox > .co-row > b { font-size: 15px; }
+.co-root :where(input, textarea, select)::placeholder { color: var(--co-muted); opacity: 1; }
+.co-root :where(img, svg) { max-width: 100%; }
+@media (max-width: 600px) {
+  .co-pb { padding: 16px; }
+  .co-card-h { gap: 10px; }
+  .co-aibox { padding: 14px; }
+  .co-vitals { grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .co-btn, .co-ib, .co-mi, .co-cl-a { transition: none; }
+}
+.co-pb-id h2 { font-size: 22px; line-height: 1.3; font-weight: 600; letter-spacing: -.025em; }
+.co-pb-meta { line-height: 1.6; }
+.co-snavs { border: 1px solid var(--co-border); border-radius: var(--co-radius-lg); padding: 8px; }
+@media (max-width: 600px) {
+  .co-top { padding: 12px; gap: 12px; }
+  .co-cl-links { order: 3; width: 100%; }
+  .co-pb-id { flex: 1 1 180px; }
+}
+/* Control boundaries keep stronger contrast than decorative panel borders. */
+.co-inp:not(.is-bad), .co-btn-sec, .co-ib-secondary { border-color: var(--co-border-strong); }

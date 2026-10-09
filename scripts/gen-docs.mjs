@@ -246,7 +246,7 @@ import { ComponentHeader, StoryExample, PropsTable, ElementApi } from '@site/src
   tag="${element?.tag ?? ''}"
 />
 
-${readme.fromScreens ? mdxSafe(readme.fromScreens) + '\n' : ''}
+
 ## Examples
 
 ${examples
@@ -296,7 +296,7 @@ CareOS has **${catalogue.filter((c) => c.layer === 'Basic').length} Basic** comp
 **${catalogue.filter((c) => c.layer === 'Complex').length} Complex** components (healthcare parts built only from the basic ones). Use the highest layer that fits:
 build a claim screen from \`ClaimForm\`, not from \`TextField\`s in a table.
 
-Every component is a React component (\`import { Button } from 'health-components'\`) and a custom element
+Components are available as React components (\`import { Button } from 'health-components'\`) with custom elements
 (\`<co-button>\`) for Angular, Vue and plain HTML.
 
 <Catalogue />

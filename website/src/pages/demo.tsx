@@ -2,10 +2,9 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { useState, type ReactNode } from 'react';
 import { renderStory, ShadowPreview, ThemeSelect, usePreviewTheme, type StoriesModule } from '@site/src/components/docs';
-import * as TopBar from '@lib/components/TopBar/TopBar.stories';
+import { DemoNavigation, ChartNavigation } from '../components/docs/DemoNavigation';
 import * as PatientBanner from '@lib/components/PatientBanner/PatientBanner.stories';
 import * as CodeStatusBanner from '@lib/components/CodeStatusBanner/CodeStatusBanner.stories';
-import * as SectionNav from '@lib/components/SectionNav/SectionNav.stories';
 import * as VitalsPanel from '@lib/components/VitalsPanel/VitalsPanel.stories';
 import * as AllergyList from '@lib/components/AllergyList/AllergyList.stories';
 import * as MedicationList from '@lib/components/MedicationList/MedicationList.stories';
@@ -32,18 +31,16 @@ function ChartScreen() {
     <>
       {s(PatientBanner, 'DoNotResuscitate')}
       {s(CodeStatusBanner, 'Playground')}
-      <div className="demo-chart">
-        <aside>{s(SectionNav, 'Playground')}</aside>
-        <div className="demo-col">
-          {s(VitalsPanel, 'AdultWithCriticals')}
-          <div className="demo-grid2">
-            {s(AllergyList, 'Playground')}
-            {s(ProblemList, 'Playground')}
-          </div>
-          {s(MedicationList, 'Playground')}
-          {s(LabResultTable, 'Playground')}
+      <ChartNavigation>
+        <section data-chart-section="Summary" aria-label="Chart summary"><p className="co-muted">Synthetic patient chart. Example values and actions are for interface evaluation.</p></section>
+        <section data-chart-section="Vitals">{s(VitalsPanel, 'AdultWithCriticals')}</section>
+        <div className="demo-grid2">
+          <section data-chart-section="Allergies">{s(AllergyList, 'Playground')}</section>
+          <section data-chart-section="Problems">{s(ProblemList, 'Playground')}</section>
         </div>
-      </div>
+        <section data-chart-section="Medications">{s(MedicationList, 'Playground')}</section>
+        <section data-chart-section="Lab results">{s(LabResultTable, 'Playground')}</section>
+      </ChartNavigation>
     </>
   );
 }
@@ -91,11 +88,12 @@ function Demo() {
         <ThemeSelect />
       </div>
       <p className="demo-note">
-        Built from: {current.note}. Everything below is the real <code>health-components</code> package, interactive.
+        {current.label} · Synthetic examples. Local interactions reset when you change workspaces.
       </p>
       <ShadowPreview theme={theme} className="demo-canvas">
-        {s(TopBar, 'Playground')}
-        <Screen id={screen} />
+        <DemoNavigation screen={current.label as 'Patient chart' | 'Schedule' | 'Billing' | 'Clinical inbox'} onScreenChange={(label) => setScreen(SCREENS.find((item) => item.label === label)!.id)}>
+          <Screen id={screen} />
+        </DemoNavigation>
       </ShadowPreview>
     </div>
   );
@@ -107,8 +105,8 @@ export default function DemoPage() {
       <main className="container container--fluid demo-page">
         <h1>Live demo</h1>
         <p>
-          Screens composed only from CareOS components. Switch the theme, click through tabs, sort tables, open menus. Every
-          piece is documented under <Link to="/docs/components/">Components</Link>.
+          Explore a synthetic patient chart, schedule, billing workspace and inbox. Change themes and try the components.
+          Examples simulate workflows and do not save patient data. See every component under <Link to="/docs/components/">Components</Link>.
         </p>
         <Demo />
       </main>

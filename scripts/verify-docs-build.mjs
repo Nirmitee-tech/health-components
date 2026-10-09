@@ -1,0 +1,12 @@
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
+const catalogue = JSON.parse(readFileSync(resolve(root, 'website/src/generated/catalogue.json'), 'utf8'));
+const index = JSON.parse(readFileSync(resolve(root, 'storybook-static/index.json'), 'utf8'));
+const missing = catalogue.filter(entry => !existsSync(resolve(root, 'website/build/docs/components', entry.groupSlug, entry.name, 'index.html')));
+if (missing.length) throw new Error(`Missing component pages: ${missing.map(entry => entry.name).join(', ')}`);
+if (new Set(catalogue.map(entry => entry.name)).size !== catalogue.length) throw new Error('Duplicate catalogue entries');
+const stories = Object.values(index.entries).filter(entry => entry.type === 'story');
+const docs = Object.values(index.entries).filter(entry => entry.type === 'docs');
+console.log(JSON.stringify({observedAt: new Date().toISOString(), source: 'local production build of current checkout', scope: 'component catalogue and Storybook index', units: {componentPages: catalogue.length, storybookDocs: docs.length, storyVariants: stories.length}, missingPages: missing.length}, null, 2));

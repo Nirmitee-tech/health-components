@@ -4,6 +4,7 @@ import { defineConfig } from 'vitest/config';
 import { careosCssVitePlugin } from './scripts/css-utils.mjs';
 
 export default defineConfig({
+  resolve: { dedupe: ['react', 'react-dom'] },
   plugins: [react(), careosCssVitePlugin(process.cwd())],
   test: {
     environment: 'jsdom',

@@ -1,3 +1,4 @@
+import { ComponentCatalogue } from './ComponentCatalogue';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -272,31 +273,7 @@ export function ElementApi({ component }: { component: string }) {
 }
 
 /* ---------- catalogue ---------- */
-type CatalogueEntry = { name: string; layer: string; group: string; groupSlug: string; summary: string; tag: string | null };
-
 export function Catalogue() {
   const base = useBaseUrl('/docs/components/');
-  const byGroup = new Map<string, CatalogueEntry[]>();
-  for (const c of catalogue as CatalogueEntry[]) {
-    const key = `${c.layer} · ${c.group}`;
-    byGroup.set(key, [...(byGroup.get(key) ?? []), c]);
-  }
-  const keys = [...byGroup.keys()].sort((a, b) => (a.startsWith('Basic') === b.startsWith('Basic') ? a.localeCompare(b) : a.startsWith('Basic') ? -1 : 1));
-  return (
-    <div>
-      {keys.map((k) => (
-        <section key={k} className="docs-cat-group">
-          <h2 id={k.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>{k}</h2>
-          <div className="docs-cat-grid">
-            {byGroup.get(k)!.map((c) => (
-              <Link key={c.name} className="docs-cat-card" to={`${base}${c.groupSlug}/${c.name}/`}>
-                <strong>{c.name}</strong>
-                <span>{c.summary}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  );
+  return <ComponentCatalogue entries={catalogue} base={base} />;
 }

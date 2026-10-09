@@ -5,7 +5,19 @@
     "strict": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "paths": { "@lib/*": ["../src/*"], "health-components": ["../src/index.ts"] }
+    "paths": {
+      "@lib/*": [
+        "../src/*"
+      ],
+      "health-components": [
+        "../src/index.ts"
+      ]
+    },
+    "target": "ES2020",
+    "downlevelIteration": true
   },
-  "exclude": [".docusaurus", "build"]
+  "exclude": [
+    ".docusaurus",
+    "build"
+  ]
 }

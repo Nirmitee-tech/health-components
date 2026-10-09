@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -33,6 +34,25 @@ jobs:
         working-directory: website
       - name: Build Storybook into the site at /storybook/
         run: npm run build-storybook -- -o website/build/storybook
+      - name: Retain previous deployment assets for open browser sessions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          previous_runs=$(gh run list --workflow docs.yaml --status success --limit 2 --json databaseId --jq 'reverse | .[].databaseId')
+          mkdir -p "$RUNNER_TEMP/previous-pages"
+          node scripts/retain-pages-assets.mjs website/build "$RUNNER_TEMP/previous-pages"
+          for previous_run in $previous_runs; do
+            artifact_dir="$RUNNER_TEMP/previous-artifact-$previous_run"
+            previous_dir="$RUNNER_TEMP/previous-pages-$previous_run"
+            mkdir -p "$artifact_dir" "$previous_dir"
+            if gh run download "$previous_run" --name github-pages --dir "$artifact_dir"; then
+              tar -xf "$artifact_dir/artifact.tar" -C "$previous_dir"
+              node scripts/retain-pages-assets.mjs website/build "$previous_dir"
+            else
+              echo "::warning::Previous Pages artifact is unavailable; old browser sessions may need a reload."
+            fi
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

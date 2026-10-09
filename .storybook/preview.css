@@ -6,3 +6,10 @@
 html, body { background: var(--co-canvas); }
 .sb-co-canvas { min-height: 100vh; }
 .sbdocs .sb-co-canvas { min-height: 0; }
+.sb-co-canvas { padding: 28px; gap: 20px; min-height: 100dvh; line-height: 1.5; }
+.sbdocs .sb-co-canvas { min-height: 0; border-radius: 10px; }
+.sb-co-canvas > * { min-width: 0; }
+.pv-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; }
+.pv-label { font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none; margin: 8px 0 0; }
+.pv-stack { gap: 20px; }
+@media(max-width: 600px) { .sb-co-canvas { padding: 16px; } }

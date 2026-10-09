@@ -27,7 +27,7 @@ function Showcase() {
     <div className="docs-example">
       <div className="docs-example-bar">
         <ThemeSelect />
-        <span>Live components, real props</span>
+        <span>Interactive component preview</span>
       </div>
       <ShadowPreview theme={theme}>
         {first(BannerStories as unknown as StoryMod, pickStory(BannerStories as unknown as StoryMod))}
@@ -51,8 +51,8 @@ const features = [
     body: 'Classic, Clinical Sidebar, Focus Rail, Command Bar and Dark from a single tokens.json, as scoped --co-* CSS variables.',
   },
   {
-    title: 'Accessible by default',
-    body: 'WAI-ARIA keyboard patterns, focus management in overlays, and every story checked with axe in CI.',
+    title: 'Keyboard and accessibility checks',
+    body: 'Keyboard patterns and overlay focus management, with automated checks for serious accessibility errors. Browser contrast and clinical usability still need review.',
   },
 ];
 
@@ -64,19 +64,19 @@ export default function Home() {
         <div className="container">
           <h1>CareOS</h1>
           <p>
-            The building blocks for healthcare EHRs: tokens and components for clinical, scheduling, revenue cycle and patient apps.
+            Build a clearer clinical workspace. Explore components for patient charts, scheduling, billing and care teams.
           </p>
           <div className="hero-actions">
             <Link className="button button--secondary button--lg" to="/docs/">
               Get started
             </Link>
-            <Link className="button button--outline button--lg" style={{ color: '#fff', borderColor: '#fff' }} to="/demo/">
+            <Link className="button button--outline button--lg" to="/demo/">
               Live demo
             </Link>
-            <Link className="button button--outline button--lg" style={{ color: '#fff', borderColor: '#fff' }} to="/docs/components/">
+            <Link className="button button--outline button--lg" to="/docs/components/">
               Browse components
             </Link>
-            <a className="button button--outline button--lg" style={{ color: '#fff', borderColor: '#fff' }} href={String(siteConfig.customFields?.storybookUrl)}>
+            <a className="button button--outline button--lg" href={String(siteConfig.customFields?.storybookUrl)}>
               Storybook
             </a>
           </div>

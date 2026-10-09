@@ -31,7 +31,7 @@ export const eventName = (prop) => 'co-' + kebab(prop.slice(2)).replace(/^-/, ''
 
 /** Exports that are not standalone visual components. */
 /** Exports that are not standalone visual components (internal helpers, React-only context providers). */
-const SKIP = new Set(['Portal', 'ThemeProvider', 'Overlay', 'ToastProvider']);
+const SKIP = new Set(['Portal', 'ThemeProvider', 'Overlay', 'ToastProvider', 'RangeContext', 'RangeContextProvider']);
 
 /** Native attributes worth exposing on elements when a component accepts them (they come from @types/react). */
 const NATIVE = new Set(['disabled', 'placeholder', 'name', 'value', 'defaultValue', 'checked', 'defaultChecked', 'required', 'readOnly', 'type', 'autoFocus', 'maxLength', 'min', 'max', 'step', 'rows', 'accept', 'multiple', 'autoComplete', 'onChange', 'onInput']);
@@ -62,6 +62,18 @@ function propsTypeOf(symbol) {
   const p = sig.getParameters()[0];
   if (!p) return null;
   return checker.getTypeOfSymbolAtLocation(p, p.valueDeclaration ?? decl);
+}
+
+const NATIVE_EVENTS = new Set(['onChange', 'onInput']);
+const FORM_HINTS = ['placeholder', 'checked', 'multiple', 'rows', 'options'];
+const isFormControl = (t) => FORM_HINTS.some((n) => checker.getPropertyOfType(t, n));
+
+/** String literal members of a union (`'sm' | 'md'`, also through aliases like ButtonVariant), else null. */
+function literalValues(t) {
+  const nn = checker.getNonNullableType(t);
+  const parts = nn.isUnion() ? nn.types : [nn];
+  if (!parts.length || !parts.every((p) => p.isStringLiteral())) return null;
+  return parts.map((p) => p.value);
 }
 
 const components = [];
@@ -95,6 +107,8 @@ for (const exp of exportsList) {
     const decls = prop.declarations ?? [];
     const own = decls.find(isFromSrc) ?? (NATIVE.has(prop.getName()) ? decls[0] : undefined);
     if (!own) continue;
+    // Native change/input events only matter for form controls, not for buttons that merely inherit them.
+    if (!isFromSrc(own) && NATIVE_EVENTS.has(prop.getName()) && !isFormControl(propsType)) continue;
     const t = checker.getTypeOfSymbolAtLocation(prop, own);
     props[prop.getName()] = {
       kind: classify(prop.getName(), prop, own),
@@ -102,6 +116,7 @@ for (const exp of exportsList) {
       optional: (prop.flags & ts.SymbolFlags.Optional) !== 0,
       type: own.type ? own.type.getText().replace(/\s+/g, ' ') : checker.typeToString(checker.getNonNullableType(t)),
       inherited: !isFromSrc(own),
+      values: literalValues(t),
     };
   }
   const file = (target.valueDeclaration ?? target.declarations[0]).getSourceFile().fileName;

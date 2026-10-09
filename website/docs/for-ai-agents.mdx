@@ -1,0 +1,27 @@
+---
+title: For AI agents
+sidebar_position: 4
+description: A machine-readable manifest of every component for AI coding agents and tooling.
+---
+
+# For AI agents
+
+AI coding agents (and code generators, linters and design tools) should read the component manifest first:
+
+- In the package: `health-components/manifest.agents.json` (`node_modules/health-components/dist/manifest.agents.json`)
+- On this site: [`/manifest.agents.json`](pathname:///health-components/manifest.agents.json)
+
+It lists every component with its layer and group, summary, React import, custom-element tag with events and slots,
+aliases, props (type, required, default, allowed values, description, whether it is a callback), when to use and when
+not to, accessibility notes and a usage example. It is generated from the TypeScript props, the component READMEs, the
+stories and the element registry on every build, so it never drifts from the code.
+
+## Rules for generated code
+
+- Import React components from `health-components` and load `health-components/styles.css` once.
+- In Angular, Vue or HTML call `defineCareOSElements()` from `health-components/elements` and use the `<co-*>` tags.
+- Format every clinical number with `fmt` or render it with `ClinicalValue`, `DoseDisplay`, `DateTimeClinical`,
+  `IdentifierDisplay`, `CodeDisplay` or `MoneyDisplay`. Never `toFixed` or a hand-written unit. See
+  [Clinical values](./foundations/clinical-values.mdx).
+- Use tokens by name (`var(--co-primary)`), never hex. Theme with `data-co-theme` or `<ThemeProvider>`.
+- Pick the highest layer that fits (Complex before Basic) and check "When not to use" before choosing a component.

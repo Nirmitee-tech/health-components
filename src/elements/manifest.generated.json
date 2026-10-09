@@ -1,5 +1,45 @@
 [
   {
+    "component": "AbnormalFlag",
+    "tag": "co-abnormal-flag",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "flag",
+        "property": "flag",
+        "kind": "string",
+        "description": "Interpretation code: 'N' | 'L' | 'H' | 'LL' | 'HH' | 'A' | 'AA' (HL7 v2 OBX-8 / FHIR interpretation); required"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'compact' (letter and icon) | 'full' (letter, icon and word); default 'compact'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
     "component": "AISuggestion",
     "tag": "co-ai-suggestion",
     "aliases": [],
@@ -42,18 +82,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "(default)",
@@ -103,16 +132,6 @@
         "name": "co-dismiss",
         "prop": "onDismiss",
         "description": "Shows a Dismiss (x) button that calls this; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -227,16 +246,6 @@
         "name": "co-change-order",
         "prop": "onChangeOrder",
         "description": "Change Order clicked; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -290,18 +299,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -362,16 +360,6 @@
         "name": "co-item-action",
         "prop": "onItemAction",
         "description": "A row menu item was chosen; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -473,18 +461,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -518,18 +495,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -587,18 +553,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -656,18 +611,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "(default)",
@@ -749,18 +693,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -806,18 +739,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -868,16 +790,6 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when a tab is clicked; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -924,16 +836,6 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when a level is clicked (client-side routing); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -1032,16 +934,6 @@
         "name": "co-access-reason-change",
         "prop": "onAccessReasonChange",
         "description": "Called with the chosen access reason; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -1155,18 +1047,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "(default)",
@@ -1218,18 +1099,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "(default)",
@@ -1373,16 +1243,6 @@
         "name": "co-appointment-click",
         "prop": "onAppointmentClick",
         "description": "Called when an appointment chip is chosen; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -1476,16 +1336,6 @@
         "name": "co-more",
         "prop": "onMore",
         "description": "Called when \"+N more\" is chosen in a month or week cell; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -1533,18 +1383,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "title",
@@ -1609,16 +1448,6 @@
         "name": "co-action",
         "prop": "onAction",
         "description": "Called with the chosen action of an open gap: the main action, Record Outside Result or Mark Excluded; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -1706,16 +1535,6 @@
         "name": "co-log-activity",
         "prop": "onLogActivity",
         "description": "Called by Log Activity with the session clock in seconds; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -1810,16 +1629,6 @@
         "name": "co-period",
         "prop": "onPeriod",
         "description": "(p) => void: called with the new period; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -1911,18 +1720,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "(default)",
@@ -2257,16 +2055,6 @@
         "name": "co-complete",
         "prop": "onComplete",
         "description": "Called when Complete Check-In is pressed (enabled only with no issues); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -2355,11 +2143,6 @@
         "name": "co-submit",
         "prop": "onSubmit",
         "description": "Submit Claim and its menu items; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -2413,18 +2196,261 @@
       }
     ],
     "properties": [],
-    "events": [
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "ClinicalValue",
+    "tag": "co-clinical-value",
+    "aliases": [],
+    "attributes": [
       {
-        "name": "co-change",
-        "prop": "onChange",
+        "name": "value",
+        "property": "value",
+        "kind": "number",
+        "description": "The measured number, unrounded: fmt rounds it to the measure's precision; required"
+      },
+      {
+        "name": "measure",
+        "property": "measure",
+        "kind": "string",
+        "description": "Key of fmt.MEASURES ('potassium', 'temp', 'bpSys'...) or a range-registry key/alias; default none"
+      },
+      {
+        "name": "loinc",
+        "property": "loinc",
+        "kind": "string",
+        "description": "LOINC code; finds the measure when `measure` is absent; default the measure's LOINC"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "UCUM unit code of `value`; default the measure's unit. A different unit drops the sample range (it is in the measure's unit) unless a lab range is passed"
+      },
+      {
+        "name": "precision",
+        "property": "precision",
+        "kind": "number",
+        "description": "Decimals; default the measure's precision, else 0"
+      },
+      {
+        "name": "ref-low",
+        "property": "refLow",
+        "kind": "number",
+        "description": "Lab reference low (FHIR Observation.referenceRange); with `refHigh` it replaces the registry range in every context; default from the registry"
+      },
+      {
+        "name": "ref-high",
+        "property": "refHigh",
+        "kind": "number",
+        "description": "Lab reference high; default from the registry"
+      },
+      {
+        "name": "crit-low",
+        "property": "critLow",
+        "kind": "number",
+        "description": "Lab critical low; default the registry's critical low for the context"
+      },
+      {
+        "name": "crit-high",
+        "property": "critHigh",
+        "kind": "number",
+        "description": "Lab critical high; default the registry's critical high for the context"
+      },
+      {
+        "name": "flag",
+        "property": "flag",
+        "kind": "string",
+        "description": "Lab flag; overrides the computed one ('A'/'AA' for results with no direction); default computed"
+      },
+      {
+        "name": "trend",
+        "property": "trend",
+        "kind": "string",
+        "description": "Trend arrow, read as rising / falling / unchanged; default none"
+      },
+      {
+        "name": "delta",
+        "property": "delta",
+        "kind": "string",
+        "description": "Change text shown after the arrow ('+0.6'); default none"
+      },
+      {
+        "name": "timestamp",
+        "property": "timestamp",
+        "kind": "string",
+        "description": "ISO time of the result, shown in the tooltip and meta line; default none"
+      },
+      {
+        "name": "time-zone",
+        "property": "timeZone",
+        "kind": "string",
+        "description": "IANA zone for the timestamp; default the browser zone"
+      },
+      {
+        "name": "source",
+        "property": "source",
+        "kind": "string",
+        "description": "Performing lab or device; default none"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "Result status; 'entered-in-error' strikes the value through, greys it and never flags it; default 'final'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md' | 'lg'; default 'md'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Label override; default the measure label"
+      },
+      {
+        "name": "show-meta",
+        "property": "showMeta",
+        "kind": "boolean",
+        "description": "Second line with range, time and source; default false"
+      },
+      {
+        "name": "show-label",
+        "property": "showLabel",
+        "kind": "boolean",
+        "description": "Shows the measure name before the value; default false"
+      },
+      {
+        "name": "show-normal",
+        "property": "showNormal",
+        "kind": "boolean",
+        "description": "Shows the N flag for normal values; default false"
+      },
+      {
+        "name": "tooltip",
+        "property": "tooltip",
+        "kind": "boolean",
+        "description": "Range tooltip on hover and focus; default true"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which registry range applies: 'outpatient' | 'inpatient' | 'ed' | 'pediatric' | 'pregnancy'. The lab range (refLow/refHigh) still wins; default the nearest RangeContextProvider, else the global setRangeContext, else `defaultRangeContext`, else 'outpatient'"
+      },
+      {
+        "name": "default-range-context",
+        "property": "defaultRangeContext",
+        "kind": "string",
+        "description": "The containing set's default context, used only when no prop, provider or global context applies; default none"
+      },
+      {
+        "name": "age-years",
+        "property": "ageYears",
+        "kind": "number",
+        "description": "Age in years; picks the pediatric band in the 'pediatric' context; default none (oldest band)"
+      },
+      {
+        "name": "flag-variant",
+        "property": "flagVariant",
+        "kind": "string",
+        "description": "Flag variant for non-critical flags (critical flags always show the word); default 'compact'"
+      },
+      {
+        "name": "display",
+        "property": "display",
+        "kind": "string",
+        "description": "Preformatted text shown instead of the formatted value (e.g. '>1000'); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
         "description": ""
       },
       {
-        "name": "co-input",
-        "prop": "onInput",
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
         "description": ""
       }
     ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "CodeDisplay",
+    "tag": "co-code-display",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "system",
+        "property": "system",
+        "kind": "string",
+        "description": "'icd10' | 'cpt' | 'hcpcs' | 'loinc' | 'snomed' | 'rxnorm' | 'ndc'; required"
+      },
+      {
+        "name": "code",
+        "property": "code",
+        "kind": "string",
+        "description": "The code; ICD-10 gets its dot and an 11-digit NDC shows 5-4-2; required"
+      },
+      {
+        "name": "display",
+        "property": "display",
+        "kind": "string",
+        "description": "Description (use licensed short text for CPT); default none"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'inline' (tag, code, description on one line) | 'stacked' (description below); default 'inline'"
+      },
+      {
+        "name": "show-system",
+        "property": "showSystem",
+        "kind": "boolean",
+        "description": "Shows the system tag; default true"
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "'active' | 'inactive' (amber Inactive code note); default 'active'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
     "slots": []
   },
   {
@@ -2487,16 +2513,6 @@
         "name": "co-view-documents",
         "prop": "onViewDocuments",
         "description": "Called by the View Documents button; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -2919,16 +2935,6 @@
         "name": "co-decline",
         "prop": "onDecline",
         "description": "Called by Decline; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -3040,16 +3046,6 @@
         "name": "co-skip",
         "prop": "onSkip",
         "description": "Called when Skip is pressed (the screen then asks for a reason); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -3118,16 +3114,6 @@
         "name": "co-action",
         "prop": "onAction",
         "description": "An item of the More menu; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -3594,6 +3580,94 @@
     "slots": []
   },
   {
+    "component": "DateTimeClinical",
+    "tag": "co-date-time-clinical",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": "Date value: ISO string ('2026-10-09' is a calendar date) or Date; required except in 'gestational' mode"
+      },
+      {
+        "name": "mode",
+        "property": "mode",
+        "kind": "string",
+        "description": "'date' (MM/DD/YYYY) | 'time' | 'datetime' | 'dob' (date and age) | 'age' | 'gestational'; default 'date'"
+      },
+      {
+        "name": "hour24",
+        "property": "hour24",
+        "kind": "boolean",
+        "description": "24-hour time; default false (12-hour)"
+      },
+      {
+        "name": "time-zone",
+        "property": "timeZone",
+        "kind": "string",
+        "description": "IANA zone; shows the zone abbreviation with times; default the browser zone"
+      },
+      {
+        "name": "as-of",
+        "property": "asOf",
+        "kind": "json",
+        "description": "Date the age or gestational age is computed at; default today"
+      },
+      {
+        "name": "weeks",
+        "property": "weeks",
+        "kind": "number",
+        "description": "Gestational age weeks; default none"
+      },
+      {
+        "name": "days",
+        "property": "days",
+        "kind": "number",
+        "description": "Gestational age days; default 0"
+      },
+      {
+        "name": "edd",
+        "property": "edd",
+        "kind": "string",
+        "description": "Estimated due date; gestational age is computed from it when set; default none"
+      },
+      {
+        "name": "prefix",
+        "property": "prefix",
+        "kind": "string",
+        "description": "Text before ('Admitted'); default none"
+      },
+      {
+        "name": "relative",
+        "property": "relative",
+        "kind": "string",
+        "description": "Relative text after ('2 h ago'); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
     "component": "DescriptionList",
     "tag": "co-description-list",
     "aliases": [],
@@ -3630,18 +3704,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -3734,16 +3797,6 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called by the x button, Escape and a scrim press; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -3803,18 +3856,125 @@
       }
     ],
     "properties": [],
-    "events": [
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "DoseDisplay",
+    "tag": "co-dose-display",
+    "aliases": [],
+    "attributes": [
       {
-        "name": "co-change",
-        "prop": "onChange",
+        "name": "drug",
+        "property": "drug",
+        "kind": "string",
+        "description": "Drug name; tall-man lettering is applied automatically; required"
+      },
+      {
+        "name": "amount",
+        "property": "amount",
+        "kind": "json",
+        "description": "Dose amount (a number, or a string such as '.5' that is parsed); required"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "Dose unit: mg, mcg, g, units, mL, mEq... ('U', 'IU', 'ug', 'cc' are rewritten safely); required"
+      },
+      {
+        "name": "strength",
+        "property": "strength",
+        "kind": "number",
+        "description": "Product strength; default none"
+      },
+      {
+        "name": "strength-unit",
+        "property": "strengthUnit",
+        "kind": "string",
+        "description": "Strength unit; default `unit`"
+      },
+      {
+        "name": "form",
+        "property": "form",
+        "kind": "string",
+        "description": "Dose form ('tablet', 'per 5 mL suspension'); default none"
+      },
+      {
+        "name": "route",
+        "property": "route",
+        "kind": "string",
+        "description": "Route ('PO', 'IV', 'subcut'); default none"
+      },
+      {
+        "name": "frequency",
+        "property": "frequency",
+        "kind": "string",
+        "description": "Frequency ('every 6 hours'); default none"
+      },
+      {
+        "name": "prn",
+        "property": "prn",
+        "kind": "boolean",
+        "description": "As needed; default false"
+      },
+      {
+        "name": "prn-reason",
+        "property": "prnReason",
+        "kind": "string",
+        "description": "PRN reason ('itching'); default none"
+      },
+      {
+        "name": "per-kg",
+        "property": "perKg",
+        "kind": "number",
+        "description": "Dose per kg, shown with `weightKg` as the calculation; default none"
+      },
+      {
+        "name": "weight-kg",
+        "property": "weightKg",
+        "kind": "number",
+        "description": "Weight used for the calculation, kg; default none"
+      },
+      {
+        "name": "high-alert",
+        "property": "highAlert",
+        "kind": "boolean",
+        "description": "ISMP high-alert medication: red High-alert badge; default false"
+      },
+      {
+        "name": "look-alike",
+        "property": "lookAlike",
+        "kind": "string",
+        "description": "Look-alike drug name: amber badge; default none"
+      },
+      {
+        "name": "layout",
+        "property": "layout",
+        "kind": "string",
+        "description": "'stacked' (drug above, dose and sig below) | 'inline' (one line for tables); default 'stacked'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
         "description": ""
       },
       {
-        "name": "co-input",
-        "prop": "onInput",
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
         "description": ""
       }
     ],
+    "properties": [],
+    "events": [],
     "slots": []
   },
   {
@@ -3889,16 +4049,6 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called by the x button, Escape and a scrim press; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -4008,16 +4158,6 @@
         "name": "co-change-order",
         "prop": "onChangeOrder",
         "description": "Change Order clicked; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -4315,16 +4455,6 @@
         "name": "co-self-pay",
         "prop": "onSelfPay",
         "description": "Self-pay Good Faith Estimate (inactive and error); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -4372,18 +4502,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "title",
@@ -4520,16 +4639,6 @@
         "name": "co-sign",
         "prop": "onSign",
         "description": "Sign and Send clicked with both factors complete; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -4570,16 +4679,6 @@
         "name": "co-post",
         "prop": "onPost",
         "description": "Called with the row when Post is pressed (only enabled when balanced); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -4678,16 +4777,6 @@
         "name": "co-junk",
         "prop": "onJunk",
         "description": "Called by Mark as Junk; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -5022,11 +5111,6 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the new state; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -5104,18 +5188,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "note",
@@ -5271,18 +5344,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -5364,18 +5426,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -5432,16 +5483,82 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when an item is clicked; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "IdentifierDisplay",
+    "tag": "co-identifier-display",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": "'ssn' | 'mrn' | 'npi' | 'dea' | 'member' | 'other'; required"
       },
       {
-        "name": "co-change",
-        "prop": "onChange",
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Full value; required"
+      },
+      {
+        "name": "masked",
+        "property": "masked",
+        "kind": "boolean",
+        "description": "Mask all but the last 4; default by type (SSN, DEA and member ID masked)"
+      },
+      {
+        "name": "revealable",
+        "property": "revealable",
+        "kind": "boolean",
+        "description": "Eye button that reveals a masked value; default false"
+      },
+      {
+        "name": "copyable",
+        "property": "copyable",
+        "kind": "boolean",
+        "description": "Copy button (copies the full value without spaces); default true"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Label; default the type label (SSN, MRN, NPI, DEA, Member ID)"
+      },
+      {
+        "name": "show-label",
+        "property": "showLabel",
+        "kind": "boolean",
+        "description": "Shows the label; default true"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
         "description": ""
       },
       {
-        "name": "co-input",
-        "prop": "onInput",
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
         "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-reveal",
+        "prop": "onReveal",
+        "description": "Called each time a masked value is revealed: log it for audit; default none"
       }
     ],
     "slots": []
@@ -5556,16 +5673,6 @@
         "name": "co-action",
         "prop": "onAction",
         "description": "Called with the action label when an action button is pressed; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -5672,16 +5779,6 @@
         "name": "co-row-action",
         "prop": "onRowAction",
         "description": "Row menu choice: 'open' | 'route' | 'pend'; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -5811,16 +5908,6 @@
         "name": "co-scan",
         "prop": "onScan",
         "description": "Called when Scan Card is pressed; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -5912,16 +5999,6 @@
         "name": "co-coverage-action",
         "prop": "onCoverageAction",
         "description": "An item of a coverage's More menu; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -6071,16 +6148,6 @@
         "name": "co-help",
         "prop": "onHelp",
         "description": "\"I need help\" in the header; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -6156,16 +6223,6 @@
         "name": "co-select",
         "prop": "onSelect",
         "description": "(label | null) => void: selecting the selected card again clears it; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -6296,18 +6353,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -6377,18 +6423,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -6445,16 +6480,6 @@
         "name": "co-click",
         "prop": "onClick",
         "description": "Makes the row a button with a chevron; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -6676,16 +6701,6 @@
         "name": "co-item-action",
         "prop": "onItemAction",
         "description": "A row menu action was chosen; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -6738,16 +6753,6 @@
         "name": "co-action",
         "prop": "onAction",
         "description": "A menu action was chosen; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -6817,16 +6822,6 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called after an item is chosen, and on Escape or Tab inside the menu; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -6873,16 +6868,6 @@
         "name": "co-back",
         "prop": "onBack",
         "description": "Called when the back link is clicked (client-side routing); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -6992,16 +6977,6 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called by Cancel, the x button, Escape and (when `closeOnScrim`) a scrim press; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -7021,6 +6996,64 @@
         "description": "Replaces the default Cancel + primary footer; `null` removes the footer; default the two buttons Plain text also works as the `footer` attribute."
       }
     ]
+  },
+  {
+    "component": "MoneyDisplay",
+    "tag": "co-money-display",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "number",
+        "description": "Amount in US dollars; null shows an en dash (no amount); required"
+      },
+      {
+        "name": "emphasis",
+        "property": "emphasis",
+        "kind": "boolean",
+        "description": "Bold, for balance due; default false"
+      },
+      {
+        "name": "align",
+        "property": "align",
+        "kind": "string",
+        "description": "'start' | 'end' (right aligned for columns); default 'start'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Appended to the spoken text ('contractual adjustment'); default none"
+      },
+      {
+        "name": "min-width",
+        "property": "minWidth",
+        "kind": "number",
+        "description": "Column width in px when `align` is 'end'; default 90"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
   },
   {
     "component": "OrderSetPicker",
@@ -7081,11 +7114,6 @@
         "name": "co-sign",
         "prop": "onSign",
         "description": "Called by Sign Orders with the ticked items of the shown set; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -7167,16 +7195,6 @@
         "name": "co-page-size",
         "prop": "onPageSize",
         "description": "Called with the new rows per page (the page also resets to 1); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -7296,18 +7314,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "actions",
@@ -7380,11 +7387,6 @@
         "name": "co-add",
         "prop": "onAdd",
         "description": "Add (+) button handler; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -7433,16 +7435,6 @@
     ],
     "properties": [],
     "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      },
       {
         "name": "co-home",
         "prop": "onHome",
@@ -7606,16 +7598,6 @@
         "name": "co-compare-roles",
         "prop": "onCompareRoles",
         "description": "\"Compare roles\" clicked (denied); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -7673,16 +7655,6 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when a tab is clicked; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -7774,18 +7746,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "(default)",
@@ -7882,11 +7843,6 @@
         "name": "co-biometric",
         "prop": "onBiometric",
         "description": "Called when the biometric key is pressed; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -8065,18 +8021,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -8144,16 +8089,6 @@
         "name": "co-add",
         "prop": "onAdd",
         "description": "Called with the code picked in Add problem; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -8243,18 +8178,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "helper",
@@ -8311,16 +8235,6 @@
         "name": "co-book",
         "prop": "onBook",
         "description": "Called when a free slot is chosen; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -8379,16 +8293,6 @@
         "name": "co-view-gaps",
         "prop": "onViewGaps",
         "description": "Called by the \"View N patients with gaps\" link; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -8435,18 +8339,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -8670,6 +8563,136 @@
     ]
   },
   {
+    "component": "ReferenceRangeBar",
+    "tag": "co-reference-range-bar",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "number",
+        "description": "The result; required"
+      },
+      {
+        "name": "measure",
+        "property": "measure",
+        "kind": "string",
+        "description": "Measure key (fmt.MEASURES or the range registry); default none"
+      },
+      {
+        "name": "loinc",
+        "property": "loinc",
+        "kind": "string",
+        "description": "LOINC code; finds the measure when `measure` is absent; default none"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "UCUM unit code; default the measure's unit"
+      },
+      {
+        "name": "precision",
+        "property": "precision",
+        "kind": "number",
+        "description": "Decimals; default the measure's precision"
+      },
+      {
+        "name": "ref-low",
+        "property": "refLow",
+        "kind": "number",
+        "description": "Lab reference low; with `refHigh` it replaces the registry range; default from the registry"
+      },
+      {
+        "name": "ref-high",
+        "property": "refHigh",
+        "kind": "number",
+        "description": "Lab reference high; default from the registry"
+      },
+      {
+        "name": "crit-low",
+        "property": "critLow",
+        "kind": "number",
+        "description": "Critical low; default from the registry"
+      },
+      {
+        "name": "crit-high",
+        "property": "critHigh",
+        "kind": "number",
+        "description": "Critical high; default from the registry"
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "number",
+        "description": "Bar start; default auto (lowest edge or value, minus 12% padding)"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Bar end; default auto (highest edge or value, plus 12% padding)"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Label; default the measure label"
+      },
+      {
+        "name": "show-header",
+        "property": "showHeader",
+        "kind": "boolean",
+        "description": "Header row with label and value; default true"
+      },
+      {
+        "name": "width",
+        "property": "width",
+        "kind": "json",
+        "description": "Width (px number or CSS length); default '100%'"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-range-context",
+        "property": "defaultRangeContext",
+        "kind": "string",
+        "description": "The containing set's default context, used only when no prop, provider or global context applies; default none"
+      },
+      {
+        "name": "age-years",
+        "property": "ageYears",
+        "kind": "number",
+        "description": "Age in years for the pediatric bands; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
     "component": "ReferralCard",
     "tag": "co-referral-card",
     "aliases": [],
@@ -8718,18 +8741,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "actions",
@@ -8841,11 +8853,6 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the chosen role label; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -8953,18 +8960,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "footer",
@@ -9033,11 +9029,6 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with all answers after one changes; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -9090,11 +9081,6 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the clicked section label. Items without `href` do not navigate; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -9328,18 +9314,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "(default)",
@@ -9419,16 +9394,6 @@
         "name": "co-navigate",
         "prop": "onNavigate",
         "description": "Called when an item is clicked; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -9481,11 +9446,6 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the whole sig on every edit; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -9602,16 +9562,6 @@
         "name": "co-clear",
         "prop": "onClear",
         "description": "Called when the signature is cleared; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -9849,18 +9799,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -9906,18 +9845,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -10078,16 +10006,6 @@
         "name": "co-click",
         "prop": "onClick",
         "description": "Makes the card a toggle button (aria-pressed); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -10170,18 +10088,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -10239,18 +10146,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -10334,16 +10230,6 @@
         "name": "co-save-draft",
         "prop": "onSaveDraft",
         "description": "Shows a Save Draft button that calls this; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -10413,11 +10299,6 @@
         "name": "co-apply",
         "prop": "onApply",
         "description": "Called with the style id when \"Apply to practice\" is chosen; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -10492,16 +10373,6 @@
         "name": "co-close",
         "prop": "onClose",
         "description": "Called on Escape; default `onOkay`"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -10576,16 +10447,6 @@
         "name": "co-send",
         "prop": "onSend",
         "description": "Called with the selected codes when Send to Billing is pressed; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -10730,11 +10591,6 @@
         "name": "co-change",
         "prop": "onChange",
         "description": "Called with the new tab id; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -10781,16 +10637,6 @@
         "name": "co-done-change",
         "prop": "onDoneChange",
         "description": "Called when the done check changes"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -10905,16 +10751,6 @@
         "name": "co-end",
         "prop": "onEnd",
         "description": "Called when End Visit is pressed (live and poor states); default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -11258,18 +11094,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -11345,11 +11170,6 @@
         "name": "co-day-change",
         "prop": "onDayChange",
         "description": "(dayId) => void, called when a day is chosen; default none"
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -11413,16 +11233,6 @@
         "name": "co-dismiss",
         "prop": "onDismiss",
         "description": "Shows a Dismiss (x) button that calls this; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -11609,16 +11419,6 @@
         "name": "co-account",
         "prop": "onAccount",
         "description": "Account button handler; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -11678,18 +11478,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": [
       {
         "name": "helper",
@@ -11697,6 +11486,118 @@
         "description": "Helper text under the bar (\"Valid 10/01/2026 to 12/31/2026\"); default none Plain text also works as the `helper` attribute."
       }
     ]
+  },
+  {
+    "component": "UnitToggle",
+    "tag": "co-unit-toggle",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "Measure family: 'weight' | 'height' | 'temp' | 'glucose' | 'creatinine' | 'a1c'; required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "number",
+        "description": "Stored value, in `unit`; required"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "UCUM code of the stored value ('kg', '[lb_av]', 'Cel', 'mg/dL'...); required"
+      },
+      {
+        "name": "default-unit",
+        "property": "defaultUnit",
+        "kind": "string",
+        "description": "Unit shown first (uncontrolled); default `unit`"
+      },
+      {
+        "name": "display-unit",
+        "property": "displayUnit",
+        "kind": "string",
+        "description": "Unit shown (controlled); default none"
+      },
+      {
+        "name": "show-stored",
+        "property": "showStored",
+        "kind": "boolean",
+        "description": "Shows \"Stored as ...\" under the converted value; default false"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Label; default the measure label"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md' | 'lg'; default 'md'"
+      },
+      {
+        "name": "measure",
+        "property": "measure",
+        "kind": "string",
+        "description": "Measure key when it differs from `kind`; default `kind`"
+      },
+      {
+        "name": "show-meta",
+        "property": "showMeta",
+        "kind": "boolean",
+        "description": "Shows the range and meta line (in the measure's own unit only); default false"
+      },
+      {
+        "name": "range-context",
+        "property": "rangeContext",
+        "kind": "string",
+        "description": "Which shared reference range flags use; the lab range on a result still wins; default the global context, else 'outpatient'"
+      },
+      {
+        "name": "default-range-context",
+        "property": "defaultRangeContext",
+        "kind": "string",
+        "description": "The containing set's default context, used only when no prop, provider or global context applies; default none"
+      },
+      {
+        "name": "age-years",
+        "property": "ageYears",
+        "kind": "number",
+        "description": "Age in years for the pediatric bands; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the UCUM code the reader picks; default none"
+      }
+    ],
+    "slots": []
   },
   {
     "component": "VisitNoteEditor",
@@ -11833,16 +11734,6 @@
         "name": "co-section-change",
         "prop": "onSectionChange",
         "description": "Called with the section id and its new text as the user types or accepts an AI draft; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []
@@ -11908,18 +11799,7 @@
       }
     ],
     "properties": [],
-    "events": [
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
-      }
-    ],
+    "events": [],
     "slots": []
   },
   {
@@ -11964,16 +11844,6 @@
         "name": "co-enter-vitals",
         "prop": "onEnterVitals",
         "description": "Enter Vitals clicked; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": [
@@ -12035,16 +11905,6 @@
         "name": "co-remove",
         "prop": "onRemove",
         "description": "Row menu: Remove from Waitlist; default none"
-      },
-      {
-        "name": "co-change",
-        "prop": "onChange",
-        "description": ""
-      },
-      {
-        "name": "co-input",
-        "prop": "onInput",
-        "description": ""
       }
     ],
     "slots": []

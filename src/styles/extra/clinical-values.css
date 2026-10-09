@@ -1,0 +1,80 @@
+/* Clinical values: ClinicalValue, AbnormalFlag, ReferenceRangeBar, UnitToggle, DoseDisplay, DateTimeClinical,
+   IdentifierDisplay, CodeDisplay, MoneyDisplay. Ported from the ext: clinical-values injected CSS (class names kept). */
+
+/* ClinicalValue */
+.co-cv { display: inline-flex; align-items: baseline; gap: 6px; font-variant-numeric: tabular-nums; color: var(--co-ink); }
+.co-cv-v { font-weight: 600; }
+.co-cv-u { color: var(--co-muted); font-size: .86em; }
+.co-cv-lg .co-cv-v { font-size: 22px; }
+.co-cv-sm { font-size: 12px; }
+.co-cv-hi .co-cv-v { color: var(--co-warning-strong); }
+.co-cv-crit .co-cv-v { color: var(--co-danger-strong); }
+.co-cv-eie { color: var(--co-muted); }
+.co-cv-eie .co-cv-v, .co-cv-eie .co-cv-u { text-decoration: line-through; color: var(--co-muted); font-weight: 400; }
+.co-cv-meta { color: var(--co-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.co-cv-trend { color: var(--co-ink-2); font-size: 12px; }
+.co-cv-stack { display: inline-flex; flex-direction: column; gap: 2px; }
+/* Screen-reader-only text (the source used an inline style). */
+.co-cv-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* AbnormalFlag */
+.co-af { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; line-height: 1; padding: 3px 6px; border-radius: var(--co-radius-xs); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.co-af-neutral { background: var(--co-surface-muted); color: var(--co-ink-2); }
+.co-af-warning { background: var(--co-warning-soft); color: var(--co-warning-strong); }
+.co-af-critical { background: var(--co-danger-strong); color: var(--co-on-status, #fff); }
+.co-af-w { font-weight: 600; }
+
+/* ReferenceRangeBar */
+.co-rr-wrap { min-width: 160px; width: 100%; }
+.co-rr-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.co-rr-hl { font-size: 13px; color: var(--co-ink-2); }
+.co-rr { position: relative; height: 8px; border-radius: 4px; background: var(--co-surface-muted); margin: 22px 0 18px; }
+.co-rr-n { position: absolute; top: 0; bottom: 0; background: var(--co-success-soft); border-left: 2px solid var(--co-success); border-right: 2px solid var(--co-success); }
+.co-rr-c { position: absolute; top: 0; bottom: 0; background: var(--co-danger-soft); }
+.co-rr-m { position: absolute; top: -5px; width: 4px; height: 18px; margin-left: -2px; border-radius: 2px; background: var(--co-ink); }
+.co-rr-ml { position: absolute; top: -22px; transform: translateX(-50%); font-size: 12px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.co-rr-t { position: absolute; top: 12px; transform: translateX(-50%); font-size: 11px; color: var(--co-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Shared monospace for identifiers and codes */
+.co-mono { font-family: var(--co-font-mono); font-variant-numeric: tabular-nums; }
+
+/* IdentifierDisplay */
+.co-id { display: inline-flex; align-items: center; gap: 6px; }
+.co-id-l { font-size: 11px; color: var(--co-muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+
+/* CodeDisplay. `.co-code` is also the inline code chip in components.css; `.co-code-disp` undoes the chip look
+   (font, colour, fill, padding, nowrap) so only the system tag is filled. */
+.co-code { display: inline-flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.co-code.co-code-disp { font: inherit; color: inherit; background: none; padding: 0; border-radius: 0; white-space: normal; }
+.co-code-s { font-size: 10px; font-weight: 700; color: var(--co-primary-strong); background: var(--co-primary-soft); padding: 2px 5px; border-radius: var(--co-radius-xs); letter-spacing: .03em; }
+abbr.co-code-s { text-decoration: none; }
+.co-code-c { font-weight: 600; }
+.co-code-d { color: var(--co-ink-2); }
+
+/* MoneyDisplay */
+.co-money { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.co-money-neg { color: var(--co-ink-2); }
+.co-money-due { font-weight: 700; }
+.co-money-end { display: inline-block; text-align: right; }
+
+/* DoseDisplay */
+.co-dose { display: inline-flex; flex-direction: column; gap: 2px; }
+.co-dose-h { display: inline-flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.co-dose-n { font-weight: 600; }
+.co-dose-a { font-variant-numeric: tabular-nums; font-weight: 600; }
+.co-dose-sig { color: var(--co-ink-2); font-size: 13px; }
+
+/* DateTimeClinical: tabular figures in the running font */
+.co-dt { font-family: inherit; }
+
+/* UnitToggle */
+.co-ut { display: inline-flex; flex-direction: column; gap: 6px; }
+.co-ut-seg { display: inline-flex; border: 1px solid var(--co-border); border-radius: var(--co-radius-sm); overflow: hidden; }
+.co-ut-seg button { border: 0; background: var(--co-surface); color: var(--co-ink-2); padding: 3px 10px; font: inherit; font-size: 12px; cursor: pointer; }
+.co-ut-seg button[aria-pressed=true] { background: var(--co-primary); color: var(--co-primary-ink); }
+.co-ut-seg button:focus-visible { outline: 2px solid var(--co-focus-ring, var(--co-primary)); outline-offset: -2px; }
+
+/* ClinicalValue range tooltip (hover and focus) */
+.co-cv-tipw { position: relative; display: inline-flex; }
+.co-cv-tip { position: absolute; left: 0; top: 100%; margin-top: 4px; z-index: var(--co-z-tooltip, 50); background: var(--co-toast-bg, #222); color: var(--co-toast-ink, #fff); font-size: 12px; font-weight: 400; padding: 6px 8px; border-radius: var(--co-radius-sm); white-space: nowrap; display: none; }
+.co-cv-tipw:hover .co-cv-tip, .co-cv-tipw:focus-within .co-cv-tip { display: block; }

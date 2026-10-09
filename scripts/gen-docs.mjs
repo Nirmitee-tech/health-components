@@ -8,6 +8,7 @@
  * Output is generated on every docs build; edit the sources above, never the generated pages.
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import ts from 'typescript';
 import { flattenCss } from './css-utils.mjs';
@@ -301,4 +302,6 @@ Every component is a React component (\`import { Button } from 'health-component
 <Catalogue />
 `
 );
+// The machine-readable component manifest, served at /manifest.agents.json.
+execFileSync(process.execPath, [resolve(root, 'scripts/gen-agents-manifest.mjs'), 'website/static/manifest.agents.json'], { stdio: 'inherit' });
 console.log(`docs: ${catalogue.length} component pages in ${groups.size} groups`);

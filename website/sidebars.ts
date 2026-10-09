@@ -18,10 +18,12 @@ const sidebars: SidebarsConfig = {
     },
     'screen-recipes',
     'role-based-ui',
+    'for-ai-agents',
   ],
   foundations: [
     'foundations/overview',
     'foundations/color',
+    'foundations/clinical-values',
     'foundations/typography',
     'foundations/layout',
     'foundations/iconography',

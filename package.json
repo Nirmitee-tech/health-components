@@ -74,6 +74,7 @@
     "./fonts.css": "./dist/fonts.css",
     "./components.css": "./dist/components.css",
     "./cdn/careos-elements.js": "./dist/cdn/careos-elements.js",
+    "./manifest.agents.json": "./dist/manifest.agents.json",
     "./package.json": "./package.json"
   },
   "files": [
@@ -88,7 +89,7 @@
   ],
   "scripts": {
     "tokens": "node scripts/build-tokens.mjs",
-    "build": "npm run clean && npm run tokens && node scripts/gen-index.mjs && node scripts/gen-elements.mjs && tsup && node scripts/build-css.mjs && node scripts/build-umd.mjs",
+    "build": "npm run clean && npm run tokens && node scripts/gen-index.mjs && node scripts/gen-elements.mjs && tsup && node scripts/build-css.mjs && node scripts/build-umd.mjs && node scripts/gen-agents-manifest.mjs",
     "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit -p tsconfig.json",

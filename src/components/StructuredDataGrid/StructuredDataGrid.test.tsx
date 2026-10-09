@@ -77,7 +77,7 @@ describe('StructuredDataGrid', () => {
 
   it('moves to the next cell with Right at the end of a value', async () => {
     render(<StructuredDataGrid title="Vitals" columns={cols} rows={[{ time: '08:00', hr: '88', spo2: '96', rhythm: 'Sinus' }]} />);
-    const hr = screen.getByRole('textbox', { name: 'HR, 08:00 in bpm' });
+    const hr = screen.getByRole('textbox', { name: 'HR, 08:00 in bpm' }) as HTMLInputElement;
     await userEvent.click(hr);
     hr.setSelectionRange(1, 1);
     await userEvent.keyboard('{ArrowRight}');

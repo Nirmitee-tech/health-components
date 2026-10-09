@@ -34,4 +34,4 @@
 /* Port additions: each line of an editable page is a button (keyboard reachable), styled as plain page text. */
 .cp-line{display:block;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;line-height:inherit;text-align:left;cursor:text;white-space:pre-wrap}
 .cp-line:hover{background:var(--co-primary-soft)}
-.cp-line:focus-visible,.cp-page mark:focus-visible{outline:2px solid var(--co-focus-ring);outline-offset:1px}
+.cp-line:focus-visible{outline:2px solid var(--co-focus-ring);outline-offset:1px}

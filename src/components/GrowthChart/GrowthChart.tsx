@@ -101,6 +101,14 @@ export interface GrowthBand {
   high?: boolean;
 }
 
+/** 3 to '3rd', 50 to '50th', 97 to '97th'. */
+function ordinal(n: number | string): string {
+  const v = Number(n);
+  if (!Number.isInteger(v)) return String(n);
+  const t = v % 100;
+  return v + (t >= 11 && t <= 13 ? 'th' : (['th', 'st', 'nd', 'rd'][v % 10] ?? 'th'));
+}
+
 function interp(ages: ReadonlyArray<number>, vals: ReadonlyArray<number>, a: number): number {
   if (a <= ages[0]!) return vals[0]!;
   for (let i = 1; i < ages.length; i++)
@@ -114,10 +122,10 @@ export function growthBand(cv: GrowthCurves, age: number, value: number): Growth
     .map(Number)
     .sort((p, q) => p - q);
   const at = ks.map((k) => interp(cv.ages, cv.lines[k]!, age));
-  if (value < at[0]!) return { text: 'Below the ' + ks[0] + 'th percentile', low: true };
-  if (value > at[at.length - 1]!) return { text: 'Above the ' + ks[ks.length - 1] + 'th percentile', high: true };
+  if (value < at[0]!) return { text: 'Below the ' + ordinal(ks[0]!) + ' percentile', low: true };
+  if (value > at[at.length - 1]!) return { text: 'Above the ' + ordinal(ks[ks.length - 1]!) + ' percentile', high: true };
   for (let i = 1; i < ks.length; i++)
-    if (value <= at[i]!) return { text: 'Between the ' + ks[i - 1] + 'th and ' + ks[i] + 'th percentile', high: ks[i - 1]! >= 85 };
+    if (value <= at[i]!) return { text: 'Between the ' + ordinal(ks[i - 1]!) + ' and ' + ordinal(ks[i]!) + ' percentile', high: ks[i - 1]! >= 85 };
   return { text: '' };
 }
 
@@ -262,7 +270,7 @@ export const GrowthChart = forwardRef<HTMLElement, GrowthChartProps>(function Gr
                     strokeDasharray={main ? undefined : '5 3'}
                   />
                   <text x={W - PR + 4} y={y(L[L.length - 1]!) + 3} className="co-axis">
-                    {k + 'th'}
+                    {ordinal(k)}
                   </text>
                 </g>
               );

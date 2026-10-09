@@ -147,6 +147,7 @@ export const DocumentViewer = forwardRef<HTMLElement, DocumentViewerProps>(funct
         </EmptyState>
       ) : (
         <div className="cp-doc">
+          {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- scrollable pages must be keyboard focusable so they can be scrolled (axe scrollable-region-focusable). */}
           <div
             tabIndex={0}
             role="region"
@@ -159,22 +160,15 @@ export const DocumentViewer = forwardRef<HTMLElement, DocumentViewerProps>(funct
                 if (a) {
                   return (
                     <div key={i}>
-                      <mark
-                        className={cx(a.kind === 'comment' && 'cp-cm', on === a.id && 'is-on')}
-                        tabIndex={0}
-                        role="button"
+                      <button
+                        type="button"
+                        className="cp-line"
                         aria-pressed={on === a.id}
                         aria-label={(a.kind === 'comment' ? 'Comment' : 'Highlight') + ' by ' + a.author + ': ' + (ln || 'blank line')}
                         onClick={() => setOn(a.id)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            setOn(a.id);
-                          }
-                        }}
                       >
-                        {ln}
-                      </mark>
+                        <mark className={cx(a.kind === 'comment' && 'cp-cm', on === a.id && 'is-on')}>{ln || '\u00a0'}</mark>
+                      </button>
                     </div>
                   );
                 }

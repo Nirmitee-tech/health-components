@@ -60,7 +60,7 @@ describe('OrderReconciliation', () => {
     });
     expect(release).toBeEnabled();
     await userEvent.click(release);
-    expect(onRelease.mock.calls[0][0].map((o: TransferOrder) => o.action)).toEqual([
+    expect(onRelease.mock.calls[0]![0].map((o: TransferOrder) => o.action)).toEqual([
       'modify',
       'continue',
       'discontinue',
@@ -73,7 +73,7 @@ describe('OrderReconciliation', () => {
     await userEvent.click(
       within(screen.getByRole('radiogroup', { name: 'Action for Ceftriaxone' })).getByRole('radio', { name: 'Stop' })
     );
-    expect(onOrdersChange.mock.calls[0][0][1].action).toBe('discontinue');
+    expect(onOrdersChange.mock.calls[0]![0][1].action).toBe('discontinue');
     expect(screen.getByText('Ceftriaxone').closest('div')).toHaveClass('ip-strike');
   });
 

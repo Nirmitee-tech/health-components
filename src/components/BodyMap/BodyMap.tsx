@@ -203,7 +203,6 @@ export const BodyMap = forwardRef<HTMLElement, BodyMapProps>(function BodyMap(
             </text>
             {shown.map((m) => (
               // Mouse shortcut only: the list beside the drawing repeats every mark in text, so nothing is lost without it.
-              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
               <g key={m.n} className="co-bodymap-pin" onClick={() => select(m.n)}>
                 {cur === m.n ? <circle cx={m.x} cy={m.y} r={12} fill="none" stroke="var(--co-ink)" strokeWidth={2} /> : null}
                 <circle

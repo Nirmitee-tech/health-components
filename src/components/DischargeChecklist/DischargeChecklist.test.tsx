@@ -63,12 +63,12 @@ describe('DischargeChecklist', () => {
       name: /Home oxygen delivered/,
     });
     await userEvent.click(oxygen);
-    expect(onItemsChange.mock.calls[0][0][1]).toMatchObject({
+    expect(onItemsChange.mock.calls[0]![0][1]).toMatchObject({
       done: true,
       by: 'You',
     });
     await userEvent.click(oxygen);
-    expect(onItemsChange.mock.calls[1][0][1]).toMatchObject({
+    expect(onItemsChange.mock.calls[1]![0][1]).toMatchObject({
       done: false,
       by: null,
     });

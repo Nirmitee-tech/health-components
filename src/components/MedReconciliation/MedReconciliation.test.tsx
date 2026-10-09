@@ -73,7 +73,7 @@ describe('MedReconciliation', () => {
     expect(ready).toBeEnabled();
     await userEvent.click(ready);
     expect(onSign).toHaveBeenCalledTimes(1);
-    expect(onSign.mock.calls[0][0].map((r: MedRecRow) => r.decision)).toEqual(['modify', 'new', 'continue']);
+    expect(onSign.mock.calls[0]![0].map((r: MedRecRow) => r.decision)).toEqual(['modify', 'new', 'continue']);
   });
 
   it('offers continue, modify and stop for home medicines and new or stop for inpatient-only ones', () => {

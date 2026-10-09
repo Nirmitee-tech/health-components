@@ -29,6 +29,6 @@ describe('Audiogram', () => {
       })
     ).toBeInTheDocument();
     expect(screen.getByRole('rowheader', { name: 'Right ear air' })).toBeInTheDocument();
-    expect(screen.getByText('Profound', { selector: '.co-badge, .co-badge *' })).toBeInTheDocument();
+    expect(screen.getByText('Profound', { selector: '.co-tag' })).toBeInTheDocument();
   });
 });

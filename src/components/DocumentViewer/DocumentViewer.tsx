@@ -148,8 +148,7 @@ export const DocumentViewer = forwardRef<HTMLElement, DocumentViewerProps>(funct
       ) : (
         <div className="cp-doc">
           {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- scrollable pages must be keyboard focusable so they can be scrolled (axe scrollable-region-focusable). */}
-          <div
-            tabIndex={0}
+          <div tabIndex={0}
             role="region"
             aria-label="Document pages, scrollable"
             style={{ overflow: 'auto', maxHeight, background: 'var(--co-surface-alt)', padding: 12 }}

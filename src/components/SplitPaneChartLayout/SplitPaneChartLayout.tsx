@@ -90,9 +90,8 @@ export function Splitter({ label, value, min, max, side = 'left', step = 16, con
 
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex -- a focusable separator is a widget (APG window splitter): it takes focus, arrow keys and drag.
-    <div
+    <div tabIndex={0}
       role="separator"
-      tabIndex={0}
       className={cx('cp-split', className)}
       aria-orientation="vertical"
       aria-label={label}

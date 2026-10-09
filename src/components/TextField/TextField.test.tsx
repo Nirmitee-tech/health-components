@@ -65,7 +65,9 @@ describe('TextField', () => {
 
   it('forwards refs, className and native attributes', () => {
     const ref = createRef<HTMLInputElement>();
-    const { container } = render(<TextField ref={ref} label="Units" className="x" name="units" suffix="units" size="sm" />);
+    const { container } = render(
+      <TextField ref={ref} label="Units" className="x" name="units" suffix="units" size="sm" />
+    );
     expect(ref.current).toBeInstanceOf(HTMLInputElement);
     expect(ref.current).toHaveAttribute('name', 'units');
     expect(ref.current).toHaveClass('co-inp-sm');

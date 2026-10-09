@@ -41,6 +41,17 @@ The consumer provides these. Everything else comes from the tokens.
 {toast && <Toast tone="success" message="Draft Saved Successfully" />}  // hide after 2800 ms
 ```
 
+In an app, wrap the root in `ToastProvider` and use the hook: toasts queue in a portal, hide after 2800 ms (5000 ms with an action; hover or focus pauses), and errors stay until dismissed.
+
+```jsx
+<ToastProvider><App /></ToastProvider>
+
+const toast = useToast();
+toast.success("Draft Saved Successfully");
+toast.show({ message: "Notification Deleted Successfully", tone: "success", action: "Undo", onAction: restore });
+toast.error("Could not save. This browser is blocking storage; nothing was changed.");
+```
+
 ## Accessibility
 
 - role status with aria-live polite; errors role alert.

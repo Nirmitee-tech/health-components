@@ -1,4 +1,12 @@
-import { forwardRef, useRef, useState, type CSSProperties, type InputHTMLAttributes, type KeyboardEvent, type ReactNode } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useState,
+  type CSSProperties,
+  type InputHTMLAttributes,
+  type KeyboardEvent,
+  type ReactNode,
+} from 'react';
 import { cx } from '../../internal/cx';
 import { useControllableState, useDismiss, useDomId } from '../../internal/hooks';
 import { Avatar } from '../Avatar/Avatar';
@@ -24,8 +32,10 @@ export interface ComboboxOption {
 
 export type ComboboxKind = 'patient' | 'code' | 'plain';
 
-export interface ComboboxProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange' | 'onSelect' | 'style' | 'size'> {
+export interface ComboboxProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'defaultValue' | 'onChange' | 'onSelect' | 'style' | 'size'
+> {
   /** Visible label; required */
   label: string;
   /** 'patient' (avatar per row) | 'code' (code chip) | 'plain'; default 'plain' */
@@ -174,7 +184,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(function Com
             role="combobox"
             type="text"
             autoComplete="off"
-            aria-expanded={open}
+            aria-expanded={open && list.length > 0}
             aria-controls={open && list.length ? listId : undefined}
             aria-autocomplete="list"
             aria-activedescendant={activeId}
@@ -203,30 +213,30 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(function Com
             {list.length ? (
               <div id={listId} role="listbox" aria-labelledby={`${id}-label`}>
                 {list.map((o, i) => (
-                <div
-                  key={optionKey(o)}
-                  id={`${id}-o${i}`}
-                  role="option"
-                  aria-selected={i === act}
-                  className={cx('co-mi', i === act && 'is-act')}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    choose(o);
-                  }}
-                  onMouseEnter={() => setActive(i)}
-                >
-                  {kind === 'patient' ? (
-                    <Avatar name={o.label} size="sm" aria-hidden="true" />
-                  ) : kind === 'code' && o.code ? (
-                    <span className="co-code">{o.code}</span>
-                  ) : null}
-                  <span className="co-mi-l">
-                    {o.label}
-                    {o.meta ? <span className="co-mi-s">{o.meta}</span> : null}
-                  </span>
-                  {o.flag ? <Badge tone={o.flagTone ?? 'danger'}>{o.flag}</Badge> : null}
-                </div>
-              ))}
+                  <div
+                    key={optionKey(o)}
+                    id={`${id}-o${i}`}
+                    role="option"
+                    aria-selected={i === act}
+                    className={cx('co-mi', i === act && 'is-act')}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      choose(o);
+                    }}
+                    onMouseEnter={() => setActive(i)}
+                  >
+                    {kind === 'patient' ? (
+                      <Avatar name={o.label} size="sm" aria-hidden="true" />
+                    ) : kind === 'code' && o.code ? (
+                      <span className="co-code">{o.code}</span>
+                    ) : null}
+                    <span className="co-mi-l">
+                      {o.label}
+                      {o.meta ? <span className="co-mi-s">{o.meta}</span> : null}
+                    </span>
+                    {o.flag ? <Badge tone={o.flagTone ?? 'danger'}>{o.flag}</Badge> : null}
+                  </div>
+                ))}
               </div>
             ) : (
               <div className="co-menu-h" role="status">

@@ -1,4 +1,5 @@
-import { Icon, iconNames } from '@lib/components/Icon/Icon';
+import { Icon } from '@lib/components/Icon/Icon';
+import { iconNames } from '@lib/components/Icon/paths';
 import { tokens } from '@lib/tokens/tokens';
 import { useState } from 'react';
 

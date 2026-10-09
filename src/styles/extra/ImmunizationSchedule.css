@@ -1,0 +1,2 @@
+/* ImmunizationSchedule: vaccine names are row headers but keep the plain body background (source: inline style). */
+.co-table th.co-imm-v { background: none; }

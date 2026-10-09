@@ -3,8 +3,10 @@ import { cx } from '../../internal/cx';
 import { useControllableState, useDomId } from '../../internal/hooks';
 import { DEFAULT_LOCK_MESSAGE, Field, fieldDescribedBy } from '../Field/Field';
 
-export interface TextAreaProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'defaultValue' | 'onChange' | 'style'> {
+export interface TextAreaProps extends Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  'value' | 'defaultValue' | 'onChange' | 'style'
+> {
   /** Visible label; required */
   label: string;
   /** Visible rows; default 3 */
@@ -58,7 +60,16 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
   const lock = readOnly ? lockMessage : undefined;
   const countId = `${id}-count`;
   return (
-    <Field id={id} label={label} required={required} error={error} helper={helper} lock={lock} className={className} style={style}>
+    <Field
+      id={id}
+      label={label}
+      required={required}
+      error={error}
+      helper={helper}
+      lock={lock}
+      className={className}
+      style={style}
+    >
       <textarea
         ref={ref}
         id={id}
@@ -69,7 +80,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
         readOnly={readOnly}
         aria-invalid={error ? true : undefined}
         aria-required={required || undefined}
-        aria-describedby={fieldDescribedBy(id, { error, helper, lock }, [maxLength ? countId : '', describedByProp].filter(Boolean).join(' ') || undefined)}
+        aria-describedby={fieldDescribedBy(
+          id,
+          { error, helper, lock },
+          [maxLength ? countId : '', describedByProp].filter(Boolean).join(' ') || undefined
+        )}
         onChange={(e) => {
           setValue(e.target.value);
           onChange?.(e.target.value, e);

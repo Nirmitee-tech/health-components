@@ -1,0 +1,2 @@
+/* CopayCollector: amount and method side by side, wrapping on narrow cards (the source used the preview-only pv-grid). */
+.co-copay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: start; }

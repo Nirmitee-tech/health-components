@@ -30,7 +30,10 @@ export const Playground: Story = {};
 export const Showcase: Story = {
   render: () => (
     <div className="pv-grid">
-      <Select label="Provider" options={['All', 'James Bell MD', 'Kristen Yale MD', 'Mandy Harley LCSW', 'Priya Shah MD']} />
+      <Select
+        label="Provider"
+        options={['All', 'James Bell MD', 'Kristen Yale MD', 'Mandy Harley LCSW', 'Priya Shah MD']}
+      />
       <Select
         label="Place of Service"
         required

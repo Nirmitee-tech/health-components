@@ -1,0 +1,29 @@
+<div class="co-root" [attr.data-co-theme]="theme()" style="min-height: 100vh; padding: 16px; display: flex; flex-direction: column; gap: 16px">
+  <label style="display: flex; gap: 8px; align-items: center">
+    Theme
+    <select id="theme" (change)="theme.set($any($event.target).value)">
+      @for (t of themes; track t) {
+        <option [value]="t">{{ t }}</option>
+      }
+    </select>
+  </label>
+
+  <co-patient-banner name="Henna West" sex="F" age="38" dob="03/14/1988" mrn="MRN-100231" [allergies]="allergies"></co-patient-banner>
+
+  <co-tabs [items]="tabs" [value]="tab()" (co-change)="onTab($event)"></co-tabs>
+
+  <co-card title="Claim">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <co-button variant="primary" icon-left="plus" (click)="record('Start Visit Note')">Start Visit Note</co-button>
+      <co-split-button label="Submit Claim" [items]="claimActions" (co-item-select)="onClaimAction($event)"></co-split-button>
+    </div>
+    <co-select label="Provider" [options]="providers" (co-change)="onProvider($event)"></co-select>
+    <p>Current tab: <strong id="current-tab">{{ tab() }}</strong></p>
+  </co-card>
+
+  <ul id="log">
+    @for (line of log(); track $index) {
+      <li>{{ line }}</li>
+    }
+  </ul>
+</div>

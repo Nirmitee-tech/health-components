@@ -1,0 +1,2 @@
+/* TelehealthCallFrame: Mute and camera buttons are toggles; show the pressed state. */
+.co-tele .co-ib[aria-pressed="true"] { background: var(--co-primary-tint); border-color: var(--co-primary); color: var(--co-primary-strong); }

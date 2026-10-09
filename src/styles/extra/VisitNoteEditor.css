@@ -1,0 +1,3 @@
+/* VisitNoteEditor: code chips are a real list (the source used a div); spacing above the second label was inline. */
+.co-vne-codes { list-style: none; margin: 0 0 6px; padding: 0; }
+.co-vne-lbl2 { margin-top: 8px; }

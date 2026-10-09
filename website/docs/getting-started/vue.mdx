@@ -44,10 +44,10 @@ const current = ref('summary');
 
 <template>
   <div class="co-root" data-co-theme="sidebar">
-    <co-tabs :tabs="tabs" :value="current" @co-change="current = $event.detail"></co-tabs>
+    <co-tabs :items="tabs" :value="current" @co-change="current = $event.detail"></co-tabs>
     <co-button variant="primary">Save Changes</co-button>
   </div>
 </template>
 ```
 
-Vue sets arrays and objects as properties automatically (`:tabs`), and `@co-change` listens to the element's events.
+Vue sets arrays and objects as properties automatically (`:items`), and `@co-change` listens to the element's events.

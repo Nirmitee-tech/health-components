@@ -40,6 +40,12 @@ The consumer provides these. Everything else comes from the tokens.
 {open && <CommandPalette items={searchIndex} onSelect={go} onClose={() => setOpen(false)} />}  // open on Ctrl K / Cmd K
 ```
 
+```jsx
+const [open, setOpen] = useState(false);
+useCommandPaletteShortcut(() => setOpen(true));   // Ctrl K / Cmd K
+<CommandPalette open={open} items={searchIndex} onSelect={go} onClose={() => setOpen(false)} />
+```
+
 ## Accessibility
 
 - combobox with listbox; arrows, Enter, Escape. Key hints in the footer.

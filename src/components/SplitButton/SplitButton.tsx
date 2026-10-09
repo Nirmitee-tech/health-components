@@ -3,7 +3,7 @@ import { cx } from '../../internal/cx';
 import { useMenuButton } from '../../internal/useMenuButton';
 import { Button, buttonVariantClass } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { Menu, type MenuAlign, type MenuItem } from '../Menu/Menu';
+import { Menu, type MenuActionItem, type MenuAlign, type MenuItem } from '../Menu/Menu';
 
 export interface SplitButtonProps {
   /** Main action label ("Submit Claim"); required */
@@ -24,6 +24,8 @@ export interface SplitButtonProps {
   open?: boolean;
   /** Called when the menu opens or closes */
   onOpenChange?: (open: boolean) => void;
+  /** Called with the chosen item and its index, after the item's own onSelect (one handler for every item); default none */
+  onItemSelect?: (item: MenuActionItem, index: number) => void;
   /** Disables both halves; default false */
   disabled?: boolean;
   /** 'right' | 'left': menu alignment; default 'right' */
@@ -44,6 +46,7 @@ export const SplitButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, Spl
     defaultOpen,
     open: openProp,
     onOpenChange,
+    onItemSelect,
     disabled = false,
     align,
     className,
@@ -53,13 +56,7 @@ export const SplitButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, Spl
   const mb = useMenuButton<HTMLButtonElement>({ open: openProp, defaultOpen, onOpenChange });
   return (
     <div className={cx('co-split', 'co-mwrap', className)} ref={mb.wrapRef}>
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        onClick={onClick}
-        disabled={disabled}
-      >
+      <Button ref={ref} variant={variant} size={size} onClick={onClick} disabled={disabled}>
         {label}
       </Button>
       <button
@@ -82,6 +79,7 @@ export const SplitButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, Spl
           items={items}
           align={align}
           label={`${label}: ${menuLabel}`}
+          onItemSelect={onItemSelect}
           autoFocus={mb.focusTarget}
           onClose={mb.closeToTrigger}
         />

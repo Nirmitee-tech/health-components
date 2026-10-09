@@ -53,9 +53,10 @@ export interface MenuHeadingItem {
 export type MenuItem = MenuActionItem | MenuDividerItem | MenuHeadingItem;
 export type MenuAlign = 'right' | 'left';
 
-const isAction = (it: MenuItem): it is MenuActionItem => !('divider' in it && it.divider) && !('heading' in it && it.heading != null);
+const isAction = (it: MenuItem): it is MenuActionItem =>
+  !('divider' in it && it.divider) && !('heading' in it && it.heading != null);
 
-export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'autoFocus'> {
   /** Array<{label, icon?, hint?, shortcut?, danger?, disabled?, active?, onSelect?} | {divider:true} | {heading}>; required */
   items: MenuItem[];
   /** 'right' | 'left': which edge of the trigger the dropdown lines up with; default 'right' */
@@ -64,6 +65,8 @@ export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, 'childre
   inline?: boolean;
   /** aria-label of the menu; default none */
   label?: string;
+  /** Called with the chosen item and its index, after the item's own onSelect (one handler for every item); default none */
+  onItemSelect?: (item: MenuActionItem, index: number) => void;
   /** Called after an item is chosen, and on Escape or Tab inside the menu; default none */
   onClose?: () => void;
   /** Moves focus to the first or last item on mount (used by menu buttons); default false */
@@ -74,7 +77,7 @@ export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, 'childre
 
 /** Menu lists actions in a dropdown, following the ARIA menu pattern (arrows, Home/End, type-ahead, Escape). */
 export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(
-  { items, align = 'right', inline = false, label, onClose, autoFocus = false, className, onKeyDown, ...rest },
+  { items, align = 'right', inline = false, label, onItemSelect, onClose, autoFocus = false, className, onKeyDown, ...rest },
   ref
 ) {
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -166,6 +169,7 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(
             onFocus={() => setCurrent(i)}
             onClick={(e) => {
               it.onSelect?.(e);
+              onItemSelect?.(it, i);
               onClose?.();
             }}
           >
@@ -197,6 +201,8 @@ export interface KebabMenuProps {
   open?: boolean;
   /** Called when the menu opens or closes */
   onOpenChange?: (open: boolean) => void;
+  /** Called with the chosen item and its index, after the item's own onSelect (one handler for every item); default none */
+  onItemSelect?: (item: MenuActionItem, index: number) => void;
   /** Class on the wrapper */
   className?: string;
 }
@@ -210,6 +216,7 @@ export function KebabMenu({
   defaultOpen,
   open: openProp,
   onOpenChange,
+  onItemSelect,
   className,
 }: KebabMenuProps) {
   const mb = useMenuButton<HTMLButtonElement>({ open: openProp, defaultOpen, onOpenChange });
@@ -232,6 +239,7 @@ export function KebabMenu({
           items={items}
           align={align}
           label={label}
+          onItemSelect={onItemSelect}
           autoFocus={mb.focusTarget}
           onClose={mb.closeToTrigger}
         />

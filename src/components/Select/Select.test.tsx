@@ -6,10 +6,20 @@ import { Select } from './Select';
 
 describe('Select', () => {
   it('renders string and object options with a placeholder', () => {
-    render(<Select label="Place of Service" placeholder="Choose one" options={['11 Office', { value: '02', label: '02 Telehealth' }]} />);
+    render(
+      <Select
+        label="Place of Service"
+        placeholder="Choose one"
+        options={['11 Office', { value: '02', label: '02 Telehealth' }]}
+      />
+    );
     const sel = screen.getByRole('combobox', { name: 'Place of Service' });
     expect(sel).toHaveClass('co-inp', 'co-sel');
-    expect(screen.getAllByRole('option').map((o) => o.textContent)).toEqual(['Choose one', '11 Office', '02 Telehealth']);
+    expect(screen.getAllByRole('option').map((o) => o.textContent)).toEqual([
+      'Choose one',
+      '11 Office',
+      '02 Telehealth',
+    ]);
   });
 
   it('changes value natively', async () => {

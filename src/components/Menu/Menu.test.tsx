@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
+import { SplitButton } from '../SplitButton/SplitButton';
 import { KebabMenu, Menu, Popover, type MenuItem } from './Menu';
 
 const items: MenuItem[] = [
@@ -112,5 +113,15 @@ describe('Popover', () => {
     await userEvent.keyboard('{Escape}');
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();
+  });
+});
+
+describe('onItemSelect', () => {
+  it('reports the chosen item and index from Menu, KebabMenu and SplitButton', async () => {
+    const pick = vi.fn();
+    render(<SplitButton label="Submit Claim" items={[{ label: 'Submit and Print' }, { label: 'Save as Draft' }]} onItemSelect={pick} />);
+    await userEvent.click(screen.getByRole('button', { name: 'More options' }));
+    await userEvent.click(screen.getByRole('menuitem', { name: 'Save as Draft' }));
+    expect(pick).toHaveBeenCalledWith(expect.objectContaining({ label: 'Save as Draft' }), 1);
   });
 });

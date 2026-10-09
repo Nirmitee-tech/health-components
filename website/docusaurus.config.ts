@@ -5,6 +5,8 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 const repoRoot = path.resolve(__dirname, '..');
 const storybookUrl = process.env.STORYBOOK_URL ?? '/health-components/storybook/';
+// Storybook is deployed next to the docs, outside Docusaurus routes: `pathname://` skips the broken-link check.
+const storybookHref = storybookUrl.startsWith('/') ? `pathname://${storybookUrl}` : storybookUrl;
 
 /** Resolves `health-components` to the library source so the docs always show the current code. */
 function libraryAliasPlugin(): Plugin {
@@ -78,7 +80,7 @@ const config: Config = {
         { type: 'docSidebar', sidebarId: 'guides', position: 'left', label: 'Get started' },
         { type: 'docSidebar', sidebarId: 'foundations', position: 'left', label: 'Foundations' },
         { type: 'docSidebar', sidebarId: 'components', position: 'left', label: 'Components' },
-        { href: storybookUrl, label: 'Storybook', position: 'right' },
+        { href: storybookHref, label: 'Storybook', position: 'right' },
         { href: 'https://www.npmjs.com/package/health-components', label: 'npm', position: 'right' },
         { href: 'https://github.com/Nirmitee-tech/health-components', label: 'GitHub', position: 'right' },
       ],
@@ -100,7 +102,7 @@ const config: Config = {
           items: [
             { label: 'Colour and themes', to: '/docs/foundations/color/' },
             { label: 'Accessibility', to: '/docs/foundations/accessibility/' },
-            { label: 'Storybook', href: storybookUrl },
+            { label: 'Storybook', href: storybookHref },
           ],
         },
         {

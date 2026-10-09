@@ -54,16 +54,31 @@ export const Showcase: Story = {
           { label: "Schedule for Tonight's Batch", hint: 'Sent to Availity at 11:00 PM', icon: 'clock' },
         ]}
       />
-      <SplitButton label="Export" variant="secondary" items={[{ label: 'CSV' }, { label: 'Excel' }, { label: 'PDF' }]} />
+      <SplitButton
+        label="Export"
+        variant="secondary"
+        items={[{ label: 'CSV' }, { label: 'Excel' }, { label: 'PDF' }]}
+      />
       <SplitButton label="Submit Claim" disabled items={[]} />
     </div>
   ),
 };
 
 export const Secondary: Story = {
-  args: { label: 'Export', variant: 'secondary', menuLabel: 'Export formats', items: [{ label: 'CSV' }, { label: 'Excel' }, { label: 'PDF' }] },
+  args: {
+    label: 'Export',
+    variant: 'secondary',
+    menuLabel: 'Export formats',
+    items: [{ label: 'CSV' }, { label: 'Excel' }, { label: 'PDF' }],
+  },
 };
 
-export const Small: Story = { args: { size: 'sm', label: 'Sign Note', items: [{ label: 'Sign and Close Encounter' }, { label: 'Sign and Route to Biller' }] } };
+export const Small: Story = {
+  args: {
+    size: 'sm',
+    label: 'Sign Note',
+    items: [{ label: 'Sign and Close Encounter' }, { label: 'Sign and Route to Biller' }],
+  },
+};
 
 export const Disabled: Story = { args: { disabled: true } };

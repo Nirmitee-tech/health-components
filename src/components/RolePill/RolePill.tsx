@@ -51,6 +51,7 @@ export const RolePill = forwardRef<HTMLButtonElement, RolePillProps>(function Ro
   return (
     <div className={cx('co-mwrap', className)} ref={mb.wrapRef}>
       <button
+        {...rest}
         ref={(node) => {
           mb.triggerRef.current = node;
           if (typeof ref === 'function') ref(node);
@@ -64,7 +65,6 @@ export const RolePill = forwardRef<HTMLButtonElement, RolePillProps>(function Ro
         aria-controls={mb.open ? mb.popupId : undefined}
         onClick={mb.onTriggerClick}
         onKeyDown={mb.onTriggerKeyDown}
-        {...rest}
       >
         <Icon name="eye" size={14} />
         Viewing as: <b>{current}</b>

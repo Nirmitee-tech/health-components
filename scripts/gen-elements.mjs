@@ -20,7 +20,10 @@ lines.push('');
 lines.push('export const elementSpecs: ElementSpec[] = [');
 for (const c of components) {
   const p = Object.entries(c.props).map(([k, v]) => `${/^[A-Za-z_$][\w$]*$/.test(k) ? k : JSON.stringify(k)}: '${v.kind}'`).join(', ');
-  lines.push(`  { tag: '${c.tag}', component: C.${c.name} as never, props: { ${p} } },`);
+  const defaults = Object.entries(c.props)
+    .filter(([, v]) => !v.optional && v.kind === 'json' && /\[\]$|^(Readonly)?Array</.test(v.type))
+    .map(([k]) => `${k}: []`);
+  lines.push(`  { tag: '${c.tag}', component: C.${c.name} as never, props: { ${p} }${defaults.length ? `, defaults: { ${defaults.join(', ')} }` : ''} },`);
 }
 lines.push('];');
 lines.push('');

@@ -34,7 +34,9 @@ describe('Field', () => {
         <input id="prov" aria-describedby="prov-lock" readOnly />
       </Field>
     );
-    expect(screen.getByRole('textbox', { name: 'Provider' })).toHaveAccessibleDescription('Your role can view but not edit');
+    expect(screen.getByRole('textbox', { name: 'Provider' })).toHaveAccessibleDescription(
+      'Your role can view but not edit'
+    );
   });
 
   it('builds describedby ids', () => {

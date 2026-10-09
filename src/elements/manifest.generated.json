@@ -335,6 +335,180 @@
     ]
   },
   {
+    "component": "BarChart",
+    "tag": "co-bar-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "data",
+        "property": "data",
+        "kind": "json",
+        "description": "Array<{label, value, tone?}>"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Caption above the chart and start of the accessible summary; default none"
+      },
+      {
+        "name": "height",
+        "property": "height",
+        "kind": "number",
+        "description": "Plot height in px; default 150"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Top of the scale; default auto (largest value)"
+      },
+      {
+        "name": "threshold",
+        "property": "threshold",
+        "kind": "number",
+        "description": "Value of the dashed goal or limit line; default none"
+      },
+      {
+        "name": "threshold-label",
+        "property": "thresholdLabel",
+        "kind": "string",
+        "description": "Label of the threshold line; default \"Goal N\""
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "Unit appended to values in the accessible text, e.g. \" mmHg\"; default \"\""
+      },
+      {
+        "name": "legend",
+        "property": "legend",
+        "kind": "json",
+        "description": "Array<{label, tone}>; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "BottomTabBar",
+    "tag": "co-bottom-tab-bar",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Four or five tabs. Required."
+      },
+      {
+        "name": "active",
+        "property": "active",
+        "kind": "string",
+        "description": "Label of the current tab; default none"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Landmark name; default \"Main\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-navigate",
+        "prop": "onNavigate",
+        "description": "Called when a tab is clicked; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "Breadcrumb",
+    "tag": "co-breadcrumb",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Path from the top level to the current page. Required."
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Landmark name; default \"Breadcrumb\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-navigate",
+        "prop": "onNavigate",
+        "description": "Called when a level is clicked (client-side routing); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "Button",
     "tag": "co-button",
     "aliases": [],
@@ -453,6 +627,151 @@
     ]
   },
   {
+    "component": "ButtonGroup",
+    "tag": "co-button-group",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "attached",
+        "property": "attached",
+        "kind": "boolean",
+        "description": "Joins the buttons into one attached control (Day / Week / Month); default false"
+      },
+      {
+        "name": "align",
+        "property": "align",
+        "kind": "string",
+        "description": "'start' | 'end': 'end' right-aligns a footer; default 'start'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "aria-label of the group; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Buttons; required"
+      }
+    ]
+  },
+  {
+    "component": "CalendarCell",
+    "tag": "co-calendar-cell",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "view",
+        "property": "view",
+        "kind": "string",
+        "description": "'month' | 'week' | 'day'; default 'month'"
+      },
+      {
+        "name": "date",
+        "property": "date",
+        "kind": "json",
+        "description": "Day number or label (\"Thu 9\"); required for month and week"
+      },
+      {
+        "name": "time",
+        "property": "time",
+        "kind": "string",
+        "description": "Row time (\"9:20 AM\"); required for day"
+      },
+      {
+        "name": "appointments",
+        "property": "appointments",
+        "kind": "json",
+        "description": "AppointmentChip props[]; default []"
+      },
+      {
+        "name": "count",
+        "property": "count",
+        "kind": "number",
+        "description": "Appointment count shown in the month header; default none"
+      },
+      {
+        "name": "today",
+        "property": "today",
+        "kind": "boolean",
+        "description": "Highlights today; default false"
+      },
+      {
+        "name": "dim",
+        "property": "dim",
+        "kind": "boolean",
+        "description": "Day outside the current month; default false"
+      },
+      {
+        "name": "blocked",
+        "property": "blocked",
+        "kind": "string",
+        "description": "Reason the time is blocked (\"Lunch\", \"CME conference\"); default none"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "aria-label of the cell (month and week); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-book",
+        "prop": "onBook",
+        "description": "Called with `time` when the free slot of a day row is chosen; default none"
+      },
+      {
+        "name": "co-more",
+        "prop": "onMore",
+        "description": "Called when \"+N more\" is chosen in a month or week cell; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "Card",
     "tag": "co-card",
     "aliases": [],
@@ -525,6 +844,76 @@
     ]
   },
   {
+    "component": "ChatMessage",
+    "tag": "co-chat-message",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "direction",
+        "property": "direction",
+        "kind": "string",
+        "description": "'in' (received, left) | 'out' (sent, right); default 'in'"
+      },
+      {
+        "name": "author",
+        "property": "author",
+        "kind": "string",
+        "description": "Sender name, shown with an avatar on incoming messages; default none"
+      },
+      {
+        "name": "time",
+        "property": "time",
+        "kind": "string",
+        "description": "Time sent, e.g. \"9:02 AM\""
+      },
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "string",
+        "description": "Delivery status, outgoing only (\"Sent\", \"Read\"); default none"
+      },
+      {
+        "name": "ai",
+        "property": "ai",
+        "kind": "boolean",
+        "description": "Message written by an AI agent: purple bubble and AI tag; default false"
+      },
+      {
+        "name": "system",
+        "property": "system",
+        "kind": "boolean",
+        "description": "System event (\"Henna West started a conversation\"); default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Message text"
+      }
+    ]
+  },
+  {
     "component": "Checkbox",
     "tag": "co-checkbox",
     "aliases": [],
@@ -584,6 +973,12 @@
         "description": ""
       },
       {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "accept",
         "property": "accept",
         "kind": "string",
@@ -592,12 +987,6 @@
       {
         "name": "auto-complete",
         "property": "autoComplete",
-        "kind": "json",
-        "description": ""
-      },
-      {
-        "name": "max",
-        "property": "max",
         "kind": "json",
         "description": ""
       },
@@ -656,6 +1045,258 @@
         "name": "description",
         "prop": "description",
         "description": "Help text under the label; default none"
+      }
+    ]
+  },
+  {
+    "component": "ClaimStatusTag",
+    "tag": "co-claim-status-tag",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "status",
+        "property": "status",
+        "kind": "json",
+        "description": "One of `ClaimStatusTag.statuses`; other strings render neutral without an icon. Required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "shape",
+        "property": "shape",
+        "kind": "string",
+        "description": "'square' | 'pill'; default 'square'"
+      },
+      {
+        "name": "dot",
+        "property": "dot",
+        "kind": "boolean",
+        "description": "Shows a small dot in the current colour before the label (ignored when `icon` is set); default false"
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "Combobox",
+    "tag": "co-combobox",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label; required"
+      },
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "'patient' (avatar per row) | 'code' (code chip) | 'plain'; default 'plain'"
+      },
+      {
+        "name": "options",
+        "property": "options",
+        "kind": "json",
+        "description": "Array<{value?, label, meta?, code?, flag?, flagTone?}>; required"
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": "Example text in the empty input; default none"
+      },
+      {
+        "name": "query",
+        "property": "query",
+        "kind": "string",
+        "description": "Controlled query text; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-query",
+        "property": "defaultQuery",
+        "kind": "string",
+        "description": "Initial query (uncontrolled); default \"\""
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Controlled open state of the list; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Open on first render (uncontrolled); default false"
+      },
+      {
+        "name": "limit",
+        "property": "limit",
+        "kind": "number",
+        "description": "Maximum results shown; default 8"
+      },
+      {
+        "name": "empty-text",
+        "property": "emptyText",
+        "kind": "string",
+        "description": "Text when nothing matches; default \"No matches. Check the spelling or search by MRN.\""
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message (as TextField); default none"
+      },
+      {
+        "name": "helper",
+        "property": "helper",
+        "kind": "string",
+        "description": "Muted hint under the field; default none"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk plus aria-required; default false"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-query-change",
+        "prop": "onQueryChange",
+        "description": "Called when the query text changes"
+      },
+      {
+        "name": "co-open-change",
+        "prop": "onOpenChange",
+        "description": "Called when the list opens or closes"
+      },
+      {
+        "name": "co-select",
+        "prop": "onSelect",
+        "description": "Called with the chosen option; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "footer",
+        "prop": "footer",
+        "description": "Node under the list (\"Search all 4,212 patients\"); default none"
       }
     ]
   },
@@ -752,6 +1393,486 @@
     "slots": []
   },
   {
+    "component": "DataTable",
+    "tag": "co-data-table",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "columns",
+        "property": "columns",
+        "kind": "json",
+        "description": "Array<{key, label, sortable?, align?, render?, sortValue?}>. Required"
+      },
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "json",
+        "description": "The records. Required"
+      },
+      {
+        "name": "row-key",
+        "property": "rowKey",
+        "kind": "json",
+        "description": "Field that identifies a row, or a function returning the id; default \"id\""
+      },
+      {
+        "name": "selectable",
+        "property": "selectable",
+        "kind": "boolean",
+        "description": "Row checkboxes and a select-all-on-page checkbox; default false"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "json",
+        "description": "Selected row ids (controlled)"
+      },
+      {
+        "name": "default-selected",
+        "property": "defaultSelected",
+        "kind": "json",
+        "description": "Initially selected row ids (uncontrolled); default []"
+      },
+      {
+        "name": "expanded",
+        "property": "expanded",
+        "kind": "json",
+        "description": "Expanded row ids (controlled)"
+      },
+      {
+        "name": "default-expanded",
+        "property": "defaultExpanded",
+        "kind": "json",
+        "description": "Initially expanded row ids (uncontrolled); default []"
+      },
+      {
+        "name": "loading",
+        "property": "loading",
+        "kind": "boolean",
+        "description": "Shows skeleton rows and hides pagination; default false"
+      },
+      {
+        "name": "page-size",
+        "property": "pageSize",
+        "kind": "number",
+        "description": "Initial rows per page; default 10"
+      },
+      {
+        "name": "page-sizes",
+        "property": "pageSizes",
+        "kind": "json",
+        "description": "Rows-per-page choices, or false to hide the selector; default [5, 10, 25, 50]"
+      },
+      {
+        "name": "page",
+        "property": "page",
+        "kind": "number",
+        "description": "Current page, 1-based (controlled)"
+      },
+      {
+        "name": "default-page",
+        "property": "defaultPage",
+        "kind": "number",
+        "description": "Initial page (uncontrolled); default 1"
+      },
+      {
+        "name": "pagination",
+        "property": "pagination",
+        "kind": "boolean",
+        "description": "Paginate the rows; default true"
+      },
+      {
+        "name": "sort",
+        "property": "sort",
+        "kind": "json",
+        "description": "Active sort (controlled); null for none"
+      },
+      {
+        "name": "default-sort",
+        "property": "defaultSort",
+        "kind": "json",
+        "description": "Initial sort {key, dir} (uncontrolled); default none"
+      },
+      {
+        "name": "caption",
+        "property": "caption",
+        "kind": "string",
+        "description": "Screen reader caption; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [
+      {
+        "name": "rowMenu",
+        "description": "(row) => MenuItem[]: a kebab menu at the end of each row; default none"
+      }
+    ],
+    "events": [
+      {
+        "name": "co-selected-change",
+        "prop": "onSelectedChange",
+        "description": "Called with the new selected ids; default none"
+      },
+      {
+        "name": "co-expanded-change",
+        "prop": "onExpandedChange",
+        "description": "Called with the new expanded ids; default none"
+      },
+      {
+        "name": "co-page-size-change",
+        "prop": "onPageSizeChange",
+        "description": "Called with the new rows per page; default none"
+      },
+      {
+        "name": "co-page-change",
+        "prop": "onPageChange",
+        "description": "Called with the new page; default none"
+      },
+      {
+        "name": "co-sort-change",
+        "prop": "onSortChange",
+        "description": "Called with the new sort; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "bulk-actions",
+        "prop": "bulkActions",
+        "description": "(selectedIds) => node: actions shown in the bulk bar while rows are selected; default none"
+      },
+      {
+        "name": "render-expanded",
+        "prop": "renderExpanded",
+        "description": "(row) => node: makes rows expandable; default none"
+      },
+      {
+        "name": "empty-text",
+        "prop": "emptyText",
+        "description": "Text when there are no rows; default \"No records match your search or filters.\""
+      },
+      {
+        "name": "empty-state",
+        "prop": "emptyState",
+        "description": "Node when there are no rows (an EmptyState); wins over emptyText; default none"
+      },
+      {
+        "name": "toolbar",
+        "prop": "toolbar",
+        "description": "Toolbar above the table (search, filters); replaced by the bulk bar while rows are selected; default none"
+      }
+    ]
+  },
+  {
+    "component": "DatePicker",
+    "tag": "co-date-picker",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label; required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Controlled value, MM/DD/YYYY; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initial value (uncontrolled), MM/DD/YYYY; default \"\""
+      },
+      {
+        "name": "today",
+        "property": "today",
+        "kind": "string",
+        "description": "Today's date, MM/DD/YYYY (marks the grid, limits past/future); default the current date"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Controlled open state of the calendar; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Calendar open on first render (uncontrolled); default false"
+      },
+      {
+        "name": "disable-past",
+        "property": "disablePast",
+        "kind": "boolean",
+        "description": "Days before today cannot be picked; default false"
+      },
+      {
+        "name": "disable-future",
+        "property": "disableFuture",
+        "kind": "boolean",
+        "description": "Days after today cannot be picked (date of birth); default false"
+      },
+      {
+        "name": "disable-weekends",
+        "property": "disableWeekends",
+        "kind": "boolean",
+        "description": "Saturdays and Sundays cannot be picked; default false"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message (as TextField); an impossible typed date shows \"Enter a real date as MM/DD/YYYY.\"; default none"
+      },
+      {
+        "name": "helper",
+        "property": "helper",
+        "kind": "string",
+        "description": "Muted hint under the field; default 'MM/DD/YYYY'"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk plus aria-required; default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Read-only lock state; the calendar button is disabled; default false"
+      },
+      {
+        "name": "lock-message",
+        "property": "lockMessage",
+        "kind": "string",
+        "description": "Lock line text when readOnly; default 'Your role can view but not edit'"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the MM/DD/YYYY text on typing and on picking a day; default none"
+      },
+      {
+        "name": "co-open-change",
+        "prop": "onOpenChange",
+        "description": "Called when the calendar opens or closes"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "DescriptionList",
+    "tag": "co-description-list",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Array of [label, value] pairs. Required"
+      },
+      {
+        "name": "compact",
+        "property": "compact",
+        "kind": "boolean",
+        "description": "Narrower label column (120px instead of 160px); default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "DonutChart",
+    "tag": "co-donut-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "data",
+        "property": "data",
+        "kind": "json",
+        "description": "Array<{label, value, color?}>; up to five parts read well"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Caption above the chart and start of the accessible summary; default none"
+      },
+      {
+        "name": "center-value",
+        "property": "centerValue",
+        "kind": "json",
+        "description": "Big number in the middle; default the total"
+      },
+      {
+        "name": "center-label",
+        "property": "centerLabel",
+        "kind": "string",
+        "description": "Label under the middle number; default \"Total\""
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "number",
+        "description": "Largest diameter in px (the ring shrinks with narrow containers); default 140"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
     "component": "Drawer",
     "tag": "co-drawer",
     "aliases": [],
@@ -835,6 +1956,403 @@
         "name": "footer",
         "prop": "footer",
         "description": "Footer actions; default none"
+      }
+    ]
+  },
+  {
+    "component": "EmptyState",
+    "tag": "co-empty-state",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "kind",
+        "property": "kind",
+        "kind": "string",
+        "description": "'empty' | 'noresults' | 'denied' | 'error'; default 'empty'"
+      },
+      {
+        "name": "icon",
+        "property": "icon",
+        "kind": "string",
+        "description": "Icon; default by kind (inbox, search, lock, alert-circle)"
+      },
+      {
+        "name": "compact",
+        "property": "compact",
+        "kind": "boolean",
+        "description": "Less padding, for cards and table bodies; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "title",
+        "prop": "title",
+        "description": "Heading (h2). Required"
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Body text: what to do next; default none"
+      },
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Buttons under the body; default none"
+      }
+    ]
+  },
+  {
+    "component": "Field",
+    "tag": "co-field",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "id",
+        "property": "id",
+        "kind": "string",
+        "description": "id of the control inside; the label points at it and the help, error and lock ids derive from it; default generated"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk after the label (the control sets aria-required); default false"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the root"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "label",
+        "prop": "label",
+        "description": "Visible label; default none"
+      },
+      {
+        "name": "error",
+        "prop": "error",
+        "description": "Error message under the control, role alert; replaces the helper; default none"
+      },
+      {
+        "name": "helper",
+        "prop": "helper",
+        "description": "Muted hint under the control; default none"
+      },
+      {
+        "name": "lock",
+        "prop": "lock",
+        "description": "Read-only lock line with a lock icon (\"Your role can view but not edit\"); default none"
+      },
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "The control, or a function that receives id and aria attributes to spread on it"
+      }
+    ]
+  },
+  {
+    "component": "FileUpload",
+    "tag": "co-file-upload",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Field label above the zone; default none"
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": "File types the picker accepts (\".pdf,.jpg,.png\"); default none"
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": "Allows picking several files; default false"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'default' drop zone | 'photo' camera capture for insurance cards and ID; default 'default'"
+      },
+      {
+        "name": "files",
+        "property": "files",
+        "kind": "json",
+        "description": "Controlled file list: Array<{name, size?, status: uploading|done|error, progress?, error?}>; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-files",
+        "property": "defaultFiles",
+        "kind": "json",
+        "description": "Initial file list (uncontrolled); default []"
+      },
+      {
+        "name": "dragging",
+        "property": "dragging",
+        "kind": "boolean",
+        "description": "Forced drag-over state for previews; default false"
+      },
+      {
+        "name": "done",
+        "property": "done",
+        "kind": "boolean",
+        "description": "Forced done state (photo captured) for previews; default false"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Zone title; default 'Drag a file here or choose one'"
+      },
+      {
+        "name": "hint",
+        "property": "hint",
+        "kind": "string",
+        "description": "Hint under the title; default 'PDF, JPG or PNG, up to 10 MB'"
+      },
+      {
+        "name": "done-text",
+        "property": "doneText",
+        "kind": "string",
+        "description": "Title in the done state; default 'Photo captured'"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message under the zone, role alert; default none"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-files-change",
+        "prop": "onFilesChange",
+        "description": "Called with the next list when files are added or removed"
+      },
+      {
+        "name": "co-files",
+        "prop": "onFiles",
+        "description": "Called with the picked or dropped files; default none"
+      },
+      {
+        "name": "co-remove",
+        "prop": "onRemove",
+        "description": "Called when a file row's Remove button is pressed; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "FilterChip",
+    "tag": "co-filter-chip",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "boolean",
+        "description": "On state (controlled)"
+      },
+      {
+        "name": "default-selected",
+        "property": "defaultSelected",
+        "kind": "boolean",
+        "description": "Initial on state (uncontrolled); default false"
+      },
+      {
+        "name": "count",
+        "property": "count",
+        "kind": "number",
+        "description": "Count after the label; default none"
+      },
+      {
+        "name": "check",
+        "property": "check",
+        "kind": "boolean",
+        "description": "Show the check icon when on; default true"
+      },
+      {
+        "name": "remove-label",
+        "property": "removeLabel",
+        "kind": "string",
+        "description": "Accessible name of the remove button; default \"Remove filter <label>\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-remove",
+        "prop": "onRemove",
+        "description": "Makes a removable (applied) chip with an x button; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the new state; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Label. Required"
       }
     ]
   },
@@ -973,6 +2491,187 @@
     "slots": []
   },
   {
+    "component": "IconRail",
+    "tag": "co-icon-rail",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Icons and separators, in the sidebar's group order. Required."
+      },
+      {
+        "name": "active",
+        "property": "active",
+        "kind": "string",
+        "description": "Label of the current item; default none"
+      },
+      {
+        "name": "show-tip",
+        "property": "showTip",
+        "kind": "string",
+        "description": "Force one tooltip open, for docs; default none"
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Rounded and bordered, for docs; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-navigate",
+        "prop": "onNavigate",
+        "description": "Called when an item is clicked; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "InsuranceCard",
+    "tag": "co-insurance-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "payer",
+        "property": "payer",
+        "kind": "string",
+        "description": "Payer name, e.g. \"Aetna\" (front); default none"
+      },
+      {
+        "name": "plan",
+        "property": "plan",
+        "kind": "string",
+        "description": "Plan name, e.g. \"Open Access PPO\" (front); default none"
+      },
+      {
+        "name": "member",
+        "property": "member",
+        "kind": "string",
+        "description": "Member name as printed on the card (front); default none"
+      },
+      {
+        "name": "member-id",
+        "property": "memberId",
+        "kind": "string",
+        "description": "Member ID (front); default none"
+      },
+      {
+        "name": "group",
+        "property": "group",
+        "kind": "string",
+        "description": "Group number (front); default none"
+      },
+      {
+        "name": "copay",
+        "property": "copay",
+        "kind": "string",
+        "description": "Copay line, e.g. \"PCP $25 . Spec $50\" (front); default none"
+      },
+      {
+        "name": "rx",
+        "property": "rx",
+        "kind": "string",
+        "description": "Rx BIN / PCN (front); default none"
+      },
+      {
+        "name": "payer-id",
+        "property": "payerId",
+        "kind": "string",
+        "description": "Payer ID for electronic claims (back); default none"
+      },
+      {
+        "name": "claims-address",
+        "property": "claimsAddress",
+        "kind": "string",
+        "description": "Where claims go (back); default none"
+      },
+      {
+        "name": "phone",
+        "property": "phone",
+        "kind": "string",
+        "description": "Provider services phone line (back); default none"
+      },
+      {
+        "name": "precert",
+        "property": "precert",
+        "kind": "string",
+        "description": "Pre-certification rule or phone (back); default none"
+      },
+      {
+        "name": "side",
+        "property": "side",
+        "kind": "string",
+        "description": "Controlled side shown: 'front' | 'back'; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-side",
+        "property": "defaultSide",
+        "kind": "string",
+        "description": "Initial side when uncontrolled; default 'front'"
+      },
+      {
+        "name": "scanned",
+        "property": "scanned",
+        "kind": "string",
+        "description": "Scan date; shows a Scanned badge instead of the Scan Card button; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-side-change",
+        "prop": "onSideChange",
+        "description": "Called when the user flips the card"
+      },
+      {
+        "name": "co-scan",
+        "prop": "onScan",
+        "description": "Called when Scan Card is pressed; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "KebabMenu",
     "tag": "co-kebab-menu",
     "aliases": [],
@@ -1026,9 +2725,153 @@
         "name": "co-open-change",
         "prop": "onOpenChange",
         "description": "Called when the menu opens or closes"
+      },
+      {
+        "name": "co-item-select",
+        "prop": "onItemSelect",
+        "description": "Called with the chosen item and its index, after the item's own onSelect (one handler for every item); default none"
       }
     ],
     "slots": []
+  },
+  {
+    "component": "LineChart",
+    "tag": "co-line-chart",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "labels",
+        "property": "labels",
+        "kind": "json",
+        "description": "X-axis labels, one per value"
+      },
+      {
+        "name": "series",
+        "property": "series",
+        "kind": "json",
+        "description": "Array<{name, values: number[], color?}>; up to two series read well (the second is dashed)"
+      },
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Caption above the chart and start of the accessible summary; default none"
+      },
+      {
+        "name": "height",
+        "property": "height",
+        "kind": "number",
+        "description": "Height of the drawing in viewBox units (the chart scales with its width); default 180"
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "number",
+        "description": "Bottom of the scale; default 0"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Top of the scale; default auto (largest value)"
+      },
+      {
+        "name": "band",
+        "property": "band",
+        "kind": "json",
+        "description": "[low, high] target band; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "ListRow",
+    "tag": "co-list-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Main line"
+      },
+      {
+        "name": "meta",
+        "property": "meta",
+        "kind": "string",
+        "description": "Second line; default none"
+      },
+      {
+        "name": "href",
+        "property": "href",
+        "kind": "string",
+        "description": "Makes the row a link with a chevron; default none"
+      },
+      {
+        "name": "target",
+        "property": "target",
+        "kind": "json",
+        "description": "Link target when `href` is set"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-click",
+        "prop": "onClick",
+        "description": "Makes the row a button with a chevron; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "leading",
+        "prop": "leading",
+        "description": "Before the text (Avatar, Icon); default none"
+      },
+      {
+        "name": "trailing",
+        "prop": "trailing",
+        "description": "After the text (StatusTag, time); must not be interactive when the row is; default none"
+      }
+    ]
   },
   {
     "component": "Menu",
@@ -1087,12 +2930,79 @@
     "properties": [],
     "events": [
       {
+        "name": "co-item-select",
+        "prop": "onItemSelect",
+        "description": "Called with the chosen item and its index, after the item's own onSelect (one handler for every item); default none"
+      },
+      {
         "name": "co-close",
         "prop": "onClose",
         "description": "Called after an item is chosen, and on Escape or Tab inside the menu; default none"
       }
     ],
     "slots": []
+  },
+  {
+    "component": "MobileHeader",
+    "tag": "co-mobile-header",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "back",
+        "property": "back",
+        "kind": "string",
+        "description": "Back link href; shows the chevron back link; default none"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'phone' | 'kiosk' (wider, 19px title); default 'phone'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-back",
+        "prop": "onBack",
+        "description": "Called when the back link is clicked (client-side routing); default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "title",
+        "prop": "title",
+        "description": "Screen title. Required."
+      },
+      {
+        "name": "subtitle",
+        "prop": "subtitle",
+        "description": "Patient or date line; default none"
+      },
+      {
+        "name": "action",
+        "prop": "action",
+        "description": "One small action on the right; default none"
+      }
+    ]
   },
   {
     "component": "Modal",
@@ -1256,6 +3166,477 @@
     ]
   },
   {
+    "component": "Pagination",
+    "tag": "co-pagination",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "total",
+        "property": "total",
+        "kind": "number",
+        "description": "Total number of records. Required"
+      },
+      {
+        "name": "page",
+        "property": "page",
+        "kind": "number",
+        "description": "Current page, 1-based (controlled)"
+      },
+      {
+        "name": "default-page",
+        "property": "defaultPage",
+        "kind": "number",
+        "description": "Initial page (uncontrolled); default 1"
+      },
+      {
+        "name": "page-size",
+        "property": "pageSize",
+        "kind": "number",
+        "description": "Rows per page (controlled)"
+      },
+      {
+        "name": "default-page-size",
+        "property": "defaultPageSize",
+        "kind": "number",
+        "description": "Initial rows per page (uncontrolled); default 10"
+      },
+      {
+        "name": "page-sizes",
+        "property": "pageSizes",
+        "kind": "json",
+        "description": "Rows-per-page choices, or false to hide the selector; default [5, 10, 25, 50]"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name of the nav landmark; default \"Pagination\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-page",
+        "prop": "onPage",
+        "description": "Called with the new page; default none"
+      },
+      {
+        "name": "co-page-size",
+        "prop": "onPageSize",
+        "description": "Called with the new rows per page (the page also resets to 1); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PatientBanner",
+    "tag": "co-patient-banner",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": "Patient name. Required."
+      },
+      {
+        "name": "sex",
+        "property": "sex",
+        "kind": "string",
+        "description": "Sex (\"F\"). Required."
+      },
+      {
+        "name": "age",
+        "property": "age",
+        "kind": "json",
+        "description": "Age in years. Required."
+      },
+      {
+        "name": "dob",
+        "property": "dob",
+        "kind": "string",
+        "description": "Date of birth (\"03/14/1988\"). Required."
+      },
+      {
+        "name": "mrn",
+        "property": "mrn",
+        "kind": "string",
+        "description": "Medical record number (\"MRN-100231\"). Required."
+      },
+      {
+        "name": "phone",
+        "property": "phone",
+        "kind": "string",
+        "description": "Phone; default none"
+      },
+      {
+        "name": "insurance",
+        "property": "insurance",
+        "kind": "string",
+        "description": "Payer and member id (\"Aetna W123456789\"); default none"
+      },
+      {
+        "name": "preferred",
+        "property": "preferred",
+        "kind": "string",
+        "description": "Preferred name, shown in quotes; default none"
+      },
+      {
+        "name": "allergies",
+        "property": "allergies",
+        "kind": "json",
+        "description": "Allergies: a list, `[]` for No Known Allergies, or undefined when not reviewed; default undefined"
+      },
+      {
+        "name": "flags",
+        "property": "flags",
+        "kind": "json",
+        "description": "Flags such as Diabetic, Fall Risk; default []"
+      },
+      {
+        "name": "code-status",
+        "property": "codeStatus",
+        "kind": "string",
+        "description": "Code status (\"Full Code\", \"DNR\"); DNR, DNI and Comfort show red; default none"
+      },
+      {
+        "name": "restricted",
+        "property": "restricted",
+        "kind": "boolean",
+        "description": "Restricted (break-the-glass) chart; default false"
+      },
+      {
+        "name": "photo",
+        "property": "photo",
+        "kind": "string",
+        "description": "Photo URL; default initials"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'full' | 'compact' | 'mobile'; default 'full'"
+      },
+      {
+        "name": "heading-level",
+        "property": "headingLevel",
+        "kind": "number",
+        "description": "Heading level of the name; default 1 for full, 2 otherwise"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "actions",
+        "prop": "actions",
+        "description": "Buttons on the right; default none"
+      }
+    ]
+  },
+  {
+    "component": "PatientTabs",
+    "tag": "co-patient-tabs",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "tabs",
+        "property": "tabs",
+        "kind": "json",
+        "description": "Open tabs. Required."
+      },
+      {
+        "name": "active",
+        "property": "active",
+        "kind": "string",
+        "description": "Active tab id (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-active",
+        "property": "defaultActive",
+        "kind": "string",
+        "description": "Initially active tab id when uncontrolled; default the first tab"
+      },
+      {
+        "name": "add-label",
+        "property": "addLabel",
+        "kind": "string",
+        "description": "Accessible name of the add button; default \"Open another patient\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the newly active tab id; default none"
+      },
+      {
+        "name": "co-close",
+        "prop": "onClose",
+        "description": "Called when a tab is closed (x button or Delete key). The tab is also hidden internally; default none"
+      },
+      {
+        "name": "co-add",
+        "prop": "onAdd",
+        "description": "Add (+) button handler; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "PATimeline",
+    "tag": "co-pa-timeline",
+    "aliases": [
+      "Timeline"
+    ],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Steps in order. Required"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "PickCard",
+    "tag": "co-pick-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Main line, e.g. \"Thu 10/09 9:20 AM\""
+      },
+      {
+        "name": "meta",
+        "property": "meta",
+        "kind": "string",
+        "description": "Second line (visit type, provider, place); default none"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "boolean",
+        "description": "Chosen; sets aria-pressed; default false"
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": "Not available (\"Fully booked\"); default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Extra content under the meta line; default none"
+      }
+    ]
+  },
+  {
+    "component": "PinEntry",
+    "tag": "co-pin-entry",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "length",
+        "property": "length",
+        "kind": "number",
+        "description": "Number of digits, 4 to 6; default 4"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Controlled digits entered; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initial digits (uncontrolled); default \"\""
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Label above the dots (\"Enter your PIN\"); default none"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message, role alert; the dots turn red; default none"
+      },
+      {
+        "name": "biometric",
+        "property": "biometric",
+        "kind": "boolean",
+        "description": "Shows the Face ID key; default false"
+      },
+      {
+        "name": "biometric-label",
+        "property": "biometricLabel",
+        "kind": "string",
+        "description": "Text of the biometric key; default 'Face ID'"
+      },
+      {
+        "name": "locked",
+        "property": "locked",
+        "kind": "boolean",
+        "description": "Locks the keypad after too many tries; default false"
+      },
+      {
+        "name": "locked-text",
+        "property": "lockedText",
+        "kind": "string",
+        "description": "Text under a locked keypad; default 'Too many tries. Sign in with your password.'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the digits after every key; default none"
+      },
+      {
+        "name": "co-complete",
+        "prop": "onComplete",
+        "description": "Called with the PIN when the last digit is entered; default none"
+      },
+      {
+        "name": "co-biometric",
+        "prop": "onBiometric",
+        "description": "Called when the biometric key is pressed; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
     "component": "Popover",
     "tag": "co-popover",
     "aliases": [],
@@ -1331,6 +3712,134 @@
     ]
   },
   {
+    "component": "ProgressBar",
+    "tag": "co-progress-bar",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "number",
+        "description": "Current value. Required"
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "number",
+        "description": "Maximum value; default 100"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label and accessible name. Required"
+      },
+      {
+        "name": "unit",
+        "property": "unit",
+        "kind": "string",
+        "description": "Unit word: \"visits\" gives \"12 of 20 visits used\"; default none (percent)"
+      },
+      {
+        "name": "value-text",
+        "property": "valueText",
+        "kind": "string",
+        "description": "Value text shown and announced; default auto (percent, or \"12 of 20 visits used\")"
+      },
+      {
+        "name": "meter",
+        "property": "meter",
+        "kind": "boolean",
+        "description": "Uses role meter (an amount used of an allowance) instead of progressbar; default false"
+      },
+      {
+        "name": "thresholds",
+        "property": "thresholds",
+        "kind": "json",
+        "description": "[warnPct, dangerPct]: the bar turns warning and danger at these percentages; default none"
+      },
+      {
+        "name": "tone",
+        "property": "tone",
+        "kind": "string",
+        "description": "'primary' | 'success' | 'warning' | 'danger' | 'ai'; default auto (from thresholds, else primary)"
+      },
+      {
+        "name": "compact",
+        "property": "compact",
+        "kind": "boolean",
+        "description": "Bar only, without the header and helper; default false"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'md' 8px | 'lg' 12px bar; default 'md'"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "helper",
+        "prop": "helper",
+        "description": "Helper text under the bar; default none"
+      }
+    ]
+  },
+  {
+    "component": "QuickActions",
+    "tag": "co-quick-actions",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Array<{label, icon, href?, badge?, onClick?}>"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
     "component": "Radio",
     "tag": "co-radio",
     "aliases": [],
@@ -1372,6 +3881,12 @@
         "description": ""
       },
       {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
         "name": "accept",
         "property": "accept",
         "kind": "string",
@@ -1387,12 +3902,6 @@
         "name": "checked",
         "property": "checked",
         "kind": "boolean",
-        "description": ""
-      },
-      {
-        "name": "max",
-        "property": "max",
-        "kind": "json",
         "description": ""
       },
       {
@@ -1535,6 +4044,870 @@
     ]
   },
   {
+    "component": "RolePill",
+    "tag": "co-role-pill",
+    "aliases": [
+      "ViewingAs",
+      "RoleSwitcher"
+    ],
+    "attributes": [
+      {
+        "name": "role",
+        "property": "role",
+        "kind": "string",
+        "description": "Role currently previewed (controlled). Required unless `defaultRole` is set."
+      },
+      {
+        "name": "default-role",
+        "property": "defaultRole",
+        "kind": "string",
+        "description": "Initial role when uncontrolled; default \"\""
+      },
+      {
+        "name": "roles",
+        "property": "roles",
+        "kind": "json",
+        "description": "Roles offered in the menu. Required."
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Menu open on first render; default false"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Menu open state (controlled); default uncontrolled"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the wrapper"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-open-change",
+        "prop": "onOpenChange",
+        "description": "Called when the menu opens or closes; default none"
+      },
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the chosen role label; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "SectionNav",
+    "tag": "co-section-nav",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Sections, in the same order for every record. Required."
+      },
+      {
+        "name": "active",
+        "property": "active",
+        "kind": "string",
+        "description": "Label of the current section; default none"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Landmark name; default \"Section menu\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the clicked section label. Items without `href` do not navigate; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "SegmentedControl",
+    "tag": "co-segmented-control",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "options",
+        "property": "options",
+        "kind": "json",
+        "description": "Two to five options: strings or `{value, label, count?, disabled?}`. Required"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Selected value (controlled); default first option"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initially selected value (uncontrolled); default first option"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name of the group (aria-label); default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the newly selected value; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "Select",
+    "tag": "co-select",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label; required"
+      },
+      {
+        "name": "options",
+        "property": "options",
+        "kind": "json",
+        "description": "Array<string | {value, label}>; required"
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": "Text of a first empty option (\"Choose one\"); default none"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message (as TextField); default none"
+      },
+      {
+        "name": "helper",
+        "property": "helper",
+        "kind": "string",
+        "description": "Muted hint under the field (as TextField); default none"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk plus aria-required (as TextField); default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Read-only lock state: the select is disabled and a lock line explains why; default false"
+      },
+      {
+        "name": "lock-message",
+        "property": "lockMessage",
+        "kind": "string",
+        "description": "Lock line text when readOnly; default 'Your role can view but not edit'"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "SettingRow",
+    "tag": "co-setting-row",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Setting name, left column"
+      },
+      {
+        "name": "help",
+        "property": "help",
+        "kind": "string",
+        "description": "Explanation under the label; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "The control, right column. Give it its own accessible label."
+      }
+    ]
+  },
+  {
+    "component": "SidebarNav",
+    "tag": "co-sidebar-nav",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "groups",
+        "property": "groups",
+        "kind": "json",
+        "description": "Groups in a fixed order; only the items change per role. Required."
+      },
+      {
+        "name": "active",
+        "property": "active",
+        "kind": "string",
+        "description": "Label of the current item; default none"
+      },
+      {
+        "name": "collapsed",
+        "property": "collapsed",
+        "kind": "boolean",
+        "description": "Collapsed to the 64px icon strip (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-collapsed",
+        "property": "defaultCollapsed",
+        "kind": "boolean",
+        "description": "Initially collapsed when uncontrolled; default false"
+      },
+      {
+        "name": "product",
+        "property": "product",
+        "kind": "string",
+        "description": "Product name next to the logo mark; default \"CareOS\""
+      },
+      {
+        "name": "inline",
+        "property": "inline",
+        "kind": "boolean",
+        "description": "Bordered, for docs; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-collapse",
+        "prop": "onCollapse",
+        "description": "Called with the new collapsed state; default none"
+      },
+      {
+        "name": "co-navigate",
+        "prop": "onNavigate",
+        "description": "Called when an item is clicked; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "SignaturePad",
+    "tag": "co-signature-pad",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Label above the pad; default \"Signature\""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": "Signer's name, drawn as the signature and used in the pad's accessible name; default \"patient\""
+      },
+      {
+        "name": "signed",
+        "property": "signed",
+        "kind": "boolean",
+        "description": "Controlled signed state; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-signed",
+        "property": "defaultSigned",
+        "kind": "boolean",
+        "description": "Initial signed state (uncontrolled); default false"
+      },
+      {
+        "name": "when",
+        "property": "when",
+        "kind": "string",
+        "description": "Time stamp shown after signing (\"10/09/2026 10:42 AM\"); default the time the pad was signed"
+      },
+      {
+        "name": "compact",
+        "property": "compact",
+        "kind": "boolean",
+        "description": "Shorter pad (90px); default false"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk after the label; default false"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message under the pad, role alert; default none"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-signed-change",
+        "prop": "onSignedChange",
+        "description": "Called when the signed state changes (sign or clear)"
+      },
+      {
+        "name": "co-sign",
+        "prop": "onSign",
+        "description": "Called when the signer taps to sign; default none"
+      },
+      {
+        "name": "co-clear",
+        "prop": "onClear",
+        "description": "Called when the signature is cleared; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "Skeleton",
+    "tag": "co-skeleton",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'text' | 'row' | 'card' | 'avatar'; default 'text'"
+      },
+      {
+        "name": "lines",
+        "property": "lines",
+        "kind": "number",
+        "description": "Text lines (variant text); the last line is shorter; default 1"
+      },
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "number",
+        "description": "Table rows (variant row); default 3"
+      },
+      {
+        "name": "width",
+        "property": "width",
+        "kind": "json",
+        "description": "CSS width of text lines; default '100%'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name (aria-label); default \"Loading\" (\"Loading rows\" for variant row)"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "SlotPicker",
+    "tag": "co-slot-picker",
+    "aliases": [
+      "TimeSlotPicker"
+    ],
+    "attributes": [
+      {
+        "name": "slots",
+        "property": "slots",
+        "kind": "json",
+        "description": "Array<{time, state: available|booked|held|blocked}>"
+      },
+      {
+        "name": "days",
+        "property": "days",
+        "kind": "json",
+        "description": "Array<{id, weekday, date, disabled?}>; default none (no day strip)"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Selected time (controlled); default undefined"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initially selected time (uncontrolled); default none"
+      },
+      {
+        "name": "day",
+        "property": "day",
+        "kind": "string",
+        "description": "Selected day id (controlled); default undefined"
+      },
+      {
+        "name": "default-day",
+        "property": "defaultDay",
+        "kind": "string",
+        "description": "Initially selected day id (uncontrolled); default the first day"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Group label shown above the grid, e.g. provider and visit length; default \"Available times\" (not shown)"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "(time) => void, called when a slot is chosen; default none"
+      },
+      {
+        "name": "co-day-change",
+        "prop": "onDayChange",
+        "description": "(dayId) => void, called when a day is chosen; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "SOAPSection",
+    "tag": "co-soap-section",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "title",
+        "property": "title",
+        "kind": "string",
+        "description": "Section title (\"Subtitle\", \"Plan\"); also names the textarea. Required"
+      },
+      {
+        "name": "text",
+        "property": "text",
+        "kind": "string",
+        "description": "Initial section text (uncontrolled); default \"\""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Controlled section text; default undefined (uncontrolled)"
+      },
+      {
+        "name": "ai",
+        "property": "ai",
+        "kind": "string",
+        "description": "AI Scribe draft shown above the textarea with Accept and Edit; default none"
+      },
+      {
+        "name": "macros",
+        "property": "macros",
+        "kind": "json",
+        "description": "Smart phrases offered in the Insert popover (string[]); default none"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Shows the Required tag and marks the textarea required; default false"
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message under the textarea; default none"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Read-only lock state of the textarea; default false"
+      },
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "number",
+        "description": "Textarea rows; default 3"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the new text (typing, smart phrase, accepted AI draft); default none"
+      },
+      {
+        "name": "co-accept-a-i",
+        "prop": "onAcceptAI",
+        "description": "Called after the AI draft is accepted into the text; default none"
+      },
+      {
+        "name": "co-insert-macro",
+        "prop": "onInsertMacro",
+        "description": "Called with the smart phrase inserted into the text; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "Custom content that replaces the textarea, such as a ScoreQuestionnaire; default none"
+      }
+    ]
+  },
+  {
+    "component": "Sparkline",
+    "tag": "co-sparkline",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "values",
+        "property": "values",
+        "kind": "json",
+        "description": "number[]; at least two values, otherwise nothing renders"
+      },
+      {
+        "name": "width",
+        "property": "width",
+        "kind": "number",
+        "description": "Width in px; default 72"
+      },
+      {
+        "name": "height",
+        "property": "height",
+        "kind": "number",
+        "description": "Height in px; default 22"
+      },
+      {
+        "name": "color",
+        "property": "color",
+        "kind": "string",
+        "description": "CSS colour, use a token (`var(--co-danger)` for a flagged value); default var(--co-primary)"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Start of the accessible name, followed by the values; default \"Trend\""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
     "component": "Spinner",
     "tag": "co-spinner",
     "aliases": [],
@@ -1579,6 +4952,179 @@
     "properties": [],
     "events": [],
     "slots": []
+  },
+  {
+    "component": "SplitButton",
+    "tag": "co-split-button",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Main action label (\"Submit Claim\"); required"
+      },
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "Related actions in the menu: Array<{label, hint?, icon?, danger?, disabled?, onSelect?}>; required"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'primary' | 'secondary'; default 'primary'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' | 'md'; default 'md'"
+      },
+      {
+        "name": "menu-label",
+        "property": "menuLabel",
+        "kind": "string",
+        "description": "aria-label of the arrow button; default \"More options\""
+      },
+      {
+        "name": "default-open",
+        "property": "defaultOpen",
+        "kind": "boolean",
+        "description": "Open on first render (uncontrolled); default false"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Controlled open state of the menu; default undefined (uncontrolled)"
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": "Disables both halves; default false"
+      },
+      {
+        "name": "align",
+        "property": "align",
+        "kind": "string",
+        "description": "'right' | 'left': menu alignment; default 'right'"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the wrapper"
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-click",
+        "prop": "onClick",
+        "description": "Runs the main action; default none"
+      },
+      {
+        "name": "co-open-change",
+        "prop": "onOpenChange",
+        "description": "Called when the menu opens or closes"
+      },
+      {
+        "name": "co-item-select",
+        "prop": "onItemSelect",
+        "description": "Called with the chosen item and its index, after the item's own onSelect (one handler for every item); default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "StatCard",
+    "tag": "co-stat-card",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Label, shown uppercase. Required"
+      },
+      {
+        "name": "trend",
+        "property": "trend",
+        "kind": "string",
+        "description": "Trend text, such as \"1.4 pts\"; default none"
+      },
+      {
+        "name": "trend-dir",
+        "property": "trendDir",
+        "kind": "string",
+        "description": "'up' | 'down': arrow before the trend; default 'up'"
+      },
+      {
+        "name": "trend-good",
+        "property": "trendGood",
+        "kind": "boolean",
+        "description": "true colours the trend green, false red; default none (neutral)"
+      },
+      {
+        "name": "selected",
+        "property": "selected",
+        "kind": "boolean",
+        "description": "Selected filter state (with onClick); default false"
+      },
+      {
+        "name": "meter",
+        "property": "meter",
+        "kind": "json",
+        "description": "`{value, max, tone?}` usage meter under the value; default none"
+      },
+      {
+        "name": "loading",
+        "property": "loading",
+        "kind": "boolean",
+        "description": "Shows a skeleton instead of the value; default false"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-click",
+        "prop": "onClick",
+        "description": "Makes the card a toggle button (aria-pressed); default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "value",
+        "prop": "value",
+        "description": "The number. Required"
+      },
+      {
+        "name": "sub",
+        "prop": "sub",
+        "description": "Context line: what the number counts and over what period; default none"
+      }
+    ]
   },
   {
     "component": "StatusTag",
@@ -1648,6 +5194,127 @@
     ],
     "properties": [],
     "events": [],
+    "slots": []
+  },
+  {
+    "component": "Stepper",
+    "tag": "co-stepper",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "steps",
+        "property": "steps",
+        "kind": "json",
+        "description": "Steps in order; may be empty for `segments` with `count`."
+      },
+      {
+        "name": "current",
+        "property": "current",
+        "kind": "number",
+        "description": "Current step, 0-based; default 0"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'bar' numbered horizontal | 'vertical' side panels | 'segments' thin bars (phones, kiosk); default 'bar'"
+      },
+      {
+        "name": "count",
+        "property": "count",
+        "kind": "number",
+        "description": "Number of segments when `steps` is empty; default 4"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name; default \"Steps\" (\"Progress\" for segments)"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": []
+  },
+  {
+    "component": "StyleChooser",
+    "tag": "co-style-chooser",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "styles",
+        "property": "styles",
+        "kind": "json",
+        "description": "Array<{id, name, who, swatch?, current?}>; default the five CareOS themes"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Previewed style id (controlled); default undefined"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initially previewed style id (uncontrolled); default 'classic'"
+      },
+      {
+        "name": "can-apply",
+        "property": "canApply",
+        "kind": "boolean",
+        "description": "Enables \"Apply to practice\" (admins only); default false"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Accessible name of the radio group; default \"App style\""
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the style id when Preview is chosen; default none"
+      },
+      {
+        "name": "co-apply",
+        "prop": "onApply",
+        "description": "Called with the style id when \"Apply to practice\" is chosen; default none"
+      }
+    ],
     "slots": []
   },
   {
@@ -1729,6 +5396,441 @@
         "description": "Body: what happens next; default none"
       }
     ]
+  },
+  {
+    "component": "Switch",
+    "tag": "co-switch",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": "On state (controlled)"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": "Initial on state (uncontrolled); default false"
+      },
+      {
+        "name": "row",
+        "property": "row",
+        "kind": "boolean",
+        "description": "Settings-row layout with a top border and 56px height; default false"
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": "Disables the switch; default false"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the wrapping row."
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the new state; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "label",
+        "prop": "label",
+        "description": "Visible label. Required"
+      },
+      {
+        "name": "description",
+        "prop": "description",
+        "description": "Help text under the label; default none"
+      }
+    ]
+  },
+  {
+    "component": "Tabs",
+    "tag": "co-tabs",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "items",
+        "property": "items",
+        "kind": "json",
+        "description": "The tabs. Required."
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Selected tab id (controlled); default uncontrolled"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initially selected tab id; default the first tab"
+      },
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'line' under page or card titles, 'pill' inside cards and toolbars; default 'line'"
+      },
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "aria-label of the tablist; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the new tab id; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "TextArea",
+    "tag": "co-text-area",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label; required"
+      },
+      {
+        "name": "rows",
+        "property": "rows",
+        "kind": "number",
+        "description": "Visible rows; default 3"
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": "Maximum characters; shows a live \"n / max\" counter; default none"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Controlled value; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initial value (uncontrolled); default \"\""
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message (as TextField); default none"
+      },
+      {
+        "name": "helper",
+        "property": "helper",
+        "kind": "string",
+        "description": "Muted hint under the field (as TextField); default none"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk plus aria-required (as TextField); default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Read-only lock state (as TextField); default false"
+      },
+      {
+        "name": "lock-message",
+        "property": "lockMessage",
+        "kind": "string",
+        "description": "Lock line text when readOnly; default 'Your role can view but not edit'"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the value and the change event; default none"
+      }
+    ],
+    "slots": []
+  },
+  {
+    "component": "TextField",
+    "tag": "co-text-field",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Visible label; required"
+      },
+      {
+        "name": "mask",
+        "property": "mask",
+        "kind": "string",
+        "description": "'phone' | 'ssn' | 'npi' | 'zip' | 'ein' | 'date'; default none"
+      },
+      {
+        "name": "value",
+        "property": "value",
+        "kind": "string",
+        "description": "Controlled value; default undefined (uncontrolled)"
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "string",
+        "description": "Initial value (uncontrolled), formatted with the mask; default \"\""
+      },
+      {
+        "name": "error",
+        "property": "error",
+        "kind": "string",
+        "description": "Error message: red border, message under the field with role alert, aria-invalid; default none"
+      },
+      {
+        "name": "helper",
+        "property": "helper",
+        "kind": "string",
+        "description": "Muted hint under the field; default the mask hint"
+      },
+      {
+        "name": "required",
+        "property": "required",
+        "kind": "boolean",
+        "description": "Red asterisk plus aria-required; default false"
+      },
+      {
+        "name": "read-only",
+        "property": "readOnly",
+        "kind": "boolean",
+        "description": "Read-only lock state: grey fill, lock icon and lock message; default false"
+      },
+      {
+        "name": "lock-message",
+        "property": "lockMessage",
+        "kind": "string",
+        "description": "Lock line text when readOnly; default 'Your role can view but not edit'"
+      },
+      {
+        "name": "size",
+        "property": "size",
+        "kind": "string",
+        "description": "'sm' 30px | 'md' 36px | 'lg' 48px (kiosk); default 'md'"
+      },
+      {
+        "name": "icon-left",
+        "property": "iconLeft",
+        "kind": "string",
+        "description": "Icon inside the input on the left; default none"
+      },
+      {
+        "name": "suffix",
+        "property": "suffix",
+        "kind": "string",
+        "description": "Unit text inside the input on the right, such as \"units\"; default none"
+      },
+      {
+        "name": "style",
+        "property": "style",
+        "kind": "json",
+        "description": "Inline style of the root"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "type",
+        "property": "type",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "property": "disabled",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "property": "name",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "property": "max",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "accept",
+        "property": "accept",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "auto-complete",
+        "property": "autoComplete",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "checked",
+        "property": "checked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "max-length",
+        "property": "maxLength",
+        "kind": "number",
+        "description": ""
+      },
+      {
+        "name": "min",
+        "property": "min",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "property": "multiple",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "property": "placeholder",
+        "kind": "string",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "property": "step",
+        "kind": "json",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-change",
+        "prop": "onChange",
+        "description": "Called with the (masked) value and the change event; default none"
+      }
+    ],
+    "slots": []
   },
   {
     "component": "Toast",
@@ -1830,6 +5932,187 @@
         "name": "(default)",
         "prop": "children",
         "description": "Your app"
+      }
+    ]
+  },
+  {
+    "component": "Tooltip",
+    "tag": "co-tooltip",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "label",
+        "property": "label",
+        "kind": "string",
+        "description": "Tooltip text; required"
+      },
+      {
+        "name": "placement",
+        "property": "placement",
+        "kind": "string",
+        "description": "'top' | 'bottom' | 'right'; default 'top'"
+      },
+      {
+        "name": "open",
+        "property": "open",
+        "kind": "boolean",
+        "description": "Keeps the tooltip shown (docs, onboarding); default false"
+      },
+      {
+        "name": "id",
+        "property": "id",
+        "kind": "string",
+        "description": "id of the tooltip element; default generated"
+      },
+      {
+        "name": "class-name",
+        "property": "className",
+        "kind": "string",
+        "description": "Class on the wrapper"
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "slots": [
+      {
+        "name": "(default)",
+        "prop": "children",
+        "description": "One focusable element (Button, IconButton, link); required"
+      }
+    ]
+  },
+  {
+    "component": "TopBar",
+    "tag": "co-top-bar",
+    "aliases": [],
+    "attributes": [
+      {
+        "name": "variant",
+        "property": "variant",
+        "kind": "string",
+        "description": "'classic' navy bar with module links | 'sidebar' patient search | 'rail' patient tabs | 'command' Jump to anything bar; default 'classic'"
+      },
+      {
+        "name": "role",
+        "property": "role",
+        "kind": "string",
+        "description": "Previewed role; shows RolePill when set; default none"
+      },
+      {
+        "name": "roles",
+        "property": "roles",
+        "kind": "json",
+        "description": "RolePill roles; default none (the current role only)"
+      },
+      {
+        "name": "notifications",
+        "property": "notifications",
+        "kind": "number",
+        "description": "Unread notification count; default none"
+      },
+      {
+        "name": "quick-add",
+        "property": "quickAdd",
+        "kind": "string",
+        "description": "Quick add button label (not in classic); default \"New\""
+      },
+      {
+        "name": "product",
+        "property": "product",
+        "kind": "string",
+        "description": "Product name; default \"CareOS\""
+      },
+      {
+        "name": "user",
+        "property": "user",
+        "kind": "string",
+        "description": "Signed-in user, shown as initials; default \"Jordan Lee\""
+      },
+      {
+        "name": "module",
+        "property": "module",
+        "kind": "string",
+        "description": "Command only: current module; default \"Modules\""
+      },
+      {
+        "name": "links",
+        "property": "links",
+        "kind": "json",
+        "description": "Classic only: module links; default Home, Schedule, Patients, Billing, Reports, Settings"
+      },
+      {
+        "name": "active",
+        "property": "active",
+        "kind": "string",
+        "description": "Classic only: current module link; default none"
+      },
+      {
+        "name": "default-checked",
+        "property": "defaultChecked",
+        "kind": "boolean",
+        "description": ""
+      },
+      {
+        "name": "default-value",
+        "property": "defaultValue",
+        "kind": "json",
+        "description": ""
+      },
+      {
+        "name": "auto-focus",
+        "property": "autoFocus",
+        "kind": "boolean",
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "events": [
+      {
+        "name": "co-role-change",
+        "prop": "onRoleChange",
+        "description": "Called with the role chosen in RolePill; default none"
+      },
+      {
+        "name": "co-open-palette",
+        "prop": "onOpenPalette",
+        "description": "Command only: opens the CommandPalette; default none"
+      },
+      {
+        "name": "co-open-modules",
+        "prop": "onOpenModules",
+        "description": "Command only: opens the module switcher; default none"
+      },
+      {
+        "name": "co-navigate",
+        "prop": "onNavigate",
+        "description": "Classic only: called when a module link is clicked; default none"
+      },
+      {
+        "name": "co-search-change",
+        "prop": "onSearchChange",
+        "description": "Sidebar only: called as the patient search text changes; default none"
+      },
+      {
+        "name": "co-quick-add",
+        "prop": "onQuickAdd",
+        "description": "Quick add handler; default none"
+      },
+      {
+        "name": "co-notifications",
+        "prop": "onNotifications",
+        "description": "Notifications button handler; default none"
+      },
+      {
+        "name": "co-account",
+        "prop": "onAccount",
+        "description": "Account button handler; default none"
+      }
+    ],
+    "slots": [
+      {
+        "name": "tabs",
+        "prop": "tabs",
+        "description": "Rail only: the PatientTabs; default none"
       }
     ]
   }

@@ -16,7 +16,20 @@ import { Icon } from '../Icon/Icon';
 import { IconButton } from '../IconButton/IconButton';
 import { formatMask } from '../TextField/TextField';
 
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 const WEEKDAYS: Array<[string, string]> = [
   ['Su', 'Sunday'],
   ['Mo', 'Monday'],
@@ -52,8 +65,10 @@ function addMonths(d: Date, n: number): Date {
   return new Date(d.getFullYear(), d.getMonth() + n, Math.min(d.getDate(), last));
 }
 
-export interface DatePickerProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange' | 'style' | 'size'> {
+export interface DatePickerProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'defaultValue' | 'onChange' | 'style' | 'size'
+> {
   /** Visible label; required */
   label: string;
   /** Controlled value, MM/DD/YYYY; default undefined (uncontrolled) */
@@ -150,7 +165,9 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
   const lock = readOnly ? lockMessage : undefined;
 
   const isDisabled = (d: Date) =>
-    (disablePast && d < today) || (disableFuture && d > today) || (disableWeekends && (d.getDay() === 0 || d.getDay() === 6));
+    (disablePast && d < today) ||
+    (disableFuture && d > today) ||
+    (disableWeekends && (d.getDay() === 0 || d.getDay() === 6));
 
   const tabDate = sameMonth(focusDate, month)
     ? focusDate
@@ -184,7 +201,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
     if (!sameMonth(d, month)) setMonth(firstOfMonth(d));
   };
 
-  const onGridKeyDown = (e: KeyboardEvent<HTMLDivElement>, d: Date) => {
+  const onGridKeyDown = (e: KeyboardEvent<HTMLButtonElement>, d: Date) => {
     let next: Date | null = null;
     if (e.key === 'ArrowLeft') next = addDays(d, -1);
     else if (e.key === 'ArrowRight') next = addDays(d, 1);
@@ -222,7 +239,16 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
   const todayDisabled = isDisabled(today);
 
   return (
-    <Field id={id} label={label} required={required} error={error} helper={helper} lock={lock} className={className} style={style}>
+    <Field
+      id={id}
+      label={label}
+      required={required}
+      error={error}
+      helper={helper}
+      lock={lock}
+      className={className}
+      style={style}
+    >
       <div
         className="co-mwrap co-dp"
         ref={wrapRef}

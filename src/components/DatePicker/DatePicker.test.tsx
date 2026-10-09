@@ -73,7 +73,10 @@ describe('DatePicker', () => {
     render(<DatePicker label="Date" today="10/09/2026" defaultOpen disableWeekends disablePast onChange={onChange} />);
     const sat = screen.getByRole('gridcell', { name: 'Saturday, October 10, 2026' });
     expect(sat).toHaveAttribute('aria-disabled', 'true');
-    expect(screen.getByRole('gridcell', { name: 'Thursday, October 8, 2026' })).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.getByRole('gridcell', { name: 'Thursday, October 8, 2026' })).toHaveAttribute(
+      'aria-disabled',
+      'true'
+    );
     await userEvent.click(sat);
     expect(onChange).not.toHaveBeenCalled();
     await userEvent.click(screen.getByRole('gridcell', { name: 'Monday, October 12, 2026' }));

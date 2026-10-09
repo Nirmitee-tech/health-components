@@ -8,8 +8,8 @@ description: Use CareOS in Angular through standards-based custom elements.
 
 Angular uses CareOS through **custom elements**: every component is also registered as a `<co-*>` tag
 (`Button` is `<co-button>`, `PatientBanner` is `<co-patient-banner>`). They are the same components as the React
-package, so behaviour, accessibility and styling are identical. React is bundled inside the elements; your Angular app
-does not use React directly.
+package, so behaviour, accessibility and styling are identical. The elements render with React internally (installed as
+a peer dependency); your Angular code never touches React.
 
 ## 1. Install
 
@@ -49,7 +49,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  patient = { name: 'Henna West', sex: 'F', age: 38, dob: '03/14/1988', mrn: 'MRN-100231' };
+  allergies = ['Penicillin', 'Sulfa'];
   claimActions = [{ label: 'Submit and Print CMS-1500' }, { label: 'Save as Draft' }];
 
   submit() {
@@ -67,11 +67,12 @@ For NgModule apps, add `schemas: [CUSTOM_ELEMENTS_SCHEMA]` to the module instead
 
 ```html title="src/app/app.component.html"
 <div data-co-theme="classic" class="co-root">
-  <co-patient-banner [patient]="patient"></co-patient-banner>
+  <co-patient-banner name="Henna West" sex="F" age="38" dob="03/14/1988" mrn="MRN-100231" [allergies]="allergies">
+  </co-patient-banner>
 
   <co-button variant="primary" icon-left="plus" (click)="submit()">Start Visit Note</co-button>
 
-  <co-split-button label="Submit Claim" [items]="claimActions" (co-select)="onAction($event.detail)">
+  <co-split-button label="Submit Claim" [items]="claimActions" (co-item-select)="onAction($event.detail[0])">
   </co-split-button>
 </div>
 ```

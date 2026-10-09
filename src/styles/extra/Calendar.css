@@ -1,0 +1,2 @@
+/* Calendar: week and month cells sit in ARIA rows (role="row") that must not break the 7-column CSS grid. */
+.co-cal-row { display: contents; }

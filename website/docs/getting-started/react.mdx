@@ -34,9 +34,7 @@ import { ThemeProvider, PatientBanner, Button, Card } from 'health-components';
 export function App() {
   return (
     <ThemeProvider theme="classic">
-      <PatientBanner
-        patient={{ name: 'Henna West', sex: 'F', age: 38, dob: '03/14/1988', mrn: 'MRN-100231' }}
-      />
+      <PatientBanner name="Henna West" sex="F" age={38} dob="03/14/1988" mrn="MRN-100231" allergies={['Penicillin']} />
       <Card title="Claim lines">
         <Button variant="primary" iconLeft="plus">
           Add Line
@@ -73,7 +71,7 @@ controlled with `x` plus its change handler:
 
 ```tsx
 const [tab, setTab] = useState('summary');
-<Tabs value={tab} onChange={setTab} tabs={[...]} />;
+<Tabs value={tab} onChange={setTab} items={[...]} />;
 ```
 
 ## Overlays

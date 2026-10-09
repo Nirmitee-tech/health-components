@@ -1,0 +1,3 @@
+/* PermissionMatrix: the action row header reads as body text; the editable level select has a fixed width (was inline in the source). */
+.co-table th.co-pm-act { background: none; font-weight: 400; }
+.co-pm-sel { width: 110px; }

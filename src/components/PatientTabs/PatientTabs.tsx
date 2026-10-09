@@ -78,46 +78,51 @@ export const PatientTabs = forwardRef<HTMLDivElement, PatientTabsProps>(function
   };
 
   return (
-    <div
-      ref={ref}
-      id={id}
-      className={cx('co-ptabs-bar', className)}
-      role="tablist"
-      aria-label="Open patients"
-      {...rest}
-    >
-      {shown.map((t) => {
-        const on = t.id === act;
-        return (
-          <div key={t.id} className={cx('co-pt', on && 'is-on')}>
-            <button
-              ref={(el) => {
-                btns.current[t.id] = el;
-              }}
-              id={`${base}-${t.id}`}
-              type="button"
-              role="tab"
-              aria-selected={on}
-              tabIndex={t.id === focusId ? 0 : -1}
-              className="co-pt-l"
-              onClick={() => {
-                if (!on) setAct(t.id);
-              }}
-              onKeyDown={(e) => onKeyDown(e, t)}
-            >
-              {t.icon ? <Icon name={t.icon} size={14} /> : <Avatar name={t.name} size="xs" aria-hidden="true" />}
-              <span>{t.name}</span>
-              {t.meta ? <span className="co-mi-s co-pt-m">{t.meta}</span> : null}
-            </button>
-            {t.pinned ? null : (
-              <button type="button" className="co-pt-x" aria-label={`Close ${t.name}`} onClick={() => close(t)}>
-                <Icon name="x" size={14} />
+    <div ref={ref} id={id} className={cx('co-ptabs-bar', className)} {...rest}>
+      <div className="co-ptabs-list" role="tablist" aria-label="Open patients">
+        {shown.map((t) => {
+          const on = t.id === act;
+          return (
+            <div key={t.id} className={cx('co-pt', on && 'is-on')}>
+              <button
+                ref={(el) => {
+                  btns.current[t.id] = el;
+                }}
+                id={`${base}-${t.id}`}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                aria-keyshortcuts={t.pinned ? undefined : 'Delete'}
+                tabIndex={t.id === focusId ? 0 : -1}
+                className="co-pt-l"
+                onClick={() => {
+                  if (!on) setAct(t.id);
+                }}
+                onKeyDown={(e) => onKeyDown(e, t)}
+              >
+                {t.icon ? <Icon name={t.icon} size={14} /> : <Avatar name={t.name} size="xs" aria-hidden="true" />}
+                <span>{t.name}</span>
+                {t.meta ? <span className="co-mi-s co-pt-m">{t.meta}</span> : null}
               </button>
-            )}
-          </div>
-        );
-      })}
-      <button type="button" className="co-pt-add" aria-label={addLabel} onClick={onAdd}>
+              {t.pinned ? null : (
+                // Pointer shortcut; keyboard and screen-reader users close the focused tab with Delete (ARIA tabs pattern),
+                // so the button stays out of the tab order and the tablist only contains tabs.
+                <button
+                  type="button"
+                  className="co-pt-x"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  title={`Close ${t.name}`}
+                  onClick={() => close(t)}
+                >
+                  <Icon name="x" size={14} />
+                </button>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <button type="button" className="co-pt-add" aria-label={addLabel} title={addLabel} onClick={onAdd}>
         +
       </button>
     </div>

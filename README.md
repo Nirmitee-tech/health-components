@@ -65,7 +65,7 @@ defineCareOSElements();
 
 ```html
 <co-button variant="primary" icon-left="plus" (click)="start()">Start Visit Note</co-button>
-<co-split-button label="Submit Claim" [items]="actions" (co-select)="onPick($event.detail)"></co-split-button>
+<co-split-button label="Submit Claim" [items]="actions" (co-item-select)="onPick($event.detail[0])"></co-split-button>
 ```
 
 ### Plain HTML

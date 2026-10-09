@@ -18,7 +18,12 @@ export interface MaskSpec {
 /** The masks TextField knows. */
 export const masks: Record<MaskKind, MaskSpec> = {
   phone: { pattern: '(###) ###-####', placeholder: '(312) 555-0142', inputMode: 'tel', help: 'US phone, 10 digits' },
-  ssn: { pattern: '###-##-####', placeholder: '###-##-####', inputMode: 'numeric', help: '9 digits. Shown as ***-**-1234 after save' },
+  ssn: {
+    pattern: '###-##-####',
+    placeholder: '###-##-####',
+    inputMode: 'numeric',
+    help: '9 digits. Shown as ***-**-1234 after save',
+  },
   npi: { pattern: '##########', placeholder: '1234567893', inputMode: 'numeric', help: '10 digits' },
   zip: { pattern: '#####-####', placeholder: '60614', inputMode: 'numeric', help: '5 digits, or ZIP+4' },
   ein: { pattern: '##-#######', placeholder: '12-3456789', inputMode: 'numeric', help: 'Enter the EIN as XX-XXXXXXX.' },
@@ -45,8 +50,10 @@ export function formatMask(raw: string | null | undefined, kind?: MaskKind): str
 
 export type TextFieldSize = 'sm' | 'md' | 'lg';
 
-export interface TextFieldProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange' | 'size' | 'style'> {
+export interface TextFieldProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'defaultValue' | 'onChange' | 'size' | 'style'
+> {
   /** Visible label; required */
   label: string;
   /** 'phone' | 'ssn' | 'npi' | 'zip' | 'ein' | 'date'; default none */
@@ -112,13 +119,28 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function T
   const help = helper || (m && !error ? m.help : undefined);
   const lock = readOnly ? lockMessage : undefined;
   return (
-    <Field id={id} label={label} required={required} error={error} helper={help} lock={lock} className={className} style={style}>
+    <Field
+      id={id}
+      label={label}
+      required={required}
+      error={error}
+      helper={help}
+      lock={lock}
+      className={className}
+      style={style}
+    >
       <div className={cx('co-inpwrap', iconLeft && 'has-icon')}>
         {iconLeft ? <Icon name={iconLeft} size={16} className="co-inp-ic" /> : null}
         <input
           ref={ref}
           id={id}
-          className={cx('co-inp', size === 'sm' && 'co-inp-sm', size === 'lg' && 'co-inp-lg', error && 'is-bad', readOnly && 'is-ro')}
+          className={cx(
+            'co-inp',
+            size === 'sm' && 'co-inp-sm',
+            size === 'lg' && 'co-inp-lg',
+            error && 'is-bad',
+            readOnly && 'is-ro'
+          )}
           value={value}
           readOnly={readOnly}
           aria-invalid={error ? true : undefined}

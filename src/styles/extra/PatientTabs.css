@@ -1,0 +1,2 @@
+/* PatientTabs: the tablist wrapper inside .co-ptabs-bar, so the add button sits outside the tablist (ARIA). */
+.co-ptabs-list { display: flex; align-items: flex-end; gap: 2px; min-width: 0; }

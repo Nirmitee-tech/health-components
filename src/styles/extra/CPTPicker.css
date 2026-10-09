@@ -1,0 +1,4 @@
+/* CPTPicker: widths of the per-line modifier, units and diagnosis pointer inputs. */
+.co-cpt .co-cpt-mods { width: 90px; }
+.co-cpt .co-cpt-units { width: 56px; }
+.co-cpt .co-cpt-dx { width: 64px; }

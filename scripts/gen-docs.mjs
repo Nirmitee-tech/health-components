@@ -125,12 +125,15 @@ function parseStories(file, componentName) {
     return n && ts.isObjectLiteralExpression(n) ? n : null;
   };
   const prop = (obj, name) => obj?.properties.find((p) => ts.isPropertyAssignment(p) && p.name.getText(src) === name)?.initializer;
+  // The meta object is whatever `export default` points at (a variable name or an inline object).
+  const defaultExport = src.statements.find(ts.isExportAssignment);
+  const metaName = defaultExport && ts.isIdentifier(defaultExport.expression) ? defaultExport.expression.text : null;
   for (const st of src.statements) {
     if (ts.isVariableStatement(st)) {
       for (const d of st.declarationList.declarations) {
         const obj = metaObject(d.initializer);
         const exported = st.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword);
-        if (!exported && obj && prop(obj, 'title')) {
+        if (!exported && obj && d.name.getText(src) === metaName) {
           const t = prop(obj, 'title');
           title = t && ts.isStringLiteralLike(t) ? t.text : title;
           metaArgs = prop(obj, 'args') ?? null;

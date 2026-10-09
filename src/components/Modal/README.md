@@ -54,6 +54,7 @@ The consumer provides these. Everything else comes from the tokens.
 - dialog (form) or alertdialog (confirm, destructive), aria-modal, labelled by the title.
 - Escape and the x close it; scrim click closes forms only when nothing was typed (app rule).
 - Move focus into the dialog on open and back to the trigger on close.
+- Renders through a portal, traps Tab inside and locks page scroll. Pass `closeOnScrim={false}` for forms once something was typed.
 
 ## Do and don't
 

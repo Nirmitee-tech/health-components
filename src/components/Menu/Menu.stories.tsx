@@ -46,7 +46,12 @@ export const Showcase: Story = {
         defaultOpen
         align="left"
         label="Actions for Henna West, 10:30 AM"
-        items={[{ label: 'Reschedule' }, { label: 'Mark Arrived' }, { divider: true }, { label: 'Mark No Show', danger: true }]}
+        items={[
+          { label: 'Reschedule' },
+          { label: 'Mark Arrived' },
+          { divider: true },
+          { label: 'Mark No Show', danger: true },
+        ]}
       />
       <Popover trigger="Filters (2)" title="Filter claims" defaultOpen align="left">
         <Checkbox label="Rejected" defaultChecked />
@@ -89,7 +94,12 @@ export const Kebab: Story = {
           { label: 'Void Claim', danger: true },
         ]}
       />
-      <KebabMenu horizontal label="Actions for Ralph Edwards" align="left" items={[{ label: 'Open Chart' }, { label: 'Message Patient' }]} />
+      <KebabMenu
+        horizontal
+        label="Actions for Ralph Edwards"
+        align="left"
+        items={[{ label: 'Open Chart' }, { label: 'Message Patient' }]}
+      />
     </div>
   ),
 };

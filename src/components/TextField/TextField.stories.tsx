@@ -32,8 +32,19 @@ export const Showcase: Story = {
   render: () => (
     <div className="pv-grid">
       <TextField label="Mobile Phone" mask="phone" required defaultValue="3125550142" />
-      <TextField label="Social Security Number" mask="ssn" defaultValue="123456789" helper="Optional. Shown as ***-**-6789 after save." />
-      <TextField label="Rendering Provider NPI" mask="npi" required defaultValue="12345" error="NPI must be 10 digits. You entered 5." />
+      <TextField
+        label="Social Security Number"
+        mask="ssn"
+        defaultValue="123456789"
+        helper="Optional. Shown as ***-**-6789 after save."
+      />
+      <TextField
+        label="Rendering Provider NPI"
+        mask="npi"
+        required
+        defaultValue="12345"
+        error="NPI must be 10 digits. You entered 5."
+      />
       <TextField label="ZIP Code" mask="zip" defaultValue="606141234" />
       <TextField label="Tax ID (EIN)" mask="ein" defaultValue="361234567" />
       <TextField label="Member ID" defaultValue="W123456789" readOnly />
@@ -58,10 +69,17 @@ export const Masks: Story = {
 };
 
 export const WithError: Story = {
-  args: { label: 'Rendering Provider NPI', mask: 'npi', defaultValue: '12345', error: 'NPI must be 10 digits. You entered 5.' },
+  args: {
+    label: 'Rendering Provider NPI',
+    mask: 'npi',
+    defaultValue: '12345',
+    error: 'NPI must be 10 digits. You entered 5.',
+  },
 };
 
-export const ReadOnly: Story = { args: { label: 'Member ID', mask: undefined, required: false, defaultValue: 'W123456789', readOnly: true } };
+export const ReadOnly: Story = {
+  args: { label: 'Member ID', mask: undefined, required: false, defaultValue: 'W123456789', readOnly: true },
+};
 
 export const Sizes: Story = {
   render: () => (

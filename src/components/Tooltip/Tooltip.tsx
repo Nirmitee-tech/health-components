@@ -23,7 +23,14 @@ export interface TooltipProps {
  * Tooltip shows a short text label on hover and focus, linked to its trigger with aria-describedby.
  * Escape hides it (WCAG 1.4.13).
  */
-export function Tooltip({ label, children, placement = 'top', open: forced = false, id: idProp, className }: TooltipProps) {
+export function Tooltip({
+  label,
+  children,
+  placement = 'top',
+  open: forced = false,
+  id: idProp,
+  className,
+}: TooltipProps) {
   const id = useDomId('tip', idProp);
   const [shown, setShown] = useState(false);
   const open = forced || shown;

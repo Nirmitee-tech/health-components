@@ -20,7 +20,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Playground: Story = { args: { required: true, maxLength: 500, defaultValue: 'Follow-up on A1c, refill metformin.' } };
+export const Playground: Story = {
+  args: { required: true, maxLength: 500, defaultValue: 'Follow-up on A1c, refill metformin.' },
+};
 
 export const Showcase: Story = {
   render: () => (
@@ -32,10 +34,16 @@ export const Showcase: Story = {
   ),
 };
 
-export const WithCounter: Story = { args: { label: 'Message to Patient', maxLength: 160, defaultValue: 'Your lab results are ready in the portal.' } };
+export const WithCounter: Story = {
+  args: { label: 'Message to Patient', maxLength: 160, defaultValue: 'Your lab results are ready in the portal.' },
+};
 
 export const WithError: Story = { args: { label: 'Appeal Letter', error: 'Reason is required', required: true } };
 
 export const ReadOnly: Story = {
-  args: { label: 'Clinical Note', readOnly: true, defaultValue: 'Signed by James Bell MD on 10/08/2026. Addenda only.' },
+  args: {
+    label: 'Clinical Note',
+    readOnly: true,
+    defaultValue: 'Signed by James Bell MD on 10/08/2026. Addenda only.',
+  },
 };

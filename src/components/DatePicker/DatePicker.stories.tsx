@@ -32,7 +32,14 @@ export const Playground: Story = { args: { required: true, defaultValue: '10/09/
 export const Showcase: Story = {
   render: () => (
     <div className="pv-grid" style={{ minHeight: 360 }}>
-      <DatePicker label="Date of Service" required defaultValue="10/09/2026" defaultOpen disableWeekends today="10/09/2026" />
+      <DatePicker
+        label="Date of Service"
+        required
+        defaultValue="10/09/2026"
+        defaultOpen
+        disableWeekends
+        today="10/09/2026"
+      />
       <DatePicker label="Date of Birth" defaultValue="02/30/1988" disableFuture today="10/09/2026" />
       <DatePicker label="Coverage Start" defaultValue="01/01/2026" readOnly today="10/09/2026" />
     </div>

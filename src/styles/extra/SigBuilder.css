@@ -1,0 +1,2 @@
+/* SigBuilder: the field grid (the source used the story helper .pv-grid). */
+.co-sigb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--co-space-4); align-items: start; }

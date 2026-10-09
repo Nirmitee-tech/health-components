@@ -43,6 +43,7 @@ The consumer provides these. Everything else comes from the tokens.
 ## Accessibility
 
 - tablist, tab, aria-selected; arrow keys move between tabs (roving tabindex).
+- Home and End jump to the first and last tab; disabled tabs are skipped. Give items a `panelId` to set aria-controls; each tab's id is `<id>-<item.id>` for the panel's aria-labelledby.
 
 ## Do and don't
 

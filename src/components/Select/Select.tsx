@@ -59,7 +59,16 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   const opts = options.map((o) => (typeof o === 'string' ? { value: o, label: o } : o));
   const lock = readOnly ? lockMessage : undefined;
   return (
-    <Field id={id} label={label} required={required} error={error} helper={helper} lock={lock} className={className} style={style}>
+    <Field
+      id={id}
+      label={label}
+      required={required}
+      error={error}
+      helper={helper}
+      lock={lock}
+      className={className}
+      style={style}
+    >
       <div className="co-selwrap">
         <select
           ref={ref}

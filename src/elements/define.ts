@@ -1,4 +1,4 @@
-import { createElement, type ComponentType, type ReactNode } from 'react';
+import { Component, createElement, type ComponentType, type ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { flushSync } from 'react-dom';
 
@@ -19,6 +19,25 @@ export interface ElementSpec {
   component: ComponentType<never>;
   /** Prop name to kind. */
   props: Record<string, PropKind>;
+  /** Values used until the page sets the prop (required lists start as `[]` so the element renders before data arrives). */
+  defaults?: Record<string, unknown>;
+}
+
+/**
+ * Keeps one element's failure from taking down the page: logs it with the tag name and renders nothing
+ * until the next prop change (the element remounts the boundary with a new key).
+ */
+class ElementBoundary extends Component<{ tag: string; children: ReactNode }, { failed: boolean }> {
+  override state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  override componentDidCatch(error: unknown) {
+    console.error(`<${this.props.tag}> failed to render. Check its properties.`, error);
+  }
+  override render() {
+    return this.state.failed ? null : this.props.children;
+  }
 }
 
 export interface DefineOptions {
@@ -85,6 +104,7 @@ export function createElementClass(spec: ElementSpec, options: DefineOptions = {
     private _props: Record<string, unknown> = {};
     private _observer: MutationObserver | null = null;
     private _scheduled = false;
+    private _version = 0;
 
     constructor() {
       super();
@@ -183,8 +203,14 @@ export function createElementClass(spec: ElementSpec, options: DefineOptions = {
             props[name] = createElement('slot', slot ? { name: slot } : {}) as ReactNode;
           } else if (this._props[name] !== undefined) props[name] = this._props[name];
         } else if (this._props[name] !== undefined) props[name] = this._props[name];
+        else if (spec.defaults && name in spec.defaults) props[name] = spec.defaults[name];
       }
-      const el = createElement(spec.component as ComponentType<Record<string, unknown>>, props);
+      this._version += 1;
+      const el = createElement(
+        ElementBoundary,
+        { tag: spec.tag, key: this._version },
+        createElement(spec.component as ComponentType<Record<string, unknown>>, props)
+      );
       if (sync) flushSync(() => this._root!.render(el));
       else this._root.render(el);
     }

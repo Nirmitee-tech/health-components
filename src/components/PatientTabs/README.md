@@ -35,12 +35,13 @@ The consumer provides these. Everything else comes from the tokens.
 ## Usage
 
 ```jsx
-<PatientTabs tabs={openCharts} active={currentId} onAdd={openSearch} />
+<PatientTabs tabs={openCharts} active={currentId} onChange={setCurrentId} onClose={closeChart} onAdd={openSearch} />
 ```
 
 ## Accessibility
 
 - tablist; each close button names the patient ("Close Henna West").
+- Arrow keys, Home and End move between tabs; Delete closes the focused tab. The close buttons are pointer shortcuts outside the tab order, so the tablist holds only tabs; the add button sits after the tablist.
 
 ## Do and don't
 

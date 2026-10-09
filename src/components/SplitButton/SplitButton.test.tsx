@@ -23,7 +23,9 @@ describe('SplitButton', () => {
   });
 
   it('closes on Escape and disables both halves', async () => {
-    const { rerender } = render(<SplitButton label="Export" variant="secondary" defaultOpen items={[{ label: 'CSV' }]} />);
+    const { rerender } = render(
+      <SplitButton label="Export" variant="secondary" defaultOpen items={[{ label: 'CSV' }]} />
+    );
     expect(screen.getByRole('menu')).toBeInTheDocument();
     await userEvent.keyboard('{Escape}');
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();

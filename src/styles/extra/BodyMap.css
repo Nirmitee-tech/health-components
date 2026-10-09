@@ -1,0 +1,3 @@
+/* BodyMap: the outline and the numbered list sit side by side, top aligned; the list takes the rest. */
+.co-bodymap-row { align-items: flex-start; }
+.co-bodymap-list { flex: 1; }

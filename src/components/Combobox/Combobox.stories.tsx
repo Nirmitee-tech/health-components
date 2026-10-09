@@ -60,7 +60,14 @@ export const Showcase: Story = {
         defaultOpen
         defaultQuery="r"
       />
-      <Combobox label="Diagnosis (ICD-10)" kind="code" options={codes} placeholder="Code or words" defaultQuery="diab" defaultOpen />
+      <Combobox
+        label="Diagnosis (ICD-10)"
+        kind="code"
+        options={codes}
+        placeholder="Code or words"
+        defaultQuery="diab"
+        defaultOpen
+      />
       <Combobox
         label="Payer"
         options={[{ label: 'Aetna' }, { label: 'Blue Cross Blue Shield of Illinois' }]}
@@ -72,10 +79,19 @@ export const Showcase: Story = {
   ),
 };
 
-export const PatientSearch: Story = { args: { defaultOpen: true, defaultQuery: 'r', footer: 'Showing 2 of 4,212 patients' } };
+export const PatientSearch: Story = {
+  args: { defaultOpen: true, defaultQuery: 'r', footer: 'Showing 2 of 4,212 patients' },
+};
 
 export const CodeSearch: Story = {
-  args: { label: 'Diagnosis (ICD-10)', kind: 'code', options: codes, placeholder: 'Code or words', defaultQuery: 'e11', defaultOpen: true },
+  args: {
+    label: 'Diagnosis (ICD-10)',
+    kind: 'code',
+    options: codes,
+    placeholder: 'Code or words',
+    defaultQuery: 'e11',
+    defaultOpen: true,
+  },
 };
 
 export const NoMatches: Story = {

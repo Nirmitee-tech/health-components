@@ -43,7 +43,14 @@ describe('Combobox', () => {
 
   it('formats code picks and supports mouse choice', async () => {
     const onSelect = vi.fn();
-    render(<Combobox label="Diagnosis" kind="code" options={[{ code: 'I10', label: 'Essential hypertension' }]} onSelect={onSelect} />);
+    render(
+      <Combobox
+        label="Diagnosis"
+        kind="code"
+        options={[{ code: 'I10', label: 'Essential hypertension' }]}
+        onSelect={onSelect}
+      />
+    );
     await userEvent.click(screen.getByRole('combobox'));
     expect(screen.getByText('I10')).toHaveClass('co-code');
     await userEvent.click(screen.getByRole('option'));
@@ -61,7 +68,16 @@ describe('Combobox', () => {
   });
 
   it('shows the empty text and the footer', () => {
-    render(<Combobox label="Payer" options={[{ label: 'Aetna' }]} defaultQuery="zz" defaultOpen emptyText="No payer matches." footer="Add a payer" />);
+    render(
+      <Combobox
+        label="Payer"
+        options={[{ label: 'Aetna' }]}
+        defaultQuery="zz"
+        defaultOpen
+        emptyText="No payer matches."
+        footer="Add a payer"
+      />
+    );
     expect(screen.getByRole('status')).toHaveTextContent('No payer matches.');
     expect(screen.getByText('Add a payer')).toHaveClass('co-menu-foot');
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument();

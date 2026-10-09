@@ -1,0 +1,101 @@
+/* Acute care set (ext: ed-periop): EDTrackingBoard, ESIBadge, TriageForm, ORSchedule / SurgeryBoard,
+   SurgicalSafetyChecklist, AnesthesiaRecord, PACUScore, LaborDeliveryBoard, PartogramChart, FetalMonitorStrip,
+   ProcedureNote. The source section injected no stylesheet and styled these parts inline; the static inline styles
+   moved here as classes (CSP-safe, themeable). Values that depend on data (positions, widths) stay inline. */
+
+/* One clinical value (AcuteValue) */
+.co-ac-v { display: inline-flex; align-items: baseline; gap: 6px; flex-wrap: nowrap; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.co-ac-u { color: var(--co-muted); font-size: 12px; margin-left: -3px; }
+.co-ac-v.is-flag .co-ac-n { color: var(--co-danger-strong); }
+.co-ac-num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.co-ac-v .co-af { align-self: center; }
+
+/* Shared layout */
+.co-ac-wrap { flex-wrap: wrap; }
+.co-ac-h3 { margin: 16px 0 8px; font-size: 14px; }
+.co-ac-h3.is-first { margin-top: 0; margin-bottom: 6px; }
+.co-ac-h3.is-sub { margin: 12px 0 6px; }
+.co-ac-stack { display: grid; gap: 2px; font-size: 12px; }
+.co-ac-cell-sm { font-size: 12px; }
+.co-ac-status { margin-top: 14px; padding: 12px; border-radius: var(--co-radius-md); border: 1px solid var(--co-border); background: var(--co-surface-alt); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.co-ac-status.is-compact { margin-top: 12px; padding: 10px; border: 0; gap: 8px; }
+.co-ac-status :is(.co-mi-s, .co-muted, .co-kl, .co-help) { color: var(--co-ink-2); }
+
+/* ESIBadge: ESI 1 gets a ring */
+.co-esi { display: inline-flex; }
+.co-esi.is-1 { outline: 2px solid var(--co-danger); border-radius: var(--co-radius-pill); }
+
+/* EDTrackingBoard */
+.co-ed-kpis { padding: 12px 16px 0; }
+.co-ed-bar { padding: 12px 16px; }
+
+/* TriageForm */
+.co-tri-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.co-tri-vitals { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+.co-tri-vf { display: grid; gap: 4px; align-content: start; }
+.co-tri-vf-v { min-height: 20px; font-size: 12px; }
+.co-tri-esi { display: grid; gap: 6px; }
+.co-tri-res { max-width: 320px; }
+.co-tri-reason { flex: 1; min-width: 200px; }
+.co-tri-ovr { width: 170px; }
+.co-tri-actions { margin-top: 14px; }
+
+/* ORSchedule timeline */
+.co-or-scroll { overflow-x: auto; padding: 12px; }
+.co-or-tl { min-width: 760px; position: relative; }
+.co-or-head { display: grid; grid-template-columns: 120px 1fr; align-items: end; margin-bottom: 4px; }
+.co-or-hours { position: relative; height: 18px; }
+.co-or-hour { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--co-muted); font-variant-numeric: tabular-nums; }
+.co-or-row { display: grid; grid-template-columns: 120px 1fr; border-top: 1px solid var(--co-line-soft); min-height: 64px; }
+.co-or-rh { padding: 8px 8px 8px 0; }
+.co-or-util { font-size: 12px; }
+.co-or-track { position: relative; }
+.co-or-case { position: absolute; top: 6px; bottom: 6px; border: 1px solid var(--co-border); border-left: 4px solid var(--co-primary); border-radius: var(--co-radius-sm); padding: 3px 6px; overflow: hidden; font-size: 12px; color: var(--co-ink); background: var(--co-surface-muted); }
+.co-or-case:focus-visible { outline: 2px solid var(--co-primary); outline-offset: 1px; z-index: 1; }
+.co-or-case.is-delayed { border-color: var(--co-danger); border-left-color: var(--co-danger); }
+.co-or-case.is-cancelled { border-left-color: var(--co-border-strong); text-decoration: line-through; }
+.co-or-case-t { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.co-or-case .co-mi-s { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--co-ink-2); }
+.co-or-now { position: absolute; top: 22px; bottom: 0; border-left: 2px solid var(--co-danger); pointer-events: none; }
+.co-or-now-l { position: absolute; top: -2px; left: 3px; font-size: 10px; color: var(--co-danger-strong); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.co-or-legend { padding: 0 12px 12px; flex-wrap: wrap; }
+
+/* SurgicalSafetyChecklist */
+.co-ssc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.co-ssc-ph { border: 1px solid var(--co-border); border-radius: var(--co-radius-md); padding: 12px; background: var(--co-surface); }
+.co-ssc-ph.is-active { border-color: var(--co-primary); }
+.co-ssc-ph.is-done { background: var(--co-success-soft); }
+.co-ssc-ph.is-done :is(.co-mi-s, .co-help) { color: var(--co-ink-2); }
+.co-ssc-ph.is-locked { border-style: dashed; }
+.co-ssc-h { justify-content: space-between; }
+.co-ssc-h h3 { margin: 0; font-size: 14px; }
+.co-ssc-when { margin: 2px 0 8px; }
+.co-ssc-items { display: grid; gap: 4px; }
+.co-ssc-act { margin-top: 10px; }
+
+/* AnesthesiaRecord */
+.co-an-chart { margin: 0 0 8px; }
+.co-an-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 12px; }
+
+/* PACUScore */
+.co-pacu-list { display: grid; gap: 10px; }
+.co-pacu-fs { border: 0; padding: 0; margin: 0; min-width: 0; }
+.co-pacu-fs legend { font-weight: 600; font-size: 13px; margin-bottom: 4px; padding: 0; }
+.co-pacu-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; }
+.co-pacu-opt { display: flex; gap: 8px; align-items: flex-start; padding: 8px; border-radius: var(--co-radius-sm); border: 1px solid var(--co-border); background: var(--co-surface); cursor: pointer; font-size: 13px; }
+.co-pacu-opt.is-on { border-color: var(--co-primary); background: var(--co-primary-soft); }
+.co-pacu-opt.is-ro { cursor: default; }
+.co-pacu-opt:focus-within { outline: 2px solid var(--co-primary); outline-offset: 1px; }
+.co-pacu-hist { margin-top: 12px; }
+
+/* PartogramChart, FetalMonitorStrip */
+.co-pg-legend { font-size: 12px; }
+.co-pg-alert { color: var(--co-warning-strong); }
+.co-pg-action { color: var(--co-danger-strong); }
+.co-pg-table { margin-top: 10px; }
+.co-fm-fig { margin: 8px 0 0; }
+.co-fm-svg { width: 100%; height: auto; display: block; background: var(--co-surface); }
+.co-fm-cap { font-size: 12px; flex-wrap: wrap; }
+
+/* ProcedureNote */
+.co-pn-fields { display: grid; gap: 10px; margin-top: 12px; }

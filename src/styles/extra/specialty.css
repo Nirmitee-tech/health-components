@@ -1,0 +1,116 @@
+/*
+ * Specialty components (ext: specialty): DentalChart, EyeExam, BodyMap, Audiogram, GrowthChart, PrenatalFlowsheet,
+ * PTPlanOfCare, BehavioralTreatmentPlan, PsychRatingScales, PediatricDosingCalculator, OncologyRegimen.
+ * The source set these as inline styles; they are classes here so the page needs no inline style (CSP-safe).
+ */
+
+/* ---- Shared ---- */
+.co-sp-inline { display: inline; }
+.co-sp-num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.co-sp-table { font-variant-numeric: tabular-nums; }
+.co-sp-table th[scope='row'] { background: none; }
+.co-sp-h { font-size: 11px; line-height: 16px; margin: 14px 0 8px; }
+.co-sp-h.is-first { margin: 8px 0; }
+.co-sp-big { font-size: 22px; }
+.co-sp-box { border: 1px solid var(--co-border); border-radius: var(--co-radius-sm); padding: 12px; background: var(--co-surface); }
+.co-sp-legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--co-muted); align-items: center; }
+.co-sp-sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 2px solid; vertical-align: middle; margin-right: 4px; }
+.co-sp-sw.is-dash { border-style: dashed; background: transparent; }
+.co-sp-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.co-sp-grid-130 { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+.co-sp-grid-150 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.co-sp-grid-170 { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.co-sp-grid-200 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.co-sp-mb { margin-bottom: 12px; }
+.co-sp-fig { margin: 0; }
+.co-sp-svg { width: 100%; height: auto; }
+.co-sp-val { font-variant-numeric: tabular-nums; white-space: nowrap; display: inline-flex; gap: 4px; align-items: baseline; }
+.co-sp-val > b { font-weight: 500; color: var(--co-ink); }
+.co-sp-val.is-flag > b { font-weight: 700; color: var(--co-danger-strong); }
+.co-sp-val-u { font-size: 12px; color: var(--co-muted); }
+
+/* ---- DentalChart ---- */
+.co-dental-scroll { overflow-x: auto; }
+.co-dental-head, .co-dental-foot { font-size: 11px; color: var(--co-muted); font-weight: 700; min-width: 600px; }
+.co-dental-head { display: flex; justify-content: space-between; }
+.co-dental-foot { text-align: center; }
+.co-dental-arch { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 0; min-width: 600px; }
+.co-dental-mid { border-top: 2px solid var(--co-border-strong); margin: 4px 0; min-width: 600px; }
+.co-tooth { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 2px; border: 2px solid transparent; border-radius: 6px; background: transparent; cursor: pointer; font: inherit; color: inherit; }
+.co-tooth.is-lower { flex-direction: column-reverse; }
+.co-tooth[aria-pressed='true'] { border-color: var(--co-primary); background: var(--co-primary-soft); }
+.co-tooth-n { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--co-muted); font-weight: 700; }
+.co-tooth-t { font-size: 10px; color: var(--co-muted); height: 12px; }
+.co-tooth[aria-pressed='true'] :is(.co-tooth-n, .co-tooth-t) { color: var(--co-ink-2); }
+.co-dental-legend { margin: 10px 0; }
+.co-dental-sel { margin-bottom: 12px; }
+.co-dental-proc { margin-top: 6px; }
+.co-dental-tot { justify-content: flex-end; margin-top: 8px; font-size: 13px; }
+
+/* ---- BodyMap ---- */
+.co-bodymap-row { align-items: flex-start; margin-top: 10px; }
+.co-bodymap-list { flex: 1; min-width: 260px; }
+.co-bodymap-li { align-items: flex-start; }
+.co-bodymap-li.is-on { background: var(--co-primary-tint); }
+.co-bodymap-li.is-on .co-mi-s { color: var(--co-ink-2); }
+.co-bodymap-li .co-li-b { flex: 1; min-width: 140px; }
+.co-bodymap-photos { width: 100%; }
+.co-bodymap-pin { cursor: pointer; }
+.co-bodymap-pin-t { font: 700 9px var(--co-font-sans); fill: var(--co-on-status); }
+.co-bodymap-lr { font: 700 9px var(--co-font-sans); fill: var(--co-muted); }
+.co-thumb { margin: 0; width: 72px; }
+.co-thumb-i { display: block; width: 72px; height: 54px; object-fit: cover; border-radius: 4px; border: 1px solid var(--co-border); }
+.co-thumb-ph { display: flex; align-items: center; justify-content: center; background: var(--co-surface-muted); color: var(--co-muted); }
+.co-thumb figcaption { font-size: 11px; color: var(--co-muted); font-variant-numeric: tabular-nums; }
+
+/* ---- Audiogram ---- */
+.co-audio-svg { max-width: 520px; }
+.co-audio-r { color: var(--co-danger); }
+.co-audio-l { color: var(--co-primary); }
+.co-sp-axis-n { font-variant-numeric: tabular-nums; }
+
+/* ---- GrowthChart ---- */
+.co-growth-svg { max-width: 560px; }
+.co-growth-latest { margin-bottom: 8px; }
+
+/* ---- PrenatalFlowsheet ---- */
+.co-prenatal-risks { margin-bottom: 10px; }
+.co-prenatal-bp { white-space: nowrap; display: inline-flex; gap: 2px; align-items: baseline; }
+.co-prenatal-fh { display: inline-flex; gap: 4px; }
+.co-ga b { font-weight: 500; }
+
+/* ---- PTPlanOfCare ---- */
+.co-pt-pn { margin-top: 8px; }
+
+/* ---- BehavioralTreatmentPlan ---- */
+.co-btp-head { margin-bottom: 10px; }
+.co-btp-prob { margin-bottom: 12px; }
+.co-btp-ev { margin-top: 4px; }
+.co-btp-goal { border-left: 3px solid var(--co-primary-line); padding-left: 12px; margin-top: 10px; }
+.co-btp-objs { margin-top: 6px; }
+.co-btp-obj { align-items: flex-start; }
+.co-btp-obj .co-li-b { flex: 1; min-width: 200px; }
+.co-btp-iv { color: var(--co-ink-2); }
+
+/* ---- PsychRatingScales ---- */
+.co-psy-body { margin-top: 12px; }
+.co-psy-score { margin-bottom: 8px; }
+.co-psy-prompt { margin-bottom: 6px; }
+.co-psy-result { margin: 8px 0; }
+.co-q li.is-alert { background: var(--co-danger-soft); }
+
+/* ---- PediatricDosingCalculator ---- */
+.co-peds-res { margin-top: 12px; }
+.co-peds-work { font-variant-numeric: tabular-nums; margin: 4px 0 8px; }
+.co-peds-actions { margin-top: 8px; }
+
+/* ---- OncologyRegimen ---- */
+.co-onc-cycles { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 12px; }
+.co-onc-cycle { border: 1px solid var(--co-border); border-radius: var(--co-radius-sm); padding: 6px 8px; min-width: 76px; background: var(--co-surface); }
+.co-onc-cycle.is-current { border-color: var(--co-primary); background: var(--co-primary-tint); }
+.co-onc-cycle.is-current .co-kl { color: var(--co-ink-2); }
+.co-onc-date { font-size: 12px; font-variant-numeric: tabular-nums; }
+.co-onc-red { font-size: 11px; color: var(--co-warning-strong); }
+.co-onc-meta { margin-bottom: 8px; }
+.co-onc-labs { margin-top: 10px; }
+.co-onc-cum { margin-top: 12px; }

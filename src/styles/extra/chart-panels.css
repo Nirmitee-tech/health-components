@@ -1,0 +1,32 @@
+/* Chart panels: ChartSummary, ResultsTrendPanel, ResultsReview, SplitPaneChartLayout, StructuredDataGrid, HistoryPanels,
+   CareTeamPanel, ProblemListEditor, ClinicalDecisionSupportCard, DocumentViewer, PharmacyVerificationQueue.
+   Ported from the ext: chart-panels injected CSS (class names kept). The document page (.cp-page) is paper:
+   it stays white with dark ink and a yellow highlighter in every theme, like the scanned page it shows. */
+.cp-v{font-variant-numeric:tabular-nums;white-space:nowrap;display:inline-flex;align-items:baseline;gap:4px}
+.cp-v b{font-weight:600}.cp-v .cp-u{color:var(--co-muted);font-size:12px}
+.cp-v.is-H b,.cp-v.is-L b{color:var(--co-warning-strong)}.cp-v.is-HH b,.cp-v.is-LL b{color:var(--co-danger-strong)}
+.cp-fl{font-size:11px;font-weight:700;padding:0 4px;border-radius:var(--co-radius-xs);border:1px solid currentColor}
+.cp-v.is-H .cp-fl,.cp-v.is-L .cp-fl{color:var(--co-warning-strong)}.cp-v.is-HH .cp-fl,.cp-v.is-LL .cp-fl{color:var(--co-on-status);background:var(--co-danger);border-color:var(--co-danger)}
+.cp-rr{color:var(--co-muted);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cp-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start}
+.cp-tile{border:1px solid var(--co-border);border-radius:var(--co-radius-md);padding:10px;background:var(--co-surface);display:flex;flex-direction:column;gap:4px}
+.cp-tile.is-HH,.cp-tile.is-LL{border-color:var(--co-danger);box-shadow:inset 3px 0 0 var(--co-danger)}.cp-tile.is-H,.cp-tile.is-L{box-shadow:inset 3px 0 0 var(--co-warning)}
+.cp-sec{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--co-muted);margin:10px 0 6px}
+.cp-prob{border-top:1px solid var(--co-line-soft);padding:10px 0;display:grid;grid-template-columns:minmax(180px,1.2fr) 2fr;gap:12px}
+.cp-prob:first-child{border-top:0}
+.cp-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cp-layout{display:flex;border:1px solid var(--co-border);border-radius:var(--co-radius-lg);overflow:hidden;background:var(--co-canvas);min-height:360px}
+.cp-pane{overflow:auto;background:var(--co-surface);min-width:0}.cp-pane-main{flex:1;background:var(--co-canvas);padding:12px}
+.cp-split{width:6px;flex:none;cursor:col-resize;background:var(--co-line-soft);border:0;padding:0}.cp-split:hover,.cp-split:focus-visible{background:var(--co-primary)}.cp-split:focus-visible{outline:2px solid var(--co-focus-ring);outline-offset:1px}
+.cp-sg td,.cp-sg th{padding:4px 6px}.cp-sg input,.cp-sg select{width:100%;min-width:64px;box-sizing:border-box}
+.cp-sg td.is-bad{background:var(--co-danger-soft)}.cp-sg td.is-warn{background:var(--co-warning-soft)}.cp-sg .cp-msg{font-size:11px;display:block;margin-top:2px}
+.cp-sg td.is-bad .cp-msg{color:var(--co-danger-strong)}.cp-sg td.is-warn .cp-msg{color:var(--co-warning-strong)}
+.cp-ped{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;align-items:start}
+.cp-cds{border:1px solid var(--co-border);border-left-width:4px;border-radius:var(--co-radius-md);padding:12px;background:var(--co-surface);display:flex;flex-direction:column;gap:8px}
+.cp-cds-info{border-left-color:var(--co-primary)}.cp-cds-warning{border-left-color:var(--co-warning);background:var(--co-warning-soft)}.cp-cds-critical{border-left-color:var(--co-danger);background:var(--co-danger-soft)}
+.cp-doc{display:grid;grid-template-columns:1fr 260px;gap:12px}.cp-page{background:#fff;color:#1b1f24;border:1px solid var(--co-border);box-shadow:var(--co-shadow-card);padding:28px 32px;font-family:var(--co-font-mono);font-size:12px;line-height:1.7;transform-origin:top left}
+.cp-page mark{background:#fff1a8;color:inherit;cursor:pointer}.cp-page mark.is-on{outline:2px solid var(--co-primary)}.cp-page mark.cp-cm{background:#d6ecff}
+.cp-q{display:grid;grid-template-columns:minmax(300px,1fr) minmax(320px,1.3fr);gap:12px;align-items:start}
+.cp-qrow{display:flex;gap:8px;align-items:flex-start;padding:10px;border:0;border-bottom:1px solid var(--co-line-soft);background:none;width:100%;text-align:left;cursor:pointer;color:var(--co-ink);font:inherit}
+.cp-qrow.is-on{background:var(--co-primary-soft)}.cp-qrow:focus-visible{outline:2px solid var(--co-focus-ring);outline-offset:-2px}
+@media (max-width:720px){.cp-prob,.cp-doc,.cp-q{grid-template-columns:1fr}.cp-layout{flex-direction:column}.cp-split{display:none}}

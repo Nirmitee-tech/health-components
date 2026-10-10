@@ -5,7 +5,7 @@ Patterns and ideas only: no vendor screenshots, logos or other assets are stored
 
 | File | What it is |
 |---|---|
-| [epic.md](./epic.md) | Epic Hyperspace / Hyperdrive, ambulatory, inpatient, mobile and MyChart: layout, screens, components, criticism, ~40 public sources |
+| [epic.md](./epic.md) | Epic Hyperspace / Hyperdrive, ambulatory, inpatient, mobile and MyChart: layout, screens, components, criticism, 36 public sources |
 | [athenahealth.md](./athenahealth.md) | athenaOne (Clinicals, Collector, Communicator, mobile, patient app) and athenahealth's **Forge** design system, 50 public sources |
 | [gap-analysis.md](./gap-analysis.md) | Every pattern mapped to CareOS components: have / partial / missing, plus a priority shortlist |
 
